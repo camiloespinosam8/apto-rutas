@@ -197,8 +197,10 @@ function parseFecha(s){
   if(/\bpasado manana\b/.test(s))return iso(masDias(base(),2));
   let m=s.match(/(\d{4})-(\d{2})-(\d{2})/); if(m)return m[0];
   m=s.match(/\b(\d{1,2})[\/-](\d{1,2})\b/);            if(m)return iso(armar(+m[1],+m[2]));
-  m=s.match(/\b(\d{1,2})\s*(?:de\s*)?([a-z]{3,10})\b/);
-  if(m&&MES[m[2]])return iso(armar(+m[1],MES[m[2]]));
+  // recorrer TODOS los "<n> <palabra>": quedarse con el primero cuya palabra sea un mes real
+  // (si no, "4 personas 20 de agosto" tomaría "4 personas" como fecha y perdería el 20 de agosto)
+  for(const mm of s.matchAll(/\b(\d{1,2})\s*(?:de\s*)?([a-z]{3,10})\b/g))
+    if(MES[mm[2]])return iso(armar(+mm[1],MES[mm[2]]));
   return null;
 }
 function parsePax(s){
