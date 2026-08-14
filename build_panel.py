@@ -1,5 +1,6 @@
 # build_panel.py — Centro de control APTO. Diseño "manifiesto operacional":
 # filas densas con filetes, números tabulares, paleta de marca APTO (crema/ladrillo/tinta).
+# HOME con buscador global (responde de todos los capítulos) + buscador propio por pestaña.
 # Interno: sin texto explicativo, todo escaneable. Datos precalculados desde datos.json.
 import json, os, sys
 from datetime import date
@@ -17,35 +18,27 @@ CSS = """
 :root{
   --crema:#F4EFE6; --papel:#FBF9F4; --tinta:#1D1D1B; --mute:#6B6256; --linea:#E7DCC9;
   --ladrillo:#C8572A; --vino:#9B3A2E; --exito:#2F7D5B;
-  --z-sticky:100; --z-pop:300;
-  --ease:cubic-bezier(.22,1,.36,1);
+  --z-sticky:100; --ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{
-  font-family:Manrope,-apple-system,'Segoe UI',Roboto,sans-serif;
-  background:var(--crema); color:var(--tinta);
-  font-size:15px; line-height:1.45; -webkit-font-smoothing:antialiased;
-  padding:0 0 40px; max-width:1120px; margin:0 auto;
-}
+body{font-family:Manrope,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--crema);
+  color:var(--tinta);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;
+  padding:0 0 40px;max-width:1120px;margin:0 auto}
 .wrap{padding:0 16px}
-/* ---- cabecera ---- */
 header{padding:20px 16px 12px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .mark{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:1.9rem;letter-spacing:.09em;line-height:1}
 .hoy{font-size:.82rem;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
-/* ---- pestañas ---- */
-.tabs{position:sticky;top:0;z-index:var(--z-sticky);background:var(--crema);
-  display:flex;gap:2px;padding:6px 16px 8px;overflow-x:auto;scrollbar-width:none;
-  border-bottom:1px solid var(--linea)}
+.tabs{position:sticky;top:0;z-index:var(--z-sticky);background:var(--crema);display:flex;gap:2px;
+  padding:6px 16px 8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--linea)}
 .tabs::-webkit-scrollbar{display:none}
-.tab{white-space:nowrap;border:0;background:transparent;color:var(--mute);
-  font-family:inherit;font-weight:700;font-size:.88rem;padding:8px 12px;border-radius:7px;
-  cursor:pointer;transition:color .18s var(--ease),background .18s var(--ease)}
+.tab{white-space:nowrap;border:0;background:transparent;color:var(--mute);font-family:inherit;
+  font-weight:700;font-size:.88rem;padding:8px 12px;border-radius:7px;cursor:pointer;
+  transition:color .18s var(--ease),background .18s var(--ease)}
 .tab:hover{color:var(--tinta)}
 .tab[aria-selected="true"]{background:var(--ladrillo);color:var(--papel)}
 .tab:focus-visible{outline:2px solid var(--ladrillo);outline-offset:2px}
 .pane{display:none;padding-top:14px} .pane.on{display:block}
-/* ---- controles ---- */
 .bar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
 input,select,button.go{font:inherit;color:var(--tinta);background:var(--papel);
   border:1px solid var(--linea);border-radius:8px;padding:9px 11px;min-height:40px}
@@ -58,7 +51,6 @@ button.go{background:var(--tinta);color:var(--papel);border-color:var(--tinta);f
   border:1px solid var(--linea);border-radius:99px;padding:6px 13px;cursor:pointer;
   transition:background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease)}
 .q button:hover{background:var(--vino);color:var(--papel);border-color:var(--vino)}
-/* ---- filas (NO cards) ---- */
 .count{font-size:.8rem;color:var(--mute);font-variant-numeric:tabular-nums;margin:14px 0 4px}
 .count b{color:var(--tinta)}
 .rows{border-top:1px solid var(--linea)}
@@ -72,8 +64,6 @@ button.go{background:var(--tinta);color:var(--papel);border-color:var(--tinta);f
 .tags{display:flex;gap:5px;align-items:center;flex-wrap:wrap;flex-shrink:0}
 .tg{font-size:.74rem;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
 .tg.p{color:var(--vino)}
-.tg.reg{color:var(--mute);opacity:.75}
-/* ---- desplegable de ficha ---- */
 details.r{display:block;padding:0}
 details.r>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:baseline;padding:11px 2px}
 details.r>summary::-webkit-details-marker{display:none}
@@ -82,11 +72,9 @@ details.r[open]{background:var(--papel)}
 .kv dt{color:var(--mute);font-weight:600}
 .kv dd{font-variant-numeric:tabular-nums;word-break:break-word}
 .kv a{color:var(--vino)}
-/* ---- día ---- */
 .day{font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;
   margin:20px 0 2px;display:flex;align-items:baseline;gap:9px}
 .day span{font-family:Manrope,sans-serif;font-size:.78rem;font-weight:600;color:var(--mute);font-variant-numeric:tabular-nums}
-/* ---- ranking ---- */
 table{width:100%;border-collapse:collapse;font-size:.87rem;font-variant-numeric:tabular-nums}
 th{text-align:left;padding:8px 8px 8px 0;font-size:.74rem;font-weight:800;color:var(--mute);
   border-bottom:1px solid var(--linea);cursor:pointer;white-space:nowrap;user-select:none}
@@ -96,7 +84,6 @@ td{padding:9px 8px 9px 0;border-bottom:1px solid var(--linea)}
 td:first-child{color:var(--mute);width:26px}
 .bar2{height:6px;background:var(--linea);border-radius:99px;overflow:hidden;min-width:44px}
 .bar2>i{display:block;height:100%;background:var(--ladrillo)}
-/* ---- calendario ---- */
 .cal{overflow-x:auto;padding-bottom:6px}
 .cg{display:grid;gap:1px;min-width:720px}
 .c{height:22px;border-radius:2px;background:#E9E0CE}
@@ -106,8 +93,7 @@ td:first-child{color:var(--mute);width:26px}
 .cn{font-size:.72rem;font-weight:700;line-height:22px;padding-right:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .leg{display:flex;gap:14px;font-size:.76rem;color:var(--mute);margin:6px 0 8px}
 .leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
-/* ---- incidencias ---- */
-.sev{font-size:.7rem;font-weight:800;font-variant-numeric:tabular-nums}
+.sev{font-size:.7rem;font-weight:800}
 .sev.alta{color:var(--vino)} .sev.media{color:var(--ladrillo)} .sev.baja{color:var(--exito)}
 .acc{font-size:.85rem;margin-top:5px;padding-left:11px;border-left:1px solid var(--linea);color:var(--mute)}
 .acc b{color:var(--tinta);font-weight:700}
@@ -117,6 +103,18 @@ td:first-child{color:var(--mute);width:26px}
 .cats button[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
 .none{color:var(--mute);padding:22px 2px;font-size:.88rem}
 footer{color:var(--mute);font-size:.72rem;padding:22px 16px 0;font-variant-numeric:tabular-nums}
+/* ---- HOME ---- */
+.hero{padding:2px 0 4px}
+.hsearch{width:100%;font-size:1.02rem;padding:13px 15px;min-height:50px}
+.hint{font-size:.76rem;color:var(--mute);margin:7px 0 2px}
+.pulse{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0 4px}
+.pz{flex:1 1 90px;background:var(--papel);border:1px solid var(--linea);border-radius:11px;padding:11px 13px}
+.pz b{display:block;font-size:1.5rem;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.pz span{font-size:.74rem;color:var(--mute);font-weight:600}
+.pz.i b{color:var(--exito)} .pz.o b{color:var(--vino)} .pz.l b{color:var(--ladrillo)}
+.gsec{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;font-weight:700;margin:20px 0 3px}
+.jump{background:none;border:0;font:inherit;color:var(--vino);font-weight:700;font-size:.78rem;cursor:pointer;padding:0}
+.jump:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 """
 
@@ -128,7 +126,6 @@ const clp=n=>{const v=Number(n);return Number.isFinite(v)&&v>0?('$'+v.toLocaleSt
 const VAC=new Set(['','-','—','s/n','sn','casa','none','null','?']);
 const ok=v=>{const s=String(v==null?'':v).trim();return VAC.has(s.toLowerCase())?'':s};
 
-// dirección compacta: Calle N°, depto X, Comuna
 function dir(p){
   const a=[],c=[ok(p.calle),ok(p.numero)].filter(Boolean).join(' ');
   if(c)a.push(c); if(ok(p.depto))a.push('depto '+ok(p.depto)); if(ok(p.comuna))a.push(ok(p.comuna));
@@ -142,13 +139,154 @@ function tagsProp(p){
   if(Number(p.rating)>0)t.push(`<span class="tg">${p.rating}★</span>`);
   return t.join('');
 }
+function irA(t){
+  const b=document.querySelector('.tab[data-t="'+t+'"]'); if(b){b.click();window.scrollTo({top:0,behavior:'smooth'});}
+}
 // ---- tabs ----
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
   document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
   b.setAttribute('aria-selected','true'); $('#p'+b.dataset.t).classList.add('on');
 });
-// ---- 1 propiedades ----
+
+/* ============ MOTOR DE CONSULTA (precomputado, responde al instante) ============ */
+const MES={ene:1,feb:2,mar:3,abr:4,may:5,jun:6,jul:7,ago:8,sep:9,set:9,oct:10,nov:11,dic:12};
+const iso=d=>d.toISOString().slice(0,10);
+function base(){return new Date(D.ventana.desde+'T12:00:00')}
+function parseFecha(q){
+  const s=nrm(q);
+  if(/\bhoy\b/.test(s))return D.ventana.desde;
+  if(/\bmanana\b/.test(s)){const d=base();d.setDate(d.getDate()+1);return iso(d)}
+  let m=s.match(/(\d{4})-(\d{2})-(\d{2})/); if(m)return m[0];
+  m=s.match(/\b(\d{1,2})[\/-](\d{1,2})\b/);                       // 20/8
+  if(m){const d=base();d.setMonth(+m[2]-1,+m[1]);return iso(d)}
+  m=s.match(/\b(\d{1,2})\s*(?:de\s*)?([a-z]{3})/);                // 20 ago
+  if(m&&MES[m[2]]){const d=base();d.setMonth(MES[m[2]]-1,+m[1]);return iso(d)}
+  return null;
+}
+function parsePax(q){const m=nrm(q).match(/(\d{1,2})\s*(?:p\b|pax|persona)/);return m?+m[1]:0}
+function pidePark(q){return /\bpark|estacion|auto\b/.test(nrm(q))}
+function libres(de,ha,pax,reg,pk){
+  const out=[],d0=new Date(de+'T12:00:00'),d1=new Date(ha+'T12:00:00');
+  D.props.forEach(p=>{
+    if(reg&&reg!=='all'&&p.region!==reg)return;
+    if(pax&&(!p.cap||p.cap<pax))return;
+    if(pk&&!(p.park&&p.park.tiene))return;
+    let libre=true;const d=new Date(d0);
+    while(d<d1){if((D.ocup[p.id]||{})[iso(d)]){libre=false;break}d.setDate(d.getDate()+1)}
+    if(libre)out.push(p);
+  });
+  return out;
+}
+const txtProp=p=>[p.nombre,p.calle,p.numero,p.depto,p.comuna,p.interno,p.dueno,p.responsable,p.tipo].join(' ');
+const txtMov =a=>[a.dir,a.pnombre,a.huesped,a.comuna,a.cod].join(' ');
+const txtInc =i=>[i.titulo,i.prop,i.detalle,i.cat,i.cita,i.huesped,i.cod].join(' ');
+
+/* ---- carencias: qué le FALTA al huésped (lo que hay que resolver hoy) ---- */
+const CARENCIA=[
+  [/fuga de gas|sin gas|gas\b/,'sin gas',0],
+  [/agua caliente|no calienta|calefon|calefón|termo|agua helada/,'sin agua caliente',1],
+  [/sin agua|no hay agua|corte de agua/,'sin agua',1],
+  [/electric|sin luz|disyuntor|breaker|enchufe|corte electrico/,'sin luz',2],
+  [/no pudo entrar|no pudo ingresar|conserjer|clave|codigo|chapa|no funciono la contrasena|autorizacion/,'sin acceso',2],
+  [/calefacc|calefactor|estufa|mucho frio|sin frazada/,'sin calefacción',3],
+  [/wifi|internet/,'sin internet',4],
+  [/toalla|sabana|ropa de cama|edredon|cobertor|frazada/,'sin toallas/ropa',4],
+  [/limpieza|sucia|sucio|mancha|aseo/,'aseo',5],
+  [/cafetera|plancha|secador|utensilio|falta/,'falta insumo',6],
+];
+function carencia(i){
+  const b=nrm([i.titulo,i.detalle,i.cita,i.cat].join(' '));
+  for(const [re,txt,ord] of CARENCIA) if(re.test(b)) return {txt,ord};
+  return null;
+}
+// ¿hay alguien alojado HOY en la propiedad de esta incidencia?
+function conHuespedHoy(i){
+  const hoy=D.ventana.desde, pi=nrm(i.prop);
+  if(!pi) return false;
+  return D.props.some(p=>{
+    if(!(D.ocup[p.id]||{})[hoy]) return false;
+    const claves=[ok(p.calle),ok(p.nombre),ok(p.interno),ok(p.depto)].filter(x=>x&&String(x).length>3).map(nrm);
+    return claves.some(k=>pi.includes(k));
+  });
+}
+function urgentesHoy(n){
+  const cand=D.incidencias.filter(i=>i.estado!=='resuelto').map(i=>{
+    const c=carencia(i);
+    return {...i, _c:c?c.txt:null, _o:c?c.ord:9, _hoy:conHuespedHoy(i)};
+  }).filter(i=>i._c||i.sev==='alta');
+  cand.sort((a,b)=>(b._hoy-a._hoy)||(a._o-b._o)||
+    ((a.sev==='alta'?0:a.sev==='media'?1:2)-(b.sev==='alta'?0:b.sev==='media'?1:2)));
+  return cand.slice(0,n);
+}
+
+/* ============ HOME ============ */
+function pintarHome(){
+  const hoy=D.ventana.desde;
+  const ins=D.agenda.filter(a=>a.fecha===hoy&&a.tipo==='in').length;
+  const outs=D.agenda.filter(a=>a.fecha===hoy&&a.tipo==='out').length;
+  const man=iso(new Date(new Date(hoy+'T12:00:00').getTime()+864e5));
+  const libHoy=libres(hoy,man,0,'all',false).length;
+  const abiertas=D.incidencias.filter(i=>i.estado!=='resuelto').length;
+  $('#pulse').innerHTML=
+    `<div class="pz i"><b>${ins}</b><span>llegan hoy</span></div>
+     <div class="pz o"><b>${outs}</b><span>salen hoy</span></div>
+     <div class="pz l"><b>${libHoy}</b><span>libres hoy</span></div>
+     <div class="pz"><b>${abiertas}</b><span>sin resolver</span></div>`;
+  const urg=urgentesHoy(6);
+  $('#urg').innerHTML=urg.length?'<div class="rows">'+urg.map(i=>`<div class="r">
+      <div class="t out" style="font-size:.72rem;font-weight:800;min-width:96px;line-height:1.2">${esc(i._c||i.cat)}</div>
+      <div class="m"><div class="n">${esc(i.titulo)}</div>
+        <div class="d">${esc(i.prop)}${i.cod?' · '+esc(i.cod):''}</div>
+        ${i.cita?`<div class="d" style="font-style:italic">«${esc(i.cita)}»</div>`:''}</div>
+      <div class="tags">${i._hoy?'<span class="tg" style="color:var(--vino)">huésped hoy</span>':''}
+        <span class="sev ${i.sev}">${esc(i.sev)}</span></div></div>`).join('')+'</div>'
+    :'<div class="none">Nada urgente abierto</div>';
+}
+function buscarGlobal(){
+  const q=$('#hq').value.trim();
+  if(!q){$('#hres').innerHTML='';$('#home-def').style.display='';return}
+  $('#home-def').style.display='none';
+  const n=nrm(q), f=parseFecha(q), pax=parsePax(q), pk=pidePark(q);
+  let h='';
+  // 1) disponibilidad si la consulta trae fecha o pax
+  if(f||pax){
+    const de=f||D.ventana.desde;
+    const d1=new Date(de+'T12:00:00');d1.setDate(d1.getDate()+1);
+    const L=libres(de,iso(d1),pax,'all',pk);
+    h+=`<div class="gsec">Disponible ${esc(de)}${pax?' · '+pax+'p':''}${pk?' · con P':''} <button class="jump" onclick="irA(3)">ver calendario →</button></div>`;
+    h+=L.length?'<div class="rows">'+L.slice(0,12).map(p=>`<div class="r"><div class="m">
+        <div class="n">${esc(p.nombre)}</div><div class="d">${esc(dir(p))}</div></div>
+        <div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>'
+      :'<div class="none">Nada libre con esos filtros</div>';
+  }
+  // 2) propiedades
+  const P=D.props.filter(p=>nrm(txtProp(p)).includes(n)).slice(0,8);
+  if(P.length){
+    h+=`<div class="gsec">Propiedades <button class="jump" onclick="irA(1)">ver todas →</button></div><div class="rows">`;
+    h+=P.map(p=>`<div class="r"><div class="m"><div class="n">${esc(p.nombre)}</div>
+      <div class="d">${esc(dir(p))}</div></div><div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>';
+  }
+  // 3) movimientos
+  const M=D.agenda.filter(a=>nrm(txtMov(a)).includes(n)).slice(0,8);
+  if(M.length){
+    h+=`<div class="gsec">Movimientos <button class="jump" onclick="irA(2)">ver agenda →</button></div><div class="rows">`;
+    h+=M.map(a=>`<div class="r"><div class="t ${a.tipo}">${esc(a.hora)}</div><div class="m">
+      <div class="n">${esc(a.dir||a.pnombre)}</div>
+      <div class="d">${esc(a.fecha)} · ${a.tipo==='in'?'entra':'sale'} ${esc(a.huesped)}</div></div></div>`).join('')+'</div>';
+  }
+  // 4) incidencias
+  const I=D.incidencias.filter(i=>nrm(txtInc(i)).includes(n)).slice(0,8);
+  if(I.length){
+    h+=`<div class="gsec">Incidencias <button class="jump" onclick="irA(5)">ver todas →</button></div><div class="rows">`;
+    h+=I.map(i=>`<div class="r"><div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.7rem;font-weight:800;min-width:56px">${esc(i.cat)}</div>
+      <div class="m"><div class="n">${esc(i.titulo)}</div><div class="d">${esc(i.prop)} · ${esc(i.estado)}</div></div>
+      <div class="tags"><span class="sev ${i.sev}">${esc(i.sev)}</span></div></div>`).join('')+'</div>';
+  }
+  $('#hres').innerHTML=h||'<div class="none">Sin resultados para «'+esc(q)+'»</div>';
+}
+
+/* ============ 1 PROPIEDADES ============ */
 function rowProp(p){
   const claves=[ok(p.acceso.depto)&&('depto '+ok(p.acceso.depto)),
                 ok(p.acceso.edificio)&&('edificio '+ok(p.acceso.edificio))].filter(Boolean).join(' · ');
@@ -165,18 +303,18 @@ function rowProp(p){
 }
 function renderProps(){
   const q=nrm($('#qp').value),reg=$('#fr').value;
-  const o=D.props.filter(p=>(reg==='all'||p.region===reg)&&(!q||nrm([p.nombre,p.calle,p.numero,p.depto,p.comuna,p.interno,p.dueno].join(' ')).includes(q)));
+  const o=D.props.filter(p=>(reg==='all'||p.region===reg)&&(!q||nrm(txtProp(p)).includes(q)));
   $('#np').textContent=o.length;
   $('#lp').innerHTML=o.length?o.map(rowProp).join(''):'<div class="none">Sin resultados</div>';
 }
-// ---- 2 movimientos ----
+/* ============ 2 MOVIMIENTOS ============ */
 function renderAg(){
-  const f=$('#fa').value,reg=$('#far').value;
+  const f=$('#fa').value,reg=$('#far').value,q=nrm($('#qa').value);
   const dias=f==='hoy'?[D.semana[0]]:D.semana;
   let h='';
   dias.forEach(d=>{
-    const it=D.agenda.filter(a=>a.fecha===d&&(reg==='all'||a.region===reg));
-    if(f==='hoy'||it.length){
+    const it=D.agenda.filter(a=>a.fecha===d&&(reg==='all'||a.region===reg)&&(!q||nrm(txtMov(a)).includes(q)));
+    if((f==='hoy'&&!q)||it.length){
       const dt=new Date(d+'T12:00:00'),nm=['dom','lun','mar','mié','jue','vie','sáb'][dt.getDay()];
       h+=`<div class="day">${nm} ${dt.getDate()}<span>${it.length} mov</span></div><div class="rows">`;
       h+=it.length?it.map(a=>`<div class="r"><div class="t ${a.tipo}">${esc(a.hora)}</div>
@@ -188,11 +326,12 @@ function renderAg(){
   });
   $('#la').innerHTML=h||'<div class="none">Sin movimientos</div>';
 }
-// ---- 3 disponibilidad (precomputada) ----
+/* ============ 3 DISPONIBILIDAD ============ */
 const NC=45;
-function fechas(n){const a=[],d=new Date(D.ventana.desde+'T12:00:00');for(let i=0;i<n;i++){a.push(d.toISOString().slice(0,10));d.setDate(d.getDate()+1)}return a}
+function fechas(n){const a=[],d=base();for(let i=0;i<n;i++){a.push(iso(d));d.setDate(d.getDate()+1)}return a}
 function renderCal(){
-  const reg=$('#fcr').value,ds=fechas(NC),ps=D.props.filter(p=>reg==='all'||p.region===reg);
+  const reg=$('#fcr').value,q=nrm($('#qc').value),ds=fechas(NC);
+  const ps=D.props.filter(p=>(reg==='all'||p.region===reg)&&(!q||nrm(txtProp(p)).includes(q)));
   let h=`<div class="cg" style="grid-template-columns:132px repeat(${NC},1fr)"><div class="c h"></div>`;
   h+=ds.map(d=>{const t=new Date(d+'T12:00:00'),w=t.getDay()===0||t.getDay()===6;
     return `<div class="c h${w?' w':''}">${t.getDate()}</div>`}).join('');
@@ -202,18 +341,6 @@ function renderCal(){
       return `<div class="c${o?' b':''}" title="${esc(p.nombre)} · ${d}${o?' · '+esc(o.h):' · libre'}"></div>`}).join('');
   });
   $('#cg').innerHTML=h+'</div>';
-}
-function libres(de,ha,pax,reg,pk){
-  const out=[],d0=new Date(de+'T12:00:00'),d1=new Date(ha+'T12:00:00');
-  D.props.forEach(p=>{
-    if(reg!=='all'&&p.region!==reg)return;
-    if(pax&&(!p.cap||p.cap<pax))return;
-    if(pk&&!(p.park&&p.park.tiene))return;
-    let ok=true;const d=new Date(d0);
-    while(d<d1){if((D.ocup[p.id]||{})[d.toISOString().slice(0,10)]){ok=false;break}d.setDate(d.getDate()+1)}
-    if(ok)out.push(p);
-  });
-  return out;
 }
 function correr(){
   const de=$('#qd').value,ha=$('#qh').value;
@@ -226,33 +353,35 @@ function correr(){
     :'<div class="none">Nada libre con esos filtros</div>');
 }
 function preset(dd,nn,pax,pk){
-  const d=new Date(D.ventana.desde+'T12:00:00');d.setDate(d.getDate()+dd);
+  const d=base();d.setDate(d.getDate()+dd);
   const f=new Date(d);f.setDate(f.getDate()+nn);
-  $('#qd').value=d.toISOString().slice(0,10);$('#qh').value=f.toISOString().slice(0,10);
+  $('#qd').value=iso(d);$('#qh').value=iso(f);
   $('#qx').value=pax||'';$('#qk').checked=!!pk;correr();
 }
-// ---- 4 ranking ----
+/* ============ 4 RANKING ============ */
 let sk='rating',sd=-1;
 function renderIns(){
-  const reg=$('#fir').value;
-  const rows=D.insights.filter(i=>reg==='all'||i.region===reg).sort((a,b)=>{
-    let x=a[sk],y=b[sk];if(x==null)x=-1;if(y==null)y=-1;
-    return typeof x==='string'?sd*x.localeCompare(y):sd*(x-y)});
-  $('#tb').innerHTML=rows.map((i,n)=>`<tr><td>${n+1}</td>
-    <td><b>${esc(i.nombre)}</b></td><td>${i.rating?i.rating+'★':'—'}</td><td>${i.nresenas??'—'}</td>
-    <td>${i.cap||'—'}</td><td><div style="display:flex;align-items:center;gap:7px">
-    <div class="bar2"><i style="width:${i.ocup_pct}%"></i></div>${i.ocup_pct}%</div></td>
-    <td>${clp(i.limpieza)||'—'}</td></tr>`).join('');
+  const reg=$('#fir').value,q=nrm($('#qi').value);
+  const rows=D.insights.filter(i=>(reg==='all'||i.region===reg)&&
+      (!q||nrm([i.nombre,i.comuna,i.tipo,i.dueno].join(' ')).includes(q)))
+    .sort((a,b)=>{let x=a[sk],y=b[sk];if(x==null)x=-1;if(y==null)y=-1;
+      return typeof x==='string'?sd*x.localeCompare(y):sd*(x-y)});
+  $('#tb').innerHTML=rows.map((i,n)=>`<tr><td>${n+1}</td><td><b>${esc(i.nombre)}</b></td>
+    <td>${Number(i.rating)>0?i.rating+'★':'—'}</td><td>${i.nresenas??'—'}</td><td>${i.cap||'—'}</td>
+    <td><div style="display:flex;align-items:center;gap:7px"><div class="bar2"><i style="width:${i.ocup_pct}%"></i></div>${i.ocup_pct}%</div></td>
+    <td>${clp(i.limpieza)||'—'}</td></tr>`).join('')||'<tr><td colspan="7" class="none">Sin resultados</td></tr>';
   document.querySelectorAll('th[data-k]').forEach(t=>{
     if(t.dataset.k===sk)t.setAttribute('aria-sort',sd<0?'descending':'ascending');else t.removeAttribute('aria-sort')});
 }
 document.querySelectorAll('th[data-k]').forEach(t=>t.onclick=()=>{
   const k=t.dataset.k;sd=(sk===k)?-sd:-1;sk=k;renderIns()});
-// ---- 5 incidencias ----
+/* ============ 5 INCIDENCIAS ============ */
 const CN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso',otros:'Otros'};
 let cat='all', soloAbiertas=true;
 function renderInc(){
-  const rows=D.incidencias.filter(i=>(cat==='all'||i.cat===cat)&&(!soloAbiertas||i.estado!=='resuelto'));
+  const q=nrm($('#qinc').value);
+  const rows=D.incidencias.filter(i=>(cat==='all'||i.cat===cat)&&(!soloAbiertas||i.estado!=='resuelto')
+    &&(!q||nrm(txtInc(i)).includes(q)));
   const nAb=D.incidencias.filter(i=>i.estado!=='resuelto').length;
   $('#ic').innerHTML=`<b>${rows.length}</b> de ${D.incidencias.length} · ${nAb} sin resolver`;
   $('#li').innerHTML=rows.length?'<div class="rows">'+rows.map(i=>`<div class="r">
@@ -268,17 +397,21 @@ function renderInc(){
 $('#iab').onclick=e=>{soloAbiertas=!soloAbiertas;
   e.target.setAttribute('aria-pressed',soloAbiertas?'true':'false');
   e.target.textContent=soloAbiertas?'Solo sin resolver':'Todas';renderInc()};
-document.querySelectorAll('.cats button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.cats button').forEach(x=>x.setAttribute('aria-pressed','false'));
+document.querySelectorAll('.cats button[data-c]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.cats button[data-c]').forEach(x=>x.setAttribute('aria-pressed','false'));
   b.setAttribute('aria-pressed','true');cat=b.dataset.c;renderInc()});
+/* ---- listeners ---- */
+$('#hq').addEventListener('input',buscarGlobal);
 ['qp','fr'].forEach(i=>$('#'+i).addEventListener('input',renderProps));
-['fa','far'].forEach(i=>$('#'+i).addEventListener('input',renderAg));
-$('#fcr').addEventListener('input',renderCal);$('#fir').addEventListener('input',renderIns);
+['fa','far','qa'].forEach(i=>$('#'+i).addEventListener('input',renderAg));
+['fcr','qc'].forEach(i=>$('#'+i).addEventListener('input',renderCal));
+['fir','qi'].forEach(i=>$('#'+i).addEventListener('input',renderIns));
+$('#qinc').addEventListener('input',renderInc);
 $('#go').onclick=correr;
 document.querySelectorAll('.q button').forEach(b=>b.onclick=()=>preset(+b.dataset.d,+b.dataset.n,+b.dataset.p,b.dataset.k==='1'));
-renderProps();renderAg();renderCal();renderIns();renderInc();
+pintarHome();renderProps();renderAg();renderCal();renderIns();renderInc();
 $('#qd').value=D.ventana.desde;
-const t=new Date(D.ventana.desde+'T12:00:00');t.setDate(t.getDate()+2);$('#qh').value=t.toISOString().slice(0,10);
+const t2=base();t2.setDate(t2.getDate()+2);$('#qh').value=iso(t2);
 correr();
 """
 
@@ -298,7 +431,8 @@ html = f"""<!doctype html><html lang="es"><head>
 <header><div class="mark">APTO</div><div class="hoy">{FECHA_TXT} · {len(D['props'])} propiedades</div></header>
 
 <div class="tabs" role="tablist">
-  <button class="tab" role="tab" aria-selected="true" data-t="1">Propiedades</button>
+  <button class="tab" role="tab" aria-selected="true" data-t="0">Home</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="1">Propiedades</button>
   <button class="tab" role="tab" aria-selected="false" data-t="2">Movimientos</button>
   <button class="tab" role="tab" aria-selected="false" data-t="3">Disponibilidad</button>
   <button class="tab" role="tab" aria-selected="false" data-t="4">Ranking</button>
@@ -306,9 +440,22 @@ html = f"""<!doctype html><html lang="es"><head>
 </div>
 
 <div class="wrap">
-<section class="pane on" id="p1">
+<section class="pane on" id="p0">
+  <div class="hero">
+    <input id="hq" class="hsearch" placeholder="Buscar en todo: dirección, huésped, «4p 20 ago», agua caliente…" autocomplete="off">
+    <div class="hint">Busca a la vez en propiedades, movimientos, disponibilidad e incidencias.</div>
+  </div>
+  <div id="hres"></div>
+  <div id="home-def">
+    <div class="pulse" id="pulse"></div>
+    <div class="gsec">Urgentes a resolver hoy <button class="jump" onclick="irA(5)">ver todas →</button></div>
+    <div id="urg"></div>
+  </div>
+</section>
+
+<section class="pane" id="p1">
   <div class="bar">
-    <input id="qp" class="grow" placeholder="Buscar calle, comuna, depto…" autocomplete="off">
+    <input id="qp" class="grow" placeholder="Buscar calle, comuna, depto, dueño…" autocomplete="off">
     <select id="fr"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
   </div>
   <div class="count"><b id="np">0</b> propiedades</div>
@@ -317,6 +464,7 @@ html = f"""<!doctype html><html lang="es"><head>
 
 <section class="pane" id="p2">
   <div class="bar">
+    <input id="qa" class="grow" placeholder="Buscar huésped, dirección, código…" autocomplete="off">
     <select id="fa"><option value="hoy">Hoy</option><option value="semana">7 días</option></select>
     <select id="far"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
   </div>
@@ -341,19 +489,26 @@ html = f"""<!doctype html><html lang="es"><head>
   </div>
   <div id="qr"></div>
   <div class="day" style="margin-top:24px">Ocupación<span>45 días</span></div>
-  <div class="bar"><select id="fcr"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select></div>
+  <div class="bar">
+    <input id="qc" class="grow" placeholder="Filtrar propiedad en el calendario…" autocomplete="off">
+    <select id="fcr"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
+  </div>
   <div class="leg"><span><i style="background:#E9E0CE"></i>libre</span><span><i style="background:#9B3A2E"></i>ocupado</span></div>
   <div class="cal"><div id="cg"></div></div>
 </section>
 
 <section class="pane" id="p4">
-  <div class="bar"><select id="fir"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select></div>
+  <div class="bar">
+    <input id="qi" class="grow" placeholder="Buscar propiedad, comuna…" autocomplete="off">
+    <select id="fir"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
+  </div>
   <table><thead><tr><th></th><th data-k="nombre">Propiedad</th><th data-k="rating">★</th><th data-k="nresenas">Reseñas</th>
     <th data-k="cap">Pax</th><th data-k="ocup_pct">Ocupación</th><th data-k="limpieza">Limpieza</th></tr></thead>
     <tbody id="tb"></tbody></table>
 </section>
 
 <section class="pane" id="p5">
+  <div class="bar"><input id="qinc" class="grow" placeholder="Buscar problema, propiedad, huésped…" autocomplete="off"></div>
   <div class="cats"><button data-c="all" aria-pressed="true">Todas <span style="opacity:.6">{len(D['incidencias'])}</span></button>{catbtn}
     <button id="iab" aria-pressed="true" style="margin-left:auto">Solo sin resolver</button></div>
   <div class="count" id="ic"></div>
