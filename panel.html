@@ -263,21 +263,28 @@ const txtMov =a=>[a.dir,a.pnombre,a.huesped,a.comuna,a.cod].join(' ');
 const txtInc =i=>[i.titulo,i.prop,i.detalle,i.cat,i.cita,i.huesped,i.cod].join(' ');
 
 /* ---- carencias: qué le FALTA al huésped (lo que hay que resolver hoy) ---- */
+// \b en ambos extremos: "gas" NO debe matchear "descargas". Orden = prioridad operativa.
 const CARENCIA=[
-  [/fuga de gas|sin gas|gas\b/,'sin gas',0],
-  [/agua caliente|no calienta|calefon|calefón|termo|agua helada/,'sin agua caliente',1],
-  [/sin agua|no hay agua|corte de agua/,'sin agua',1],
-  [/electric|sin luz|disyuntor|breaker|enchufe|corte electrico/,'sin luz',2],
-  [/no pudo entrar|no pudo ingresar|conserjer|clave|codigo|chapa|no funciono la contrasena|autorizacion/,'sin acceso',2],
-  [/calefacc|calefactor|estufa|mucho frio|sin frazada/,'sin calefacción',3],
-  [/wifi|internet/,'sin internet',4],
-  [/toalla|sabana|ropa de cama|edredon|cobertor|frazada/,'sin toallas/ropa',4],
-  [/limpieza|sucia|sucio|mancha|aseo/,'aseo',5],
-  [/cafetera|plancha|secador|utensilio|falta/,'falta insumo',6],
+  [/\bfuga de gas\b|\bsin gas\b|\bbalon de gas\b|\bgas\b/,'sin gas',0],
+  [/\bagua caliente\b|\bno calienta\b|\bcalefon\b|\btermo\b|\bagua helada\b/,'sin agua caliente',1],
+  [/\bsin agua\b|\bno hay agua\b|\bcorte de agua\b/,'sin agua',1],
+  [/\belectric\w*|\bsin luz\b|\bdisyuntor\b|\bbreaker\b|\benchufe\b/,'sin luz',2],
+  [/\bno pudo (entrar|ingresar)\b|\bconserjer\w*|\bclave\b|\bcodigo\b|\bchapa\b|\bautorizacion\b|\bno funciono la contrasena\b/,'sin acceso',2],
+  [/\bcalefacc\w*|\bcalefactor\b|\bestufa\b|\bmucho frio\b|\bsin frazada\b/,'sin calefacción',3],
+  [/\bwifi\b|\binternet\b/,'sin internet',4],
+  [/\btoalla\w*|\bsabana\w*|\bropa de cama\b|\bedredon\w*|\bcobertor\w*|\bfrazada\w*/,'sin toallas/ropa',4],
+  [/\binodoro\b|\bsuelt[oa]\b|\bquebrad[oa]\b|\brot[oa]\b|\bse cayo\b|\bdanad[oa]\b/,'algo roto',3],
+  [/\blimpieza\b|\bsucia?o?\b|\bmancha\w*|\baseo\b/,'aseo',5],
+  [/\bcafetera\b|\bplancha\b|\bsecador\b|\butensilio\w*/,'falta insumo',6],
 ];
+// Solo TÍTULO y CITA del huésped. El detalle menciona otros temas de pasada y ensucia la etiqueta;
+// preferimos no etiquetar (y mostrar la categoría) antes que etiquetar mal.
 function carencia(i){
-  const b=nrm([i.titulo,i.detalle,i.cita,i.cat].join(' '));
-  for(const [re,txt,ord] of CARENCIA) if(re.test(b)) return {txt,ord};
+  for(const campo of [i.titulo, (i.titulo||'')+' '+(i.cita||'')]){
+    const b=nrm(campo);
+    if(!b) continue;
+    for(const [re,txt,ord] of CARENCIA) if(re.test(b)) return {txt,ord};
+  }
   return null;
 }
 // ¿hay alguien alojado HOY en la propiedad de esta incidencia?
