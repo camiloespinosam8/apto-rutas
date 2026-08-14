@@ -84,6 +84,38 @@ def estado_de(e):
     if "stand by" in n or "espera" in n: return "abierto"
     return "sin seguimiento"
 
+# ---- privacidad: nombres de huéspedes SIEMPRE como "Nombre A." ----
+def abrev_nombre(n):
+    s = re.sub(r'\s*\(.*$', '', str(n or "")).strip().strip(",")
+    if not s: return ""
+    if "airbnb" in norm(s) or "servicio al cliente" in norm(s): return "vía Airbnb"
+    p = [x for x in s.split() if x]
+    if len(p) == 1: return p[0]
+    return p[0] + " " + p[1][0].upper() + "."
+
+# Lista real de huéspedes (del índice de reservas) para reemplazarlos también dentro del texto.
+# Solo nombres CONOCIDOS: así no se abrevian lugares como "Barrio Italia" o "Mala Yerba".
+NOMBRES = []
+try:
+    _ri = json.load(open(os.path.join(GO, "scripts", "reservas_index.json"), encoding="utf-8"))
+    _rr = list(_ri.values()) if isinstance(_ri, dict) else _ri
+    for _r in _rr:
+        _h = str(_r.get("huesped") or "").strip()
+        if len(_h.split()) >= 2: NOMBRES.append(_h)
+except Exception as e:
+    print("  (no se pudo leer reservas_index:", e, ")")
+NOMBRES = sorted(set(NOMBRES), key=len, reverse=True)
+
+def sin_apellidos(t):
+    s = str(t or "")
+    for n in NOMBRES:
+        if n in s: s = s.replace(n, abrev_nombre(n))
+    return s
+
+def limpia(t):
+    """Todo lo que se publica pasa por acá: sin montos por cliente y sin apellidos."""
+    return sin_apellidos(sin_plata(t))
+
 out, vistos = [], set()
 def add(rec):
     k = (norm(rec["prop"])[:40], norm(rec["titulo"])[:60])
@@ -103,10 +135,10 @@ def leer_csv(nombre, fecha):
                 "cat": cat, "sev": norm(row.get("severidad")) or "media",
                 "estado": estado_de(row.get("estado")),
                 "prop": limpia_prop(row.get("depto")), "fecha": fecha,
-                "huesped": (row.get("huesped") or "").split(",")[0].split(" y ")[0].strip(),
-                "titulo": titulo_de(row.get("descripcion"), row.get("tipo")),
-                "detalle": sin_plata(row.get("descripcion")),
-                "cita": sin_plata((row.get("evidencia") or "").strip()[:180]),
+                "huesped": abrev_nombre((row.get("huesped") or "").split(",")[0].split(" y ")[0]),
+                "titulo": limpia(titulo_de(row.get("descripcion"), row.get("tipo"))),
+                "detalle": limpia(row.get("descripcion")),
+                "cita": limpia((row.get("evidencia") or "").strip()[:180]),
                 "accion": accion_de(row.get("tipo"), cat),
                 "tipo": norm(row.get("tipo")),
             })
@@ -124,7 +156,9 @@ def leer_json(nombre, etiqueta):
     n = 0
     for r in json.load(open(p, encoding="utf-8")):
         r.setdefault("estado", "abierto"); r.setdefault("cita", ""); r.setdefault("tipo", r.get("cat"))
-        r["detalle"] = sin_plata(r.get("detalle")); r["titulo"] = sin_plata(r.get("titulo"))
+        r["detalle"] = limpia(r.get("detalle")); r["titulo"] = limpia(r.get("titulo"))
+        r["cita"] = limpia(r.get("cita")); r["huesped"] = abrev_nombre(r.get("huesped"))
+        r["prop"] = limpia(r.get("prop"))
         add(r); n += 1
     print(f"  {etiqueta}:", n)
 

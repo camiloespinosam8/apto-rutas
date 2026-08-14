@@ -284,7 +284,7 @@ function contactoHTML(i){
   const bits=[`<span class="tg">${r.actual?'alojado':'reserva'} ${dmy(r.e)} → ${dmy(r.s)}</span>`];
   if(r.h)bits.unshift(`<span class="tg" style="color:var(--tinta)">${esc(r.h)}</span>`);
   const links=[];
-  if(wa)links.push(`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">WhatsApp</a>`);
+  if(wa)links.push(`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">Contactar</a>`);
   links.push(`<a class="lk" href="${resLink(r.cod)}" target="_blank" rel="noopener">Reserva ${esc(r.cod)} ↗</a>`);
   return `<div class="ctc">${bits.join(' ')} ${links.join(' ')}</div>`;
 }
@@ -392,7 +392,7 @@ function buscarGlobal(){
     const r=D.res_ix[Q.cod], t=D.tel[Q.cod]||'', wa=waLink(t);
     sec.push({o:0,h:bloque(`Reserva ${esc(Q.cod)}`,2,`<div class="rows"><div class="r"><div class="m">
       <div class="n">${esc(r.p)}</div><div class="d">${esc(r.h)} · ${dmy(r.e)} → ${dmy(r.s)}${r.pax?' · '+r.pax+'p':''}</div>
-      <div class="ctc">${wa?`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">WhatsApp</a> `:''}
+      <div class="ctc">${wa?`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">Contactar</a> `:''}
         <a class="lk" href="${resLink(Q.cod)}" target="_blank" rel="noopener">Abrir en Airbnb ↗</a></div>
       </div></div></div>`,'')});
   }
@@ -423,7 +423,7 @@ function buscarGlobal(){
       '<div class="rows">'+M.slice(0,10).map(a=>`<div class="r"><div class="t ${a.tipo}">${esc(a.hora)}</div>
       <div class="m"><div class="n">${esc(a.dir||a.pnombre)}</div>
       <div class="d">${dmy(a.fecha)} · ${a.tipo==='in'?'entra':'sale'} ${esc(a.huesped)}${a.cod?' · '+esc(a.cod):''}</div>
-      ${a.cod?`<div class="ctc">${D.tel[a.cod]?`<a class="lk wa" href="${waLink(D.tel[a.cod])}" target="_blank" rel="noopener">WhatsApp</a> `:''}<a class="lk" href="${resLink(a.cod)}" target="_blank" rel="noopener">Reserva ↗</a></div>`:''}
+      ${a.cod?`<div class="ctc">${D.tel[a.cod]?`<a class="lk wa" href="${waLink(D.tel[a.cod])}" target="_blank" rel="noopener">Contactar</a> `:''}<a class="lk" href="${resLink(a.cod)}" target="_blank" rel="noopener">Reserva ↗</a></div>`:''}
       </div></div>`).join('')+'</div>','')});
   }
   // 4) incidencias
