@@ -246,7 +246,10 @@ for p in props:
 # SEGURIDAD: el panel se publica en una URL pública. Las claves de puerta y WiFi
 # permiten ENTRAR a los edificios, así que no salen al HTML mientras PUBLICO=True.
 # Poner en False solo si el panel pasa a estar detrás de autenticación.
-PUBLICO = True
+# Camilo decidió el 14-ago-2026 PUBLICAR las claves igual, asumiendo el riesgo, con la
+# etiqueta "clave momentánea". Si alguna vez se filtra: cambiar las claves de los edificios.
+# Volver a True para ocultarlas (p.ej. si el panel deja de ser de uso interno controlado).
+PUBLICO = False
 RE_CLAVE = re.compile(r'\b[A-Za-z0-9._-]*\d{3,}[A-Za-z0-9._-]*[#*]|\b[A-Z][A-Za-z]+\d{2,}_?\b|\b\d{4,}\b')
 def sin_claves(v):
     return RE_CLAVE.sub("[clave interna]", str(v or "")) if v else v

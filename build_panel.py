@@ -78,7 +78,7 @@ details.r{display:block;padding:0}
 details.r>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:baseline;padding:11px 2px}
 details.r>summary::-webkit-details-marker{display:none}
 details.r[open]{background:var(--papel)}
-.kv{display:grid;grid-template-columns:88px 1fr;gap:2px 12px;padding:2px 2px 13px;font-size:.85rem}
+.kv{display:grid;grid-template-columns:112px 1fr;gap:2px 12px;padding:2px 2px 13px;font-size:.85rem}
 .kv dt{color:var(--mute);font-weight:600}
 .kv dd{font-variant-numeric:tabular-nums;word-break:break-word}
 .kv a{color:var(--vino)}
@@ -150,7 +150,9 @@ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
 });
 // ---- 1 propiedades ----
 function rowProp(p){
-  const kv=[['Dirección',dir(p)],['Clave edif.',ok(p.acceso.edificio)],['Clave depto',ok(p.acceso.depto)],
+  const claves=[ok(p.acceso.depto)&&('depto '+ok(p.acceso.depto)),
+                ok(p.acceso.edificio)&&('edificio '+ok(p.acceso.edificio))].filter(Boolean).join(' · ');
+  const kv=[['Dirección',dir(p)],['Clave momentánea',claves],
     ['WiFi',ok(p.wifi.red)?(p.wifi.red+' · '+p.wifi.clave):''],['Camas',ok(p.camas)],
     ['Estac.',ok(p.acceso.estacionamiento)||(p.park.tiene?'sí':'')],['Limpieza',clp(p.limpieza)],
     ['Responsable',ok(p.responsable)],['Dueño',ok(p.dueno)]]
