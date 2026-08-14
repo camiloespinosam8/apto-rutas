@@ -6,6 +6,7 @@ set PY="C:\Users\Cami\AppData\Local\Programs\Python\Python312\python.exe"
 cd /d "C:\Users\Cami\Desktop\CLAUDE\APTO\Operacional\Cerebro_Turismo\panel_rutas"
 
 echo ---- %date% %time% ---- >> update_rutas.log
+%PY% build_incidencias.py >> update_rutas.log 2>&1
 %PY% build_data.py  >> update_rutas.log 2>&1
 %PY% build_panel.py >> update_rutas.log 2>&1
 %PY% build_rutas.py >> update_rutas.log 2>&1

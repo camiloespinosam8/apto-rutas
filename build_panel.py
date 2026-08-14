@@ -123,16 +123,19 @@ JS = r"""
 const D=window.__D__, $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nrm=s=>String(s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
-const clp=n=>n?('$'+Number(n).toLocaleString('es-CL')):'';
+const clp=n=>{const v=Number(n);return Number.isFinite(v)&&v>0?('$'+v.toLocaleString('es-CL')):''};
+const VAC=new Set(['','-','—','s/n','sn','casa','none','null','?']);
+const ok=v=>{const s=String(v==null?'':v).trim();return VAC.has(s.toLowerCase())?'':s};
 
 // dirección compacta: Calle N°, depto X, Comuna
 function dir(p){
-  const a=[]; const c=[p.calle,p.numero].filter(Boolean).join(' ');
-  if(c)a.push(c); if(p.depto)a.push('depto '+p.depto); if(p.comuna)a.push(p.comuna);
+  const a=[],c=[ok(p.calle),ok(p.numero)].filter(Boolean).join(' ');
+  if(c)a.push(c); if(ok(p.depto))a.push('depto '+ok(p.depto)); if(ok(p.comuna))a.push(ok(p.comuna));
   return a.join(', ');
 }
 function tagsProp(p){
   const t=[];
+  if(p.activo===false)t.push('<span class="tg" style="color:var(--vino)">inactivo</span>');
   if(p.cap)t.push(`<span class="tg">${p.cap}p</span>`);
   if(p.park&&p.park.tiene)t.push(`<span class="tg p">P${p.park.num?' '+p.park.num:''}</span>`);
   if(p.rating)t.push(`<span class="tg">${p.rating}★</span>`);
@@ -146,13 +149,13 @@ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
 });
 // ---- 1 propiedades ----
 function rowProp(p){
-  const kv=[['Dirección',dir(p)||'—'],['Clave edif.',p.acceso.edificio],['Clave depto',p.acceso.depto],
-    ['WiFi',p.wifi.red?(p.wifi.red+' · '+p.wifi.clave):''],['Camas',p.camas],
-    ['Estac.',p.acceso.estacionamiento||(p.park.tiene?'sí':'')],['Limpieza',clp(p.limpieza)],
-    ['Responsable',p.responsable],['Dueño',p.dueno]]
-    .filter(([,v])=>v&&v!=='—'||v==='—'&&false).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  const kv=[['Dirección',dir(p)],['Clave edif.',ok(p.acceso.edificio)],['Clave depto',ok(p.acceso.depto)],
+    ['WiFi',ok(p.wifi.red)?(p.wifi.red+' · '+p.wifi.clave):''],['Camas',ok(p.camas)],
+    ['Estac.',ok(p.acceso.estacionamiento)||(p.park.tiene?'sí':'')],['Limpieza',clp(p.limpieza)],
+    ['Responsable',ok(p.responsable)],['Dueño',ok(p.dueno)]]
+    .filter(([,v])=>v).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
   return `<details class="r"><summary>
-      <div class="m"><div class="n">${esc(p.nombre)}</div><div class="d">${esc(dir(p)||p.comuna||'')}</div></div>
+      <div class="m"><div class="n">${esc(p.nombre)}</div><div class="d">${esc(dir(p)||ok(p.comuna))}</div></div>
       <div class="tags">${tagsProp(p)}</div></summary>
       <dl class="kv">${kv}${p.url?`<dt>Anuncio</dt><dd><a href="${p.url}" target="_blank" rel="noopener">abrir ↗</a></dd>`:''}</dl>
     </details>`;
@@ -216,7 +219,7 @@ function correr(){
   const r=libres(de,ha,pax,reg,pk),n=Math.round((new Date(ha)-new Date(de))/864e5);
   $('#qr').innerHTML=`<div class="count"><b>${r.length}</b> libres · ${n} noche${n===1?'':'s'}${pax?' · '+pax+'p':''}${pk?' · con P':''}</div>`+
     (r.length?'<div class="rows">'+r.map(p=>`<div class="r"><div class="m"><div class="n">${esc(p.nombre)}</div>
-      <div class="d">${esc(dir(p)||p.comuna)}</div></div><div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>'
+      <div class="d">${esc(dir(p)||ok(p.comuna))}</div></div><div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>'
     :'<div class="none">Nada libre con esos filtros</div>');
 }
 function preset(dd,nn,pax,pk){
@@ -243,18 +246,25 @@ function renderIns(){
 document.querySelectorAll('th[data-k]').forEach(t=>t.onclick=()=>{
   const k=t.dataset.k;sd=(sk===k)?-sd:-1;sk=k;renderIns()});
 // ---- 5 incidencias ----
-const CN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso'};
-let cat='all';
+const CN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso',otros:'Otros'};
+let cat='all', soloAbiertas=true;
 function renderInc(){
-  const rows=D.incidencias.filter(i=>cat==='all'||i.cat===cat);
+  const rows=D.incidencias.filter(i=>(cat==='all'||i.cat===cat)&&(!soloAbiertas||i.estado!=='resuelto'));
+  const nAb=D.incidencias.filter(i=>i.estado!=='resuelto').length;
+  $('#ic').innerHTML=`<b>${rows.length}</b> de ${D.incidencias.length} · ${nAb} sin resolver`;
   $('#li').innerHTML=rows.length?'<div class="rows">'+rows.map(i=>`<div class="r">
-    <div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.7rem;font-weight:800;min-width:52px">${CN[i.cat]||i.cat}</div>
+    <div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.7rem;font-weight:800;min-width:56px">${CN[i.cat]||i.cat}</div>
     <div class="m"><div class="n">${esc(i.titulo)}</div>
-      <div class="d">${esc(i.prop)} · ${esc(i.fecha)}</div>
+      <div class="d">${esc(i.prop)}${i.huesped?' · '+esc(i.huesped):''} · ${esc(i.fecha)}</div>
+      ${i.cita?`<div class="d" style="font-style:italic">«${esc(i.cita)}»</div>`:''}
       <div class="acc"><b>→</b> ${esc(i.accion)}</div></div>
-    <div class="tags"><span class="sev ${i.sev}">${i.sev}</span></div></div>`).join('')+'</div>'
+    <div class="tags"><span class="sev ${i.sev}">${esc(i.sev)}</span>
+      <span class="tg" style="color:${i.estado==='resuelto'?'var(--exito)':'var(--vino)'}">${esc(i.estado)}</span></div></div>`).join('')+'</div>'
     :'<div class="none">Sin incidencias</div>';
 }
+$('#iab').onclick=e=>{soloAbiertas=!soloAbiertas;
+  e.target.setAttribute('aria-pressed',soloAbiertas?'true':'false');
+  e.target.textContent=soloAbiertas?'Solo sin resolver':'Todas';renderInc()};
 document.querySelectorAll('.cats button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.cats button').forEach(x=>x.setAttribute('aria-pressed','false'));
   b.setAttribute('aria-pressed','true');cat=b.dataset.c;renderInc()});
@@ -272,7 +282,7 @@ correr();
 cats = {}
 for i in D["incidencias"]: cats[i["cat"]] = cats.get(i["cat"], 0) + 1
 catbtn = "".join(f'<button data-c="{k}" aria-pressed="false">{n} <span style="opacity:.6">{cats.get(k,0)}</span></button>'
-                 for k, n in [("insumos","Insumos"),("higiene","Higiene"),("tecnico","Técnico"),("acceso","Acceso")])
+                 for k, n in [("insumos","Insumos"),("higiene","Higiene"),("tecnico","Técnico"),("acceso","Acceso"),("otros","Otros")])
 
 html = f"""<!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -340,7 +350,9 @@ html = f"""<!doctype html><html lang="es"><head>
 </section>
 
 <section class="pane" id="p5">
-  <div class="cats"><button data-c="all" aria-pressed="true">Todas <span style="opacity:.6">{len(D['incidencias'])}</span></button>{catbtn}</div>
+  <div class="cats"><button data-c="all" aria-pressed="true">Todas <span style="opacity:.6">{len(D['incidencias'])}</span></button>{catbtn}
+    <button id="iab" aria-pressed="true" style="margin-left:auto">Solo sin resolver</button></div>
+  <div class="count" id="ic"></div>
   <div id="li"></div>
 </section>
 </div>

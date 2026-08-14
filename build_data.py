@@ -41,7 +41,23 @@ def cap_de(b):
 def camas_txt(b):
     camas = b.get("camas")
     if not isinstance(camas, list) or not camas: return ""
-    return ", ".join(f'{c.get("cantidad",1)}× {c.get("tipo","?")}' for c in camas if isinstance(c, dict))
+    p = [f'{c.get("cantidad",1)}× {c.get("tipo")}' for c in camas
+         if isinstance(c, dict) and (c.get("cantidad") or 0) > 0
+         and c.get("tipo") and norm(c.get("tipo")) not in ("mixto", "?", "")]
+    return ", ".join(p)
+
+VACIO = ("", "-", "—", "s/n", "sn", "casa", "none", "null", "?")
+def limpio(v):
+    """Normaliza un campo de la biblia: devuelve '' para los marcadores de vacío."""
+    s = str(v or "").strip()
+    return "" if norm(s) in VACIO else s
+
+def num_o_none(v):
+    try:
+        n = float(str(v).replace(".", "").replace("$", "").strip())
+        return int(n) if n > 0 else None
+    except Exception:
+        return None
 
 def park_de(b):
     est = (b.get("acceso") or {}).get("estacionamiento")
@@ -69,13 +85,14 @@ for k, b in prop.items():
         "id": lid, "nombre": nombre, "titulo": b.get("titulo_publico") or "",
         "interno": b.get("nombre_interno") or "", "dueno": b.get("cliente_dueño") or "",
         "responsable": b.get("responsable_casa") or "", "tipo": b.get("tipo") or "",
-        "comuna": b.get("comuna") or "", "region": region_de(b), "direccion": b.get("direccion") or "",
-        "depto": b.get("depto") or "", "cap": cap_de(b), "camas": camas_txt(b),
+        "comuna": limpio(b.get("comuna")), "region": region_de(b), "direccion": b.get("direccion") or "",
+        "depto": limpio(b.get("depto")), "cap": cap_de(b), "camas": camas_txt(b),
+        "activo": "inactivo" not in norm(b.get("notas")) and "fuera de administracion" not in norm(b.get("notas")),
         "park": park_de(b),
         "acceso": {"edificio": acc.get("clave_edificio") or "", "depto": acc.get("clave_depto_lockbox") or "",
                    "entrada": acc.get("entrada") or "", "estacionamiento": acc.get("estacionamiento") or ""},
         "wifi": {"red": wifi.get("red") or "", "clave": wifi.get("clave") or ""},
-        "limpieza": b.get("limpieza"), "comision": b.get("comision_pct") or "", "iva": b.get("iva") or "",
+        "limpieza": num_o_none(b.get("limpieza")), "comision": b.get("comision_pct") or "", "iva": b.get("iva") or "",
         "rating": b.get("rating"), "nresenas": b.get("nreseñas"),
         "toallas_c": b.get("toallas_cuerpo"), "toallas_m": b.get("toallas_mano"),
         "salud": b.get("salud_actualizada") or "", "notas": (b.get("notas") or "")[:600],
@@ -92,13 +109,14 @@ if os.path.exists(DIRF):
         DIRMAP[str(d.get("id"))] = d
 
 def _heur(p):
-    """Extrae calle/número de una dirección sucia cuando no hay parser."""
+    """Extrae calle/número de una dirección sucia cuando no hay parser. Vacío si no hay calle real."""
     d = p["direccion"] or ""
-    d = re.split(r'\s+[—–-]\s+|\.\s|\(', d)[0]          # corta en el primer separador/paréntesis
-    d = re.sub(r'^(CASA PROPIA de APTO|VALPARA[ÍI]SO|ESPEJO de \d+)\s*[—–-]?\s*', '', d, flags=re.I)
-    m = re.search(r'^(.*?)[,\s]+(\d{2,5}[A-Za-z]?)\b', d.strip())
-    if m: return m.group(1).strip(" ,"), m.group(2)
-    return d.strip(" ,")[:40], ""
+    d = re.sub(r'^(CASA PROPIA de APTO|VALPARA[ÍI]SO|ESPEJO de \d+)\s*[—–·-]?\s*', '', d, flags=re.I)
+    d = re.split(r'\s+[—–·]\s+|\.\s|\(|⚠', d)[0].strip()     # corta en separador/paréntesis/aviso
+    m = re.search(r'([A-Za-zÁ-úñÑ][A-Za-zÁ-úñÑ\s\.]{2,40}?)[,\s]+(\d{2,5}[A-Za-z]?)\b', d)
+    if m: return m.group(1).strip(" ,."), m.group(2)
+    # sin número: solo vale si parece nombre de vía
+    return (d[:40] if re.search(r'\b(calle|av|avda|avenida|pasaje|camino)\b', norm(d)) else ""), ""
 
 for p in props:
     d = DIRMAP.get(p["id"])
@@ -112,10 +130,10 @@ for p in props:
 
 def dir_txt(p):
     a = []
-    c = " ".join(x for x in [p.get("calle"), p.get("numero")] if x)
+    c = " ".join(x for x in [limpio(p.get("calle")), limpio(p.get("numero"))] if x)
     if c: a.append(c)
-    if p.get("depto"): a.append("depto " + str(p["depto"]))
-    if p.get("comuna"): a.append(p["comuna"])
+    if limpio(p.get("depto")): a.append("depto " + limpio(p["depto"]))
+    if limpio(p.get("comuna")): a.append(limpio(p["comuna"]))
     return ", ".join(a)
 
 by_norm_title = {}
@@ -223,6 +241,25 @@ incidencias = json.load(open(INC_FILE, encoding="utf-8")) if os.path.exists(INC_
 DROP = ("titulo", "direccion", "notas", "salud", "iva", "comision", "toallas_c", "toallas_m")
 for p in props:
     for k in DROP: p.pop(k, None)
+
+# SEGURIDAD: el panel se publica en una URL pública. Las claves de puerta y WiFi
+# permiten ENTRAR a los edificios, así que no salen al HTML mientras PUBLICO=True.
+# Poner en False solo si el panel pasa a estar detrás de autenticación.
+PUBLICO = True
+RE_CLAVE = re.compile(r'\b[A-Za-z0-9._-]*\d{3,}[A-Za-z0-9._-]*[#*]|\b[A-Z][A-Za-z]+\d{2,}_?\b|\b\d{4,}\b')
+def sin_claves(v):
+    return RE_CLAVE.sub("[clave interna]", str(v or "")) if v else v
+if PUBLICO:
+    n = 0
+    for p in props:
+        for k in ("edificio", "depto"):
+            if p["acceso"].get(k): p["acceso"][k] = ""; n += 1
+        if p["wifi"].get("clave"): p["wifi"]["clave"] = ""; n += 1
+        # barrido final: cualquier código que se cuele por texto libre
+        for k in ("entrada", "estacionamiento"):
+            v = p["acceso"].get(k)
+            if v and RE_CLAVE.search(str(v)): p["acceso"][k] = sin_claves(v); n += 1
+    print(f"  [seguridad] {n} claves de puerta/WiFi omitidas del panel público")
 
 data = {
     "generado": HOY.isoformat(),

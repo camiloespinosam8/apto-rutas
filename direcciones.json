@@ -1,0 +1,380 @@
+[
+ {
+  "id": "1560308918368697605",
+  "nombre": "Acogedor departamento familiar con estacionamiento",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1589993505623861425",
+  "nombre": "Amplia casa familiar con patio compartido",
+  "calle": "Avenida El Cerro",
+  "numero": "0348",
+  "depto": "",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1454674018194796449",
+  "nombre": "Casa grupos | Costanera | Center Parrilla y patio",
+  "calle": "Avenida El Cerro",
+  "numero": "0348",
+  "depto": "",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1385724134244161985",
+  "nombre": "Casa grupos | Patio, parrilla y vistas | 2 autos",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "Valparaíso",
+  "ciudad": "Valparaíso"
+ },
+ {
+  "id": "1308068518884411545",
+  "nombre": "Casa grupos | Piscina, patio y parrilla | 4 autos",
+  "calle": "Francisco Bilbao",
+  "numero": "2714",
+  "depto": "",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "739285716034387991",
+  "nombre": "Casa para grupos | Gran patio y parrilla | 6 autos",
+  "calle": "Luis Montaner",
+  "numero": "545",
+  "depto": "",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1199487715780155048",
+  "nombre": "Casa para grupos | Gran patio y parrilla | 6 autos",
+  "calle": "Luis Montaner",
+  "numero": "545",
+  "depto": "",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1730738163434588491",
+  "nombre": "Finaldi 1001",
+  "calle": "Seminario",
+  "numero": "1499",
+  "depto": "1001",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1645779873438478383",
+  "nombre": "Finaldi 1204",
+  "calle": "Vicuña Mackenna",
+  "numero": "920",
+  "depto": "1204",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1688864894569650530",
+  "nombre": "Finaldi 1615",
+  "calle": "Vicuña Mackenna",
+  "numero": "920",
+  "depto": "1615",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1678608895117625146",
+  "nombre": "Finaldi 401",
+  "calle": "Vicuña Mackenna",
+  "numero": "920",
+  "depto": "401",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1710639200903699706",
+  "nombre": "Finaldi 401",
+  "calle": "Vicuña Mackenna",
+  "numero": "920",
+  "depto": "combo 1615+401",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1714987317059613430",
+  "nombre": "Finaldi 614",
+  "calle": "San Diego",
+  "numero": "376",
+  "depto": "614",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1667133355090388166",
+  "nombre": "Finaldi 713",
+  "calle": "Vicuña Mackenna",
+  "numero": "920",
+  "depto": "713",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1667180597706666431",
+  "nombre": "Finaldi 713",
+  "calle": "Vicuña Mackenna",
+  "numero": "920",
+  "depto": "combo 713+1204",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1731458819424336930",
+  "nombre": "Finaldi 713",
+  "calle": "Vicuña Mackenna",
+  "numero": "920",
+  "depto": "combo 707+713",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1727265012610926396",
+  "nombre": "Finaldi A2011",
+  "calle": "Seminario",
+  "numero": "850",
+  "depto": "A2011",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1698877897826247706",
+  "nombre": "Finaldi D1103",
+  "calle": "San Isidro",
+  "numero": "513",
+  "depto": "D1103",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1672680604669787150",
+  "nombre": "Geraldine y José 812",
+  "calle": "San Isidro",
+  "numero": "513",
+  "depto": "812",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1736648573018980348",
+  "nombre": "Glenis 1010",
+  "calle": "Amunátegui",
+  "numero": "767",
+  "depto": "1010",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1663431577726550768",
+  "nombre": "Jabbaz 929",
+  "calle": "Pedro de Valdivia",
+  "numero": "150",
+  "depto": "929",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1534906950921145157",
+  "nombre": "Jorge e Isamar 418",
+  "calle": "Santa Ana",
+  "numero": "1703",
+  "depto": "418",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1737138562888347024",
+  "nombre": "Katia 1002",
+  "calle": "Santa Elena",
+  "numero": "1342",
+  "depto": "1002",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1609035401368540663",
+  "nombre": "Lorena 1715",
+  "calle": "Rodrigo de Araya",
+  "numero": "1410",
+  "depto": "1715",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1659909543893789630",
+  "nombre": "Lorena 1715",
+  "calle": "Rodrigo de Araya",
+  "numero": "1410",
+  "depto": "1715",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1667203687277825449",
+  "nombre": "Nico y Clau 41",
+  "calle": "Arturo Prat",
+  "numero": "125",
+  "depto": "41",
+  "comuna": "Viña del Mar",
+  "ciudad": "Valparaíso"
+ },
+ {
+  "id": "1695015696960284376",
+  "nombre": "Pedro García 806B",
+  "calle": "Carol Urzúa",
+  "numero": "7030",
+  "depto": "806B",
+  "comuna": "Las Condes",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1662554152344160131",
+  "nombre": "Pensa 1005",
+  "calle": "Manquehue Norte",
+  "numero": "952",
+  "depto": "1005",
+  "comuna": "Las Condes",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1557307528461646199",
+  "nombre": "Refugio nuevo céntrico para 2 personas con piscina",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1678848812899850736",
+  "nombre": "Reinaldo 309",
+  "calle": "Arturo Prat",
+  "numero": "324",
+  "depto": "309",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1695181746567957891",
+  "nombre": "Reinaldo 309",
+  "calle": "Arturo Prat",
+  "numero": "324",
+  "depto": "combo 309+409",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1695174532024817812",
+  "nombre": "Reinaldo 409",
+  "calle": "Arturo Prat",
+  "numero": "324",
+  "depto": "409",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1663782827650485286",
+  "nombre": "Schuster 402 duplex",
+  "calle": "Carlos Antúnez",
+  "numero": "1867",
+  "depto": "402",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1625106724263902151",
+  "nombre": "Schuster 402 duplex",
+  "calle": "Carlos Antúnez",
+  "numero": "1867",
+  "depto": "402",
+  "comuna": "Providencia",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1635809994509238532",
+  "nombre": "Vespucio 1701",
+  "calle": "Américo Vespucio Norte",
+  "numero": "22",
+  "depto": "1701",
+  "comuna": "Las Condes",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1685165484807206012",
+  "nombre": "Waldron 627",
+  "calle": "San Ignacio de Loyola",
+  "numero": "280",
+  "depto": "627",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "1619758554208104566",
+  "nombre": "Weitzel 1411",
+  "calle": "Lincoyán",
+  "numero": "1001",
+  "depto": "1411",
+  "comuna": "Ñuñoa",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "ext-cerro-concepcion",
+  "nombre": "Cerro Concepción",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "Valparaíso",
+  "ciudad": "Valparaíso"
+ },
+ {
+  "id": "ext-los-heroes",
+  "nombre": "Los Héroes",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "Santiago",
+  "ciudad": "Santiago"
+ },
+ {
+  "id": "ext-puerta-roja",
+  "nombre": "Puerta Roja",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "Valparaíso",
+  "ciudad": "Valparaíso"
+ },
+ {
+  "id": "ext-valparaiso-habitaciones",
+  "nombre": "Valparaíso (habitaciones)",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "Valparaíso",
+  "ciudad": "Valparaíso"
+ },
+ {
+  "id": "ext-vina-plaza",
+  "nombre": "Viña Plaza",
+  "calle": "",
+  "numero": "",
+  "depto": "",
+  "comuna": "Viña del Mar",
+  "ciudad": "Valparaíso"
+ }
+]
