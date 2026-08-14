@@ -130,6 +130,7 @@ def leer_json(nombre, etiqueta):
 
 leer_json("incidencias_manual.json", "lectura reciente ")
 leer_json("incidencias_extra.json", "barridos previos ")
+leer_json("incidencias_nuevas.json", "136 conversaciones")
 
 ORD_S = {"alta": 0, "media": 1, "baja": 2}
 ORD_E = {"abierto": 0, "sin seguimiento": 1, "resuelto": 2}

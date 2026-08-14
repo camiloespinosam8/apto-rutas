@@ -28,6 +28,20 @@
   "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
  },
  {
+  "cat": "otros",
+  "sev": "alta",
+  "estado": "abierto",
+  "prop": "Bilbao - Casa Completa · Francisco Bilbao 2714, Providencia",
+  "fecha": "2026-08-14",
+  "cod": "HM9R5ESBQT",
+  "huesped": "",
+  "titulo": "Reembolso acordado sin procesar",
+  "detalle": "Durante la estadía en curso el huésped pregunta cómo se procesará un reembolso ya acordado. La respuesta del anfitrión es que está conversando con Airbnb porque la comisión se cobra sobre el precio total y está viendo la mejor manera de hacerlo. Queda pendiente de ejecución al cierre del hilo. La conversación no explicita el motivo del reembolso.",
+  "cita": "¿Cómo procesaréis nuestro reembolso según lo acordado?",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "alta",
   "estado": "abierto",
@@ -180,6 +194,34 @@
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
   "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "cat": "acceso",
+  "sev": "alta",
+  "estado": "abierto",
+  "prop": "Duplex Carlos Antunez (Carlos Antúnez 1867, depto 402)",
+  "fecha": "2026-08-14",
+  "cod": "HMW3QNJKQB",
+  "huesped": "",
+  "titulo": "No pudo entrar: nadie abre en conserjería y la clave no funcionó (chapa bloqueada)",
+  "detalle": "Camila llega al departamento y no logra ingresar: nadie le abre, la puerta está cerrada con llave y al intentar el código 715715# la clave no funciona y la chapa queda bloqueada. La respuesta del canal fue reenviar dos veces el mismo mensaje automático con el mismo código, sin solución concreta visible en el hilo.",
+  "cita": "La contraseña no funcionaba",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "tecnico",
+  "sev": "alta",
+  "estado": "abierto",
+  "prop": "El Cerro - Casa completa (Avenida El Cerro 0348, Providencia)",
+  "fecha": "2026-08-14",
+  "cod": "HM2ND5ACXC",
+  "huesped": "",
+  "titulo": "Sin agua caliente en toda la casa: no pueden ducharse",
+  "detalle": "Grupo de 12 huéspedes brasileños. Lucas avisa que desde que llegaron no han podido usar el agua caliente. Felipe (coanfitrión) responde que el calentador tuvo mantención reciente y pregunta si es en todos los baños. Lucas confirma: es en todos los baños y la llama del calentador no es estable ni con una sola ducha abierta. Al día siguiente Welida vuelve a insistir pidiendo ayuda urgente. El hilo termina sin respuesta del equipo.",
+  "cita": "Todavía no podemos usar el agua caliente y no podemos usar la ducha. Por favor, realmente necesitamos tu ayuda",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "higiene",
@@ -387,6 +429,20 @@
   "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitr"
  },
  {
+  "cat": "tecnico",
+  "sev": "alta",
+  "estado": "abierto",
+  "prop": "Puerta Roja - Casa completa no parking (Gálvez 25 E, Valparaíso)",
+  "fecha": "2026-08-14",
+  "cod": "HMJ29B3SR8",
+  "huesped": "",
+  "titulo": "Calefactor grande de queroseno dañado en uso: hace humo y el propio equipo lo declara tóxico",
+  "detalle": "El huésped usó el calefactor grande porque el chico no funcionaba. Luis responde que ese calefactor estaba dañado porque hacía mucho humo y 'puede ser tóxico', es decir se dejó en la casa un equipo con riesgo conocido. Karl confirma que efectivamente humeaba en el ajuste más alto. Además avisa que probablemente quedó sin queroseno y hay que rellenarlo. No se ve retiro ni reparación del equipo.",
+  "cita": "El grande funcionó bien. Hacía algo de humo en el ajuste más alto, pero si lo bajabas, no había ningún problema",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "acceso",
   "sev": "alta",
   "prop": "Seminario 850 A2011 (Ñuñoa)",
@@ -454,6 +510,20 @@
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
   "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Repositorio_Casos_APTO.md (sección 5 'Ga"
+ },
+ {
+  "cat": "otros",
+  "sev": "alta",
+  "estado": "abierto",
+  "prop": "Vespucio norte 22 - Escuela Militar (depto 1701)",
+  "fecha": "2026-08-14",
+  "cod": "HMRP9QCM3F",
+  "huesped": "",
+  "titulo": "Persona del equipo entró al depto con el huésped dentro y golpeó la puerta de la pieza",
+  "detalle": "Se había acordado salida a las 13:30. A las 12:30 una persona del equipo (Owen) entró al departamento con el huésped y sus pertenencias dentro, se quedó hablando por teléfono en el living y golpeó la puerta de la habitación. Maximiliano lo califica de gravísimo, dice que le arruinó la estadía y anuncia que dejará un reclamo. El equipo pidió disculpas, reordenó a Owen para volver a las 13:40 y ofreció una compensación, pero no hay confirmación de cierre ni del reclamo.",
+  "cita": "Este chico entró al departamento donde yo tengo todas mis pertenencias de valor y llega a la pieza donde yo estoy a golpearme la puerta.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "insumos",
@@ -635,6 +705,20 @@
   "estado": "abierto",
   "cita": "",
   "tipo": "acceso"
+ },
+ {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Arturo prat 324 deptos 309 y 409 (Apartamentos grupos pasos del metro)",
+  "fecha": "2026-08-14",
+  "cod": "HM3WRXY9TX",
+  "huesped": "",
+  "titulo": "Demora en responder y falta de dato del estacionamiento: solicitud cancelada",
+  "detalle": "El huésped consultó si el estacionamiento era techado y su altura porque viajaba en una van de 2,8 m de alto. La respuesta llegó al día siguiente y sin el dato ('El estacionamiento es en el subterráneo, desconozco la altura la verdad'). El huésped insistió varias veces para que le confirmaran la reserva y finalmente la solicitud quedó cancelada. Reserva perdida: $[monto reservado] por 1 noche.",
+  "cita": "y lo otro confirmen pronto la reserva sino para buscar otra opcion por favor",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "tecnico",
@@ -844,6 +928,20 @@
   "fuente": "Incidencias_APTO_2026-07-11.md"
  },
  {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "El Cerro - Habitación Doble 1 (Habitación privada cama doble con estac",
+  "fecha": "2026-08-14",
+  "cod": "HM243AKMBN",
+  "huesped": "",
+  "titulo": "Solicitud sin confirmar a tiempo: el huésped canceló",
+  "detalle": "El huésped envió la solicitud el día anterior y al día siguiente tuvo que insistir para saber si se confirmaba. Cuando se le respondió se le ofreció la casa de Barrio Italia, que no le servía porque necesitaba estar cerca de la embajada de EEUU. Terminó cancelando la solicitud. Reserva perdida: $[monto reservado] por 1 noche, huésped con 5.0 y reseñas excelentes.",
+  "cita": "Quiero saber si confirmas la reserva porfa",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "media",
   "estado": "abierto",
@@ -916,6 +1014,20 @@
   "cat": "insumos",
   "sev": "media",
   "estado": "abierto",
+  "prop": "Mala Yerba - Casa completa · Casa grupos | Patio, parrilla y vistas | ",
+  "fecha": "2026-08-14",
+  "cod": "HM4ZTQPTCE",
+  "huesped": "",
+  "titulo": "Casa publicada para 16 personas solo tiene 13 plazas",
+  "detalle": "El grupo solicitó agregar 4 huéspedes apoyándose en que el anuncio indicaba capacidad para 16 personas. El coanfitrión respondió que solo hay lugar para 13 y que únicamente podía aceptar 1 persona más. La huésped retiró la solicitud de 4 y se aceptó solo 1 huésped adicional; la diferencia entre la capacidad publicada y la real quedó sin corregir.",
+  "cita": "En la web ponía que la casa está pensada para 16 personas.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "insumos",
+  "sev": "media",
+  "estado": "abierto",
   "prop": "Nico y Clau depto 41 (Arturo Prat 125) — Arlette",
   "fecha": "2026-08-10",
   "huesped": "",
@@ -925,6 +1037,20 @@
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
   "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda",
+  "fecha": "2026-08-14",
+  "cod": "HMHWK2X35K",
+  "huesped": "",
+  "titulo": "Solicitud de reserva vencida sin respuesta: hilo quedó sin leer",
+  "detalle": "Abihail envió una solicitud para 13-16 nov (2 huéspedes, $[monto reservado]) el 8 de agosto y la solicitud venció el domingo siguiente. La conversación figura como 'No leído' / 'Sin leer': el huésped nunca recibió respuesta del equipo.",
+  "cita": "Airbnb: la solicitud de reservación venció",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "tecnico",
@@ -953,6 +1079,104 @@
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
   "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "cat": "insumos",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Puerta Negra - Casa completa no parking · Casa para grupos | Cerro Con",
+  "fecha": "2026-08-14",
+  "cod": "HMEEXXBQ4X",
+  "huesped": "",
+  "titulo": "Se cae el estacionamiento y el grupo llega en dos camionetas",
+  "detalle": "Días antes del check-in (28–30 ago, Valparaíso), Luis avisó a la huésped que el convenio con el estacionamiento se terminó y que ya no cuentan con el servicio. El grupo son 6 bomberos que van a la corrida cerro arriba y viajan en dos camionetas. Las alternativas ofrecidas fueron pagar a Pilar[monto reservado] por auto por noche, o un subterráneo en Plaza Sotomayor que el propio equipo describe como complicado porque queda en el plano. La huésped pidió otra opción cercana y el hilo queda sin solución concreta; el último mensaje figura sin leer.",
+  "cita": "Y sabe de algún otro estacionamiento cercano?",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "tecnico",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Puerta Roja - Casa completa no parking (Gálvez 25 E, Valparaíso)",
+  "fecha": "2026-08-14",
+  "cod": "HMJ29B3SR8",
+  "huesped": "",
+  "titulo": "Calefactor chico de queroseno no funcionaba",
+  "detalle": "Al hacer check-out, Karl reporta que el calefactor pequeño de queroseno no funcionaba durante toda la estadía (familia de 5, agosto en Valparaíso), por lo que tuvieron que usar el grande. El equipo no confirma reparación ni reemplazo en el hilo.",
+  "cita": "El calentador pequeño de queroseno no funcionaba. Usamos el grande y no creo que quede más queroseno en él, así que quizá quieras rellenarlo.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "insumos",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Puerta Roja - Casa completa no parking (LaPuertaRoja | Casa para grupo",
+  "fecha": "2026-08-14",
+  "cod": "HMX5YEXJJ3",
+  "huesped": "",
+  "titulo": "Se cayó el convenio de estacionamiento tras confirmar la reserva",
+  "detalle": "A pocos días del check-in el equipo avisa a Abisag que se terminó el convenio con el estacionamiento y que ya no cuentan con el servicio, ofreciendo costear un cupo diario o incluso que busquen otro alojamiento. El grupo (8 huéspedes) sí necesita 1 estacionamiento porque viaja en furgón. El hilo queda abierto: el equipo pide el modelo del vehículo porque hay algunos que no caben.",
+  "cita": "el convenio que teníamos con el estacionamiento se finalizó por lo que no contamos con el servicio de momento",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Puerta Roja - Casa completa no parking (LaPuertaRoja | Casa para grupo",
+  "fecha": "2026-08-14",
+  "cod": "HMNRRZ3J44",
+  "huesped": "",
+  "titulo": "Solicitud rechazada tras demora: la huésped perdió otro alojamiento",
+  "detalle": "Paula solicitó la casa para 7 huéspedes ($[monto reservado]). El equipo demoró en responder y luego rechazó por falta de disponibilidad, explicando que otro huésped había pedido cambio de fechas que incluía el sábado. Paula reclama que por la demora perdió otra casa y cuestiona que el calendario mostrara disponibilidad. No hay oferta alternativa ni compensación en el hilo.",
+  "cita": "Pucha, me hicieron perder otra casa con la demora. Por que aparece disponible antes entonces?",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "insumos",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Puerta Roja - Casa completa no parking · La Puerta Roja | Casa para gr",
+  "fecha": "2026-08-14",
+  "cod": "HMPW85HRJ3",
+  "huesped": "",
+  "titulo": "Estacionamiento incluido sin cupo y con cobro extra al huésped",
+  "detalle": "El anuncio ofrece espacio para 2 autos, pero al mover la reserva al 14-16 de agosto el coanfitrión avisó que no quedaban cupos del convenio de estacionamiento. Se ofreció gestionar cupos extra pagados por el huésped ($[monto reservado] por las dos noches, $[monto reservado] por noche adicional). Al cierre del hilo aún estaba pendiente que el grupo confirmara si tomaba el cupo extra del sábado.",
+  "cita": "el único inconveniente es que no tenemos cupo para estacionamiento ya que es un convenio que tenemos y se ocuparon",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "tecnico",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Puerta Roja- Cama doble vista (Gálvez 25, E, Valparaíso)",
+  "fecha": "2026-08-14",
+  "cod": "HMPDZX5HAD",
+  "huesped": "",
+  "titulo": "Corte de electricidad durante la estadía en Puerta Roja",
+  "detalle": "El día del check-in el coanfitrión avisa a la huésped que la propiedad está con problema de electricidad, ya reportado a la compañía. Se le ofrece moverse o cambiarse a Viña del Mar. La huésped acepta quedarse igual. A la mañana siguiente el coanfitrión informa que recién van a revisar los de Chilquinta, o sea la luz seguía sin reponerse al momento del check-out.",
+  "cita": "Te comento que estamos presentando problema con la electricidad y ya reportamos con la compañía y estamos esperando que vengan a solucionar, fueron lugares aleatorios porq en algun",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Puerta negra - Habitación doble · Gran habitación en el corazón de Cer",
+  "fecha": "2026-08-14",
+  "cod": "HMZS4DR3M9",
+  "huesped": "",
+  "titulo": "Cancelación de emergencia sin posibilidad de reembolso, sin respuesta",
+  "detalle": "El huésped (cadete naval) canceló el mismo día de llegada por una emergencia que le impidió viajar, avisando que ya no alcanzaba a pedir reembolso. El mensaje quedó marcado como leído por Luis pero el hilo figura como no leído y no hay respuesta del equipo ni gestión registrada.",
+  "cita": "tube un inconveniente y de emergencia no logre viajar y no pude cancelar el hospedaje antes",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "tecnico",
@@ -1248,6 +1472,20 @@
   "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, cod HM"
  },
  {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "abierto",
+  "prop": "Vicuña Mackenna 920 - 1615 401 grupos · Ñuñoa · 2 deptos para grupos ·",
+  "fecha": "2026-08-14",
+  "cod": "HMTS4ZEAYN",
+  "huesped": "",
+  "titulo": "Solicitud de reserva venció sin respuesta del equipo",
+  "detalle": "Un grupo de 5 estudiantes de la Universidad ESAN solicitó reservar del 18 al 23 de abril de 2027 por[monto reservado]. El mensaje figura leído por Sebastián, pero nadie respondió y Airbnb dejó vencer la solicitud al día siguiente. Ingreso potencial perdido por falta de respuesta.",
+  "cita": "Somos un grupo de chicas de la Universidad ESAN, tenemos un viaje de estudios y nos gustaría reservar del 18 al 23 de abril por favor.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "higiene",
   "sev": "media",
   "estado": "abierto",
@@ -1304,6 +1542,20 @@
   "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 31-jul, cod HM"
  },
  {
+  "cat": "insumos",
+  "sev": "baja",
+  "estado": "abierto",
+  "prop": "Bilbao - Casa Completa · Francisco Bilbao 2714, Providencia",
+  "fecha": "2026-08-14",
+  "cod": "HMF2ZEJJKY",
+  "huesped": "",
+  "titulo": "No había paños para secar la loza",
+  "detalle": "Al hacer check-out el huésped avisa que dejó la loza lavada pero no pudo secarla porque no había paños de cocina en la casa. El equipo no respondió a este punto: el siguiente mensaje del anfitrión pregunta por la llave del estacionamiento y luego se despide.",
+  "cita": "En cuanto a la loza, la dejamos lavada pero no había trapitos para poder secarla.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "baja",
   "estado": "abierto",
@@ -1330,6 +1582,20 @@
   "tipo": "falta_amenity"
  },
  {
+  "cat": "otros",
+  "sev": "baja",
+  "estado": "abierto",
+  "prop": "Nuevo Studio | Metro Ñuñoa | Terraza",
+  "fecha": "2026-08-14",
+  "cod": "HM2AS8C2ZE",
+  "huesped": "",
+  "titulo": "Solicitud de aumento de precio enviada a la huésped, sin resolución en el hilo",
+  "detalle": "Sobre una reserva ya confirmada para 3 huéspedes, el anfitrión Diego envió una solicitud de cambio por aumento de precio. El hilo queda en estado Solicitud de cambio enviada, sin respuesta de la huésped Karen registrada.",
+  "cita": "Diego: Cambio solicitado: Aumento de precio",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "baja",
   "estado": "abierto",
@@ -1341,6 +1607,20 @@
   "cita": "Se mojo casi todo el pasillo del bano en la manana, Pero secamos y todo ok",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
   "tipo": "griferia_agua"
+ },
+ {
+  "cat": "tecnico",
+  "sev": "baja",
+  "estado": "abierto",
+  "prop": "Pedro de Valdivia 150, depto 929, Providencia",
+  "fecha": "2026-08-14",
+  "cod": "HMHNHS8TAQ",
+  "huesped": "",
+  "titulo": "Televisor sin señal, reporte sin respuesta",
+  "detalle": "En el mismo mensaje donde reporta el wifi, la huésped avisa que el televisor tampoco tiene señal. En la conversación solo se responde por el wifi; el tema del televisor nunca fue contestado ni se registra solución.",
+  "cita": "El televisor tampoco tiene señal.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "higiene",
@@ -1374,6 +1654,20 @@
   "cat": "tecnico",
   "sev": "alta",
   "estado": "sin seguimiento",
+  "prop": "Carlos Antúnez Nuevo · Amplio Duplex - Metro Pedro de Valdivia",
+  "fecha": "2026-08-14",
+  "cod": "HM5NZSA3H4",
+  "huesped": "",
+  "titulo": "Sin agua caliente para ducharse",
+  "detalle": "El huésped reporta la primera noche que no hay agua caliente. Se envió a Manuel del equipo, que verificó que el termo estaba prendido al máximo; se concluyó que requería revisión de un especialista. Se ofreció reubicación en otro departamento (deptovespucio22) con Uber pagado, o no cobrar la noche. El huésped prefirió quedarse porque ya era muy tarde y aceptó que se resolviera al día siguiente. En la conversación no queda registro de que el especialista haya ido ni de que el problema se solucionara.",
+  "cita": "No hay agua caliente para ducharse",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "tecnico",
+  "sev": "alta",
+  "estado": "sin seguimiento",
   "prop": "Listing 464148 · sin catastrar",
   "fecha": "2026-07-11",
   "huesped": "Pablo",
@@ -1395,6 +1689,34 @@
   "cita": "teve um problema na acomodação, com limpeza e algumas comodidades que estariam faltando",
   "accion": "QA de limpieza con checklist + foto antes de cada check-in (camas, alfombras, baño).",
   "tipo": "limpieza"
+ },
+ {
+  "cat": "acceso",
+  "sev": "media",
+  "estado": "sin seguimiento",
+  "prop": "Bilbao - Casa Completa · Francisco Bilbao 2714, Providencia",
+  "fecha": "2026-08-14",
+  "cod": "HM9R5ESBQT",
+  "huesped": "",
+  "titulo": "Falta llave del candado del portón: no pudieron entrar con los autos",
+  "detalle": "Al llegar, el grupo abre la caja con el código 7013 pero solo encuentra la llave del portón y la de la casa; falta la llave pequeña del candado del portón grande, necesaria para ingresar los vehículos. El anfitrión pide foto y ofrece llamar por WhatsApp al +56974788301 para ayudar. En el hilo no queda registro de cómo terminó.",
+  "cita": "Camilo, no encontramos la llave de la cerradura del portón",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "sin seguimiento",
+  "prop": "Duplex Carlos Antunez · Amplio Dúplex a pasos de Metro Pedro de Valdiv",
+  "fecha": "2026-08-14",
+  "cod": "HMNNCR99EN",
+  "huesped": "",
+  "titulo": "Cancelación del huésped a 20 días del check-in",
+  "detalle": "Reserva de 7 noches (22–29 ago, 5 huéspedes) confirmada desde el 26 de marzo. El 2 de agosto el huésped canceló la solicitud y la reserva quedó cancelada por el huésped. En el hilo no aparece motivo declarado ni ningún mensaje del equipo después de la cancelación. Lo único previo fue un cambio de vuelo con llegada al alojamiento cerca de las 2:00 a.m., que Sebastián respondió confirmando conserje 24/7.",
+  "cita": "Solicitud de reservación cancelada. El estado de la reservación es Cancelada por el huésped.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "tecnico",
@@ -1436,6 +1758,48 @@
   "tipo": "limpieza"
  },
  {
+  "cat": "insumos",
+  "sev": "media",
+  "estado": "sin seguimiento",
+  "prop": "Vicuña 920 - Depas 713 y 1204 · Avenida Vicuña Mackenna 920, Ñuñoa",
+  "fecha": "2026-08-14",
+  "cod": "HM2AC5CYNQ",
+  "huesped": "",
+  "titulo": "Estacionamiento asignado (512) estaba ocupado",
+  "detalle": "El grupo llegó en dos vehículos. Se les asignó el estacionamiento 241 y luego el 512 para el segundo auto, pero al llegar de noche el 512 estaba ocupado. El anfitrión pidió disculpas, indicó que ese estacionamiento ya estaba asignado a otro departamento y dijo haber hablado con el conserje para asignar uno adicional. No hay confirmación en el hilo de dónde quedó finalmente estacionado el segundo auto; a la mañana siguiente el anfitrión recomienda moverlo al de visita si quedó en otro número.",
+  "cita": "Buenas noches, disculpe la hora, el 512 estaba ocupado",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "tecnico",
+  "sev": "media",
+  "estado": "sin seguimiento",
+  "prop": "Yerbas Buenas - Pieza JP (Yerbas Buenas 731, Valparaíso)",
+  "fecha": "2026-08-14",
+  "cod": "HMEWF2TA54",
+  "huesped": "",
+  "titulo": "Corte de luz en Yerbas Buenas 731 durante la estadía",
+  "detalle": "La huésped avisa desde la propiedad que Chilquinta va a la casa por un corte de luz y entrega el número de cliente. La coanfitriona responde que los recibe, pero en la conversación no consta que el suministro se haya repuesto.",
+  "cita": "Buen dia, chilquinta viene por un corte de luz, yerbas buenas 731",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "acceso",
+  "sev": "baja",
+  "estado": "sin seguimiento",
+  "prop": "Bilbao - Casa Completa · Francisco Bilbao 2714, Providencia",
+  "fecha": "2026-08-14",
+  "cod": "HMF2ZEJJKY",
+  "huesped": "",
+  "titulo": "Llave del estacionamiento no estaba en el juego de llaves",
+  "detalle": "Consultado por el anfitrión, el huésped confirma que en la caja solo había dos llaves (portón de entrada y puerta de la casa), sin la del estacionamiento. Mismo patrón que se repite en la reserva HM9R5ESBQT de la misma casa, donde el grupo siguiente sí quedó sin poder abrir el portón para los autos.",
+  "cita": "Solo encontré dos llaves, la del portón de entrada y la puerta de la casa",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "baja",
   "estado": "sin seguimiento",
@@ -1462,6 +1826,20 @@
   "tipo": "limpieza"
  },
  {
+  "cat": "otros",
+  "sev": "baja",
+  "estado": "sin seguimiento",
+  "prop": "Not Found - Habitacion Doble (Habitación doble Baño Compartido, Plaza ",
+  "fecha": "2026-08-14",
+  "cod": "HMEAFBSEN3",
+  "huesped": "",
+  "titulo": "Cancelación del huésped el día previo al check-in",
+  "detalle": "Damian canceló la reserva de 1 noche ($[monto reservado]) la noche anterior al check-in por motivos personales (su pareja ya no quería viajar). El equipo solo reaccionó con un emoji; no hay gestión de recuperación de la noche ni oferta alternativa en el hilo.",
+  "cita": "Perdón por cancelar no me gusta hacerlo tan de repente pero no poder ir ya que mi pareja ya no quiere y yo soy De Santiago y no are solo ya que no tiene mucho sentido muchas gracia",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "alta",
   "estado": "resuelto",
@@ -1475,6 +1853,20 @@
   "tipo": "agua_caliente"
  },
  {
+  "cat": "acceso",
+  "sev": "alta",
+  "estado": "resuelto",
+  "prop": "Seminario 850 A2011 Ñuñoa Felipe Finaldi",
+  "fecha": "2026-08-14",
+  "cod": "HMJQ3MTCHQ",
+  "huesped": "",
+  "titulo": "Conserjería sin correo de autorización: huésped bloqueado en el edificio",
+  "detalle": "Leonardo (hermano del titular Marcelo) llegó al edificio a dejar alimentos y la recepción no lo dejó entrar ni recibir la comida porque no tenía el correo de autorización, ni para él como visita ni para los huéspedes de la reserva. Avisó a las 14:53 que no tenía clave ni instrucciones y no obtuvo respuesta hasta las 18:21, ya estando en el lugar. Al inscribirlo, el equipo envió la autorización a otro edificio equivocado y recién a las 18:36 quedó resuelto ('Ahi si amigo, se habia enviado a otro edificio / Ya quedó'). Causa declarada por el equipo: no sabían la hora de llegada y el equipo pensó que era más tarde.",
+  "cita": "Llegué al apartmanento y me dicen que no tienen el correo",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "media",
   "estado": "resuelto",
@@ -1486,6 +1878,20 @@
   "cita": "O WIFI não está funcionando. Já tentamos desligar da tomada e reconectar, mas segue sem funcionar",
   "accion": "Confirmar internet activo antes del check-in; dejar router y clave documentados en la ficha.",
   "tipo": "wifi_internet"
+ },
+ {
+  "cat": "acceso",
+  "sev": "media",
+  "estado": "resuelto",
+  "prop": "Barrio Italia - Baño privado (Luis Montaner 545, Providencia)",
+  "fecha": "2026-08-14",
+  "cod": "HMDWPHCSKX",
+  "huesped": "",
+  "titulo": "Huésped llegó y nadie lo recibió: tocó timbre sin respuesta",
+  "detalle": "Se le indicó al huésped que tocara el timbre negro y que Joaquín lo recibiría. Al llegar tocó y no salió nadie, quedó esperando en la calle. Unos 20-35 minutos después el coanfitrión le dio la clave del candado de la entrada (5902) y el número de Joaquín para que pudiera entrar por su cuenta. Contexto sensible: el huésped viajaba por la hospitalización de su padre.",
+  "cita": "Tienes algún número, porque he tocado y nadie sale",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "tecnico",
@@ -1512,6 +1918,20 @@
   "cita": "No nos dejam entrar sin ello... Porfaaa que estamos aquí",
   "accion": "Enviar nombres a conserjería 24 h antes; crear los accesos que siguen PENDIENTES.",
   "tipo": "acceso_chapa"
+ },
+ {
+  "cat": "acceso",
+  "sev": "media",
+  "estado": "resuelto",
+  "prop": "El Cerro - Casa completa (Avenida El Cerro 0348, Providencia)",
+  "fecha": "2026-08-14",
+  "cod": "HM2ND5ACXC",
+  "huesped": "",
+  "titulo": "No se enviaron las claves de las habitaciones; el huésped tuvo que pedirlas",
+  "detalle": "Gustavo tuvo que pedir el código de acceso a la habitación ya estando en la casa. El equipo entregó las tres claves (cama king, literas y pieza doble) y reconoció que debió enviarse antes un mensaje automático con esa información y no se envió.",
+  "cita": "Buenas noches, ¿cuál es el código de acceso a la habitación?",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "tecnico",
@@ -1551,6 +1971,20 @@
   "cita": "la lavadora no funciona pero no es un problema de la lavadora es el enchufe el que no funciona",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
   "tipo": "electricidad"
+ },
+ {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "resuelto",
+  "prop": "Italia - Casa completa",
+  "fecha": "2026-08-14",
+  "cod": "HM3P489M2Q",
+  "huesped": "",
+  "titulo": "Solicitud de reserva anterior no fue respondida a tiempo",
+  "detalle": "La huésped Magda Catalina reporta que una solicitud de reserva previa quedó sin respuesta del equipo y tuvo que volver a solicitar. El propio equipo lo reconoce en el hilo: se les pasó aprobar a tiempo. La nueva solicitud sí se confirmó en minutos.",
+  "cita": "No recibimos respuesta de la reserva anterior, pero seguimos muy interesados en quedarnos en su residencia.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "tecnico",
@@ -1608,6 +2042,34 @@
   "cat": "insumos",
   "sev": "media",
   "estado": "resuelto",
+  "prop": "Pedro de Valdivia 150, depto 929, Providencia",
+  "fecha": "2026-08-14",
+  "cod": "HMHNHS8TAQ",
+  "huesped": "",
+  "titulo": "Departamento sin toallas suficientes ni papel higiénico al llegar",
+  "detalle": "Al ingresar, la huésped pide una toalla adicional y papel higiénico porque no había en el departamento. El equipo reconoce que se traspapeló (pensaron que llegaban más tarde) y envía a Jonatan con lo faltante; como la huésped tuvo que salir, se lo dejan en recepción y se confirma la entrega.",
+  "cita": "¿Podría proporcionar una toalla más y papel higiénico, por favor? Aquí no tenemos.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "tecnico",
+  "sev": "media",
+  "estado": "resuelto",
+  "prop": "Pedro de Valdivia 150, depto 929, Providencia",
+  "fecha": "2026-08-14",
+  "cod": "HMHNHS8TAQ",
+  "huesped": "",
+  "titulo": "WiFi no conectaba con la clave indicada en la pared",
+  "detalle": "La huésped reporta que el wifi no conecta. El instructivo remitía a una clave escrita en la pared del living; se le sugiere probar sin el punto final y reiniciar el router, sin éxito. Finalmente se le envía la contraseña correcta por mensaje (KJ8bhxgvphdv) y la huésped confirma que funcionó.",
+  "cita": "No pude conectarme al wifi, ni siquiera después de introducir el código al final.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "insumos",
+  "sev": "media",
+  "estado": "resuelto",
   "prop": "Tomás Schuster 402b (Antúnez — duplex (2º anuncio))",
   "fecha": "2026-07-11",
   "huesped": "Denise",
@@ -1644,6 +2106,20 @@
   "tipo": "acceso_chapa"
  },
  {
+  "cat": "otros",
+  "sev": "media",
+  "estado": "resuelto",
+  "prop": "Vicuña 920 - Depas 713 y 1204 · Apartamentos para grupos | parking gra",
+  "fecha": "2026-08-14",
+  "cod": "HM4C4HEKRX",
+  "huesped": "",
+  "titulo": "Solicitud de reserva venció porque no se aprobó a tiempo",
+  "detalle": "La solicitud de Fabrizio (5 huéspedes, 14-16 nov, $[monto reservado]) expiró sin aprobación. El anfitrión reconoce la falta y le pide reenviar la solicitud. Posteriormente aparece la reserva HMATE8DRTX del mismo huésped, mismas fechas y mismo monto, confirmada el 9 de agosto.",
+  "cita": "Hola Fabrizio!! Disculpas no aprobé a tiempo! Si aun necesitas, reenvía la solicitud y la apruebo.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "acceso",
   "sev": "baja",
   "estado": "resuelto",
@@ -1655,6 +2131,48 @@
   "cita": "Pero no encontramos el estacionamiento del apartamento",
   "accion": "Enviar nombres a conserjería 24 h antes; crear los accesos que siguen PENDIENTES.",
   "tipo": "acceso_chapa"
+ },
+ {
+  "cat": "otros",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "Arturo prat 324 deptos 309 y 409 · Apartamentos grupos pasos del metro",
+  "fecha": "2026-08-14",
+  "cod": "HMZAJRZHFR",
+  "huesped": "",
+  "titulo": "Fotos y descripción del anuncio se contradicen en las habitaciones",
+  "detalle": "La huésped detectó una inconsistencia en el anuncio: en las fotos cuenta tres habitaciones y en la descripción dice dos. Preguntó el 29 de mayo y quedó sin respuesta hasta el día siguiente, cuando se le aclaró que son 2 departamentos con 2 cuartos cada uno, en piso 3 y piso 4 (309 y 409, uno arriba del otro). La huésped quedó conforme y reservó, pero el anuncio sigue con la información contradictoria que la confundió.",
+  "cita": "¿Son dos habitaciones o tres? En las fotos vi tres y en la descripción son dos.",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "otros",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "Carol Urzua 7030 depto 806B",
+  "fecha": "2026-08-14",
+  "cod": "HMFCKC5D4B",
+  "huesped": "",
+  "titulo": "Huésped cambia fechas de la reserva tras no poder ingresar temprano",
+  "detalle": "Lucas llegaba a Santiago a las 10:00 y pidió ingresar a esa hora; el coanfitrión Sebastián le explicó que no se podía por una salida a las 12:00 más limpieza, ofreciendo dejar equipaje a las 12:15 e ingreso probable a las 14:00. El huésped respondió que así no le servía y horas después pidió cambiar la fecha de la reserva para no perder el dinero, ya que no era reembolsable. Se gestionó el cambio y la reserva quedó confirmada para el 20-21 de agosto.",
+  "cita": "Queria saber si podriamos cambiar la fecha de la reserva por favor que al final no llegare mañana para no perder el dinero por favor ya que no se puede rembolsar",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "acceso",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "El Cerro - Habitación Doble 1 (Avenida El Cerro 0348, Providencia)",
+  "fecha": "2026-08-14",
+  "cod": "HM9CB8T9RC",
+  "huesped": "",
+  "titulo": "Anfitrión no contactó al huésped para coordinar la llegada",
+  "detalle": "El mensaje de confirmación prometía que el anfitrión lo contactaría antes de la llegada. El día del check-in el huésped tuvo que reclamar que nadie lo había contactado. El coanfitrión respondió de inmediato, coordinó hora, estacionamiento, clave de la habitación y wifi.",
+  "cita": "No me ha contactado el anfitrión",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  },
  {
   "cat": "acceso",
@@ -1683,6 +2201,48 @@
   "tipo": "falta_amenity"
  },
  {
+  "cat": "acceso",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "Italia - Casa completa (Luis Montaner 545, Providencia)",
+  "fecha": "2026-08-14",
+  "cod": "HM45E5QWPP",
+  "huesped": "",
+  "titulo": "Nadie contactó al huésped el día del check-in pese a lo prometido",
+  "detalle": "El mensaje previo al check-in prometía que el anfitrión se pondría en contacto durante el día para coordinar la llegada. Fabio (grupo de 14, llegada 21:00) reclama que nadie lo contactó y que no sabe cómo hacer el check-in. Recién ahí aparece Felipe (coanfitrión), le da su WhatsApp y le indica la caja candado con clave 5902. Nota: días antes se le había entregado la clave 6902 para esa misma caja, dato que no coincide con el enviado el día del check-in.",
+  "cita": "¿Cuándo se pondrá en contacto conmigo el anfitrión? Porque hasta ahora nadie se ha puesto en contacto conmigo",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "otros",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "NUEVO Moderno Studio | Terraza | Metro Ñuñoa",
+  "fecha": "2026-08-14",
+  "cod": "HMZW5QPEWR",
+  "huesped": "",
+  "titulo": "Solicitud de aumento de precio sobre reserva ya confirmada, rechazada por la huésped",
+  "detalle": "Con la reserva ya confirmada, el anfitrión Diego envió una solicitud de cambio por aumento de precio. La huésped Denisse Belen la rechazó 4 minutos después. La reserva quedó confirmada en las condiciones originales.",
+  "cita": "Denisse Belen: Solicitud rechazada",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "acceso",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "Not Found - habitación Doble · Habitación doble - Baño compartido, Pas",
+  "fecha": "2026-08-14",
+  "cod": "HMEXM5ER4B",
+  "huesped": "",
+  "titulo": "No encontró la entrada del alojamiento al llegar",
+  "detalle": "La huésped llegó de noche desde Santiago y no logró ubicar el acceso, preguntando por qué calle se entra. Luis respondió en 2 minutos con la dirección exacta y referencias (por calle Valparaíso donde está Under Pizza, o por calle Sucre donde están Falabella y Ripley, entrando al pasaje del Pronto Express). Quedó resuelto.",
+  "cita": "no puedo encontrar el lugar",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
   "cat": "tecnico",
   "sev": "baja",
   "estado": "resuelto",
@@ -1694,5 +2254,47 @@
   "cita": "No podemos ver tv. Con los canales nacionales. Sabes como podría verlos??",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
   "tipo": "electrodomestico"
+ },
+ {
+  "cat": "otros",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "Vicuña 920 - Depas 713 y 1204",
+  "fecha": "2026-08-14",
+  "cod": "HMBWZH28YX",
+  "huesped": "",
+  "titulo": "Huésped tuvo que insistir por falta de respuesta antes de reservar",
+  "detalle": "Gaby escribió a las 11:18 consultando por aire acondicionado y no obtuvo respuesta; a las 21:21 reclamó que seguía esperando. Recién a las 22:39 se le respondió. Tras la respuesta solicitó y confirmó la reserva.",
+  "cita": "Hola? Estoy esperando su respuesta para reservar",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "otros",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "Vicuña Mackena 920 Depto 401 (Ñuñoa)",
+  "fecha": "2026-08-14",
+  "cod": "HMRDDFTT9J",
+  "huesped": "",
+  "titulo": "Huésped sin respuesta sobre el estacionamiento mientras esperaba en el aeropuerto",
+  "detalle": "Miguel preguntó dos veces por el estacionamiento y solo recibió el mensaje automático genérico. Insistió con '????' y explicó que necesitaba respuesta porque estaba en el aeropuerto esperando para arrendar un auto. Recién ~1,5 horas después el equipo verificó y le asignó el estacionamiento 241.",
+  "cita": "Necesito una respuesta ya que quiero arrendar un auto",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
+ },
+ {
+  "cat": "acceso",
+  "sev": "baja",
+  "estado": "resuelto",
+  "prop": "Vicuña Mackenna 920 - 1615 401 grupos · Ñuñoa · 2 deptos para grupos",
+  "fecha": "2026-08-14",
+  "cod": "HM5SBTHK5J",
+  "huesped": "",
+  "titulo": "Dato contradictorio sobre ubicación de los dos departamentos",
+  "detalle": "La huésped preguntó si los dos departamentos estaban en el mismo edificio y el coanfitrión respondió que mismo edificio y mismo piso. Ella hizo notar que figuraban 2 direcciones, y el coanfitrión corrigió: es el mismo edificio pero pisos distintos (16 y 4). La confusión se aclaró en el mismo intercambio.",
+  "cita": "Hay 2 direcciones allí",
+  "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
+  "tipo": "conversacion"
  }
 ]
