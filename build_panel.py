@@ -106,7 +106,30 @@ td:first-child{color:var(--mute);width:26px}
   border:1px solid var(--linea);border-radius:99px;padding:3px 10px;background:var(--papel)}
 .lk:hover{background:var(--vino);color:var(--papel);border-color:var(--vino)}
 .lk.wa{color:var(--exito)} .lk.wa:hover{background:var(--exito);color:var(--papel);border-color:var(--exito)}
+.cnt{display:inline-block;background:var(--tinta);color:var(--papel);border-radius:99px;
+  padding:0 8px;font-family:Manrope,sans-serif;font-size:.72rem;font-weight:800;vertical-align:middle}
+.alerta{display:inline-block;background:var(--vino);color:var(--papel);border-radius:99px;
+  padding:1px 9px;font-family:Manrope,sans-serif;font-size:.68rem;font-weight:800;vertical-align:middle}
+.etq{font-size:.72rem;font-weight:800;min-width:96px;line-height:1.2}
 .none{color:var(--mute);padding:22px 2px;font-size:.88rem}
+/* ---- MOBILE: la fila se apila para no exprimir el texto ---- */
+@media (max-width:560px){
+  body{font-size:14.5px}
+  .wrap{padding:0 12px} header{padding:16px 12px 8px} .tabs{padding:6px 12px 8px}
+  .mark{font-size:1.6rem}
+  .r{flex-wrap:wrap;gap:8px;padding:12px 2px}
+  .etq{min-width:0;flex:0 0 auto;order:1;background:var(--papel);border:1px solid var(--linea);
+    border-radius:99px;padding:2px 9px}
+  .tags{order:2;margin-left:auto} .m{order:3;flex:1 1 100%;min-width:100%}
+  .t:not(.etq){min-width:46px;font-size:.95rem}
+  .pulse{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .pz b{font-size:1.35rem}
+  .kv{grid-template-columns:1fr;gap:0 0} .kv dt{margin-top:7px;font-size:.76rem}
+  .ctc{gap:6px} .lk{padding:5px 11px}
+  .gsec{font-size:1rem;margin:18px 0 2px}
+  .hsearch{font-size:1rem}
+  table{font-size:.8rem} td,th{padding-right:6px}
+}
 footer{color:var(--mute);font-size:.72rem;padding:22px 16px 0;font-variant-numeric:tabular-nums}
 /* ---- HOME ---- */
 .hero{padding:2px 0 4px}
@@ -278,13 +301,24 @@ function reservaDe(i){
 }
 const dmy=f=>{const d=new Date(f+'T12:00:00');
   return d.getDate()+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][d.getMonth()]};
-function contactoHTML(i){
+/* ---- casuística: en qué momento del viaje está el huésped que reclamó ---- */
+function casuistica(i){
+  const r=reservaDe(i); const hoy=D.ventana.desde;
+  if(!r) return {k:'sin', r:null};
+  if(r.e===hoy)            return {k:'checkin', r};   // lo declara el día que llega
+  if(r.e<hoy && r.s>hoy)   return {k:'estadia', r};   // está alojado
+  if(r.s<=hoy)             return {k:'ido', r};       // ya se fue → no se contacta
+  return {k:'futuro', r};
+}
+// "ya se fue" => sin botón de contacto (no se molesta a alguien que ya no está)
+function contactoHTML(i,sinContacto){
   const r=reservaDe(i); if(!r)return '';
   const t=D.tel[r.cod]||'', wa=waLink(t);
-  const bits=[`<span class="tg">${r.actual?'alojado':'reserva'} ${dmy(r.e)} → ${dmy(r.s)}</span>`];
+  const cual=r.s<=D.ventana.desde?'estuvo':(r.actual?'alojado':'reserva');
+  const bits=[`<span class="tg">${cual} ${dmy(r.e)} → ${dmy(r.s)}</span>`];
   if(r.h)bits.unshift(`<span class="tg" style="color:var(--tinta)">${esc(r.h)}</span>`);
   const links=[];
-  if(wa)links.push(`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">Contactar</a>`);
+  if(wa&&!sinContacto)links.push(`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">Contactar</a>`);
   links.push(`<a class="lk" href="${resLink(r.cod)}" target="_blank" rel="noopener">Reserva ${esc(r.cod)} ↗</a>`);
   return `<div class="ctc">${bits.join(' ')} ${links.join(' ')}</div>`;
 }
@@ -298,9 +332,9 @@ const CARENCIA=[
   [/\bfuga de gas\b|\bsin gas\b|\bbalon de gas\b|\bgas\b/,'sin gas',0],
   [/\bagua caliente\b|\bno calienta\b|\bcalefon\b|\btermo\b|\bagua helada\b/,'sin agua caliente',1],
   [/\bsin agua\b|\bno hay agua\b|\bcorte de agua\b/,'sin agua',1],
-  [/\belectric\w*|\bsin luz\b|\bdisyuntor\b|\bbreaker\b|\benchufe\b/,'sin luz',2],
+  [/\belectric\w*|\bsin luz\b|\bdisyuntor\w*|\bbreaker\w*|\benchufe\w*/,'sin luz',2],
   [/\bno pudo (entrar|ingresar)\b|\bconserjer\w*|\bclave\b|\bcodigo\b|\bchapa\b|\bautorizacion\b|\bno funciono la contrasena\b/,'sin acceso',2],
-  [/\bcalefacc\w*|\bcalefactor\b|\bestufa\b|\bmucho frio\b|\bsin frazada\b/,'sin calefacción',3],
+  [/\bcalefacc\w*|\bcalefactor\w*|\bestufa\w*|\bmucho frio\b|\bsin frazada\b/,'sin calefacción',3],
   [/\bwifi\b|\binternet\b/,'sin internet',4],
   [/\btoalla\w*|\bsabana\w*|\bropa de cama\b|\bedredon\w*|\bcobertor\w*|\bfrazada\w*/,'sin toallas/ropa',4],
   [/\binodoro\b|\bsuelt[oa]\b|\bquebrad[oa]\b|\brot[oa]\b|\bse cayo\b|\bdanad[oa]\b/,'algo roto',3],
@@ -339,17 +373,16 @@ function urgentesHoy(n){
 
 /* ---- fila de incidencia (compartida por HOME, buscador y pestaña) ---- */
 const CATN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso',otros:'Otros'};
-function filaInc(i,compacto){
+function filaInc(i,compacto,sinContacto){
   const c=carencia(i), et=c?c.txt:(CATN[i.cat]||i.cat);
   return `<div class="r">
-    <div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.72rem;font-weight:800;min-width:96px;line-height:1.2">${esc(et)}</div>
+    <div class="t ${i.sev==='alta'?'out':'in'} etq">${esc(et)}</div>
     <div class="m"><div class="n">${esc(i.titulo)}</div>
       <div class="d">${esc(i.prop)}${i.huesped?' · '+esc(i.huesped):''}${compacto?'':' · '+esc(i.fecha)}</div>
       ${i.cita?`<div class="d" style="font-style:italic">«${esc(i.cita)}»</div>`:''}
-      ${contactoHTML(i)}
+      ${contactoHTML(i,sinContacto)}
       ${compacto?'':`<div class="acc"><b>→</b> ${esc(i.accion)}</div>`}</div>
-    <div class="tags">${i._hoy?'<span class="tg" style="color:var(--vino)">huésped hoy</span>':''}
-      <span class="sev ${i.sev}">${esc(i.sev)}</span>
+    <div class="tags"><span class="sev ${i.sev}">${esc(i.sev)}</span>
       ${compacto?'':`<span class="tg" style="color:${i.estado==='resuelto'?'var(--exito)':'var(--vino)'}">${esc(i.estado)}</span>`}</div></div>`;
 }
 
@@ -366,9 +399,48 @@ function pintarHome(){
      <div class="pz o"><b>${outs}</b><span>salen hoy</span></div>
      <div class="pz l"><b>${libHoy}</b><span>libres hoy</span></div>
      <div class="pz"><b>${abiertas}</b><span>sin resolver</span></div>`;
-  const urg=urgentesHoy(6);
-  $('#urg').innerHTML=urg.length?'<div class="rows">'+urg.map(i=>filaInc(i,false)).join('')+'</div>'
-    :'<div class="none">Nada urgente abierto</div>';
+  // ---- 0. conserjería te escribió y nadie contestó ----
+  const resp=(D.acc_resp||[]);
+  $('#resp').innerHTML=resp.length?`<div class="gsec">Conserjería espera respuesta <span class="cnt">${resp.length}</span></div>
+    <div class="rows">`+resp.map(r=>`<div class="r">
+      <div class="t out etq">responder</div>
+      <div class="m"><div class="n">«${esc(r.texto)}»</div>
+        <div class="d">${esc(r.de)} · ${esc(r.fecha)} · ${esc(r.prop)}</div>
+        ${r.cod?`<div class="ctc"><a class="lk" href="${resLink(r.cod)}" target="_blank" rel="noopener">Reserva ${esc(r.cod)} ↗</a></div>`:''}</div>
+      <div class="tags"><span class="sev ${r.urgencia}">${esc(r.urgencia)}</span></div></div>`).join('')+'</div>':'';
+
+  // ---- 1. reserva confirmada SIN el correo de acceso enviado ----
+  const ac=(D.accesos_pend||[]);
+  const acHoy=ac.filter(a=>a.hoy);
+  $('#acc').innerHTML=ac.length?`<div class="gsec">Acceso sin enviar a conserjería <span class="cnt">${ac.length}</span>
+      ${acHoy.length?`<span class="alerta">${acHoy.length} llegan hoy</span>`:''}</div>
+    <div class="rows">`+ac.slice(0,8).map(a=>`<div class="r">
+      <div class="t ${a.hoy?'out':'in'} etq">${a.hoy?'llega HOY':dmy(a.entrada)}</div>
+      <div class="m"><div class="n">${esc(a.dir||a.prop)}</div>
+        <div class="d">${esc(a.huesped)}${a.pax?' · '+a.pax+'p':''} · entra ${esc(a.hin)}</div>
+        <div class="ctc">${D.tel[a.cod]?`<a class="lk wa" href="${waLink(D.tel[a.cod])}" target="_blank" rel="noopener">Contactar</a>`:''}
+          <a class="lk" href="${resLink(a.cod)}" target="_blank" rel="noopener">Reserva ${esc(a.cod)} ↗</a></div></div>
+      </div>`).join('')+`</div>${D.acc_auditado?`<div class="hint">Correo revisado el ${esc(D.acc_auditado)}</div>`:''}`:'';
+
+  // ---- 2/3/1: por casuística, en el orden que importa ----
+  const pend=D.incidencias.filter(i=>i.estado!=='resuelto').map(i=>{
+    const c=carencia(i), cs=casuistica(i);
+    return {...i,_c:c?c.txt:null,_o:c?c.ord:9,_k:cs.k};
+  }).filter(i=>i._c||i.sev==='alta');
+  const ord=(a,b)=>(a._o-b._o)||((a.sev==='alta'?0:a.sev==='media'?1:2)-(b.sev==='alta'?0:b.sev==='media'?1:2));
+  const GRUPOS=[
+    ['checkin','Lo declaró hoy, día de check-in','Recién llega y ya hay problema — se resuelve antes que nada.',false,4],
+    ['estadia','Está alojado ahora','Lleva noches en la propiedad con el problema encima.',false,5],
+    ['ido','Ya se fue','No se contacta al huésped: se arregla la propiedad antes del próximo.',true,4],
+    ['sin','Sin huésped asociado','Fallas de fondo levantadas de barridos anteriores: se arreglan igual.',true,4],
+  ];
+  $('#urg').innerHTML=GRUPOS.map(([k,tit,sub,sinCt,n])=>{
+    const g=pend.filter(i=>i._k===k).sort(ord).slice(0,n);
+    if(!g.length)return '';
+    return `<div class="gsec">${tit} <span class="cnt">${g.length}</span></div>
+      <div class="hint">${sub}</div>
+      <div class="rows">`+g.map(i=>filaInc(i,false,sinCt)).join('')+'</div>';
+  }).join('')||'<div class="none">Nada urgente abierto</div>';
 }
 // palabras que ya consumió el parser: no sirven para buscar por texto
 const RUIDO=/\b(libre|libres|disponible|disponibles|hay|algo|queda|tengo|para|con|sin|el|la|los|las|de|del|al|un|una|que|casa|casas|depto|deptos|departamento|persona|personas|pax|noche|noches|hoy|manana|finde|semana|mes|estacionamiento|parking|auto|autos|quien|llega|llegan|sale|salen|entra|check|in|out|problema|problemas|urgente|urgentes)\b/g;
@@ -594,8 +666,10 @@ html = f"""<!doctype html><html lang="es"><head>
   <div id="hres"></div>
   <div id="home-def">
     <div class="pulse" id="pulse"></div>
-    <div class="gsec">Urgentes a resolver hoy <button class="jump" onclick="irA(5)">ver todas →</button></div>
+    <div id="resp"></div>
+    <div id="acc"></div>
     <div id="urg"></div>
+    <div style="margin-top:18px"><button class="jump" onclick="irA(5)">ver las 167 incidencias →</button></div>
   </div>
 </section>
 

@@ -280,6 +280,37 @@ for p in props:
     o = ocup.get(p["id"], {}).get(hoy_s)
     if o and o.get("cod"): estadia[p["id"]] = o["cod"]
 
+# ---------- ACCESOS: reserva confirmada cuyo correo a conserjería NO se envió ----------
+# Muchos edificios exigen que APTO mande los nombres ANTES del check-in; si no, el huésped
+# queda en la puerta (es la incidencia de acceso más repetida del histórico).
+def requiere_conserjeria(b):
+    acc = (b.get("acceso") or {})
+    return "conserjer" in norm(acc.get("clave_edificio")) + " " + norm(b.get("notas"))
+REQ = {str(b.get("listing_id") or k) for k, b in prop.items()
+       if isinstance(b, dict) and requiere_conserjeria(b)}
+
+ACCF = os.path.join(HERE, "accesos_enviados.json")
+acc_env, acc_resp, acc_auditado = set(), [], ""
+if os.path.exists(ACCF):
+    _a = json.load(open(ACCF, encoding="utf-8"))
+    acc_env = {e.get("cod") for e in _a.get("enviados", []) if e.get("cod")}
+    acc_resp = _a.get("respuestas_sin_contestar", [])
+    acc_auditado = _a.get("_auditado", "")
+
+VENTANA_ACC = 3          # avisar de los check-ins de hoy y los próximos 3 días
+lim = (HOY + timedelta(days=VENTANA_ACC)).isoformat()
+accesos_pend = []
+for r in res:
+    if not r["pid"] or r["pid"] not in REQ: continue
+    if not (hoy_s <= r["entrada"] <= lim): continue
+    if r["cod"] in acc_env: continue
+    accesos_pend.append({"cod": r["cod"], "huesped": r["huesped"], "prop": r["pnombre"],
+                         "dir": dir_txt(next((p for p in props if p["id"] == r["pid"]), {})),
+                         "entrada": r["entrada"], "hin": r["hin"], "pax": r["pax"],
+                         "hoy": r["entrada"] == hoy_s})
+accesos_pend.sort(key=lambda x: (x["entrada"], x["hin"]))
+print(f"  accesos SIN enviar (hoy→+{VENTANA_ACC}d): {len(accesos_pend)} | conserjería responde sin contestar: {len(acc_resp)}")
+
 # teléfonos de huéspedes (se scrapean aparte a telefonos.json: {codigo: "+56..."} )
 TELF = os.path.join(HERE, "telefonos.json")
 tel = json.load(open(TELF, encoding="utf-8")) if os.path.exists(TELF) else {}
@@ -287,6 +318,7 @@ print(f"  estadías en curso: {len(estadia)} | teléfonos conocidos: {len(tel)}"
 
 data = {
     "res_ix": RES_IX, "estadia": estadia, "tel": tel,
+    "accesos_pend": accesos_pend, "acc_resp": acc_resp, "acc_auditado": acc_auditado,
     "generado": HOY.isoformat(),
     "ventana": {"desde": ventana[0], "hasta": ventana[-1], "dias": DIAS_VENTANA},
     "props": props, "reservas": res, "ocup": ocup, "agenda": agenda,

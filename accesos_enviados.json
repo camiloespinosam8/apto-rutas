@@ -1,0 +1,19 @@
+{
+ "_auditado": "2026-08-14",
+ "_fuente": "Gmail de camilo@pardecosas.cl — correos enviados a conserjerías (últimos 20 días)",
+ "_nota": "Refrescar con una auditoría de Gmail. Si un check-in en edificio con conserjería no aparece acá, el panel lo marca como ACCESO SIN ENVIAR.",
+ "enviados": [
+  {"cod": "HMSB4T4SYH", "huesped": "NNikson", "prop": "VM 920 · 1615 y 401", "fecha_envio": "2026-08-14", "asunto": "Autorización de acceso HOY: Deptos 1615 y 401"},
+  {"cod": "HMR4JR35FR", "huesped": "Julia G.", "prop": "VM 920 · 713 y 1204", "fecha_envio": "2026-08-14", "asunto": "Autorización de acceso – Deptos 713 y 1204"},
+  {"cod": "HMJQ3MTCHQ", "huesped": "Marcelo D.", "prop": "Seminario 850 · A2011", "fecha_envio": "2026-08-12", "asunto": "Fwd: Acceso depto A2011"},
+  {"cod": "HMNRRZ3J44", "huesped": "Danila P.", "prop": "Seminario 1499 · 1001", "fecha_envio": "2026-08-11", "asunto": "Registro de huéspedes — Depto 1001"}
+ ],
+ "respuestas_sin_contestar": [
+  {"de": "conserjeria920@gmail.com", "fecha": "2026-08-14T19:14 (Chile)", "cod": "HMSB4T4SYH",
+   "texto": "Don Camilo sus huéspedes llegaron en auto qué estacionamiento les asignó",
+   "urgencia": "alta", "prop": "VM 920 · 1615 y 401"},
+  {"de": "conserjeria920@gmail.com", "fecha": "2026-08-14T19:09 (Chile)", "cod": "",
+   "texto": "Buenas noches necesitamos un correo de sus huéspedes por favor actualizar",
+   "urgencia": "media", "prop": "VM 920 · depto 401"}
+ ]
+}
