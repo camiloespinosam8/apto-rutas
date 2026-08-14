@@ -138,7 +138,7 @@ function tagsProp(p){
   if(p.activo===false)t.push('<span class="tg" style="color:var(--vino)">inactivo</span>');
   if(p.cap)t.push(`<span class="tg">${p.cap}p</span>`);
   if(p.park&&p.park.tiene)t.push(`<span class="tg p">P${p.park.num?' '+p.park.num:''}</span>`);
-  if(p.rating)t.push(`<span class="tg">${p.rating}★</span>`);
+  if(Number(p.rating)>0)t.push(`<span class="tg">${p.rating}★</span>`);
   return t.join('');
 }
 // ---- tabs ----
