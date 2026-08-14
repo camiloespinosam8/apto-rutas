@@ -104,7 +104,25 @@ try:
         if len(_h.split()) >= 2: NOMBRES.append(_h)
 except Exception as e:
     print("  (no se pudo leer reservas_index:", e, ")")
-NOMBRES = sorted(set(NOMBRES), key=len, reverse=True)
+# Los huespedes historicos ya no estan en el indice de reservas: sumar tambien los nombres
+# que traen las propias fuentes de incidencias (columna/campo "huesped").
+def _cosechar(nombres):
+    for f in ("Incidencias_APTO_2026-07-11.csv", "Incidencias_APTO_2026-08-12.csv"):
+        p2 = os.path.join(GO, f)
+        if not os.path.exists(p2): continue
+        with open(p2, encoding="utf-8-sig", newline="") as fh:
+            for row in csv.DictReader(fh):
+                for parte in str(row.get("huesped") or "").replace(" y ", ",").split(","):
+                    if len(parte.strip().split()) >= 2: nombres.append(parte.strip())
+    for f in ("incidencias_manual.json", "incidencias_extra.json", "incidencias_nuevas.json"):
+        p2 = os.path.join(HERE, f)
+        if not os.path.exists(p2): continue
+        for r in json.load(open(p2, encoding="utf-8")):
+            h = str(r.get("huesped") or "").strip()
+            if len(h.split()) >= 2: nombres.append(h)
+_cosechar(NOMBRES)
+NOMBRES = sorted({n for n in NOMBRES if "airbnb" not in norm(n)}, key=len, reverse=True)
+print(f"  nombres a abreviar: {len(NOMBRES)}")
 
 def sin_apellidos(t):
     s = str(t or "")
