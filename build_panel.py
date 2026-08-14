@@ -1,4 +1,6 @@
-# build_panel.py — Genera panel.html (dashboard 5 pestañas) leyendo datos.json precomputado.
+# build_panel.py — Centro de control APTO. Diseño "manifiesto operacional":
+# filas densas con filetes, números tabulares, paleta de marca APTO (crema/ladrillo/tinta).
+# Interno: sin texto explicativo, todo escaneable. Datos precalculados desde datos.json.
 import json, os, sys
 from datetime import date
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -6,315 +8,344 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "datos.json"), encoding="utf-8"))
 
 DIAS = ["lunes","martes","miércoles","jueves","viernes","sábado","domingo"]
-MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"]
+MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"]
 h = date.fromisoformat(D["generado"])
-FECHA_TXT = f"{DIAS[h.weekday()]} {h.day} de {MESES[h.month-1]} de {h.year}"
+FECHA_TXT = f"{DIAS[h.weekday()]} {h.day} {MESES[h.month-1]}"
 
 CSS = """
-:root{--bg:#f4f6f8;--card:#fff;--tx:#15181c;--mut:#6b7280;--line:#e3e6ea;--acc:#2563eb;--in:#16a34a;--out:#ea8a1e;--st:#2563eb;--qr:#9333ea;--red:#dc2626;--amb:#d97706;--gr:#059669}
+:root{
+  --crema:#F4EFE6; --papel:#FBF9F4; --tinta:#1D1D1B; --mute:#6B6256; --linea:#E7DCC9;
+  --ladrillo:#C8572A; --vino:#9B3A2E; --exito:#2F7D5B;
+  --z-sticky:100; --z-pop:300;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;padding:14px;max-width:1100px;margin:0 auto}
-h1{font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:.82rem;margin-top:2px;text-transform:capitalize}
-.tabs{display:flex;gap:6px;margin:14px 0 16px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
-.tab{white-space:nowrap;border:1.5px solid var(--line);background:var(--card);color:var(--tx);font-weight:700;font-size:.82rem;padding:8px 14px;border-radius:22px;cursor:pointer;transition:.15s}
-.tab.active{background:var(--acc);color:#fff;border-color:var(--acc)}
-.pane{display:none} .pane.on{display:block}
-input,select{font:inherit;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--tx);width:100%}
-input:focus,select:focus{outline:none;border-color:var(--acc)}
-.row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.row>*{flex:1;min-width:140px}
-.card{background:var(--card);border-radius:13px;padding:13px 15px;margin-bottom:9px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
-.pt{font-weight:800;font-size:1rem;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.chip{background:var(--line);color:var(--mut);font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:10px}
-.chip.st{background:var(--st);color:#fff}.chip.qr{background:var(--qr);color:#fff}
-.chip.ok{background:#dcfce7;color:#166534}.chip.no{background:#fee2e2;color:#991b1b}
-.kv{display:grid;grid-template-columns:118px 1fr;gap:3px 10px;margin-top:9px;font-size:.85rem}
-.kv dt{color:var(--mut);font-weight:600}.kv dd{word-break:break-word}
-details summary{cursor:pointer;color:var(--acc);font-size:.8rem;font-weight:700;margin-top:8px}
-.ag{display:flex;gap:12px;align-items:center;border-left:4px solid transparent;padding-left:10px}
-.ag.in{border-left-color:var(--in)}.ag.out{border-left-color:var(--out)}
-.ag .hh{font-weight:800;min-width:52px;text-align:center}
-.ag.in .hh{color:var(--in)}.ag.out .hh{color:var(--out)}
-.dayhdr{font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:16px 0 7px}
-table{width:100%;border-collapse:collapse;font-size:.85rem;background:var(--card);border-radius:12px;overflow:hidden}
-th{background:var(--line);text-align:left;padding:9px 10px;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;user-select:none;white-space:nowrap}
-th:hover{color:var(--acc)} td{padding:9px 10px;border-top:1px solid var(--line)}
-.bar{height:7px;background:var(--line);border-radius:5px;overflow:hidden;min-width:52px}
-.bar>i{display:block;height:100%;background:var(--acc)}
-.cal{overflow-x:auto;background:var(--card);border-radius:12px;padding:10px}
-.calgrid{display:grid;gap:1px;min-width:760px}
-.cell{height:24px;border-radius:3px;background:#e8f5e9}
-.cell.busy{background:#ef5350}.cell.hdr{background:transparent;font-size:.6rem;color:var(--mut);text-align:center;height:auto;font-weight:700}
-.calname{font-size:.72rem;font-weight:700;padding-right:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:24px}
-.leg{display:flex;gap:14px;font-size:.75rem;color:var(--mut);margin:8px 0}
-.leg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
-.ex{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
-.ex button{border:1.5px solid var(--acc);background:transparent;color:var(--acc);font-size:.76rem;font-weight:700;padding:6px 11px;border-radius:16px;cursor:pointer}
-.ex button:hover{background:var(--acc);color:#fff}
-.res{margin-top:10px}
-.sev{font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:10px;color:#fff}
-.sev.alta{background:var(--red)}.sev.media{background:var(--amb)}.sev.baja{background:var(--gr)}
-.catb{display:inline-block;font-size:.7rem;font-weight:800;padding:2px 9px;border-radius:10px;background:var(--line);color:var(--tx)}
-.muted{color:var(--mut);font-size:.8rem}
-.empty{color:var(--mut);font-style:italic;padding:14px;text-align:center}
-footer{margin-top:24px;color:var(--mut);font-size:.72rem;text-align:center;border-top:1px solid var(--line);padding-top:12px}
-@media(prefers-color-scheme:dark){:root{--bg:#0f1216;--card:#191d22;--tx:#e8eaed;--mut:#9aa0a6;--line:#282d34}
-.cell{background:#1f3b26}.cell.busy{background:#b03535}.chip.ok{background:#14532d;color:#bbf7d0}.chip.no{background:#7f1d1d;color:#fecaca}}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:Manrope,-apple-system,'Segoe UI',Roboto,sans-serif;
+  background:var(--crema); color:var(--tinta);
+  font-size:15px; line-height:1.45; -webkit-font-smoothing:antialiased;
+  padding:0 0 40px; max-width:1120px; margin:0 auto;
+}
+.wrap{padding:0 16px}
+/* ---- cabecera ---- */
+header{padding:20px 16px 12px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.mark{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:1.9rem;letter-spacing:.09em;line-height:1}
+.hoy{font-size:.82rem;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* ---- pestañas ---- */
+.tabs{position:sticky;top:0;z-index:var(--z-sticky);background:var(--crema);
+  display:flex;gap:2px;padding:6px 16px 8px;overflow-x:auto;scrollbar-width:none;
+  border-bottom:1px solid var(--linea)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;border:0;background:transparent;color:var(--mute);
+  font-family:inherit;font-weight:700;font-size:.88rem;padding:8px 12px;border-radius:7px;
+  cursor:pointer;transition:color .18s var(--ease),background .18s var(--ease)}
+.tab:hover{color:var(--tinta)}
+.tab[aria-selected="true"]{background:var(--ladrillo);color:var(--papel)}
+.tab:focus-visible{outline:2px solid var(--ladrillo);outline-offset:2px}
+.pane{display:none;padding-top:14px} .pane.on{display:block}
+/* ---- controles ---- */
+.bar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+input,select,button.go{font:inherit;color:var(--tinta);background:var(--papel);
+  border:1px solid var(--linea);border-radius:8px;padding:9px 11px;min-height:40px}
+input::placeholder{color:var(--mute)}
+input:focus,select:focus{outline:2px solid var(--ladrillo);outline-offset:-1px;border-color:transparent}
+.grow{flex:1 1 200px;min-width:0}
+button.go{background:var(--tinta);color:var(--papel);border-color:var(--tinta);font-weight:700;cursor:pointer}
+.q{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.q button{font:inherit;font-size:.82rem;font-weight:700;color:var(--vino);background:transparent;
+  border:1px solid var(--linea);border-radius:99px;padding:6px 13px;cursor:pointer;
+  transition:background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease)}
+.q button:hover{background:var(--vino);color:var(--papel);border-color:var(--vino)}
+/* ---- filas (NO cards) ---- */
+.count{font-size:.8rem;color:var(--mute);font-variant-numeric:tabular-nums;margin:14px 0 4px}
+.count b{color:var(--tinta)}
+.rows{border-top:1px solid var(--linea)}
+.r{display:flex;gap:12px;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--linea)}
+.r:hover{background:var(--papel)}
+.t{font-variant-numeric:tabular-nums;font-weight:800;font-size:1.02rem;min-width:52px;letter-spacing:-.01em}
+.t.in{color:var(--exito)} .t.out{color:var(--vino)}
+.m{flex:1;min-width:0}
+.n{font-weight:700;letter-spacing:-.01em}
+.d{font-size:.85rem;color:var(--mute);margin-top:1px;font-variant-numeric:tabular-nums}
+.tags{display:flex;gap:5px;align-items:center;flex-wrap:wrap;flex-shrink:0}
+.tg{font-size:.74rem;font-weight:700;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tg.p{color:var(--vino)}
+.tg.reg{color:var(--mute);opacity:.75}
+/* ---- desplegable de ficha ---- */
+details.r{display:block;padding:0}
+details.r>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:baseline;padding:11px 2px}
+details.r>summary::-webkit-details-marker{display:none}
+details.r[open]{background:var(--papel)}
+.kv{display:grid;grid-template-columns:88px 1fr;gap:2px 12px;padding:2px 2px 13px;font-size:.85rem}
+.kv dt{color:var(--mute);font-weight:600}
+.kv dd{font-variant-numeric:tabular-nums;word-break:break-word}
+.kv a{color:var(--vino)}
+/* ---- día ---- */
+.day{font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;font-weight:700;
+  margin:20px 0 2px;display:flex;align-items:baseline;gap:9px}
+.day span{font-family:Manrope,sans-serif;font-size:.78rem;font-weight:600;color:var(--mute);font-variant-numeric:tabular-nums}
+/* ---- ranking ---- */
+table{width:100%;border-collapse:collapse;font-size:.87rem;font-variant-numeric:tabular-nums}
+th{text-align:left;padding:8px 8px 8px 0;font-size:.74rem;font-weight:800;color:var(--mute);
+  border-bottom:1px solid var(--linea);cursor:pointer;white-space:nowrap;user-select:none}
+th:hover{color:var(--ladrillo)}
+th[aria-sort]{color:var(--ladrillo)}
+td{padding:9px 8px 9px 0;border-bottom:1px solid var(--linea)}
+td:first-child{color:var(--mute);width:26px}
+.bar2{height:6px;background:var(--linea);border-radius:99px;overflow:hidden;min-width:44px}
+.bar2>i{display:block;height:100%;background:var(--ladrillo)}
+/* ---- calendario ---- */
+.cal{overflow-x:auto;padding-bottom:6px}
+.cg{display:grid;gap:1px;min-width:720px}
+.c{height:22px;border-radius:2px;background:#E9E0CE}
+.c.b{background:var(--vino)}
+.c.h{background:transparent;font-size:.6rem;color:var(--mute);text-align:center;height:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.c.h.w{color:var(--ladrillo)}
+.cn{font-size:.72rem;font-weight:700;line-height:22px;padding-right:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.leg{display:flex;gap:14px;font-size:.76rem;color:var(--mute);margin:6px 0 8px}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+/* ---- incidencias ---- */
+.sev{font-size:.7rem;font-weight:800;font-variant-numeric:tabular-nums}
+.sev.alta{color:var(--vino)} .sev.media{color:var(--ladrillo)} .sev.baja{color:var(--exito)}
+.acc{font-size:.85rem;margin-top:5px;padding-left:11px;border-left:1px solid var(--linea);color:var(--mute)}
+.acc b{color:var(--tinta);font-weight:700}
+.cats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.cats button{font:inherit;font-size:.82rem;font-weight:700;background:transparent;border:1px solid var(--linea);
+  color:var(--mute);border-radius:99px;padding:6px 12px;cursor:pointer}
+.cats button[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.none{color:var(--mute);padding:22px 2px;font-size:.88rem}
+footer{color:var(--mute);font-size:.72rem;padding:22px 16px 0;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 """
 
 JS = r"""
-const D = window.__D__;
-const $ = s => document.querySelector(s);
-const esc = s => String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-const nrm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const D=window.__D__, $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nrm=s=>String(s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+const clp=n=>n?('$'+Number(n).toLocaleString('es-CL')):'';
 
-// ---------- tabs ----------
+// dirección compacta: Calle N°, depto X, Comuna
+function dir(p){
+  const a=[]; const c=[p.calle,p.numero].filter(Boolean).join(' ');
+  if(c)a.push(c); if(p.depto)a.push('depto '+p.depto); if(p.comuna)a.push(p.comuna);
+  return a.join(', ');
+}
+function tagsProp(p){
+  const t=[];
+  if(p.cap)t.push(`<span class="tg">${p.cap}p</span>`);
+  if(p.park&&p.park.tiene)t.push(`<span class="tg p">P${p.park.num?' '+p.park.num:''}</span>`);
+  if(p.rating)t.push(`<span class="tg">${p.rating}★</span>`);
+  return t.join('');
+}
+// ---- tabs ----
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
   document.querySelectorAll('.pane').forEach(x=>x.classList.remove('on'));
-  b.classList.add('active'); $('#p'+b.dataset.t).classList.add('on');
+  b.setAttribute('aria-selected','true'); $('#p'+b.dataset.t).classList.add('on');
 });
-
-// ---------- 1. PROPIEDADES ----------
-function propCard(p){
-  const reg = p.region==='Santiago'?'st':'qr';
-  const park = p.park.tiene ? `<span class="chip ok">🅿️ ${esc(p.park.num?('N°'+p.park.num):'sí')}</span>` : '<span class="chip no">sin estac.</span>';
-  const rat = p.rating?`<span class="chip">⭐ ${p.rating} (${p.nresenas||0})</span>`:'';
-  const kv = [
-    ['Dirección', (p.direccion||'—') + (p.depto?(' · depto '+p.depto):'')],
-    ['Comuna', p.comuna||'—'], ['Tipo / cap.', (p.tipo||'—')+' · '+(p.cap?p.cap+' personas':'cap. s/i')],
-    ['Camas', p.camas||'—'], ['Dueño', p.dueno||'—'], ['Responsable', p.responsable||'—'],
-    ['Clave edificio', p.acceso.edificio||'—'], ['Clave depto', p.acceso.depto||'—'],
-    ['Estacionamiento', p.acceso.estacionamiento||p.park.detalle||'—'],
-    ['WiFi', p.wifi.red?(p.wifi.red+' / '+p.wifi.clave):'—'],
-    ['Limpieza', p.limpieza?('$'+Number(p.limpieza).toLocaleString('es-CL')):'—'],
-    ['Comisión', p.comision||'—'], ['Toallas', (p.toallas_c||'?')+' cuerpo / '+(p.toallas_m||'?')+' mano'],
-    ['Actualizado', p.salud||'—']
-  ].map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
-  return `<div class="card">
-    <div class="pt">${esc(p.nombre)} <span class="chip ${reg}">${esc(p.region)}</span> ${rat} ${park}</div>
-    <div class="muted" style="margin-top:3px">${esc(p.titulo||'')}</div>
-    <dl class="kv">${kv}</dl>
-    ${p.notas?`<details><summary>Ver notas</summary><div class="muted" style="margin-top:6px">${esc(p.notas)}</div></details>`:''}
-    ${p.url?`<div style="margin-top:8px"><a href="${p.url}" target="_blank" style="color:var(--acc);font-size:.8rem;font-weight:700">Ver anuncio ↗</a></div>`:''}
-  </div>`;
+// ---- 1 propiedades ----
+function rowProp(p){
+  const kv=[['Dirección',dir(p)||'—'],['Clave edif.',p.acceso.edificio],['Clave depto',p.acceso.depto],
+    ['WiFi',p.wifi.red?(p.wifi.red+' · '+p.wifi.clave):''],['Camas',p.camas],
+    ['Estac.',p.acceso.estacionamiento||(p.park.tiene?'sí':'')],['Limpieza',clp(p.limpieza)],
+    ['Responsable',p.responsable],['Dueño',p.dueno]]
+    .filter(([,v])=>v&&v!=='—'||v==='—'&&false).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  return `<details class="r"><summary>
+      <div class="m"><div class="n">${esc(p.nombre)}</div><div class="d">${esc(dir(p)||p.comuna||'')}</div></div>
+      <div class="tags">${tagsProp(p)}</div></summary>
+      <dl class="kv">${kv}${p.url?`<dt>Anuncio</dt><dd><a href="${p.url}" target="_blank" rel="noopener">abrir ↗</a></dd>`:''}</dl>
+    </details>`;
 }
 function renderProps(){
-  const q=nrm($('#qprop').value), reg=$('#fregion').value, tipo=$('#ftipo').value;
-  const out=D.props.filter(p=>{
-    if(reg!=='all'&&p.region!==reg) return false;
-    if(tipo!=='all'&&p.tipo!==tipo) return false;
-    if(!q) return true;
-    return nrm([p.nombre,p.titulo,p.direccion,p.comuna,p.dueno,p.interno,p.depto].join(' ')).includes(q);
-  });
-  $('#nprop').textContent=out.length;
-  $('#listaprop').innerHTML = out.length?out.map(propCard).join(''):'<div class="empty">Sin resultados</div>';
+  const q=nrm($('#qp').value),reg=$('#fr').value;
+  const o=D.props.filter(p=>(reg==='all'||p.region===reg)&&(!q||nrm([p.nombre,p.calle,p.numero,p.depto,p.comuna,p.interno,p.dueno].join(' ')).includes(q)));
+  $('#np').textContent=o.length;
+  $('#lp').innerHTML=o.length?o.map(rowProp).join(''):'<div class="none">Sin resultados</div>';
 }
-
-// ---------- 2. AGENDA ----------
-function renderAgenda(){
-  const f=$('#fagenda').value, reg=$('#fagregion').value;
-  const dias = f==='hoy' ? [D.semana[0]] : D.semana;
-  let html='';
+// ---- 2 movimientos ----
+function renderAg(){
+  const f=$('#fa').value,reg=$('#far').value;
+  const dias=f==='hoy'?[D.semana[0]]:D.semana;
+  let h='';
   dias.forEach(d=>{
-    const items=D.agenda.filter(a=>a.fecha===d && (reg==='all'||a.region===reg));
-    if(f==='hoy'||items.length){
-      const dt=new Date(d+'T12:00:00');
-      const nom=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'][dt.getDay()];
-      html+=`<div class="dayhdr">${nom} ${dt.getDate()}/${dt.getMonth()+1} — ${items.length} movimiento${items.length===1?'':'s'}</div>`;
-      html+= items.length? items.map(a=>`<div class="card ag ${a.tipo}">
-        <div class="hh">${esc(a.hora)}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-weight:700">${esc(a.direccion||a.pnombre)} <span class="chip">${esc(a.comuna||a.region)}</span></div>
-          <div class="muted">${a.tipo==='in'?'🟢 llega':'🟠 sale'} ${esc(a.huesped)}${a.pax?' · '+a.pax+'p':''} · ${esc(a.pnombre)}</div>
-        </div></div>`).join('') : '<div class="empty">Sin movimientos</div>';
+    const it=D.agenda.filter(a=>a.fecha===d&&(reg==='all'||a.region===reg));
+    if(f==='hoy'||it.length){
+      const dt=new Date(d+'T12:00:00'),nm=['dom','lun','mar','mié','jue','vie','sáb'][dt.getDay()];
+      h+=`<div class="day">${nm} ${dt.getDate()}<span>${it.length} mov</span></div><div class="rows">`;
+      h+=it.length?it.map(a=>`<div class="r"><div class="t ${a.tipo}">${esc(a.hora)}</div>
+        <div class="m"><div class="n">${esc(a.dir||a.pnombre)}</div>
+        <div class="d">${a.tipo==='in'?'entra':'sale'} ${esc(a.huesped)}${a.pax?' · '+a.pax+'p':''}</div></div></div>`).join('')
+        :'<div class="none">Sin movimientos</div>';
+      h+='</div>';
     }
   });
-  $('#listaag').innerHTML=html||'<div class="empty">Sin movimientos</div>';
+  $('#la').innerHTML=h||'<div class="none">Sin movimientos</div>';
 }
-
-// ---------- 3. CALENDARIO + BUSCADOR INTELIGENTE ----------
-const DIASCAL=45;
-function fechas(n){const a=[],d=new Date(D.ventana.desde+'T12:00:00');for(let i=0;i<n;i++){a.push(d.toISOString().slice(0,10));d.setDate(d.getDate()+1);}return a;}
+// ---- 3 disponibilidad (precomputada) ----
+const NC=45;
+function fechas(n){const a=[],d=new Date(D.ventana.desde+'T12:00:00');for(let i=0;i<n;i++){a.push(d.toISOString().slice(0,10));d.setDate(d.getDate()+1)}return a}
 function renderCal(){
-  const reg=$('#fcalregion').value;
-  const ds=fechas(DIASCAL);
-  const ps=D.props.filter(p=>reg==='all'||p.region===reg);
-  let h=`<div class="calgrid" style="grid-template-columns:150px repeat(${DIASCAL},1fr)">`;
-  h+='<div class="cell hdr"></div>'+ds.map(d=>{const t=new Date(d+'T12:00:00');return `<div class="cell hdr">${t.getDate()}</div>`}).join('');
+  const reg=$('#fcr').value,ds=fechas(NC),ps=D.props.filter(p=>reg==='all'||p.region===reg);
+  let h=`<div class="cg" style="grid-template-columns:132px repeat(${NC},1fr)"><div class="c h"></div>`;
+  h+=ds.map(d=>{const t=new Date(d+'T12:00:00'),w=t.getDay()===0||t.getDay()===6;
+    return `<div class="c h${w?' w':''}">${t.getDate()}</div>`}).join('');
   ps.forEach(p=>{
-    h+=`<div class="calname" title="${esc(p.nombre)}">${esc(p.nombre)}</div>`;
+    h+=`<div class="cn" title="${esc(p.nombre)}">${esc(p.nombre)}</div>`;
     h+=ds.map(d=>{const o=(D.ocup[p.id]||{})[d];
-      return `<div class="cell ${o?'busy':''}" title="${esc(p.nombre)} · ${d}${o?' · ocupado '+esc(o.h):' · LIBRE'}"></div>`}).join('');
+      return `<div class="c${o?' b':''}" title="${esc(p.nombre)} · ${d}${o?' · '+esc(o.h):' · libre'}"></div>`}).join('');
   });
-  $('#calgrid').innerHTML=h+'</div>';
+  $('#cg').innerHTML=h+'</div>';
 }
-// motor de consultas: precomputado, responde al instante
-function libres(desde,hasta,pax,reg,park){
-  const out=[];const d0=new Date(desde+'T12:00:00'),d1=new Date(hasta+'T12:00:00');
+function libres(de,ha,pax,reg,pk){
+  const out=[],d0=new Date(de+'T12:00:00'),d1=new Date(ha+'T12:00:00');
   D.props.forEach(p=>{
-    if(reg&&reg!=='all'&&p.region!==reg) return;
-    if(pax&&(!p.cap||p.cap<pax)) return;
-    if(park&&!p.park.tiene) return;
+    if(reg!=='all'&&p.region!==reg)return;
+    if(pax&&(!p.cap||p.cap<pax))return;
+    if(pk&&!(p.park&&p.park.tiene))return;
     let ok=true;const d=new Date(d0);
-    while(d<d1){const s=d.toISOString().slice(0,10); if((D.ocup[p.id]||{})[s]){ok=false;break;} d.setDate(d.getDate()+1);}
-    if(ok) out.push(p);
+    while(d<d1){if((D.ocup[p.id]||{})[d.toISOString().slice(0,10)]){ok=false;break}d.setDate(d.getDate()+1)}
+    if(ok)out.push(p);
   });
   return out;
 }
 function correr(){
-  const desde=$('#qdesde').value,hasta=$('#qhasta').value;
-  if(!desde||!hasta){$('#qres').innerHTML='<div class="empty">Elige fechas</div>';return;}
-  const pax=parseInt($('#qpax').value)||0, reg=$('#qregion').value, park=$('#qpark').checked;
-  const r=libres(desde,hasta,pax,reg,park);
-  const noches=Math.round((new Date(hasta)-new Date(desde))/864e5);
-  $('#qres').innerHTML=`<div class="dayhdr">${r.length} libre${r.length===1?'':'s'} · ${desde} → ${hasta} (${noches} noche${noches===1?'':'s'})${pax?' · '+pax+'+ personas':''}${park?' · con estacionamiento':''}</div>`+
-    (r.length?r.map(p=>`<div class="card"><div class="pt">${esc(p.nombre)} <span class="chip ${p.region==='Santiago'?'st':'qr'}">${esc(p.region)}</span>${p.cap?`<span class="chip">👥 ${p.cap}</span>`:''}${p.park.tiene?'<span class="chip ok">🅿️</span>':''}</div>
-      <div class="muted" style="margin-top:3px">${esc(p.direccion||'')} ${esc(p.comuna||'')}</div></div>`).join('')
-     :'<div class="empty">Nada libre con esos filtros</div>');
+  const de=$('#qd').value,ha=$('#qh').value;
+  if(!de||!ha){$('#qr').innerHTML='<div class="none">Elige fechas</div>';return}
+  const pax=parseInt($('#qx').value)||0,reg=$('#qg').value,pk=$('#qk').checked;
+  const r=libres(de,ha,pax,reg,pk),n=Math.round((new Date(ha)-new Date(de))/864e5);
+  $('#qr').innerHTML=`<div class="count"><b>${r.length}</b> libres · ${n} noche${n===1?'':'s'}${pax?' · '+pax+'p':''}${pk?' · con P':''}</div>`+
+    (r.length?'<div class="rows">'+r.map(p=>`<div class="r"><div class="m"><div class="n">${esc(p.nombre)}</div>
+      <div class="d">${esc(dir(p)||p.comuna)}</div></div><div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>'
+    :'<div class="none">Nada libre con esos filtros</div>');
 }
-function preset(dd,nn,pax,park){
+function preset(dd,nn,pax,pk){
   const d=new Date(D.ventana.desde+'T12:00:00');d.setDate(d.getDate()+dd);
   const f=new Date(d);f.setDate(f.getDate()+nn);
-  $('#qdesde').value=d.toISOString().slice(0,10);$('#qhasta').value=f.toISOString().slice(0,10);
-  $('#qpax').value=pax||'';$('#qpark').checked=!!park;correr();
+  $('#qd').value=d.toISOString().slice(0,10);$('#qh').value=f.toISOString().slice(0,10);
+  $('#qx').value=pax||'';$('#qk').checked=!!pk;correr();
 }
-
-// ---------- 4. INSIGHTS ----------
-let sortK='rating',sortD=-1;
+// ---- 4 ranking ----
+let sk='rating',sd=-1;
 function renderIns(){
-  const reg=$('#finsregion').value;
-  let rows=D.insights.filter(i=>reg==='all'||i.region===reg);
-  rows.sort((a,b)=>{let x=a[sortK],y=b[sortK];
-    if(x==null)x=-1;if(y==null)y=-1;
-    if(typeof x==='string')return sortD*x.localeCompare(y);
-    return sortD*(x-y);});
-  $('#tbody').innerHTML=rows.map((i,n)=>`<tr>
-    <td>${n+1}</td>
-    <td><b>${esc(i.nombre)}</b><div class="muted">${esc(i.comuna||i.region)}</div></td>
-    <td>${i.rating?('⭐ '+i.rating):'—'}</td>
-    <td>${i.nresenas!=null?i.nresenas:'—'}</td>
-    <td>${i.cap||'—'}</td>
-    <td><div style="display:flex;align-items:center;gap:6px"><div class="bar"><i style="width:${i.ocup_pct}%"></i></div><span>${i.ocup_pct}%</span></div></td>
-    <td>${i.limpieza?('$'+Number(i.limpieza).toLocaleString('es-CL')):'—'}</td></tr>`).join('');
+  const reg=$('#fir').value;
+  const rows=D.insights.filter(i=>reg==='all'||i.region===reg).sort((a,b)=>{
+    let x=a[sk],y=b[sk];if(x==null)x=-1;if(y==null)y=-1;
+    return typeof x==='string'?sd*x.localeCompare(y):sd*(x-y)});
+  $('#tb').innerHTML=rows.map((i,n)=>`<tr><td>${n+1}</td>
+    <td><b>${esc(i.nombre)}</b></td><td>${i.rating?i.rating+'★':'—'}</td><td>${i.nresenas??'—'}</td>
+    <td>${i.cap||'—'}</td><td><div style="display:flex;align-items:center;gap:7px">
+    <div class="bar2"><i style="width:${i.ocup_pct}%"></i></div>${i.ocup_pct}%</div></td>
+    <td>${clp(i.limpieza)||'—'}</td></tr>`).join('');
+  document.querySelectorAll('th[data-k]').forEach(t=>{
+    if(t.dataset.k===sk)t.setAttribute('aria-sort',sd<0?'descending':'ascending');else t.removeAttribute('aria-sort')});
 }
 document.querySelectorAll('th[data-k]').forEach(t=>t.onclick=()=>{
-  const k=t.dataset.k; sortD = (sortK===k)? -sortD : -1; sortK=k; renderIns();});
-
-// ---------- 5. INCIDENCIAS ----------
-const CATN={insumos:'🧺 Insumos',higiene:'🧼 Higiene',tecnico:'🔧 Técnico',acceso:'🔑 Acceso / indicaciones'};
+  const k=t.dataset.k;sd=(sk===k)?-sd:-1;sk=k;renderIns()});
+// ---- 5 incidencias ----
+const CN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso'};
+let cat='all';
 function renderInc(){
-  const c=$('#fcat').value;
-  const rows=D.incidencias.filter(i=>c==='all'||i.cat===c);
-  const cnt={};D.incidencias.forEach(i=>cnt[i.cat]=(cnt[i.cat]||0)+1);
-  $('#incres').innerHTML=Object.keys(CATN).map(k=>`<span class="chip">${CATN[k]}: <b>${cnt[k]||0}</b></span>`).join(' ');
-  $('#listainc').innerHTML=rows.length?rows.map(i=>`<div class="card">
-    <div class="pt"><span class="catb">${CATN[i.cat]||i.cat}</span> <span class="sev ${i.sev}">${i.sev}</span></div>
-    <div style="font-weight:700;margin-top:7px">${esc(i.titulo)}</div>
-    <div class="muted" style="margin-top:3px">${esc(i.prop)} · ${esc(i.fecha)}${i.huesped&&i.huesped!=='—'?' · '+esc(i.huesped):''}</div>
-    <div style="margin-top:7px;font-size:.87rem">${esc(i.detalle)}</div>
-    <div style="margin-top:7px;font-size:.85rem"><b>→ Acción:</b> ${esc(i.accion)}</div>
-  </div>`).join(''):'<div class="empty">Sin incidencias en esta categoría</div>';
+  const rows=D.incidencias.filter(i=>cat==='all'||i.cat===cat);
+  $('#li').innerHTML=rows.length?'<div class="rows">'+rows.map(i=>`<div class="r">
+    <div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.7rem;font-weight:800;min-width:52px">${CN[i.cat]||i.cat}</div>
+    <div class="m"><div class="n">${esc(i.titulo)}</div>
+      <div class="d">${esc(i.prop)} · ${esc(i.fecha)}</div>
+      <div class="acc"><b>→</b> ${esc(i.accion)}</div></div>
+    <div class="tags"><span class="sev ${i.sev}">${i.sev}</span></div></div>`).join('')+'</div>'
+    :'<div class="none">Sin incidencias</div>';
 }
-
-['qprop','fregion','ftipo'].forEach(id=>$('#'+id).addEventListener('input',renderProps));
-['fagenda','fagregion'].forEach(id=>$('#'+id).addEventListener('input',renderAgenda));
-$('#fcalregion').addEventListener('input',renderCal);
-$('#finsregion').addEventListener('input',renderIns);
-$('#fcat').addEventListener('input',renderInc);
-$('#qgo').onclick=correr;
-document.querySelectorAll('.ex button').forEach(b=>b.onclick=()=>preset(+b.dataset.d,+b.dataset.n,+b.dataset.p,b.dataset.k==='1'));
-renderProps();renderAgenda();renderCal();renderIns();renderInc();
-$('#qdesde').value=D.ventana.desde;
-const t=new Date(D.ventana.desde+'T12:00:00');t.setDate(t.getDate()+2);$('#qhasta').value=t.toISOString().slice(0,10);
+document.querySelectorAll('.cats button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.cats button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');cat=b.dataset.c;renderInc()});
+['qp','fr'].forEach(i=>$('#'+i).addEventListener('input',renderProps));
+['fa','far'].forEach(i=>$('#'+i).addEventListener('input',renderAg));
+$('#fcr').addEventListener('input',renderCal);$('#fir').addEventListener('input',renderIns);
+$('#go').onclick=correr;
+document.querySelectorAll('.q button').forEach(b=>b.onclick=()=>preset(+b.dataset.d,+b.dataset.n,+b.dataset.p,b.dataset.k==='1'));
+renderProps();renderAg();renderCal();renderIns();renderInc();
+$('#qd').value=D.ventana.desde;
+const t=new Date(D.ventana.desde+'T12:00:00');t.setDate(t.getDate()+2);$('#qh').value=t.toISOString().slice(0,10);
 correr();
 """
 
-tipos = sorted({p["tipo"] for p in D["props"] if p.get("tipo")})
-opt_tipos = "".join(f'<option value="{t}">{t}</option>' for t in tipos)
+cats = {}
+for i in D["incidencias"]: cats[i["cat"]] = cats.get(i["cat"], 0) + 1
+catbtn = "".join(f'<button data-c="{k}" aria-pressed="false">{n} <span style="opacity:.6">{cats.get(k,0)}</span></button>'
+                 for k, n in [("insumos","Insumos"),("higiene","Higiene"),("tecnico","Técnico"),("acceso","Acceso")])
 
 html = f"""<!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Centro de control APTO</title>
+<title>APTO · control</title>
+<meta name="theme-color" content="#F4EFE6">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body>
-<header>
-  <h1>🏢 Centro de control · APTO</h1>
-  <div class="sub">{FECHA_TXT} · {len(D['props'])} propiedades · datos precalculados</div>
-</header>
+<header><div class="mark">APTO</div><div class="hoy">{FECHA_TXT} · {len(D['props'])} propiedades</div></header>
 
-<div class="tabs">
-  <button class="tab active" data-t="1">🏠 Propiedades</button>
-  <button class="tab" data-t="2">📅 Check-in / out</button>
-  <button class="tab" data-t="3">🗓️ Calendario y disponibilidad</button>
-  <button class="tab" data-t="4">📊 Insights</button>
-  <button class="tab" data-t="5">⚠️ Incidencias</button>
+<div class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="1">Propiedades</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="2">Movimientos</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="3">Disponibilidad</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="4">Ranking</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="5">Incidencias</button>
 </div>
 
-<div class="pane on" id="p1">
-  <div class="row">
-    <input id="qprop" placeholder="🔍 Buscar por nombre, dirección, comuna, dueño, depto…" style="flex:3">
-    <select id="fregion"><option value="all">Todas las regiones</option><option>Santiago</option><option>Quinta Región</option></select>
-    <select id="ftipo"><option value="all">Todos los tipos</option>{opt_tipos}</select>
+<div class="wrap">
+<section class="pane on" id="p1">
+  <div class="bar">
+    <input id="qp" class="grow" placeholder="Buscar calle, comuna, depto…" autocomplete="off">
+    <select id="fr"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
   </div>
-  <div class="muted"><b id="nprop">0</b> propiedades</div>
-  <div id="listaprop" style="margin-top:10px"></div>
-</div>
+  <div class="count"><b id="np">0</b> propiedades</div>
+  <div class="rows" id="lp"></div>
+</section>
 
-<div class="pane" id="p2">
-  <div class="row">
-    <select id="fagenda"><option value="hoy">Solo hoy</option><option value="semana">Toda la semana (7 días)</option></select>
-    <select id="fagregion"><option value="all">Todas las regiones</option><option>Santiago</option><option>Quinta Región</option></select>
+<section class="pane" id="p2">
+  <div class="bar">
+    <select id="fa"><option value="hoy">Hoy</option><option value="semana">7 días</option></select>
+    <select id="far"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
   </div>
-  <div id="listaag"></div>
-</div>
+  <div id="la"></div>
+</section>
 
-<div class="pane" id="p3">
-  <div class="dayhdr">Consulta rápida — respuesta instantánea</div>
-  <div class="ex">
-    <button data-d="0" data-n="1" data-p="0" data-k="0">Libre hoy</button>
-    <button data-d="1" data-n="1" data-p="0" data-k="0">Libre mañana</button>
-    <button data-d="0" data-n="2" data-p="4" data-k="0">4 personas, 2 noches</button>
-    <button data-d="0" data-n="2" data-p="4" data-k="1">4 pers. + estacionamiento</button>
-    <button data-d="0" data-n="3" data-p="6" data-k="0">6 personas, 3 noches</button>
-    <button data-d="0" data-n="7" data-p="8" data-k="0">8 personas, 1 semana</button>
+<section class="pane" id="p3">
+  <div class="q">
+    <button data-d="0" data-n="1" data-p="0" data-k="0">Hoy</button>
+    <button data-d="1" data-n="1" data-p="0" data-k="0">Mañana</button>
+    <button data-d="0" data-n="2" data-p="4" data-k="0">4p · 2n</button>
+    <button data-d="0" data-n="2" data-p="4" data-k="1">4p · 2n · P</button>
+    <button data-d="0" data-n="3" data-p="6" data-k="0">6p · 3n</button>
+    <button data-d="0" data-n="7" data-p="8" data-k="0">8p · 7n</button>
   </div>
-  <div class="row">
-    <input type="date" id="qdesde"><input type="date" id="qhasta">
-    <input type="number" id="qpax" placeholder="N° personas" min="1">
-    <select id="qregion"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
-    <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;flex:0 0 auto"><input type="checkbox" id="qpark" style="width:auto"> 🅿️ estac.</label>
-    <button id="qgo" class="tab active" style="flex:0 0 auto">Buscar</button>
+  <div class="bar">
+    <input type="date" id="qd"><input type="date" id="qh">
+    <input type="number" id="qx" placeholder="pax" min="1" style="max-width:88px">
+    <select id="qg"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select>
+    <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;font-weight:700"><input type="checkbox" id="qk" style="min-height:0;width:auto"> P</label>
+    <button class="go" id="go">Buscar</button>
   </div>
-  <div id="qres" class="res"></div>
-  <div class="dayhdr" style="margin-top:22px">Calendario de ocupación (45 días)</div>
-  <div class="row"><select id="fcalregion" style="max-width:220px"><option value="all">Todas las regiones</option><option>Santiago</option><option>Quinta Región</option></select></div>
-  <div class="leg"><span><i style="background:#e8f5e9"></i>Libre</span><span><i style="background:#ef5350"></i>Ocupado</span></div>
-  <div class="cal"><div id="calgrid"></div></div>
+  <div id="qr"></div>
+  <div class="day" style="margin-top:24px">Ocupación<span>45 días</span></div>
+  <div class="bar"><select id="fcr"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select></div>
+  <div class="leg"><span><i style="background:#E9E0CE"></i>libre</span><span><i style="background:#9B3A2E"></i>ocupado</span></div>
+  <div class="cal"><div id="cg"></div></div>
+</section>
+
+<section class="pane" id="p4">
+  <div class="bar"><select id="fir"><option value="all">Todas</option><option>Santiago</option><option>Quinta Región</option></select></div>
+  <table><thead><tr><th></th><th data-k="nombre">Propiedad</th><th data-k="rating">★</th><th data-k="nresenas">Reseñas</th>
+    <th data-k="cap">Pax</th><th data-k="ocup_pct">Ocupación</th><th data-k="limpieza">Limpieza</th></tr></thead>
+    <tbody id="tb"></tbody></table>
+</section>
+
+<section class="pane" id="p5">
+  <div class="cats"><button data-c="all" aria-pressed="true">Todas <span style="opacity:.6">{len(D['incidencias'])}</span></button>{catbtn}</div>
+  <div id="li"></div>
+</section>
 </div>
 
-<div class="pane" id="p4">
-  <div class="row"><select id="finsregion" style="max-width:220px"><option value="all">Todas las regiones</option><option>Santiago</option><option>Quinta Región</option></select></div>
-  <div class="muted" style="margin-bottom:8px">Clic en los títulos para ordenar</div>
-  <table><thead><tr>
-    <th>#</th><th data-k="nombre">Propiedad</th><th data-k="rating">Rating</th><th data-k="nresenas">Reseñas</th>
-    <th data-k="cap">Cap.</th><th data-k="ocup_pct">Ocupación</th><th data-k="limpieza">Limpieza</th>
-  </tr></thead><tbody id="tbody"></tbody></table>
-</div>
-
-<div class="pane" id="p5">
-  <div class="row"><select id="fcat" style="max-width:260px">
-    <option value="all">Todas las categorías</option>
-    <option value="insumos">🧺 Insumos</option>
-    <option value="higiene">🧼 Problemas higiénicos</option>
-    <option value="tecnico">🔧 Problemas técnicos</option>
-    <option value="acceso">🔑 Acceso / indicaciones</option>
-  </select></div>
-  <div id="incres" style="margin-bottom:10px"></div>
-  <div id="listainc"></div>
-</div>
-
-<footer>APTO · centro de control — se actualiza solo cada día · datos precalculados para respuesta inmediata</footer>
+<footer>Actualizado {D['generado']} · datos precalculados</footer>
 <script>window.__D__={json.dumps(D, ensure_ascii=False, separators=(',',':'))};</script>
 <script>{JS}</script>
 </body></html>"""

@@ -82,6 +82,42 @@ for k, b in prop.items():
         "url": f"https://www.airbnb.cl/rooms/{lid}",
     })
 props.sort(key=lambda p: p["nombre"])
+
+# --- direcciones estructuradas (calle / N° / depto / comuna) ---
+# Se generan una vez con el parser y viven en direcciones.json; si falta, se cae a heurística.
+DIRF = os.path.join(HERE, "direcciones.json")
+DIRMAP = {}
+if os.path.exists(DIRF):
+    for d in json.load(open(DIRF, encoding="utf-8")):
+        DIRMAP[str(d.get("id"))] = d
+
+def _heur(p):
+    """Extrae calle/número de una dirección sucia cuando no hay parser."""
+    d = p["direccion"] or ""
+    d = re.split(r'\s+[—–-]\s+|\.\s|\(', d)[0]          # corta en el primer separador/paréntesis
+    d = re.sub(r'^(CASA PROPIA de APTO|VALPARA[ÍI]SO|ESPEJO de \d+)\s*[—–-]?\s*', '', d, flags=re.I)
+    m = re.search(r'^(.*?)[,\s]+(\d{2,5}[A-Za-z]?)\b', d.strip())
+    if m: return m.group(1).strip(" ,"), m.group(2)
+    return d.strip(" ,")[:40], ""
+
+for p in props:
+    d = DIRMAP.get(p["id"])
+    if d:
+        p["calle"], p["numero"] = d.get("calle", ""), d.get("numero", "")
+        p["depto"] = d.get("depto", "") or p.get("depto", "")
+        p["comuna"] = d.get("comuna", "") or p.get("comuna", "")
+        if d.get("ciudad"): p["region"] = "Quinta Región" if "valpara" in norm(d["ciudad"]) else "Santiago"
+    else:
+        p["calle"], p["numero"] = _heur(p)
+
+def dir_txt(p):
+    a = []
+    c = " ".join(x for x in [p.get("calle"), p.get("numero")] if x)
+    if c: a.append(c)
+    if p.get("depto"): a.append("depto " + str(p["depto"]))
+    if p.get("comuna"): a.append(p["comuna"])
+    return ", ".join(a)
+
 by_norm_title = {}
 for p in props:
     if p["titulo"]: by_norm_title.setdefault(norm(p["titulo"]), p)
@@ -116,7 +152,7 @@ def match_prop(anuncio):
                 reg = "Quinta Región" if any(k in kw for k in ["vina", "valpara", "cerro", "puerta", "red door", "sucre", "vista al mar"]) else "Santiago"
                 _extra[nombre] = {"id": "ext-" + norm(nombre).replace(" ", "-"), "nombre": nombre, "titulo": anuncio,
                     "interno": nombre, "dueno": "", "responsable": "", "tipo": "hab/otro", "comuna": "",
-                    "region": reg, "direccion": "", "depto": "", "cap": 0, "camas": "",
+                    "region": reg, "direccion": "", "calle": nombre, "numero": "", "depto": "", "cap": 0, "camas": "",
                     "park": {"tiene": "parking" in na or "estacionamiento" in na, "detalle": "", "num": None},
                     "acceso": {"edificio": "", "depto": "", "entrada": "", "estacionamiento": ""},
                     "wifi": {"red": "", "clave": ""}, "limpieza": None, "comision": "", "iva": "",
@@ -137,7 +173,7 @@ for r in recs:
     res.append({"cod": r.get("codigo"), "huesped": abrev(r.get("huesped")), "anuncio": r.get("anuncio") or "",
                 "pid": p["id"] if p else None, "pnombre": p["nombre"] if p else (r.get("anuncio") or "?"),
                 "region": p["region"] if p else "Santiago",
-                "direccion": p["direccion"] if p else "", "comuna": p["comuna"] if p else "",
+                "dir": dir_txt(p) if p else "", "comuna": p["comuna"] if p else "",
                 "entrada": ent, "salida": sal, "pax": r.get("adultos"),
                 "hin": r.get("hora_llegada") or "15:00",
                 "hout": r.get("hora_salida") or ("11:00" if "casa" in norm(r.get("anuncio")) else "12:00"),
@@ -182,6 +218,11 @@ for p in props:
 # ---------- incidencias (de las conversaciones ya leídas) ----------
 INC_FILE = os.path.join(HERE, "incidencias.json")
 incidencias = json.load(open(INC_FILE, encoding="utf-8")) if os.path.exists(INC_FILE) else []
+
+# adelgazar payload: fuera los campos largos que la vista ya no muestra (uso interno, sin contexto de más)
+DROP = ("titulo", "direccion", "notas", "salud", "iva", "comision", "toallas_c", "toallas_m")
+for p in props:
+    for k in DROP: p.pop(k, None)
 
 data = {
     "generado": HOY.isoformat(),
