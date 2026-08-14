@@ -3,11 +3,12 @@
 # página responda consultas AL INSTANTE (sin scrapear ni consultar en el momento).
 import json, os, sys, re, unicodedata
 from datetime import date, timedelta
+from fecha_chile import hoy_chile
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE = r"C:\Users\Cami\Desktop\CLAUDE\APTO\Operacional\Cerebro_Turismo\Agente_Guest_Ops\scripts"
 HERE = os.path.dirname(os.path.abspath(__file__))
-HOY = date.today()
+HOY = hoy_chile()
 DIAS_VENTANA = 120  # calendario precomputado
 
 def norm(s):

@@ -1,4 +1,5 @@
 import json, os, sys, re, unicodedata
+from fecha_chile import hoy_chile
 from datetime import date
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 BASE = r"C:\Users\Cami\Desktop\CLAUDE\APTO\Operacional\Cerebro_Turismo\Agente_Guest_Ops\scripts"
@@ -7,7 +8,7 @@ os.makedirs(OUTDIR, exist_ok=True)
 
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
-hoy = date.today()
+hoy = hoy_chile()
 HOY = hoy.isoformat()
 HOY_TXT = f"{DIAS[hoy.weekday()]} {hoy.day} de {MESES[hoy.month-1]} de {hoy.year}"
 

@@ -3,6 +3,7 @@
 # Interno: sin texto explicativo, todo escaneable. Datos precalculados desde datos.json.
 import json, os, sys
 from datetime import date
+from fecha_chile import hoy_chile
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "datos.json"), encoding="utf-8"))
