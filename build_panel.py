@@ -292,12 +292,18 @@ function propDe(i){
   return D.props.find(p=>[ok(p.calle),ok(p.nombre),ok(p.interno)]
     .some(k=>k&&String(k).length>3&&pi.includes(nrm(k))))||null;
 }
-// Reserva a la que apunta la incidencia: la propia si trae código, si no la que está alojada HOY.
+/* QUIÉN REPORTÓ vs QUIÉN ESTÁ AHORA — son cosas distintas y no deben mezclarse.
+   Antes, si la incidencia no traía código, se le asignaba la reserva alojada hoy: eso
+   atribuía un problema de un huésped ANTERIOR al huésped ACTUAL (y ofrecía escribirle).
+   Ahora: solo se identifica al reportante cuando la incidencia trae su código. */
 function reservaDe(i){
-  if(i.cod&&D.res_ix[i.cod])return {cod:i.cod,...D.res_ix[i.cod],actual:false};
+  return (i.cod && D.res_ix[i.cod]) ? {cod:i.cod, ...D.res_ix[i.cod]} : null;
+}
+// Contexto de propiedad (NO es quien reportó): quién ocupa la propiedad hoy.
+function ocupanteHoy(i){
   const p=propDe(i); if(!p)return null;
   const c=D.estadia[p.id];
-  return c&&D.res_ix[c]?{cod:c,...D.res_ix[c],actual:true}:null;
+  return c&&D.res_ix[c]?{cod:c,...D.res_ix[c]}:null;
 }
 const dmy=f=>{const d=new Date(f+'T12:00:00');
   return d.getDate()+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][d.getMonth()]};
@@ -310,17 +316,29 @@ function casuistica(i){
   if(r.s<=hoy)             return {k:'ido', r};       // ya se fue → no se contacta
   return {k:'futuro', r};
 }
-// "ya se fue" => sin botón de contacto (no se molesta a alguien que ya no está)
+/* Contacto SOLO al que reportó. "Ya se fue" => sin botón (no se molesta a quien ya no está).
+   Si no se sabe quién reportó, no se inventa: se muestra solo quién ocupa hoy, como contexto. */
 function contactoHTML(i,sinContacto){
-  const r=reservaDe(i); if(!r)return '';
+  const r=reservaDe(i);
+  if(!r){
+    const o=ocupanteHoy(i);
+    if(!o)return '';
+    return `<div class="ctc"><span class="tg" style="color:var(--vino)">no se sabe quién lo reportó</span>
+      <span class="tg">ocupa hoy: ${esc(o.h)} hasta ${dmy(o.s)}</span>
+      <a class="lk" href="${resLink(o.cod)}" target="_blank" rel="noopener">Ver reserva actual ↗</a></div>`;
+  }
+  const hoy=D.ventana.desde, seFue=r.s<=hoy;
   const t=D.tel[r.cod]||'', wa=waLink(t);
-  const cual=r.s<=D.ventana.desde?'estuvo':(r.actual?'alojado':'reserva');
-  const bits=[`<span class="tg">${cual} ${dmy(r.e)} → ${dmy(r.s)}</span>`];
-  if(r.h)bits.unshift(`<span class="tg" style="color:var(--tinta)">${esc(r.h)}</span>`);
+  const cual=seFue?'estuvo':(r.e<=hoy&&r.s>hoy?'alojado':'reserva');
+  const bits=[`<span class="tg" style="color:var(--tinta)">${esc(r.h)}</span>`,
+              `<span class="tg">${cual} ${dmy(r.e)} → ${dmy(r.s)}</span>`];
   const links=[];
-  if(wa&&!sinContacto)links.push(`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">Contactar</a>`);
+  if(wa&&!sinContacto&&!seFue)links.push(`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">Contactar</a>`);
   links.push(`<a class="lk" href="${resLink(r.cod)}" target="_blank" rel="noopener">Reserva ${esc(r.cod)} ↗</a>`);
-  return `<div class="ctc">${bits.join(' ')} ${links.join(' ')}</div>`;
+  // si el que reportó ya se fue pero hay otro adentro, avisarlo: el problema puede seguir vivo
+  const o=seFue?ocupanteHoy(i):null;
+  const extra=o?`<span class="tg" style="color:var(--vino)">ahora ocupa ${esc(o.h)} hasta ${dmy(o.s)}</span>`:'';
+  return `<div class="ctc">${bits.join(' ')} ${extra} ${links.join(' ')}</div>`;
 }
 const txtProp=p=>[p.nombre,p.calle,p.numero,p.depto,p.comuna,p.interno,p.dueno,p.responsable,p.tipo].join(' ');
 const txtMov =a=>[a.dir,a.pnombre,a.huesped,a.comuna,a.cod].join(' ');
