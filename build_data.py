@@ -265,7 +265,28 @@ if PUBLICO:
             if v and RE_CLAVE.search(str(v)): p["acceso"][k] = sin_claves(v); n += 1
     print(f"  [seguridad] {n} claves de puerta/WiFi omitidas del panel público")
 
+# ---------- estadía actual por propiedad + índice de reservas (para las urgencias) ----------
+# Índice compacto por código: fechas, huésped, pax y propiedad. Lo usan las urgencias para
+# mostrar quién está alojado AHORA, desde cuándo y hasta cuándo, con link a la reserva.
+RES_IX = {}
+for r in res:
+    if r["cod"]:
+        RES_IX[r["cod"]] = {"e": r["entrada"], "s": r["salida"], "h": r["huesped"],
+                            "pax": r["pax"], "p": r["pnombre"], "pid": r["pid"]}
+
+estadia = {}      # pid -> reserva que está ocupando HOY
+hoy_s = HOY.isoformat()
+for p in props:
+    o = ocup.get(p["id"], {}).get(hoy_s)
+    if o and o.get("cod"): estadia[p["id"]] = o["cod"]
+
+# teléfonos de huéspedes (se scrapean aparte a telefonos.json: {codigo: "+56..."} )
+TELF = os.path.join(HERE, "telefonos.json")
+tel = json.load(open(TELF, encoding="utf-8")) if os.path.exists(TELF) else {}
+print(f"  estadías en curso: {len(estadia)} | teléfonos conocidos: {len(tel)}")
+
 data = {
+    "res_ix": RES_IX, "estadia": estadia, "tel": tel,
     "generado": HOY.isoformat(),
     "ventana": {"desde": ventana[0], "hasta": ventana[-1], "dias": DIAS_VENTANA},
     "props": props, "reservas": res, "ocup": ocup, "agenda": agenda,

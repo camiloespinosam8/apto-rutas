@@ -101,6 +101,11 @@ td:first-child{color:var(--mute);width:26px}
 .cats button{font:inherit;font-size:.82rem;font-weight:700;background:transparent;border:1px solid var(--linea);
   color:var(--mute);border-radius:99px;padding:6px 12px;cursor:pointer}
 .cats button[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.ctc{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.lk{font-size:.76rem;font-weight:800;color:var(--vino);text-decoration:none;
+  border:1px solid var(--linea);border-radius:99px;padding:3px 10px;background:var(--papel)}
+.lk:hover{background:var(--vino);color:var(--papel);border-color:var(--vino)}
+.lk.wa{color:var(--exito)} .lk.wa:hover{background:var(--exito);color:var(--papel);border-color:var(--exito)}
 .none{color:var(--mute);padding:22px 2px;font-size:.88rem}
 footer{color:var(--mute);font-size:.72rem;padding:22px 16px 0;font-variant-numeric:tabular-nums}
 /* ---- HOME ---- */
@@ -149,34 +154,137 @@ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
   b.setAttribute('aria-selected','true'); $('#p'+b.dataset.t).classList.add('on');
 });
 
-/* ============ MOTOR DE CONSULTA (precomputado, responde al instante) ============ */
-const MES={ene:1,feb:2,mar:3,abr:4,may:5,jun:6,jul:7,ago:8,sep:9,set:9,oct:10,nov:11,dic:12};
+/* ============ MOTOR DE CONSULTA · precomputado, responde al instante ============
+   Entiende: fechas sueltas y rangos en español, nº de personas, estacionamiento,
+   región/comuna, tipo, códigos de reserva, nombres, e INTENCIÓN de la pregunta.      */
+const MES={ene:1,enero:1,feb:2,febrero:2,mar:3,marzo:3,abr:4,abril:4,may:5,mayo:5,
+  jun:6,junio:6,jul:7,julio:7,ago:8,agosto:8,sep:9,sept:9,set:9,septiembre:9,
+  oct:10,octubre:10,nov:11,noviembre:11,dic:12,diciembre:12};
 const iso=d=>d.toISOString().slice(0,10);
 function base(){return new Date(D.ventana.desde+'T12:00:00')}
-function parseFecha(q){
-  const s=nrm(q);
-  if(/\bhoy\b/.test(s))return D.ventana.desde;
-  if(/\bmanana\b/.test(s)){const d=base();d.setDate(d.getDate()+1);return iso(d)}
-  let m=s.match(/(\d{4})-(\d{2})-(\d{2})/); if(m)return m[0];
-  m=s.match(/\b(\d{1,2})[\/-](\d{1,2})\b/);                       // 20/8
-  if(m){const d=base();d.setMonth(+m[2]-1,+m[1]);return iso(d)}
-  m=s.match(/\b(\d{1,2})\s*(?:de\s*)?([a-z]{3})/);                // 20 ago
-  if(m&&MES[m[2]]){const d=base();d.setMonth(MES[m[2]]-1,+m[1]);return iso(d)}
+const masDias=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+function armar(dia,mes){const d=base();if(mes)d.setMonth(mes-1,dia);else d.setDate(dia);
+  if(d<base())d.setFullYear(d.getFullYear()+(mes?1:0));return d}
+
+/* ---- rango de fechas: devuelve {desde,hasta,noches} o null ---- */
+function parseRango(s){
+  const M='(ene|enero|feb|febrero|mar|marzo|abr|abril|may|mayo|jun|junio|jul|julio|ago|agosto|sep|sept|set|septiembre|oct|octubre|nov|noviembre|dic|diciembre)';
+  let m;
+  // "del 20 al 25 de agosto" | "20 al 25 ago" | "20-25 ago"
+  m=s.match(new RegExp('\\b(\\d{1,2})\\s*(?:al|a|-|hasta)\\s*(\\d{1,2})\\s*(?:de\\s*)?'+M));
+  if(m){const mm=MES[m[3]];return rango(armar(+m[1],mm),armar(+m[2],mm))}
+  // "20/8 al 25/8"
+  m=s.match(/\b(\d{1,2})[\/-](\d{1,2})\s*(?:al|a|-|hasta)\s*(\d{1,2})[\/-](\d{1,2})\b/);
+  if(m)return rango(armar(+m[1],+m[2]),armar(+m[3],+m[4]));
+  // "3 noches desde el 20 (de ago)"
+  m=s.match(new RegExp('(\\d{1,2})\\s*noches?.*?\\b(\\d{1,2})\\s*(?:de\\s*)?'+M+'?'));
+  if(m){const d0=armar(+m[2],MES[m[3]]);return rango(d0,masDias(d0,+m[1]))}
+  // relativas
+  if(/\beste (finde|fin de semana)\b|\bfinde\b/.test(s)){
+    const d=base(),dow=d.getDay(),sab=masDias(d,(6-dow+7)%7);return rango(sab,masDias(sab,2));}
+  if(/\bproxima semana\b|\bsemana que viene\b/.test(s)){
+    const d=base(),lun=masDias(d,((8-d.getDay())%7)||7);return rango(lun,masDias(lun,7));}
+  if(/\besta semana\b/.test(s))return rango(base(),masDias(base(),7));
+  if(/\beste mes\b/.test(s))return rango(base(),masDias(base(),30));
+  const f=parseFecha(s); if(f){const d=new Date(f+'T12:00:00');return rango(d,masDias(d,1))}
   return null;
 }
-function parsePax(q){const m=nrm(q).match(/(\d{1,2})\s*(?:p\b|pax|persona)/);return m?+m[1]:0}
-function pidePark(q){return /\bpark|estacion|auto\b/.test(nrm(q))}
-function libres(de,ha,pax,reg,pk){
+function rango(a,b){if(b<=a)b=masDias(a,1);
+  return {desde:iso(a),hasta:iso(b),noches:Math.round((b-a)/864e5)}}
+function parseFecha(s){
+  if(/\bhoy\b/.test(s))return D.ventana.desde;
+  if(/\bmanana\b/.test(s))return iso(masDias(base(),1));
+  if(/\bpasado manana\b/.test(s))return iso(masDias(base(),2));
+  let m=s.match(/(\d{4})-(\d{2})-(\d{2})/); if(m)return m[0];
+  m=s.match(/\b(\d{1,2})[\/-](\d{1,2})\b/);            if(m)return iso(armar(+m[1],+m[2]));
+  m=s.match(/\b(\d{1,2})\s*(?:de\s*)?([a-z]{3,10})\b/);
+  if(m&&MES[m[2]])return iso(armar(+m[1],MES[m[2]]));
+  return null;
+}
+function parsePax(s){
+  let m=s.match(/(\d{1,2})\s*(?:p\b|pax|persona|huesped|adulto|pasajero)/); if(m)return +m[1];
+  m=s.match(/\bpara\s+(\d{1,2})\b/);      if(m)return +m[1];
+  m=s.match(/\bgrupo de\s+(\d{1,2})\b/);  if(m)return +m[1];
+  return 0;
+}
+const pidePark=s=>/\bpark\w*|\bestacion\w*|\bauto\b|\bautos\b|\bcochera\b/.test(s);
+function pideRegion(s){
+  if(/\bvalpo\b|\bvalparaiso\b|\bvina\b|\bconcon\b|\bquinta\b|\bcosta\b/.test(s))return 'Quinta Región';
+  if(/\bsantiago\b|\bstgo\b|\brm\b/.test(s))return 'Santiago';
+  return 'all';
+}
+function pideComuna(s){
+  for(const c of ['nunoa','providencia','las condes','santiago centro','valparaiso','vina del mar','concon'])
+    if(s.includes(c))return c;
+  return '';
+}
+function pideTipo(s){
+  if(/\bcasas?\b/.test(s))return 'casa';
+  if(/\bstudios?\b/.test(s))return 'studio';
+  if(/\b(\dd)\b/.test(s))return s.match(/\b(\dd)\b/)[1].toUpperCase();
+  if(/\bdeptos?\b|\bdepartamentos?\b|\bapart\w*/.test(s))return 'depto';
+  return '';
+}
+/* ---- intención: qué está preguntando ---- */
+function intencion(s){
+  if(/\blibre\b|\bdisponib\w*|\bqueda algo\b|\bhay algo\b|\btengo algo\b|\bofrecer\b|\bvac[ií]o\b/.test(s))return 'disp';
+  if(/\bllega\b|\bllegan\b|\bentra\b|\bsale\b|\bsalen\b|\bcheck ?in\b|\bcheck ?out\b|\bmovimiento\b|\bquien\b/.test(s))return 'mov';
+  if(/\bproblema\w*|\bfalla\w*|\breclamo\b|\burgent\w*|\bincidencia\w*|\bqueja\w*|\bsin \w+/.test(s))return 'inc';
+  if(/\bclave\b|\bcodigo\b|\bwifi\b|\bdireccion\b|\bdonde\b|\bacceso\b|\bllave\b/.test(s))return 'prop';
+  return '';
+}
+const RE_COD=/\bhm[a-z0-9]{8}\b/i;
+function parseQuery(q){
+  const s=nrm(q);
+  return {q, s, rango:parseRango(s), pax:parsePax(s), park:pidePark(s),
+    region:pideRegion(s), comuna:pideComuna(s), tipo:pideTipo(s),
+    intent:intencion(s), cod:(s.match(RE_COD)||[''])[0].toUpperCase()};
+}
+function libres(de,ha,pax,reg,pk,com,tipo){
   const out=[],d0=new Date(de+'T12:00:00'),d1=new Date(ha+'T12:00:00');
   D.props.forEach(p=>{
     if(reg&&reg!=='all'&&p.region!==reg)return;
     if(pax&&(!p.cap||p.cap<pax))return;
     if(pk&&!(p.park&&p.park.tiene))return;
+    if(com&&!nrm(p.comuna).includes(com))return;
+    if(tipo){const t=nrm(p.tipo);
+      if(tipo==='casa'&&!t.includes('casa'))return;
+      if(tipo==='depto'&&(t.includes('casa')||!t))return;
+      if(tipo==='studio'&&!t.includes('studio'))return;
+      if(/^\dD$/.test(tipo)&&t!==nrm(tipo))return;}
     let libre=true;const d=new Date(d0);
     while(d<d1){if((D.ocup[p.id]||{})[iso(d)]){libre=false;break}d.setDate(d.getDate()+1)}
     if(libre)out.push(p);
   });
   return out;
+}
+/* ---- contacto y contexto de una urgencia ---- */
+const soloNum=t=>String(t||'').replace(/\D/g,'');
+function waLink(t){const n=soloNum(t);return n.length>=8?'https://wa.me/'+n:''}
+const resLink=c=>c?('https://www.airbnb.cl/hosting/reservations/details/'+c):'';
+function propDe(i){
+  const pi=nrm(i.prop); if(!pi)return null;
+  return D.props.find(p=>[ok(p.calle),ok(p.nombre),ok(p.interno)]
+    .some(k=>k&&String(k).length>3&&pi.includes(nrm(k))))||null;
+}
+// Reserva a la que apunta la incidencia: la propia si trae código, si no la que está alojada HOY.
+function reservaDe(i){
+  if(i.cod&&D.res_ix[i.cod])return {cod:i.cod,...D.res_ix[i.cod],actual:false};
+  const p=propDe(i); if(!p)return null;
+  const c=D.estadia[p.id];
+  return c&&D.res_ix[c]?{cod:c,...D.res_ix[c],actual:true}:null;
+}
+const dmy=f=>{const d=new Date(f+'T12:00:00');
+  return d.getDate()+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][d.getMonth()]};
+function contactoHTML(i){
+  const r=reservaDe(i); if(!r)return '';
+  const t=D.tel[r.cod]||'', wa=waLink(t);
+  const bits=[`<span class="tg">${r.actual?'alojado':'reserva'} ${dmy(r.e)} → ${dmy(r.s)}</span>`];
+  if(r.h)bits.unshift(`<span class="tg" style="color:var(--tinta)">${esc(r.h)}</span>`);
+  const links=[];
+  if(wa)links.push(`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">WhatsApp</a>`);
+  links.push(`<a class="lk" href="${resLink(r.cod)}" target="_blank" rel="noopener">Reserva ${esc(r.cod)} ↗</a>`);
+  return `<div class="ctc">${bits.join(' ')} ${links.join(' ')}</div>`;
 }
 const txtProp=p=>[p.nombre,p.calle,p.numero,p.depto,p.comuna,p.interno,p.dueno,p.responsable,p.tipo].join(' ');
 const txtMov =a=>[a.dir,a.pnombre,a.huesped,a.comuna,a.cod].join(' ');
@@ -227,6 +335,22 @@ function urgentesHoy(n){
   return cand.slice(0,n);
 }
 
+/* ---- fila de incidencia (compartida por HOME, buscador y pestaña) ---- */
+const CATN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso',otros:'Otros'};
+function filaInc(i,compacto){
+  const c=carencia(i), et=c?c.txt:(CATN[i.cat]||i.cat);
+  return `<div class="r">
+    <div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.72rem;font-weight:800;min-width:96px;line-height:1.2">${esc(et)}</div>
+    <div class="m"><div class="n">${esc(i.titulo)}</div>
+      <div class="d">${esc(i.prop)}${i.huesped?' · '+esc(i.huesped):''}${compacto?'':' · '+esc(i.fecha)}</div>
+      ${i.cita?`<div class="d" style="font-style:italic">«${esc(i.cita)}»</div>`:''}
+      ${contactoHTML(i)}
+      ${compacto?'':`<div class="acc"><b>→</b> ${esc(i.accion)}</div>`}</div>
+    <div class="tags">${i._hoy?'<span class="tg" style="color:var(--vino)">huésped hoy</span>':''}
+      <span class="sev ${i.sev}">${esc(i.sev)}</span>
+      ${compacto?'':`<span class="tg" style="color:${i.estado==='resuelto'?'var(--exito)':'var(--vino)'}">${esc(i.estado)}</span>`}</div></div>`;
+}
+
 /* ============ HOME ============ */
 function pintarHome(){
   const hoy=D.ventana.desde;
@@ -241,56 +365,75 @@ function pintarHome(){
      <div class="pz l"><b>${libHoy}</b><span>libres hoy</span></div>
      <div class="pz"><b>${abiertas}</b><span>sin resolver</span></div>`;
   const urg=urgentesHoy(6);
-  $('#urg').innerHTML=urg.length?'<div class="rows">'+urg.map(i=>`<div class="r">
-      <div class="t out" style="font-size:.72rem;font-weight:800;min-width:96px;line-height:1.2">${esc(i._c||i.cat)}</div>
-      <div class="m"><div class="n">${esc(i.titulo)}</div>
-        <div class="d">${esc(i.prop)}${i.cod?' · '+esc(i.cod):''}</div>
-        ${i.cita?`<div class="d" style="font-style:italic">«${esc(i.cita)}»</div>`:''}</div>
-      <div class="tags">${i._hoy?'<span class="tg" style="color:var(--vino)">huésped hoy</span>':''}
-        <span class="sev ${i.sev}">${esc(i.sev)}</span></div></div>`).join('')+'</div>'
+  $('#urg').innerHTML=urg.length?'<div class="rows">'+urg.map(i=>filaInc(i,false)).join('')+'</div>'
     :'<div class="none">Nada urgente abierto</div>';
+}
+// palabras que ya consumió el parser: no sirven para buscar por texto
+const RUIDO=/\b(libre|libres|disponible|disponibles|hay|algo|queda|tengo|para|con|sin|el|la|los|las|de|del|al|un|una|que|casa|casas|depto|deptos|departamento|persona|personas|pax|noche|noches|hoy|manana|finde|semana|mes|estacionamiento|parking|auto|autos|quien|llega|llegan|sale|salen|entra|check|in|out|problema|problemas|urgente|urgentes)\b/g;
+function textoLibre(Q){
+  return Q.s.replace(RE_COD,' ').replace(/\d{1,4}([\/-]\d{1,4})?/g,' ')
+    .replace(RUIDO,' ').replace(/\s+/g,' ').trim();
+}
+function bloque(t,tab,html,vacio){
+  return `<div class="gsec">${t} <button class="jump" onclick="irA(${tab})">ver →</button></div>`+
+    (html||`<div class="none">${vacio}</div>`);
 }
 function buscarGlobal(){
   const q=$('#hq').value.trim();
   if(!q){$('#hres').innerHTML='';$('#home-def').style.display='';return}
   $('#home-def').style.display='none';
-  const n=nrm(q), f=parseFecha(q), pax=parsePax(q), pk=pidePark(q);
-  let h='';
-  // 1) disponibilidad si la consulta trae fecha o pax
-  if(f||pax){
-    const de=f||D.ventana.desde;
-    const d1=new Date(de+'T12:00:00');d1.setDate(d1.getDate()+1);
-    const L=libres(de,iso(d1),pax,'all',pk);
-    h+=`<div class="gsec">Disponible ${esc(de)}${pax?' · '+pax+'p':''}${pk?' · con P':''} <button class="jump" onclick="irA(3)">ver calendario →</button></div>`;
-    h+=L.length?'<div class="rows">'+L.slice(0,12).map(p=>`<div class="r"><div class="m">
+  const Q=parseQuery(q), libre=textoLibre(Q);
+  const sec=[];
+
+  // 0) código de reserva → ficha directa
+  if(Q.cod&&D.res_ix[Q.cod]){
+    const r=D.res_ix[Q.cod], t=D.tel[Q.cod]||'', wa=waLink(t);
+    sec.push({o:0,h:bloque(`Reserva ${esc(Q.cod)}`,2,`<div class="rows"><div class="r"><div class="m">
+      <div class="n">${esc(r.p)}</div><div class="d">${esc(r.h)} · ${dmy(r.e)} → ${dmy(r.s)}${r.pax?' · '+r.pax+'p':''}</div>
+      <div class="ctc">${wa?`<a class="lk wa" href="${wa}" target="_blank" rel="noopener">WhatsApp</a> `:''}
+        <a class="lk" href="${resLink(Q.cod)}" target="_blank" rel="noopener">Abrir en Airbnb ↗</a></div>
+      </div></div></div>`,'')});
+  }
+  // 1) disponibilidad — si hay fecha, pax, parking, tipo o intención explícita
+  if(Q.rango||Q.pax||Q.park||Q.tipo||Q.intent==='disp'){
+    const R=Q.rango||{desde:D.ventana.desde,hasta:iso(masDias(base(),1)),noches:1};
+    const L=libres(R.desde,R.hasta,Q.pax,Q.region,Q.park,Q.comuna,Q.tipo);
+    const et=[`${dmy(R.desde)} → ${dmy(R.hasta)}`,`${R.noches}n`];
+    if(Q.pax)et.push(Q.pax+'p'); if(Q.park)et.push('con P');
+    if(Q.tipo)et.push(Q.tipo); if(Q.region!=='all')et.push(Q.region);
+    sec.push({o:Q.intent==='disp'?0:1,h:bloque(`${L.length} libres · ${et.join(' · ')}`,3,
+      L.length?'<div class="rows">'+L.slice(0,14).map(p=>`<div class="r"><div class="m">
         <div class="n">${esc(p.nombre)}</div><div class="d">${esc(dir(p))}</div></div>
-        <div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>'
-      :'<div class="none">Nada libre con esos filtros</div>';
+        <div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>':'','Nada libre con esos filtros')});
   }
   // 2) propiedades
-  const P=D.props.filter(p=>nrm(txtProp(p)).includes(n)).slice(0,8);
-  if(P.length){
-    h+=`<div class="gsec">Propiedades <button class="jump" onclick="irA(1)">ver todas →</button></div><div class="rows">`;
-    h+=P.map(p=>`<div class="r"><div class="m"><div class="n">${esc(p.nombre)}</div>
-      <div class="d">${esc(dir(p))}</div></div><div class="tags">${tagsProp(p)}</div></div>`).join('')+'</div>';
+  if(libre||Q.intent==='prop'){
+    const P=D.props.filter(p=>!libre||nrm(txtProp(p)).includes(libre)).slice(0,8);
+    if(P.length)sec.push({o:Q.intent==='prop'?0:2,h:bloque('Propiedades',1,
+      '<div class="rows">'+P.map(p=>rowProp(p)).join('')+'</div>','')});
   }
   // 3) movimientos
-  const M=D.agenda.filter(a=>nrm(txtMov(a)).includes(n)).slice(0,8);
-  if(M.length){
-    h+=`<div class="gsec">Movimientos <button class="jump" onclick="irA(2)">ver agenda →</button></div><div class="rows">`;
-    h+=M.map(a=>`<div class="r"><div class="t ${a.tipo}">${esc(a.hora)}</div><div class="m">
-      <div class="n">${esc(a.dir||a.pnombre)}</div>
-      <div class="d">${esc(a.fecha)} · ${a.tipo==='in'?'entra':'sale'} ${esc(a.huesped)}</div></div></div>`).join('')+'</div>';
+  {
+    let M=D.agenda.filter(a=>!libre||nrm(txtMov(a)).includes(libre));
+    if(Q.rango)M=M.filter(a=>a.fecha>=Q.rango.desde&&a.fecha<=Q.rango.hasta);
+    if(Q.region!=='all')M=M.filter(a=>a.region===Q.region);
+    if((libre||Q.intent==='mov')&&M.length)sec.push({o:Q.intent==='mov'?0:3,h:bloque('Movimientos',2,
+      '<div class="rows">'+M.slice(0,10).map(a=>`<div class="r"><div class="t ${a.tipo}">${esc(a.hora)}</div>
+      <div class="m"><div class="n">${esc(a.dir||a.pnombre)}</div>
+      <div class="d">${dmy(a.fecha)} · ${a.tipo==='in'?'entra':'sale'} ${esc(a.huesped)}${a.cod?' · '+esc(a.cod):''}</div>
+      ${a.cod?`<div class="ctc">${D.tel[a.cod]?`<a class="lk wa" href="${waLink(D.tel[a.cod])}" target="_blank" rel="noopener">WhatsApp</a> `:''}<a class="lk" href="${resLink(a.cod)}" target="_blank" rel="noopener">Reserva ↗</a></div>`:''}
+      </div></div>`).join('')+'</div>','')});
   }
   // 4) incidencias
-  const I=D.incidencias.filter(i=>nrm(txtInc(i)).includes(n)).slice(0,8);
-  if(I.length){
-    h+=`<div class="gsec">Incidencias <button class="jump" onclick="irA(5)">ver todas →</button></div><div class="rows">`;
-    h+=I.map(i=>`<div class="r"><div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.7rem;font-weight:800;min-width:56px">${esc(i.cat)}</div>
-      <div class="m"><div class="n">${esc(i.titulo)}</div><div class="d">${esc(i.prop)} · ${esc(i.estado)}</div></div>
-      <div class="tags"><span class="sev ${i.sev}">${esc(i.sev)}</span></div></div>`).join('')+'</div>';
+  {
+    const I=D.incidencias.filter(i=>(!libre||nrm(txtInc(i)).includes(libre))
+      &&(Q.intent!=='inc'||i.estado!=='resuelto')).slice(0,8);
+    if((libre||Q.intent==='inc')&&I.length)sec.push({o:Q.intent==='inc'?0:4,h:bloque('Incidencias',5,
+      '<div class="rows">'+I.map(i=>filaInc(i,true)).join('')+'</div>','')});
   }
-  $('#hres').innerHTML=h||'<div class="none">Sin resultados para «'+esc(q)+'»</div>';
+  sec.sort((a,b)=>a.o-b.o);
+  $('#hres').innerHTML=sec.length?sec.map(x=>x.h).join(''):
+    '<div class="none">Sin resultados para «'+esc(q)+'»</div>';
 }
 
 /* ============ 1 PROPIEDADES ============ */
@@ -391,14 +534,8 @@ function renderInc(){
     &&(!q||nrm(txtInc(i)).includes(q)));
   const nAb=D.incidencias.filter(i=>i.estado!=='resuelto').length;
   $('#ic').innerHTML=`<b>${rows.length}</b> de ${D.incidencias.length} · ${nAb} sin resolver`;
-  $('#li').innerHTML=rows.length?'<div class="rows">'+rows.map(i=>`<div class="r">
-    <div class="t ${i.sev==='alta'?'out':'in'}" style="font-size:.7rem;font-weight:800;min-width:56px">${CN[i.cat]||i.cat}</div>
-    <div class="m"><div class="n">${esc(i.titulo)}</div>
-      <div class="d">${esc(i.prop)}${i.huesped?' · '+esc(i.huesped):''} · ${esc(i.fecha)}</div>
-      ${i.cita?`<div class="d" style="font-style:italic">«${esc(i.cita)}»</div>`:''}
-      <div class="acc"><b>→</b> ${esc(i.accion)}</div></div>
-    <div class="tags"><span class="sev ${i.sev}">${esc(i.sev)}</span>
-      <span class="tg" style="color:${i.estado==='resuelto'?'var(--exito)':'var(--vino)'}">${esc(i.estado)}</span></div></div>`).join('')+'</div>'
+  $('#li').innerHTML=rows.length?'<div class="rows">'+rows.map(i=>{
+      const c=carencia(i);return filaInc({...i,_c:c?c.txt:null,_hoy:conHuespedHoy(i)},false)}).join('')+'</div>'
     :'<div class="none">Sin incidencias</div>';
 }
 $('#iab').onclick=e=>{soloAbiertas=!soloAbiertas;
