@@ -1,0 +1,29 @@
+Fecha: sábado 15 de agosto de 2026
+check-ins: 8 | check-outs: 8
+Regiones in: {'Quinta Región', 'Santiago'} | out: {'Santiago'}
+sin cambios, no se publica 
+---- 14-08-2026 19:00:12,51 ---- 
+Fuentes:
+  jul-11 (200 hilos): 39
+  ago-12 (plata):     2
+  lectura reciente : 10
+  barridos previos : 77
+  136 conversaciones: 43
+
+TOTAL: 167
+  por categoría: {'higiene': 16, 'tecnico': 60, 'otros': 25, 'insumos': 37, 'acceso': 29}
+  por estado:    {'abierto': 119, 'sin seguimiento': 14, 'resuelto': 34}
+  NO SOLUCIONADAS: 133 (80%)
+  estadías en curso: 17 | teléfonos conocidos: 23
+props 42 | reservas 381 | agenda(7d) 70 | incid 167
+ventana 2026-08-14 -> 2026-12-11 | datos.json 390 KB
+reservas sin match a propiedad: 7
+panel.html 423 KB -> C:\Users\Cami\Desktop\CLAUDE\APTO\Operacional\Cerebro_Turismo\panel_rutas\panel.html
+Fecha: viernes 14 de agosto de 2026
+check-ins: 12 | check-outs: 7
+Regiones in: {'Quinta Región', 'Santiago'} | out: {'Quinta Región', 'Santiago'}
+[main 149194e] auto: centro de control APTO
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+To https://github.com/camiloespinosam8/apto-rutas.git
+   c85c287..149194e  main -> main
+PUBLICADO 

@@ -1,9 +1,10 @@
 # build_data.py — Precomputa TODO el dataset del dashboard APTO (propiedades, agenda,
 # calendario/disponibilidad, insights e incidencias) y lo deja en datos.json para que la
 # página responda consultas AL INSTANTE (sin scrapear ni consultar en el momento).
-import json, os, sys, re, unicodedata
+import json, os, re, sys, unicodedata
 from datetime import date, timedelta
 from fecha_chile import hoy_chile
+import unidades as UN
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE = r"C:\Users\Cami\Desktop\CLAUDE\APTO\Operacional\Cerebro_Turismo\Agente_Guest_Ops\scripts"
@@ -147,42 +148,50 @@ by_norm_interno = {}
 for p in props:
     if p["interno"]: by_norm_interno.setdefault(norm(p["interno"]), p)
 
-# Alias: anuncios cuyo título no calza con la biblia -> nombre interno de la propiedad.
-ALIAS = [("puertaroja", "Puerta Roja"), ("puerta roja", "Puerta Roja"), ("red door", "Puerta Roja"),
-         ("cerro concepcion", "Cerro Concepción"), ("plaza vina", "Viña Plaza"), ("plaza sucre", "Viña Plaza"),
-         ("vista al mar", "Depacaro"), ("metro nunoa", "Studio Ñuñoa"), ("los heroes", "Los Héroes"),
-         ("plaza de armas", "Plaza de Armas"), ("barrio italia", "Barrio Italia"),
-         ("valparaiso", "Valparaíso (habitaciones)"), ("2 dor para 5", "Seminario 850 A2011")]
+# Región deducida del texto del anuncio, para las que no están en la biblia.
+def _region_txt(na):
+    return "Quinta Región" if any(k in na for k in
+        ["vina", "valpara", "concon", "cerro concepcion", "puerta roja", "puertaroja",
+         "red door", "plaza sucre", "sucre", "vista al mar"]) else "Santiago"
+
 _extra = {}
 def match_prop(anuncio):
+    """SOLO match exacto de título (o de nombre interno).
+
+    El match difuso por palabras fusionaba propiedades DISTINTAS: 'Home studio ...
+    Metro' (Pedro de Valdivia 150) y 'Nuevo 2 Dor ... Metro' (Seminario 850) compartían
+    'estacionamiento'+'metro' y quedaban como una sola unidad → 84 solapes falsos,
+    ocupación inflada y disponibilidad equivocada.
+
+    Ahora, si el anuncio no calza exacto, es su PROPIA unidad. Partir de más es
+    inofensivo (se ve una fila extra); fusionar de más corrompe todo el calendario."""
     na = norm(anuncio)
     if not na: return None
     if na in by_norm_title: return by_norm_title[na]
     if na in by_norm_interno: return by_norm_interno[na]
-    ta = toks(anuncio); best, sc = None, 0
-    for p in props:
-        tv = toks(p["titulo"]) | toks(p["interno"])
-        if tv and len(ta & tv) > sc: sc, best = len(ta & tv), p
-    if sc >= 2: return best
-    # sin propiedad en la biblia: crear una entrada "externa" para no perder la reserva
-    for kw, nombre in ALIAS:
-        if kw in na:
-            if nombre not in _extra:
-                reg = "Quinta Región" if any(k in kw for k in ["vina", "valpara", "cerro", "puerta", "red door", "sucre", "vista al mar"]) else "Santiago"
-                _extra[nombre] = {"id": "ext-" + norm(nombre).replace(" ", "-"), "nombre": nombre, "titulo": anuncio,
-                    "interno": nombre, "dueno": "", "responsable": "", "tipo": "hab/otro", "comuna": "",
-                    "region": reg, "direccion": "", "calle": nombre, "numero": "", "depto": "", "cap": 0, "camas": "",
-                    "park": {"tiene": "parking" in na or "estacionamiento" in na, "detalle": "", "num": None},
-                    "acceso": {"edificio": "", "depto": "", "entrada": "", "estacionamiento": ""},
-                    "wifi": {"red": "", "clave": ""}, "limpieza": None, "comision": "", "iva": "",
-                    "rating": None, "nresenas": None, "toallas_c": None, "toallas_m": None,
-                    "salud": "", "notas": "Anuncio fuera de la biblia — completar ficha.", "url": "", "externa": True}
-                props.append(_extra[nombre])
-            return _extra[nombre]
-    return None
+    if na not in _extra:
+        _extra[na] = {"id": "ext-" + na.replace(" ", "-")[:40], "nombre": (anuncio or "?")[:60],
+            "titulo": anuncio or "", "interno": "", "dueno": "", "responsable": "",
+            "tipo": "casa" if "casa" in na else ("hab" if "habitacion" in na or "cama en" in na else ""),
+            "comuna": "", "region": _region_txt(na), "direccion": "", "calle": "", "numero": "",
+            "depto": "", "cap": 0, "camas": "", "activo": True,
+            "park": {"tiene": ("parking" in na or "estacionamiento" in na), "detalle": "", "num": None},
+            "acceso": {"edificio": "", "depto": "", "entrada": "", "estacionamiento": ""},
+            "wifi": {"red": "", "clave": ""}, "limpieza": None, "comision": "", "iva": "",
+            "rating": None, "nresenas": None, "salud": "",
+            "notas": "Anuncio sin ficha en la biblia — completar.", "url": "", "externa": True}
+        props.append(_extra[na])
+    return _extra[na]
 
 # ---------- reservas normalizadas ----------
 def cancelada(r): return "cancel" in (r.get("estado") or "").lower()
+
+# Una SOLICITUD todavía no ocupa nada: si la cuento como ocupada, el panel muestra
+# menos disponibilidad de la real. Solo bloquean las confirmadas / en curso / pasadas.
+NO_BLOQUEA = ("viaje solicitado", "cambio de viaje solicitado", "solicitud")
+def bloquea(r):
+    e = norm(r.get("estado"))
+    return not any(k in e for k in NO_BLOQUEA)
 res = []
 for r in recs:
     if cancelada(r): continue
@@ -196,23 +205,120 @@ for r in recs:
                 "entrada": ent, "salida": sal, "pax": r.get("adultos"),
                 "hin": r.get("hora_llegada") or "15:00",
                 "hout": r.get("hora_salida") or ("11:00" if "casa" in norm(r.get("anuncio")) else "12:00"),
-                "estado": r.get("estado") or ""})
+                "estado": r.get("estado") or "", "bloquea": bloquea(r),
+                # UNIDADES FÍSICAS: una reserva combo ocupa 2 deptos → son 2 limpiezas,
+                # 2 llaves y 2 avisos a conserjería. Contar reservas descuadra la operación.
+                "unid": max(1, len(r.get("deptos") or [])), "nums": list(r.get("deptos") or []),
+                # habitación de hostal ≠ depto: no entra en rutas de limpieza de unidades
+                "hab": bool(re.search(r"(cama en|habitaci[oó]n)", str(r.get("anuncio") or ""), re.I))})
 
 # ---------- ocupación precomputada (por propiedad y día) ----------
 ventana = [(HOY + timedelta(days=i)).isoformat() for i in range(DIAS_VENTANA)]
 vset = set(ventana)
 props.sort(key=lambda p: (p.get("externa", False), p["nombre"]))
-ocup = {p["id"]: {} for p in props}   # pid -> {fecha: {"cod","huesped","pax"}}
+
+# ---------- ocupación por UNIDAD FÍSICA ----------
+# Un depto puede tener 2 anuncios (el original y su ESPEJO) y un anuncio puede cubrir 2
+# deptos (los "combo"). Llevar la ocupación por anuncio miente en ambos sentidos: el espejo
+# se ve libre con el depto tomado, y el combo bloquea uno cuando ocupa dos.
+# La llave sale del REGISTRO, que marca ambos casos explícitamente. Nada se infiere por
+# parecido de título: lo que el registro no cubre queda como unidad propia y se REPORTA.
+POR_TIT, UNID, _hu = UN.cargar()
+print(f"  registro: {len(UNID)} unidades fisicas / {len(POR_TIT)} anuncios" + (f" | sin resolver: {_hu}" if _hu else ""))
+
+sin_registro = {}
+for r in res:
+    us = POR_TIT.get(UN.norm(r["anuncio"]))
+    if not us:
+        k = "s/reg|" + UN.norm(r["anuncio"])[:48]
+        sin_registro.setdefault(UN.norm(r["anuncio"]), {"anuncio": r["anuncio"], "reservas": 0, "uid": k})
+        sin_registro[UN.norm(r["anuncio"])]["reservas"] += 1
+        us = [k]
+    r["unids"] = us
+    r["unid"] = len(us)          # cuántos deptos físicos ocupa esta reserva
+    r["sinreg"] = us[0].startswith("s/reg|")
+
+UMETA = dict(UNID)
+for v in sin_registro.values():
+    UMETA[v["uid"]] = {"edificio": v["anuncio"][:40], "depto": "", "cliente": "", "comuna": "",
+                       "dir": "", "tipologia": "", "sin_registro": True}
+
+# Un anuncio COMBO no es "una reserva que ocupa 2 deptos": Airbnb lo vende como POOL de 2
+# unidades y varias reservas conviven en él. Y las unidades del pool también tienen anuncio
+# propio. Entonces no se puede saber a qué depto fue cada huésped — y no hace falta:
+# hay sobreventa cuando, para algún conjunto S de unidades, las reservas que SOLO pueden
+# caer dentro de S superan el tamaño de S (condición de Hall). Eso no inventa asignaciones
+# y no da falsos positivos.
+from itertools import combinations
+act = [r for r in res if r.get("bloquea") and r["entrada"]]
+def noches(r):
+    try:
+        d0 = date.fromisoformat(r["entrada"])
+        d1 = date.fromisoformat(r["salida"]) if r["salida"] else d0 + timedelta(days=1)
+    except Exception: return []
+    out, d = [], d0
+    while d < d1:
+        if d.isoformat() in vset: out.append(d.isoformat())
+        d += timedelta(days=1)
+    return out
+for r in act: r["_noches"] = noches(r)
+
+# componentes: unidades enlazadas por compartir algún anuncio
+padre = {u: u for u in UMETA}
+def raiz(x):
+    while padre[x] != x: padre[x] = padre[padre[x]]; x = padre[x]
+    return x
+for r in act:
+    us = [u for u in r["unids"] if u in padre]
+    for u in us[1:]: padre[raiz(u)] = raiz(us[0])
+comp = {}
+for u in UMETA: comp.setdefault(raiz(u), []).append(u)
+
+por_dia = {}
+for r in act:
+    for d in r["_noches"]: por_dia.setdefault(d, []).append(r)
+
+solapes = []
+for d, rs in por_dia.items():
+    for _, units in comp.items():
+        aqui = [r for r in rs if any(u in units for u in r["unids"])]
+        if len(aqui) <= 1: continue
+        k = len(units)
+        for n in range(1, k + 1):
+            for S in combinations(units, n):
+                sS = set(S)
+                dentro = [r for r in aqui if set(r["unids"]) <= sS]
+                if len(dentro) > n:
+                    solapes.append({"prop": " / ".join(
+                        (UMETA[u]["edificio"] + (" · " + UMETA[u]["depto"] if UMETA[u]["depto"] else "")) for u in S),
+                        "fecha": d, "a": dentro[0]["cod"], "b": dentro[1]["cod"],
+                        "cupo": n, "reservas": len(dentro)})
+                    break
+            else: continue
+            break
+
+ocup_u = {u: {} for u in UMETA}
+for r in act:
+    for u in r["unids"]:
+        for d in r["_noches"]: ocup_u[u].setdefault(d, {"cod": r["cod"], "h": r["huesped"], "pax": r["pax"]})
+
+# el panel sigue mostrando por anuncio: la ocupación del anuncio = la de sus unidades
+ocup = {p["id"]: {} for p in props}
 for r in res:
     if not r["pid"]: continue
-    try:
-        d0 = date.fromisoformat(r["entrada"]); d1 = date.fromisoformat(r["salida"]) if r["salida"] else d0 + timedelta(days=1)
-    except Exception: continue
-    d = d0
-    while d < d1:   # noche = [entrada, salida)
-        s = d.isoformat()
-        if s in vset: ocup[r["pid"]][s] = {"cod": r["cod"], "h": r["huesped"], "pax": r["pax"]}
-        d += timedelta(days=1)
+    for u in r["unids"]:
+        for s_, v in ocup_u[u].items(): ocup[r["pid"]].setdefault(s_, v)
+
+_vs, sol_u = set(), []
+for c in solapes:
+    k = tuple(sorted([c["a"], c["b"]]))
+    if k in _vs: continue
+    _vs.add(k); sol_u.append(c)
+print(f"  solapes REALES (misma unidad fisica, ambas activas): {len(sol_u)}")
+_sr = sorted(sin_registro.values(), key=lambda x: -x["reservas"])
+print(f"  anuncios SIN fila en el registro: {len(_sr)} ({sum(x['reservas'] for x in _sr)} reservas)")
+json.dump(_sr, open(os.path.join(HERE, "anuncios_sin_registro.json"), "w", encoding="utf-8"),
+          ensure_ascii=False, indent=1)
 
 # ---------- agenda hoy / semana ----------
 sem = [(HOY + timedelta(days=i)).isoformat() for i in range(7)]
@@ -318,7 +424,7 @@ print(f"  estadías en curso: {len(estadia)} | teléfonos conocidos: {len(tel)}"
 
 data = {
     "res_ix": RES_IX, "estadia": estadia, "tel": tel,
-    "accesos_pend": accesos_pend, "acc_resp": acc_resp, "acc_auditado": acc_auditado,
+    "solapes": sol_u, "accesos_pend": accesos_pend, "acc_resp": acc_resp, "acc_auditado": acc_auditado,
     "generado": HOY.isoformat(),
     "ventana": {"desde": ventana[0], "hasta": ventana[-1], "dias": DIAS_VENTANA},
     "props": props, "reservas": res, "ocup": ocup, "agenda": agenda,

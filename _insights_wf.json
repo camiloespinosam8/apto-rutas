@@ -1,0 +1,541 @@
+[
+ {
+  "titulo": "Falta de cobertores recurrente en Vicuña Mackenna 920 — 3ª vez",
+  "detalle": "Registrado como patrón detectado por EXPE, con diagnóstico de causa raíz: '3ª vez sin cobertores en VM920 → el problema es el checklist de limpieza'. O sea la falla no es del depto sino del proceso de limpieza/reposición. Aparece como EJEMPLO ilustrativo dentro de la ficha del agente, no como línea de un informe de barrido.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitrion_experiencia.md",
+  "categoria": "INSUMOS / textiles",
+  "propiedad": "Vicuña Mackenna 920 (Concepto Smart 920, Ñuñoa)"
+ },
+ {
+  "titulo": "Todos los huéspedes se pierden en la entrada del 929",
+  "detalle": "Patrón de ACCESO/INDICACIONES registrado por EXPE con la acción propuesta: 'todos se pierden en la entrada del 929 → cambiar mensaje de bienvenida'. La falla es del mensaje de bienvenida, no del edificio. Igual que el anterior, figura como ejemplo dentro de la ficha del agente.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitrion_experiencia.md",
+  "categoria": "ACCESO / INDICACIONES",
+  "propiedad": "929"
+ },
+ {
+  "titulo": "10 anuncios sin mensaje de acceso armado",
+  "detalle": "Al consolidar CLAVES_ACCESOS.csv el 06-jul-2026 quedaron 11 externos completos y 10 anuncios SIN mensaje de acceso aún. Es una brecha de ACCESO/INDICACIONES estructural: el huésped de esos 10 no tiene un mensaje estándar de ingreso. No consta que se haya cerrado.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_canal_apto_sereno_respondedor.md",
+  "categoria": "ACCESO / INDICACIONES",
+  "propiedad": "10 anuncios del portafolio (sin identificar en la memoria)"
+ },
+ {
+  "titulo": "Filtración en el depto A2011 de Seminario 850",
+  "detalle": "Problema técnico//de mantención real registrado: la filtración del A2011 se canaliza a Postventa@pazcorp.cl (Fabiola Vergara), post-venta del edificio Paz/Pazcorp. La memoria la menciona como el ejemplo del contacto de reparaciones, sin declarar que esté resuelta.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_apto_conserjeria_seminario850.md",
+  "categoria": "PROBLEMA TÉCNICO / mantención",
+  "propiedad": "Seminario 850, depto A2011 (Finaldi, Ñuñoa)"
+ },
+ {
+  "titulo": "Disyuntor y refrigerador de la casa Bilbao",
+  "detalle": "Registrado al pasar: Felipe Cubillos 'estaba coordinando con la huésped Anita del Bilbao el tema del disyuntor/refri por WhatsApp'. Problema técnico durante una estadía, gestionado por canal informal (WhatsApp) y por eso invisible para los sistemas de APTO.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_apto_felipe_cubillos_coanfitrion.md",
+  "categoria": "PROBLEMA TÉCNICO / electricidad-electrodomésticos",
+  "propiedad": "Casa Bilbao (Francisco Bilbao 2714, Pocuro, Providencia)"
+ },
+ {
+  "titulo": "Rating general del portafolio en 4,75★ — bajo el 4,8 que exige Superhost",
+  "detalle": "Alerta REAL de la corrida cero del módulo GUARDIÁN de EXPE (28-jul-2026): rating general ≈4,75 contra el umbral 4,8 de Superhost. Es el síntoma agregado de los problemas de experiencia. Los otros requisitos estaban sanos (cancelación de anfitrión ~0,2%, respuesta ≥90%).",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitrion_experiencia.md",
+  "categoria": "CALIDAD / experiencia agregada",
+  "propiedad": "Portafolio APTO completo (cuenta)"
+ },
+ {
+  "titulo": "Peor anuncio del portafolio: Finaldi VM 920 depto 401 en 3,0★",
+  "detalle": "Cifra auditada al 08-jul-2026 en el Centro de Inteligencia APTO: rating ponderado del portafolio 4,77★ sobre 1.208 reseñas, y el peor es Finaldi Vicuña Mackenna 920 depto 401 con 3,0★. Coincide con el mismo edificio del patrón de cobertores.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\project_centro_inteligencia_apto.md",
+  "categoria": "CALIDAD / experiencia por depto",
+  "propiedad": "Vicuña Mackenna 920, depto 401 (Finaldi)"
+ },
+ {
+  "titulo": "Insumos de higiene y básicos sin declarar en las fichas de Airbnb",
+  "detalle": "Auditoría VITRINA sobre 60 anuncios públicos: Botiquín falta en 33 · Detector de humo 32 · Extintor 29 · Acondicionador 19 · Jabón/gel 10 · Champú 8 · Sábanas 8 · Secador de pelo 6. ⚠️ IMPORTANTE: esto mide casillas NO MARCADAS en la ficha de Airbnb, no quejas de huéspedes — no es evidencia de que el insumo falte físicamente. La lección registrada del propio archivo es que una auditoría automática mide lo que el script sabe buscar, no la realidad.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\project_apto_deuda_completitud_anuncios.md",
+  "categoria": "INSUMOS / amenities (declarados, no verificados en terreno)",
+  "propiedad": "60 anuncios públicos del portafolio"
+ },
+ {
+  "titulo": "Nadie leía a los huéspedes: mensajes sin responder por días",
+  "detalle": "Fricción de proceso levantada por Camilo el 20-jul-2026: 'ANTES ningún proceso leía a los huéspedes — solo Claudio en el chat; la gente escribía y no se respondía'. Textual de Camilo: 'no veo ningún proceso hace días'. Se tapó creando la tarea APTO_GuestBarrido (cada 7 min). Límite honesto que queda abierto: las tareas RECOLECTAN 24/7 y alertan a Telegram, pero RESPONDER con criterio todavía necesita el chat abierto — con la app cerrada nadie contesta.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_barridos_tarea_local_heartbeat.md",
+  "categoria": "PROCESO / respuesta al huésped",
+  "propiedad": "Portafolio APTO completo"
+ },
+ {
+  "titulo": "Auditar reseñas bajo 5★ y subir el 5★ sobre el 80% de Superhost",
+  "detalle": "Pendiente marcado ⬜ (no hecho) al 31-may-2026 en la sección crítica de Airbnb/APTO: 'Auditar reseñas <5★ últimas 4-6 semanas (caída −2.1% calidad)' y 'Subir 5★ por encima del 80% Superhost (hoy 77,1%)'. Es el antecedente más viejo del mismo problema que 2 meses después reaparece como el 4,75★ del GUARDIÁN.",
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\pendientes_48h_2026-05-31.md",
+  "categoria": "CALIDAD / reseñas",
+  "propiedad": "Portafolio APTO (56 anuncios en esa fecha)"
+ },
+ {
+  "titulo": "Se cayó el convenio de estacionamiento en Valparaíso",
+  "detalle": "El convenio con el estacionamiento terminó y afecta a varias reservas en curso: Jocelyn llega en 2 camionetas, Abisag en furgón, Daniel pedía 2 cupos. La única alternativa hoy es Pilar a $22.000 por auto por noche o cupo diario. Acción registrada: cerrar convenio estable de estacionamiento en Valpo — hoy es problema recurrente y fuga de venta.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, cod HMEEXXBQ4X, huésped Jocelyn A., severidad ALTA)",
+  "categoria": "INSUMOS",
+  "propiedad": "Casas Valparaíso (Puerta Roja / Puerta Negra / Cerro Concepción)"
+ },
+ {
+  "titulo": "Huésped llegó y conserjería no tenía el correo de autorización",
+  "detalle": "El hermano del titular llegó a dejar comida y no lo dejaron entrar: faltaba el correo de autorización y tampoco permitieron dejar los alimentos en recepción. Se resolvió en el momento, pero el correo se había enviado AL EDIFICIO EQUIVOCADO. Acción: verificar siempre el edificio destino al enviar la autorización e inscribir a visitas, no solo a huéspedes.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 11-ago, cod HMJQ3MTCHQ, huésped Leonardo M., severidad ALTA)",
+  "categoria": "ACCESO",
+  "propiedad": "Seminario 850 A2011 (Ñuñoa)"
+ },
+ {
+  "titulo": "No salió el mensaje automático con la clave de acceso",
+  "detalle": "Gustavo preguntó de noche cuál era la clave de acceso. Se le respondió después con los códigos de las piezas, reconociendo que 'debió enviarse un mensaje automático con esto anteriormente'. Acción pendiente: revisar por qué no salió el mensaje automático de accesos en esa casa.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, huésped Gustavo, severidad ALTA)",
+  "categoria": "ACCESO",
+  "propiedad": "Casa El Cerro 0348 (Providencia)"
+ },
+ {
+  "titulo": "Early check-in / late check-out sin política ni precio estándar",
+  "detalle": "Al menos 10 de 54 reservas pidieron early check-in o late check-out. Se responde caso a caso y con precios distintos: $40.000 por bloquear la noche anterior, $30.000 por late hasta las 13:00, otras veces gratis o 'sujeto a disponibilidad'. Acción: definir política y tarifario único — es plata que hoy se deja de cobrar.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, aplica a todas las propiedades, severidad MEDIA)",
+  "categoria": "TECNICO / OPERACIÓN",
+  "propiedad": "General (todas)"
+ },
+ {
+  "titulo": "Turnover crítico: salida 20:00 y entrada 21:00 el mismo día",
+  "detalle": "Se concedió late check-out hasta ~20:00 (vuelo de medianoche a Gabriel M.) y el siguiente grupo (Juliana M.) llega a las 21:00. Queda ~1 hora para el aseo de una casa grande. Acción: reforzar equipo de limpieza ese día o ajustar una de las dos horas.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, fecha del evento 23-ago, cods HMHMCJJS5P / HME84KZ9WD, severidad MEDIA)",
+  "categoria": "TECNICO / OPERACIÓN",
+  "propiedad": "Casa Italia (Providencia)"
+ },
+ {
+  "titulo": "Confusión en anuncio combinado: 2 deptos leídos como 2 direcciones distintas",
+  "detalle": "La huésped vio 2 direcciones y preguntó si los deptos estaban en el mismo edificio. Además se le dio información CONTRADICTORIA (mismo piso / distintos pisos) antes de aclarar que son piso 16 y piso 4. Acción: estandarizar el mensaje de bienvenida de anuncios combinados con un edificio, número de deptos y pisos explícitos.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, cod HM5SBTHK5J, huésped Antonia R., severidad MEDIA)",
+  "categoria": "ACCESO / INDICACIONES",
+  "propiedad": "Vicuña Mackenna 920 (Ñuñoa)"
+ },
+ {
+  "titulo": "Anuncio confuso: fotos muestran 3 habitaciones, descripción dice 2",
+  "detalle": "La huésped preguntó textual: '¿son dos habitaciones o tres? En las fotos vi tres y en la descripción son dos'. En realidad son 2 deptos (309 y 409, pisos 3 y 4) con 2 cuartos cada uno. Acción: corregir la descripción del anuncio para que calce con las fotos.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, evento 30-may, cod HMZAJRZHFR, huésped Tainara D., severidad MEDIA)",
+  "categoria": "ACCESO / INDICACIONES",
+  "propiedad": "Arturo Prat 324 (Santiago)"
+ },
+ {
+  "titulo": "Grupo de 7 con solo 5 camas: se resuelve con colchón sin confirmar",
+  "detalle": "Para la 6ª y 7ª persona se ofreció colchón y la huésped aceptó (uno es un niño de 10 años). Acción pendiente: confirmar que el colchón + ropa de cama estén efectivamente disponibles antes del check-in.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 09-ago, cod HMSDCYR9AC, huésped Vanessa N., severidad MEDIA)",
+  "categoria": "INSUMOS",
+  "propiedad": "Amplio Duplex Carlos Antúnez (Providencia)"
+ },
+ {
+  "titulo": "Sofá poco amplio para huésped extra — falta colchón asignado al depto",
+  "detalle": "Al sumar 2 huéspedes se advirtió que el sillón de uno de los deptos no es muy amplio y se ofreció compartir un colchón adicional. Acción: tener un colchón extra asignado permanentemente a ese depto.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 31-jul, cod HM5SBTHK5J, huésped Antonia R., severidad BAJA)",
+  "categoria": "INSUMOS",
+  "propiedad": "Ñuñoa · 2 deptos para grupos (VM 920)"
+ },
+ {
+  "titulo": "Amenities de baño no están listados en el anuncio",
+  "detalle": "La huésped preguntó si el baño cuenta con shampoo y acondicionador; se confirmó que sí. Acción: listar los amenities de baño en el anuncio para evitar la consulta.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 31-jul, cod HMNDJPJPCE, huésped Mariana A., severidad BAJA)",
+  "categoria": "HIGIENE / INSUMOS",
+  "propiedad": "Studio Manquehue 952 (Las Condes)"
+ },
+ {
+  "titulo": "FUGA DE GAS sin confirmación de arreglo",
+  "detalle": "Marcada como crítica de seguridad: fuga de gas sin confirmación de reparación. Se indica enviar gasfiter ya, cerrar gas y no habitar hasta certificar. Además hay que revisar la estufa a parafina que 'botaba humo'. El listing está fuera del catastro, así que no hay dueño ni limpieza mapeados.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección 4, crítica #1)",
+  "categoria": "TECNICO / SEGURIDAD",
+  "propiedad": "Listing 464148 (Pablo, sin registro)"
+ },
+ {
+  "titulo": "Huésped pagó, llegó, no había disponibilidad ni respuesta — pide reembolso",
+  "detalle": "Matias pagó, llegó al depto y no había disponibilidad ni nadie que respondiera; pide reembolso. Queda pendiente resolver el reembolso/reubicación y revisar por qué el calendario no bloqueó — posible overbooking, mismo síntoma que la doble reserva del listing 41406281.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección 4, crítica #2, severidad ALTA abierta)",
+  "categoria": "ACCESO / SISTEMA",
+  "propiedad": "Listing 41101053 (Matias, sin registro)"
+ },
+ {
+  "titulo": "Agua caliente estructural en Schuster 402b: el termo no dura 2 minutos",
+  "detalle": "La nota operativa decía 'edificio antiguo: termo limitado, evitar duchas simultáneas'. El caso de Denise/Deise lo confirma tal cual: 'no dura ni dos minutos caliente, imposible ducharse', 5 adultos sin poder bañarse, y amenaza con escalar a Airbnb. El informe concluye: no es incidente aislado, es una limitación física del edificio que la operación viene arrastrando. Falta solución real (calefón/termo mayor o límite de ocupación) y declarar la limitación en el anuncio.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón a + urgente #5, ALTA abierta)",
+  "categoria": "TECNICO",
+  "propiedad": "Tomás Schuster 402b (Carlos Antúnez 1867)"
+ },
+ {
+  "titulo": "Agua caliente + corte eléctrico en Bilbao Casa Completa, varios días sin resolver",
+  "detalle": "Milena tuvo el 2º y 3er piso con agua helada VARIOS DÍAS pese a múltiples visitas de gasfiter, y escaló a Airbnb; además hubo corte eléctrico al conectar estufas. El informe dice que es falla de SISTEMA, no de artefacto: hay que hacer plan estructural y auditar el tablero eléctrico, y dejar de mandar gasfiter a un síntoma. Se resolvió con un −30% de compensación pero el problema de fondo sigue.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón c + urgente #4)",
+  "categoria": "TECNICO",
+  "propiedad": "Listing 411545 — Bilbao Casa Completa (Milena, sin registro)"
+ },
+ {
+  "titulo": "WiFi nunca instalado — familia completa sin internet toda la estadía",
+  "detalle": "En el listing de Maxlene el wifi nunca se instaló. La familia estuvo toda la estadía sin internet. Marcada ALTA abierta. Acción: instalar/activar internet y compensar.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking depto #4 + urgente #6)",
+  "categoria": "TECNICO",
+  "propiedad": "Listing 613430 (Maxlene, sin registro)"
+ },
+ {
+  "titulo": "Queja de limpieza escalada a Airbnb con pedido de check-out anticipado y reembolso",
+  "detalle": "Denise escaló a Airbnb por limpieza y quiere check-out anticipado con reembolso. Acción: contactar antes de que se vaya, ofrecer solución o negociar el reembolso para frenar la reseña. Quedó como ALTA abierta.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección 4, crítica #3)",
+  "categoria": "HIGIENE",
+  "propiedad": "Caso 'En curso' vía Airbnb CS"
+ },
+ {
+  "titulo": "Acceso/conserjería: 4 incidencias con la MISMA raíz — no se envían los nombres antes del check-in",
+  "detalle": "Cuatro incidencias de acceso_chapa (Finaldi 1615, Vespucio 1701, Waldron 627, Weitzel 1411) tienen la misma causa: APTO no envió los nombres a conserjería antes del check-in, y el huésped queda esperando en la puerta. Calza con los 'accesos PENDIENTES' nunca creados: Finaldi, Reinaldo 409, Waldron 627, Geraldine 812, Jorge e Isamar, Pedro García, Pilar, Puerta Roja/Negra. Acción de raíz: protocolo de acceso pre-check-in con envío automático de nombres 24h antes.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón b + acción de raíz #1)",
+  "categoria": "ACCESO",
+  "propiedad": "Transversal (8 propiedades con acceso pendiente)"
+ },
+ {
+  "titulo": "Deptos sin kit de invierno: falta 1 calefactor por dormitorio y ropa de cama gruesa",
+  "detalle": "5 incidencias de calefacción más varias de ropa de cama, con la pauta repetida de 'solo un calefactor / no había edredón / faltaban frazadas' en Maxlene, Finaldi 1615, Finaldi combo, Karen, Schuster y Weitzel. Los deptos no están dimensionados con un calefactor por dormitorio ni ropa de cama gruesa suficiente. Acción: cargar el kit ANTES del invierno, no reaccionar por huésped.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón d + acción de raíz #2)",
+  "categoria": "INSUMOS",
+  "propiedad": "Transversal (6 propiedades)"
+ },
+ {
+  "titulo": "Amenities incompletos vs. lo prometido en el anuncio (7 incidencias)",
+  "detalle": "Falta cafetera 'descrita en el anuncio' (Schuster), plancha (Nico y Clau), secador (Finaldi combo), toallas suficientes (Maxlene, Schuster, Weitzel). El check-in no verifica el kit contra lo publicado. Acción: checklist de reposición verificado con FOTO al check-in, cruzado contra lo que promete el anuncio (toallas por persona, cafetera, plancha, secador, papel).",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón e + acción de raíz #3)",
+  "categoria": "INSUMOS",
+  "propiedad": "Transversal (Schuster, Nico y Clau, Finaldi combo, Maxlene, Weitzel)"
+ },
+ {
+  "titulo": "Weitzel 1411: manchas en alfombra y cubrecama, falta toalla de manos, tirador suelto",
+  "detalle": "Tres incidencias abiertas simultáneas en la misma unidad. Es el depto #1 del ranking con 5 incidencias totales (acceso, calefacción, limpieza, amenity, otro).",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking #1 + abiertas menores)",
+  "categoria": "HIGIENE / INSUMOS",
+  "propiedad": "Diego Weitzel 1411 (Lincoyán 1001)"
+ },
+ {
+  "titulo": "Manchas en la cama en San Ignacio 280-627 y el host nunca respondió",
+  "detalle": "Queda en la lista de 'desconocidas con follow-up pendiente': el huésped reportó manchas en la cama y nadie contestó el hilo. Nunca se cerró.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección 4, desconocidas)",
+  "categoria": "HIGIENE",
+  "propiedad": "Victoria Waldron 627 (San Ignacio 280)"
+ },
+ {
+  "titulo": "Tapa de inodoro suelta en el combo Finaldi — riesgo para niño",
+  "detalle": "Reportada como riesgo para un niño y quedó en estado desconocido, con follow-up pendiente. En el mismo combo también quedó el agua caliente de Jefferson sin confirmar.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking #2 + desconocidas)",
+  "categoria": "TECNICO / SEGURIDAD",
+  "propiedad": "Felipe Finaldi combo 713+1204"
+ },
+ {
+  "titulo": "Reinaldo 409 sin internet — solución temporal con el wifi del 309",
+  "detalle": "La unidad 409 quedó sin internet y se parchó usando el wifi del 309. Falta cerrar con la compañía. El informe nota que el 409 vuelve a aparecer (también con acceso pendiente), reforzando que es la unidad más floja del combo.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking #12 + abiertas medias)",
+  "categoria": "TECNICO",
+  "propiedad": "Reinaldo combo 309+409 (Arturo Prat 324)"
+ },
+ {
+  "titulo": "Grifería que moja el pasillo en Carol Urzúa 7030 806",
+  "detalle": "Incidencia abierta menor: la grifería moja el pasillo. Sigue en la lista de abiertas por cerrar.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking #10 + abiertas menores)",
+  "categoria": "TECNICO",
+  "propiedad": "Pedro García 806 (Carol Urzúa 7030)"
+ },
+ {
+  "titulo": "8 listings con incidencias están FUERA del catastro — no se puede asignar responsable",
+  "detalle": "8 de las 39 incidencias caen en listings no ingresados al registro (613430 Maxlene, 411545 Bilbao, 464148 Pablo, 155048 Karen, 161985 Mala Yerba, 41406281 M, 313224 Josefina, 41101053 Matias). Sin dueño ni limpieza mapeados, cuesta asignar responsable. Acción: catastrarlos.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección 1, 'dato de higiene' + acción de raíz #6)",
+  "categoria": "SISTEMA / DATOS",
+  "propiedad": "8 listings sin registro"
+ },
+ {
+  "titulo": "No-show Catalina Donoso: reembolso en STAND BY sobre un mes ya cerrado + limpieza cobrada sin aseo",
+  "detalle": "Catalina Donoso (01-03 jul, 2 noches, bruto $237.801) avisó por chat que por un problema familiar de última hora no pudo viajar ni hacer el ingreso. NO levantó solicitud de devolución en Airbnb, así que la reserva se pagó completa y quedó liquidada en el cierre de julio ($142.893 a los dueños). Queda en STAND BY: si más adelante ella abre la solicitud, el reembolso caería sobre un mes ya cerrado. Además nunca llegó, así que la limpieza de $27.000 que se le descuenta al dueño corresponde a un aseo que no ocurrió.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-08-12.csv (cod HMJNEWWJ8H, severidad ALTA)",
+  "categoria": "TECNICO / ADMINISTRATIVO",
+  "propiedad": "Nico y Clau · Arturo Prat 125 depto 41 (Recreo)"
+ },
+ {
+  "titulo": "Antonio Fuentes sigue esperando el reembolso prometido y es huésped recurrente",
+  "detalle": "Antonio Fuentes (16-19 jul, 3 noches, bruto $272.544) pidió cancelar el 08-jul por el temporal en Viña. Se le dijo que la reserva no era reembolsable y que levantara la solicitud con Airbnb para aprobarla. A la fecha NO la ha levantado, la reserva se pagó completa y quedó liquidada en el cierre de julio ($195.142 a los dueños). Su último mensaje sigue preguntando por el reembolso prometido. Es huésped RECURRENTE (ya se había alojado antes y volvió). Tampoco hubo limpieza, así que los $35.000 descontados al dueño no corresponden a un aseo real.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-08-12.csv (cod HMCFMMBYJA, severidad ALTA, estado 'A LA ESPERA DEL CLIENTE')",
+  "categoria": "TECNICO / ADMINISTRATIVO",
+  "propiedad": "Nico y Clau · Arturo Prat 125 depto 41 (Recreo)"
+ },
+ {
+  "titulo": "Tiempos de respuesta lentos = fricción #1 del inbox",
+  "detalle": "Varios huéspedes escriben insistiendo: uno en portugués casi rogando ('Moço pelo amor de Deus', caso #13), otros haciendo seguimiento a consultas sin responder (#8, #95, #131, #178). La demora hace perder reservas: preaprobaciones que caducan (#139) y pedidos de último minuto que no alcanzan (#49). Convive con un 9,5% de solicitudes canceladas/vencidas/rechazadas.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Repositorio_Casos_APTO.md (sección 5 'Gaps / fricciones', puntos 1 y 5)",
+  "categoria": "OPERACIÓN / RESPUESTA",
+  "propiedad": "Transversal"
+ },
+ {
+  "titulo": "Dos incidencias de mantención sin depto asignado — imposible rastrear la unidad",
+  "detalle": "Las 2 INCIDENCIA_MANTENCION del set de 200 casos no tienen depto: #72 (agua caliente, el termo tiene capacidad acotada — el problema no son duchas cortas o largas, se acaba el agua) y #97 (grifería de cocina y baño requiere revisión). Ambas de huéspedes brasileños (PT). No se puede confirmar si son la MISMA unidad. Regla propuesta: toda incidencia se etiqueta con depto obligatorio. Quedó explícito como 'pendiente de enriquecer'.",
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Repositorio_Casos_APTO.md (sección 3 + gap 4 + anexo)",
+  "categoria": "TECNICO / DATOS",
+  "propiedad": "Sin asignar (2 casos)"
+ },
+ {
+  "titulo": "Mensaje automático de check-in falla SIN alarma — reincidente",
+  "detalle": "Dos casos críticos en 48 horas (Daniel el 11-jun y Roberto el 12-jun): el mensaje automático con las indicaciones de ingreso no salió y nadie se enteró hasta que el huésped preguntó cómo entrar. El barrido lo marca textual: 'Es REINCIDENTE del problema sistémico ya identificado en el barrido del 11-jun. NO SE HA SOLUCIONADO.' Acción propuesta: tarea programada 10:00 AM que verifica que el mensaje del día se envió a TODAS las llegadas del día y alerta si no.",
+  "fuente": "APTO\\Operacional\\Experiencia_Huesped\\Sintesis_FAQs_GAPS_2026-06-12.md (GAP #7) y barrido_historico_inbox_2026-06-12.md (caso Roberto)",
+  "categoria": "ACCESO / INDICACIONES",
+  "propiedad": "Transversal (casos en Vicuña Mackenna 920)"
+ },
+ {
+  "titulo": "Amenities prometidos en el anuncio que NO existen (AC, calefacción, lavadora)",
+  "detalle": "Roberto escribió textual: '¿cómo calefaccionamos el depto? No encuentro nada y está helado. La publicación dice que tiene aire acondicionado y calefacción. No hay nada de eso acá'. En Vicuña 920 el anuncio marca aire acondicionado cuando solo hay calefactores portátiles, y además el inventario de calefactores SE MUEVE entre deptos: el grupo anterior se los llevó a otra unidad. Vale del equipo tuvo que ir físicamente a resolverlo. Acción P0 pendiente: auditoría 1×1 de amenities marcados vs. realidad, partiendo por Vicuña 920, y checklist post-limpieza que confirme inventario por habitación.",
+  "fuente": "APTO\\Operacional\\Experiencia_Huesped\\Sintesis_FAQs_GAPS_2026-06-12.md (GAP #2 y #10, P0 #1) y barrido_historico_inbox_2026-06-12.md",
+  "categoria": "INSUMOS",
+  "propiedad": "Vicuña Mackenna 920 (713+1204), Casa Italia"
+ },
+ {
+  "titulo": "FUGA DE GAS en la cocina sin confirmación de arreglo",
+  "detalle": "Severidad ALTA, estado desconocido. El huésped reportó fuga de gas y pidió solución urgente; el anfitrión solo preguntó dónde estaba, sin confirmar arreglo. Cita: 'hay una fuga de gas en la cocina. Es importante que solucionen estos problemas lo antes posible'. El informe lo puso como acción #1: enviar gasfíter YA, cerrar gas, no habitar hasta certificar.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "listing 1156018695739464148 (no en registro) — huéspedes Pablo, Lisandra, Luis",
+  "fuente": "Incidencias_APTO_2026-07-11.md + journal wf_7f8cd214-d9f"
+ },
+ {
+  "titulo": "Agua caliente que no dura 2 minutos — 5 adultos no pudieron ducharse",
+  "detalle": "Severidad ALTA, abierta. Cita: 'não esta funcionando o aquecimento do chuveiro, não dura nem dois minutos aquecido e impossível tomar banho'. Amenazaron con contactar a Airbnb. El informe lo declara problema ESTRUCTURAL confirmado: coincide con la nota de CLAVES_ACCESOS 'edificio antiguo: termo limitado, evitar duchas simultáneas'. No es incidente aislado, es el termo.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Tomás Schuster 402b (Carlos Antúnez 1867, dúplex 2º anuncio) — Denise, Deise y 3 más",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Sin agua caliente varios días en 2º y 3er piso pese a múltiples gasfíteres",
+  "detalle": "Severidad ALTA, abierta. La huésped amenazó con irse y escaló el caso a Airbnb. Cita: 'todos tentando tomar banho e perdendo nossa experiencia'. Segundo problema estructural de agua caliente del portafolio: dos edificios con falla de sistema, no de artefacto.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Bilbao Casa Completa (listing 1308068518884411545, sin registro) — Milena y 4 más",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "WiFi nunca instalado — familia entera sin internet toda la estadía",
+  "detalle": "Severidad ALTA, abierta. El router llegó tarde y al cierre seguía sin instalarse; los hijos lo necesitaban. Cita: 'Todos nós estamos sem internet ... E não instalaram a internet'. El informe pide instalar/activar y compensar.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "listing 1714987317059613430 (no en registro) — Maxlene",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Pagó, llegó y no pudo entrar — no había disponibilidad ni respuesta, pide reembolso",
+  "detalle": "Severidad ALTA, abierta. Cita: 'Que ya pagamos... Lo puede rechazar Para que me hagan el Rembolso'. El informe lo cruza con la doble reserva del listing 41406281 y apunta a que el calendario no bloqueó (posible overbooking).",
+  "categoria": "PROBLEMAS DE ACCESO/INDICACIONES",
+  "propiedad": "listing 41101053 (no en registro) — Matías",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Queja de limpieza escalada a Airbnb con petición de check-out anticipado y reembolso",
+  "detalle": "Severidad ALTA, abierta. Airbnb avisó: 'se puso en contacto con nosotros para informarnos de una falta de limpieza ... tu huésped quiere abandonar el alojamiento'. El anfitrión disputa el problema. Acción: contactar antes de que se vaya para frenar la reseña.",
+  "categoria": "PROBLEMAS HIGIÉNICOS",
+  "propiedad": "Depto 'En curso' — Denise (vía Servicio al Cliente de Airbnb)",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Corte eléctrico al conectar varias estufas — Airbnb tuvo que intervenir",
+  "detalle": "Abierta, severidad media. Además de la ducha sin agua caliente, la instalación se cae con las estufas; el anfitrión ofreció estufas no eléctricas como parche. El informe pide auditar el tablero, no seguir parchando.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Casa Bilbao (listing 1308068) — caso Milena, reserva HMQ88FR5KJ",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Sin internet en el departamento 409",
+  "detalle": "Abierta, media. APTO no pudo contactar a la compañía por la hora y ofreció el wifi del 309 como parche temporal. Cita: 'infelizmente estamos sem internet no quarto 409, poderia nos ajudar?'. El 409 vuelve a aparecer en el informe como la unidad más floja del combo (también tiene acceso PENDIENTE sin crear).",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Reinaldo combo 309+409 (anuncio combinado)",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Faltaron ropa de cama y toallas — los huéspedes tuvieron que compartir toallas",
+  "detalle": "Abierta, media. La entrega de sábanas se canceló por falta de stock y quedó para el día siguiente. Cita: 'Estamos tendo de dividir toalhas tbm'.",
+  "categoria": "INSUMOS",
+  "propiedad": "listing 1714987317059613430 (no en registro) — Maxlene",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "No dejaron toalla de manos — la huésped la tuvo que comprar",
+  "detalle": "Abierta, media. Cita: 'No dejaron toalla de manos, por lo que tuve que co[mprar]'. Es uno de los 3 pendientes abiertos que arrastra este depto, el #1 del ranking con 5 incidencias.",
+  "categoria": "INSUMOS",
+  "propiedad": "Diego Weitzel 1411 (Lincoyán 1001) — Soledad Caro",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Alfombra y cubrecama con manchas — sensación de suciedad",
+  "detalle": "Abierta, media. Cita: 'la alfombra y el cubrecama tenían manchas... me dieron la sensación de suciedad'.",
+  "categoria": "PROBLEMAS HIGIÉNICOS",
+  "propiedad": "Diego Weitzel 1411 (Lincoyán 1001) — Soledad Caro",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Manchas cafés en la cama de 2 plazas y el anfitrión nunca respondió",
+  "detalle": "Estado desconocido, media. Cita: 'En la cama de 2 plazas hay unas manchas cafés cuando llegamos'. El informe subraya que el host no respondió al reporte — queda como follow-up pendiente.",
+  "categoria": "PROBLEMAS HIGIÉNICOS",
+  "propiedad": "Victoria Waldron 627 (San Ignacio 280) — Nolvia, Jorge, Sebastián",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Limpieza y comodidades faltantes reportadas a Airbnb — el anfitrión dijo no haber sido informado",
+  "detalle": "Estado desconocido, media. Cita: 'teve um problema na acomodação, com limpeza e algumas comodidades que estariam faltando'. Hay un hueco de traspaso de información entre Airbnb y la operación.",
+  "categoria": "PROBLEMAS HIGIÉNICOS",
+  "propiedad": "Caso de Asistencia — Milena vía Servicio al Cliente de Airbnb",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Limpieza deficiente reportada en la reseña",
+  "detalle": "Estado desconocido, baja. Cita: 'Muy linda la casa. Lo único más o menos fue la limpieza'. Nunca se cerró.",
+  "categoria": "PROBLEMAS HIGIÉNICOS",
+  "propiedad": "listing 1340780436982313224 (no en registro) — Josefina",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Tapa del inodoro suelta — una niña de 5 años casi se cae",
+  "detalle": "Estado desconocido, media, con riesgo real. Cita: 'O assento do vaso da suíte, está solto! Minha filha de 5 anos usou e ao sair quase caiu!'. El anfitrión lo atribuyó a daño de una reserva anterior no detectado — o sea, la revisión entre estadías no lo pilló.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Felipe Finaldi combo 713+1204 (Vicuña Mackenna 920) — Carol",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Puerta/mueble dañado que se cayó al abrirlo",
+  "detalle": "Abierta, media. La puerta ya estaba dañada y se cayó cuando el huésped la abrió para ver los artículos de aseo. Cita: 'esta puerta estaba ya danada. Abrimos para mirar lo que habia de aseo y se cayo esa puerta'. Quedó de repararse en el check-out.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Américo Vespucio Norte 22, depto 1701",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Grifería que moja todo el pasillo del baño",
+  "detalle": "Abierta, baja. Cita: 'Se mojo casi todo el pasillo del bano en la manana, Pero secamos y todo ok'. El anfitrión reconoció el problema y quedó de corregirlo.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Pedro García 806 (Carol Urzúa 7030, depto 806B) — Vasthi",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Posible falla de agua caliente consultada a mitad de estadía y nunca confirmada",
+  "detalle": "Estado desconocido. El huésped preguntó si las llaves de cocina y baño calientan; el hilo no muestra confirmación ni resolución. Cita: 'as torneiras de pia de cozinha e banheiro ficam quente? A agua??'.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Felipe Finaldi combo 713+1204 — Jefferson",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Estufa a parafina que bota humo — el anfitrión lo dio por normal",
+  "detalle": "Estado desconocido, media. Cita: 'la estufa que nos dejaron no funciona bien y emite humo. La tuvimos que apagar tan pronto la prendimos'. Es el mismo listing de la fuga de gas.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "listing 1156018695739464148 (no en registro) — Pablo, Lisandra, Luis",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Falta plancha en el departamento",
+  "detalle": "Abierta, baja. La huésped la buscó y no había — depto aún incompleto en amenities. Cita: 'Quería saber dónde se encuentra la plancha en el departamento'.",
+  "categoria": "INSUMOS",
+  "propiedad": "Nico y Clau depto 41 (Arturo Prat 125) — Arlette",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "Tirador de puerta suelto (daño preexistente reportado por la huésped)",
+  "detalle": "Abierta, baja. Cita: 'el tirador de la puerta está suelto, para que no piensen que hemos sido nosotros'.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Diego Weitzel 1411 (Lincoyán 1001) — Soledad Caro",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "PATRÓN DE RAÍZ: los accesos fallan por proceso, no por el depto",
+  "detalle": "4 incidencias de acceso_chapa (Finaldi 1615, Vespucio 1701, Waldron 627, Weitzel 1411) tienen la MISMA raíz: APTO no envió los nombres a conserjería antes del check-in y el huésped queda esperando en la puerta. Calza exacto con los accesos que en CLAVES_ACCESOS figuran como PENDIENTES sin mensaje de acceso creado: Finaldi 1615, Reinaldo 409, Waldron 627, Geraldine 812, Jorge e Isamar, Pedro García, Pilar y Puerta Roja/Negra. Acción de raíz #1 del informe: mensaje de acceso estandarizado por edificio + envío automático de nombres a conserjería 24 h antes.",
+  "categoria": "PROBLEMAS DE ACCESO/INDICACIONES",
+  "propiedad": "Transversal (8 propiedades con acceso PENDIENTE)",
+  "fuente": "Incidencias_APTO_2026-07-11.md, sección Patrones + Acciones de raíz"
+ },
+ {
+  "titulo": "PATRÓN DE RAÍZ: los deptos no están dimensionados para invierno",
+  "detalle": "5 incidencias de calefacción + varias de ropa de cama con la misma pauta repetida: 'solo un calefactor / no había edredón / faltaban frazadas' (Maxlene, Finaldi 1615, Finaldi combo, Karen, Schuster, Weitzel). Acción de raíz #2: kit de invierno estándar = nº de calefactores igual al nº de dormitorios + edredón grueso y frazada por cama, cargado ANTES del invierno y no reaccionando por huésped.",
+  "categoria": "INSUMOS",
+  "propiedad": "Transversal",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "PATRÓN DE RAÍZ: el kit de amenities no se verifica contra lo que promete el anuncio",
+  "detalle": "7 incidencias de falta_amenity: cafetera 'descrita en el anuncio' (Schuster), plancha (Nico y Clau), secador (Finaldi combo), toallas suficientes (Maxlene, Schuster, Weitzel). El check-in no cruza el kit real contra lo publicado. Acción de raíz #3: checklist de reposición verificado con foto al check-in.",
+  "categoria": "INSUMOS",
+  "propiedad": "Transversal",
+  "fuente": "Incidencias_APTO_2026-07-11.md"
+ },
+ {
+  "titulo": "PROBLEMA DE CATASTRO: 8 de las 39 incidencias caen en listings que no están en el registro",
+  "detalle": "Listings 613430 (Maxlene), 411545 (Bilbao), 464148 (Pablo — el de la fuga de gas), 155048 (Karen), 161985 (Mala Yerba), 41406281 (M), 313224 (Josefina) y 41101053 (Matías). Sin dueño ni limpieza mapeados no se puede asignar responsable — por eso justamente son los que quedan sin cerrar. El informe pide catastrarlos.",
+  "categoria": "SISTÉMICO",
+  "propiedad": "8 listings fuera de catastro",
+  "fuente": "Incidencias_APTO_2026-07-11.md, 'Dato de higiene'"
+ },
+ {
+  "titulo": "Casa Barrio Italia: faltan estufas para todas las piezas y frazadas — huéspedes compraron las suyas",
+  "detalle": "3 huéspedes distintos lo dijeron (Santos, Andrés Eduardo, Jeremy). Citas: 'No hay calentadores para todos los cuartos' / 'We have decided to purchase blankets and electric heaters for the rooms so we don't have another sleepless night'. Un huésped además nota que ya venía en reseñas anteriores: 'the house is incredibly cold, especially at night. I noticed this was a complaint in several previous reviews'.",
+  "categoria": "INSUMOS",
+  "propiedad": "Casa Barrio Italia (Luis Montaner 545)",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md (workflow casas-stgo-oportunidades, 10-ago)"
+ },
+ {
+  "titulo": "Casa Barrio Italia: no había toallas limpias, los huéspedes las lavaron",
+  "detalle": "Cita: 'no encontramos toallas limpias, nosotros las lavamos' (Santos). Mismo grupo reporta que solo 2 duchas tienen agua caliente en una casa de grupos.",
+  "categoria": "INSUMOS",
+  "propiedad": "Casa Barrio Italia (Luis Montaner 545)",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+ },
+ {
+  "titulo": "Casa Bilbao: el balón de gas del calefactor de la sala nunca llegó",
+  "detalle": "Citas: 'Aquecedor da sala está sem gás! Não está acendendo' y 'Gás da sala ate hoje não chegou' (Edmilson). Acción propuesta: dejar balón cargado + 1 de repuesto FIJO en la casa, no depender del delivery externo. El mismo huésped cerró con 'Estadia horrível!'.",
+  "categoria": "INSUMOS",
+  "propiedad": "Casa Bilbao (Francisco Bilbao 2714)",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+ },
+ {
+  "titulo": "Casa El Cerro: chapas electrónicas sin batería que se bloquean solas y dejan gente encerrada o afuera de noche",
+  "detalle": "Citas: 'As fechaduras eletrônicas de todas as portas estão sem bateria' y 'Cerramos una por el Frío anoche ahora no podemos abrir la' (Luis). Marcado CRÍTICO. Acción: cambiar baterías en CADA recambio + llave física de respaldo rotulada por pieza.",
+  "categoria": "PROBLEMAS DE ACCESO/INDICACIONES",
+  "propiedad": "Casa El Cerro (Av. El Cerro 0348, Providencia)",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+ },
+ {
+  "titulo": "Casa Bilbao: el candado y la chapa del portón se traban — 3 grupos distintos afectados de noche",
+  "detalle": "Citas: 'El candado no funciona... al volver ya no abre' (Sergio), 'Se queda pegado... hay que forzarlo' (Jossette), 'não encontramos a chave do cadeado do portão' (Rafaela). El análisis de insights lo llama textualmente el mayor riesgo de mala reseña: es la primera impresión, es barato de arreglar, y 3 de ~9 grupos sufrieron el MISMO defecto físico en un check-in nocturno de 12 personas. Se suma una clave de candado mal enviada al huésped (7030/7013).",
+  "categoria": "PROBLEMAS DE ACCESO/INDICACIONES",
+  "propiedad": "Casa Bilbao (Francisco Bilbao 2714)",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md + Casas_Stgo_Insights_Clientes_2026-07-22.md"
+ },
+ {
+  "titulo": "Las 3 casas: el tablero eléctrico no aguanta la calefacción — es el cuello común",
+  "detalle": "En las tres el tablero/automáticos se cae al conectar estufas y deja piezas enteras sin luz: Barrio Italia hab 6 y 7 ('las habitaciones numeradas en 6 y 7 no tienen energia electrica' — Santos), Bilbao living/comedor ('No funciona la luz de living y del comedor' — Alexandra; hay que ir bajo la escalera, clave 545, a subir el switch), El Cerro ('o disjuntor está desarmando, já desarmou pelo menos 3 vezes, talvez por causa dos aquecedores' — Fabiana, limitados a 750w por pieza). Sin más capacidad eléctrica no se puede calefaccionar ninguna.",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Barrio Italia + Bilbao + El Cerro",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+ },
+ {
+  "titulo": "Casa Barrio Italia: riesgo eléctrico real — descargas desde la lavadora y todo enchufado en un alargador",
+  "detalle": "Citas: 'someone received multiple shocks from the washer' (Nancy) y 'Multiple machines are connected to power via one extension cord'. Marcado CRÍTICO: revisión de electricista + redistribución de carga. Se suma olor fuerte a gas al encender la calefacción: 'when the heat is turned on there is a very strong gas smell' (Jeremy).",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Casa Barrio Italia (Luis Montaner 545)",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+ },
+ {
+  "titulo": "Casa Bilbao: refrigerador no funcionaba y campana de cocina con suciedad acumulada",
+  "detalle": "Citas: 'Geladeira não funciona' y 'Em cima da coifa 1 vergonha de sujeira' (Edmilson). Se suma parquet/tacos del piso sueltos: 'tacos do chão soltando'. En El Cerro, el freezer gotea agua y lo tuvieron que desconectar: 'O freezer da cozinha está vazando água também. Desligamos ele.' (Marines).",
+  "categoria": "PROBLEMAS TÉCNICOS",
+  "propiedad": "Casa Bilbao (Francisco Bilbao 2714) y Casa El Cerro",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+ },
+ {
+  "titulo": "Las 3 casas: la limpieza/preparación al check-in falló en las tres",
+  "detalle": "Es el tercer patrón transversal identificado. En El Cerro se pide explícitamente 'casa limpia y lista ANTES de la hora de check-in (15h), incluido mueble de cocina'; en Barrio Italia el kit base incluye 'TODAS las habitaciones con sábanas puestas y almohadas en la cama antes del check-in' y 'colchas limpias (sacar las manchadas)'.",
+  "categoria": "PROBLEMAS HIGIÉNICOS",
+  "propiedad": "Barrio Italia + Bilbao + El Cerro",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md, resumen + kit base por casa"
+ },
+ {
+  "titulo": "Casa Bilbao: faltan paños de cocina y en El Cerro falta colador de café",
+  "detalle": "Citas: 'la dejamos lavada pero no había trapitos para poder secarla' (Uriel, Bilbao — y el check-out pide dejar la loza seca) y 'Tem coador de café? Achamos só o filtro' (Marines, El Cerro). Insumos chicos que quedan fuera del kit fijo.",
+  "categoria": "INSUMOS",
+  "propiedad": "Casa Bilbao y Casa El Cerro",
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+ },
+ {
+  "titulo": "Insumos y blancos arrastrados sin resolver de un día a otro (barrido 11-12 jul)",
+  "detalle": "Barrido de la bitácora por lotes, consolidado por responsable. Toallas/blancos (María José): Manquehue 952 dto 1005 faltan toallas de cuerpo y mano ARRASTRADO del 11 al 12 sin resolver + sábana king y fundas; Lincoyán/Weitzel 1411 falta 1 toalla de cuerpo + 1 de mano; Parque Almagro (San Diego 376) 2 toallas de mano + 1 de cuerpo. Insumos (Jonathan): Manquehue 1005 Nova, esponja, traperos húmedos, cloro gel, papel; Rodrigo de Araya 1715 Nova, basureros, limpiavidrios, dispensador de jabón, shampoo, acondicionador; San Isidro 1103 utensilios, insumos de baño, basureros, pala (urgente); Pedro de Valdivia (Jabbaz 929) esponjas; 401 Vicuña Mackenna papel. Reparaciones (Felipe): 409 Arturo Prat calefactor quemado. Y el nudo sistémico: la bodega de Pedro de Valdivia sin llave (tiene ropa e insumos) + closet central vacío.",
+  "categoria": "INSUMOS",
+  "propiedad": "Varios (Manquehue 1005, Lincoyán 1411, Rodrigo de Araya 1715, San Isidro 1103, Jabbaz 929, 401 y 409 Vicuña Mackenna/Arturo Prat, San Diego 376)",
+  "fuente": "Transcript f76b9393-47dd-4a56-a51b-b3be2f33b746.jsonl, línea 10199 (13-jul-2026)"
+ }
+]
