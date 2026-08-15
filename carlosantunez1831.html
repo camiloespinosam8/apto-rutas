@@ -77,7 +77,14 @@
         box-shadow:0 2px 14px rgba(29,29,27,.09)}
   .card .foto{height:200px;background:linear-gradient(135deg,#DCD3C4,#C9BFAE);
               display:flex;align-items:center;justify-content:center;color:#8C8375;
-              font-size:13px;letter-spacing:.05em;text-align:center;padding:0 20px}
+              font-size:13px;letter-spacing:.05em;text-align:center;padding:0 20px;
+              overflow:hidden}
+  .card .foto img{width:100%;height:100%;object-fit:cover;display:block}
+  .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+  .galeria figure{margin:0;background:#fff;border-radius:8px;overflow:hidden;
+                  border:1px solid var(--linea)}
+  .galeria img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+  .galeria figcaption{font-size:13px;color:var(--gris);padding:8px 11px}
   .card .cuerpo{padding:12px 14px 15px}
   .card .tit{font-weight:600;font-size:15px;line-height:1.3}
   .card .gris{color:var(--gris);font-size:14px;margin:3px 0}
@@ -135,7 +142,7 @@ entre a mirarlo.</p>
 <h3>En la lista de resultados</h3>
 <div class="sim">
   <div class="card">
-    <div class="foto">FOTO DE PORTADA<br><span style="font-size:11px">pendiente · ver punto 2.7</span></div>
+    <div class="foto"><img src="img/ca1831-living.jpg" alt="Living comedor del dúplex"></div>
     <div class="cuerpo">
       <div class="tit">Dúplex nuevo 6p · 2 baños · Pedro de Valdivia</div>
       <p class="gris">Departamento entero en Providencia</p>
@@ -148,6 +155,9 @@ entre a mirarlo.</p>
     foto de portada, el título y el precio.</p>
     <p>Por eso el título no gasta caracteres en wifi, y por eso la foto de portada es la decisión más
     importante de toda la sesión de fotos.</p>
+    <p class="nota">La imagen es referencial y todavía no es la portada definitiva. Airbnb exige que
+    las fotos correspondan al alojamiento real: la portada tiene que salir de la sesión del
+    departamento terminado.</p>
     <p class="nota">La etiqueta "Nuevo" aparece las primeras semanas. Es una ventaja —Airbnb da más
     visibilidad a los anuncios recién publicados— y también una desventaja: sin reseñas, el huésped
     duda. De ahí el precio de estreno.</p>
