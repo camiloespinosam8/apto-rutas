@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Depacaro · Respuestas y Mayordomo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --crema:#F4EFE6; --papel:#FBF9F4; --ladrillo:#C8572A; --vino:#9B3A2E;
+         --tinta:#1D1D1B; --linea:#E2D9CB; --gris:#6E6A63; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--crema);color:var(--tinta);
+       font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
+  .wrap{max-width:840px;margin:0 auto;padding:0 22px 80px}
+  header{padding:56px 0 30px;border-bottom:2px solid var(--tinta)}
+  .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:0 0 11px}
+  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(31px,4.8vw,48px);
+     line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
+  .sub{font-size:17px;color:var(--gris);margin:0;max-width:62ch}
+  h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(25px,3.5vw,34px);margin:58px 0 5px;line-height:1.15}
+  h2+.lead{color:var(--gris);margin:0 0 20px;max-width:64ch}
+  h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(18px,2.4vw,23px);margin:34px 0 8px;line-height:1.2}
+  h4{font-size:13px;letter-spacing:.07em;font-weight:700;margin:26px 0 8px;color:var(--vino)}
+  p{max-width:66ch;margin:11px 0}
+  .qa{border-bottom:1px solid var(--linea);padding:16px 0}
+  .qa .q{font-weight:700;margin:0 0 5px;font-size:16px}
+  .qa .a{margin:0;color:#3B3833}
+  .qa .meta{font-size:13px;color:var(--gris);margin:6px 0 0}
+  .momento{background:var(--tinta);color:var(--crema);display:inline-block;
+           font-size:11px;letter-spacing:.1em;font-weight:700;padding:5px 12px;
+           border-radius:12px;margin:34px 0 4px}
+  .tablabox{overflow-x:auto;margin:20px 0}
+  table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
+  th{text-align:left;font-size:12px;letter-spacing:.08em;color:var(--gris);font-weight:600;
+     padding:0 13px 8px 0;border-bottom:1px solid var(--tinta)}
+  td{padding:11px 13px 11px 0;border-bottom:1px solid var(--linea);vertical-align:top}
+  td.d{color:var(--vino);font-weight:700}
+  tr.hi td{background:rgba(200,87,42,.08)}
+  .destaca{background:var(--papel);border-left:4px solid var(--ladrillo);
+           padding:22px 24px;margin:26px 0;border-radius:0 4px 4px 0}
+  .destaca p{margin:0}
+  .destaca .big{font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.8vw,26px);
+                line-height:1.3;margin:0 0 8px}
+  .msg{background:#fff;border:1px solid var(--linea);border-radius:10px;
+       padding:15px 18px;margin:12px 0;font-size:15px}
+  .msg .cab{font-size:12px;letter-spacing:.06em;font-weight:700;color:var(--vino);
+            margin-bottom:7px;text-transform:uppercase}
+  .msg p{margin:6px 0}
+  blockquote{margin:16px 0;padding:0 0 0 18px;border-left:2px solid var(--linea);
+             font-style:italic;color:#4A463F;max-width:64ch;font-size:15px}
+  blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--gris);margin-top:6px}
+  .nota{font-size:14px;color:var(--gris);max-width:66ch}
+  .aviso{background:#fff;border:1px solid var(--ladrillo);border-radius:6px;
+         padding:16px 19px;margin:22px 0;font-size:15px}
+  .aviso p{margin:6px 0}
+  .cifras{display:flex;flex-wrap:wrap;margin:24px 0 6px;
+          border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cifra{flex:1 1 140px;padding:18px 18px 18px 0;border-right:1px solid var(--linea)}
+  .cifra:last-child{border-right:0}
+  .cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:32px;line-height:1;
+            font-variant-numeric:tabular-nums}
+  .cifra .l{font-size:13px;color:var(--gris);margin-top:6px}
+  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--linea);
+         font-size:13px;color:var(--gris)}
+  .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
+  @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">OPERACIÓN DE HUÉSPEDES</p>
+  <h1>Preguntas frecuentes y estrategia de respuesta</h1>
+  <p class="sub">Departamento Vista al mar · Concón<br>
+  Preparado para Carolina · 15 de agosto de 2026</p>
+</header>
+
+<div class="aviso">
+  <p><strong>De dónde sale esto.</strong> Está construido sobre las <strong>259 reseñas completas</strong>
+  del anuncio, el contenido de la ficha y la experiencia de operación de APTO en departamentos
+  equivalentes.</p>
+  <p><strong>Todavía no incluye las conversaciones con huéspedes.</strong> Cuando podamos revisarlas,
+  este documento se afina: las preguntas reales que llegan por chat son la mejor fuente que existe, y
+  seguramente aparecerán tres o cuatro que acá no están.</p>
+</div>
+
+<h2>Lo que las reseñas ya dicen</h2>
+<p class="lead">De qué habla la gente cuando escribe sobre este departamento.</p>
+
+<div class="cifras">
+  <div class="cifra"><div class="n">31%</div><div class="l">menciona la rapidez de respuesta</div></div>
+  <div class="cifra"><div class="n">18%</div><div class="l">habla de lo tranquilo que es</div></div>
+  <div class="cifra"><div class="n">14%</div><div class="l">del equipamiento de la cocina</div></div>
+  <div class="cifra"><div class="n">6%</div><div class="l">del estacionamiento</div></div>
+</div>
+
+<p><strong>Uno de cada tres huéspedes menciona espontáneamente que Carolina respondió rápido.</strong>
+Eso no es un detalle amable: es el activo operativo del anuncio, y es exactamente lo que hay que
+sostener cuando alguien más entra a responder.</p>
+
+<blockquote>
+  "Tuvimos un problema porque nos habían cancelado otra reserva el mismo día, y encontramos este
+  departamento a última hora. Caro respondió súper rápido y resolvió todas mis dudas."
+  <cite>Reserva de siete noches, capturada por responder a tiempo</cite>
+</blockquote>
+
+<h2>Preguntas frecuentes</h2>
+<p class="lead">Organizadas por el momento en que aparecen.</p>
+
+<span class="momento">ANTES DE RESERVAR</span>
+
+<div class="qa">
+  <p class="q">¿Cuántas personas caben realmente?</p>
+  <p class="a">El departamento está declarado para tres personas: una habitación con cama king y un
+  sofá cama en el living. Varias reseñas lo describen como ideal para dos o tres.</p>
+  <p class="meta">Es la pregunta que más conviene responder con precisión. Un grupo que llega
+  esperando cuatro camas deja una mala reseña aunque el departamento sea impecable.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Tiene estacionamiento?</p>
+  <p class="a">Sí, estacionamiento privado dentro del recinto, en el primer piso, sin costo adicional.
+  No es techado.</p>
+  <p class="meta">Decir que no es techado antes de reservar evita el reclamo después.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Se puede llegar sin auto?</p>
+  <p class="a">Se puede, pero conviene saberlo antes: no hay locomoción pública cerca. Uber y las
+  aplicaciones de delivery funcionan sin problema, y hay supermercados y restaurantes a poca
+  distancia.</p>
+  <p class="meta">Está declarado en el anuncio y aun así se pregunta. Confirmarlo por chat da
+  tranquilidad y evita la sorpresa al llegar.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Aceptan mascotas?</p>
+  <p class="a">Sí. Hay diecisiete reseñas de huéspedes que viajaron con mascota.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿El edificio tiene piscina, gimnasio o sauna?</p>
+  <p class="a">Sí, y es uno de los pocos alojamientos de la zona con piscina. Está disponible según la
+  temporada y en horario definido por el edificio.</p>
+  <p class="meta">🔴 Una reseña reporta haber encontrado el sauna y el gimnasio cerrados. Conviene
+  confirmar el estado real antes de prometerlos, y avisar al huésped si están fuera de servicio.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Se ve el mar de verdad?</p>
+  <p class="a">Sí, y es lo que más se menciona en las reseñas: la vista aparece en 139 de 259.
+  Hay balcón con mesa y sillas.</p>
+  <p class="meta">Un huésped aclara que no se ve la puesta de sol desde el balcón. Vale decirlo si
+  preguntan específicamente por eso.</p>
+</div>
+
+<span class="momento">ANTES DE LLEGAR</span>
+
+<div class="qa">
+  <p class="q">¿Cómo entro? ¿A qué hora puedo llegar?</p>
+  <p class="a">La llegada es autónoma con cerradura de código. La entrada es desde las 17:00 y la
+  salida hasta las 12:00. El código se envía antes de la llegada, junto con las instrucciones del
+  edificio.</p>
+  <p class="meta">🔴 Un huésped escribió que el mensaje dice que la clave cambia y se envía el mismo
+  día, pero que en la práctica recibió la misma clave desde que reservó. Si la clave no rota, mejor
+  no decir que rota: la contradicción entre lo que se promete y lo que pasa es lo que erosiona la
+  confianza.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Hay conserjería? ¿Tengo que avisar que llego?</p>
+  <p class="a">El edificio tiene conserjería. Se avisa a los conserjes de turno la llegada de
+  huéspedes autorizados, así que no hay que hacer trámites al llegar.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Cuál es la clave del wifi?</p>
+  <p class="a">Se entrega junto con las instrucciones de llegada. Varias reseñas destacan que el
+  internet funciona muy bien.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Puedo dejar las maletas antes o salir más tarde?</p>
+  <p class="a">Depende de si hay reserva ese mismo día. Se responde caso a caso, después de mirar el
+  calendario.</p>
+  <p class="meta">Es la pregunta que más conviene responder con criterio y no con automático: si hay
+  recambio el mismo día, no se puede, y prometerlo genera el problema.</p>
+</div>
+
+<span class="momento">DURANTE LA ESTADÍA</span>
+
+<div class="qa">
+  <p class="q">Hace frío, ¿hay calefacción?</p>
+  <p class="a">Se resuelve caso a caso. Una huésped agradece explícitamente que Carolina le
+  consiguiera un calefactor.</p>
+  <p class="meta">Vale la pena tener uno disponible en el departamento durante los meses fríos: es
+  barato y evita exactamente esta conversación.</p>
+</div>
+
+<div class="qa">
+  <p class="q">Falta algo, o algo no funciona</p>
+  <p class="a">Se responde en el momento y se resuelve el mismo día si es posible.</p>
+  <p class="meta">Las seis reseñas más bajas del anuncio en cinco años apuntan todas a lo mismo:
+  reposición, mantención y aseo. Ninguna al producto. Responder rápido acá es lo que evita que
+  termine escrito en una reseña.</p>
+</div>
+
+<div class="qa">
+  <p class="q">¿Dónde compro, dónde como?</p>
+  <p class="a">Hay supermercados y un microcentro cerca, restaurantes en el sector y las dunas de
+  Concón para caminar. La playa está a pasos.</p>
+</div>
+
+<span class="momento">AL SALIR</span>
+
+<div class="qa">
+  <p class="q">¿Qué tengo que hacer antes de irme?</p>
+  <p class="a">Sacar la basura, apagar todo, dejar las llaves donde estaban y cerrar. Salida hasta
+  las 12:00.</p>
+  <p class="meta">🔴 Una reseña de 2021 relata que la persona del aseo los apuró al demorarse unos
+  minutos en salir. Coordinar el aseo con margen respecto de la hora de salida evita ese roce, que es
+  de los que sí quedan escritos.</p>
+</div>
+
+<h2>Estrategia de respuesta del Mayordomo</h2>
+<p class="lead">Cuándo responde, qué responde y cómo lo hace.</p>
+
+<h3>Cuándo</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Momento</th><th>Qué se envía</th><th>Quién lo gatilla</th></tr>
+  <tr class="hi"><td><strong>Consulta antes de reservar</strong></td><td>Respuesta a la pregunta concreta</td><td class="d">Menos de 1 hora</td></tr>
+  <tr><td>Reserva confirmada</td><td>Bienvenida y qué esperar</td><td>Automático, al confirmar</td></tr>
+  <tr><td><strong>48 horas antes</strong></td><td>Instrucciones de llegada, código, wifi, cómo llegar</td><td>Automático</td></tr>
+  <tr><td>Día de llegada</td><td>Confirmación breve y disponibilidad</td><td>Automático, en la mañana</td></tr>
+  <tr><td>Primera noche</td><td>"¿Está todo bien?"</td><td>Automático</td></tr>
+  <tr><td>Durante la estadía</td><td>Lo que pregunte el huésped</td><td class="d">Menos de 1 hora en horario · a primera hora si es de madrugada</td></tr>
+  <tr><td>Día anterior a la salida</td><td>Recordatorio de horario e instrucciones</td><td>Automático</td></tr>
+  <tr><td>Después de la salida</td><td>Agradecimiento y reseña</td><td>Automático</td></tr>
+</table>
+</div>
+
+<div class="destaca">
+  <p class="big">La vara está en menos de una hora, y no la pusimos nosotros.</p>
+  <p>El perfil del anuncio muestra 100% de respuesta en menos de una hora. Ese estándar ya está
+  construido y es parte de por qué el anuncio rankea donde rankea. Cualquiera que entre a responder
+  tiene que igualarlo, no aproximarse.</p>
+</div>
+
+<h3>Qué se responde</h3>
+
+<div class="msg">
+  <div class="cab">Al confirmar la reserva</div>
+  <p>¡Hola [nombre]! Qué bueno tenerte. Soy parte del equipo que acompaña el departamento junto a
+  Caro.</p>
+  <p>Dos días antes de tu llegada te escribo con el código de la cerradura y todas las indicaciones
+  para entrar. La llegada es autónoma, así que puedes llegar a la hora que necesites después de las
+  17:00.</p>
+  <p>Si tienes cualquier duda antes, escríbeme por acá.</p>
+</div>
+
+<div class="msg">
+  <div class="cab">48 horas antes</div>
+  <p>¡Hola [nombre]! Ya está todo listo para tu llegada del [fecha].</p>
+  <p>Código de la cerradura: [código]<br>
+  Wifi: [red] · Clave: [clave]<br>
+  Estacionamiento: primer piso, dentro del recinto</p>
+  <p>Los conserjes ya están avisados de tu llegada. La entrada es desde las 17:00 y la salida hasta
+  las 12:00.</p>
+  <p>Un dato útil: no hay locomoción pública cerca, pero Uber y las apps de delivery funcionan
+  perfecto. Hay supermercados y restaurantes a poca distancia.</p>
+</div>
+
+<div class="msg">
+  <div class="cab">Primera noche</div>
+  <p>¡Hola [nombre]! ¿Llegaron bien, está todo en orden?</p>
+  <p>Cualquier cosa que necesites, me escribes por acá.</p>
+</div>
+
+<div class="msg">
+  <div class="cab">Día anterior a la salida</div>
+  <p>¡Hola [nombre]! Mañana es tu salida, hasta las 12:00.</p>
+  <p>Antes de irte: la basura va al shaft del piso, apagar luces y calefacción, y dejar las llaves
+  donde las encontraste. Nada más.</p>
+  <p>Si necesitas salir más tarde, avísame y lo reviso.</p>
+</div>
+
+<h3>Cómo se responde</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Principio</th><th>Qué significa en la práctica</th></tr>
+  <tr><td><strong>Rápido antes que perfecto</strong></td><td>Un "lo reviso y te confirmo en un rato" a los diez minutos vale más que la respuesta completa tres horas después</td></tr>
+  <tr><td><strong>Concreto</strong></td><td>Datos, horarios y códigos. Nada de fórmulas largas</td></tr>
+  <tr><td><strong>Sin prometer lo que no se controla</strong></td><td>Late checkout, sauna, gimnasio y equipamiento se confirman antes de ofrecerlos</td></tr>
+  <tr><td><strong>Con el nombre del huésped</strong></td><td>Aunque el mensaje sea automático, se personaliza</td></tr>
+  <tr class="hi"><td><strong>Todo por el chat de Airbnb</strong></td><td>Nada por fuera. Es la única forma de que quede registro si algo se discute después</td></tr>
+  <tr><td><strong>Lo que no se sabe, se dice</strong></td><td>"Lo confirmo y te aviso" es mejor que inventar</td></tr>
+</table>
+</div>
+
+<h4>QUÉ SE ESCALA A CAROLINA</h4>
+<p>El Mayordomo resuelve lo cotidiano. Se le consulta a Carolina antes de responder cuando se trata
+de: <strong>descuentos o devoluciones de dinero</strong> · <strong>cambios de fechas o
+cancelaciones</strong> · <strong>daños</strong> · <strong>reservas fuera de las reglas</strong> ·
+<strong>cualquier cosa que comprometa plata o el contrato</strong>.</p>
+
+<h2>Qué permite esto</h2>
+
+<h3>Libera a Carolina</h3>
+<p>Hoy el 100% de respuesta en menos de una hora depende de que ella esté disponible, viva donde
+viva y sea la hora que sea. Con las respuestas escritas y un equipo que las opera, ese estándar deja
+de depender de una sola persona: <strong>el estándar queda en el sistema, no en la agenda de
+alguien</strong>. Carolina sigue decidiendo lo que importa —precio, reglas, plata— y deja de
+contestar a qué hora es el check-in.</p>
+
+<h3>Evita</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Qué se evita</th><th>Por qué importa</th></tr>
+  <tr class="hi"><td><strong>Que se caiga el tiempo de respuesta</strong></td><td>Es un factor de posición en la búsqueda de Airbnb, y hoy está en su máximo. Perderlo cuesta visibilidad, no sólo simpatía</td></tr>
+  <tr><td><strong>Perder reservas de última hora</strong></td><td>Ya pasó al revés: una reserva de siete noches entró porque se respondió rápido a alguien a quien le habían cancelado</td></tr>
+  <tr><td><strong>Promesas que no se cumplen</strong></td><td>La clave que "cambia" y no cambia, el sauna que estaba cerrado, el late checkout imposible. Cada una es una reseña en riesgo</td></tr>
+  <tr><td><strong>Roces en el recambio</strong></td><td>El episodio del aseo apurando la salida quedó escrito en una reseña de tres estrellas</td></tr>
+  <tr><td><strong>Que las mismas fallas se repitan</strong></td><td>Aseo, reposición y mantención aparecen en las seis reseñas bajas del anuncio, repartidas entre 2021 y 2026. Con un canal ordenado se detectan y se corrigen en el momento</td></tr>
+</table>
+</div>
+
+<h3>Ayuda en</h3>
+<div class="tablabox">
+<table>
+  <tr><th>En qué ayuda</th><th>Cómo</th></tr>
+  <tr><td><strong>Sostener el distintivo Favorito entre huéspedes</strong></td><td>Exige que las seis subcategorías estén sobre 4,8. Comunicación y Llegada son dos de ellas, y son justamente las que se operan por chat</td></tr>
+  <tr class="hi"><td><strong>Proteger la nota de Limpieza</strong></td><td>Está en 4,8 exacto, el mínimo del umbral. Un canal que detecta el problema durante la estadía permite resolverlo antes de que se convierta en reseña</td></tr>
+  <tr><td><strong>Capturar la demanda de último minuto</strong></td><td>Responder en minutos convierte consultas que de otro modo se van a otro anuncio</td></tr>
+  <tr><td><strong>Alargar las estadías</strong></td><td>Un huésped que pregunta por una noche extra y recibe respuesta inmediata suele extenderse</td></tr>
+  <tr><td><strong>Construir memoria</strong></td><td>Cada pregunta nueva se agrega a este documento. En unos meses cubre casi todo lo que llega</td></tr>
+</table>
+</div>
+
+<div class="destaca">
+  <p class="big">El anuncio no necesita ayuda para vender. Necesita ayuda para sostenerse.</p>
+  <p>Con 4,89, 259 reseñas y nueve años de historia, el producto y el copy están resueltos. Lo que
+  está al límite es la operación: la nota de limpieza en el mínimo, el tiempo de respuesta atado a
+  una sola persona, y fallas de reposición que se repiten desde 2021. Ahí es donde una operación
+  ordenada mueve la aguja.</p>
+</div>
+
+<h2>Qué falta para completar esto</h2>
+<div class="tablabox">
+<table>
+  <tr><th>Falta</th><th>Para qué</th></tr>
+  <tr class="hi"><td><strong>Revisar las conversaciones con huéspedes</strong></td><td>Son la fuente real de las preguntas que llegan. Este documento se afina mucho con eso</td></tr>
+  <tr><td>Los mensajes automáticos que Carolina ya usa</td><td>Para no reemplazar lo que funciona, sólo completarlo</td></tr>
+  <tr><td>Confirmar si la clave de la cerradura rota o no</td><td>Hoy el mensaje y la práctica no coinciden</td></tr>
+  <tr><td>Estado real del sauna y el gimnasio</td><td>Para saber si se pueden ofrecer</td></tr>
+  <tr><td>Si hay calefactor disponible en el departamento</td><td>Es la petición más repetida en meses fríos</td></tr>
+  <tr><td>Horario del aseo respecto de la hora de salida</td><td>Para evitar el roce del recambio</td></tr>
+</table>
+</div>
+
+<footer>
+  <p class="marca">APTO</p>
+  <p>Documento preparado el 15 de agosto de 2026 a partir de las 259 reseñas públicas del anuncio y
+  del contenido de la ficha. Es un documento vivo: cada pregunta nueva que llegue se incorpora.</p>
+</footer>
+
+</div>
+</body>
+</html>
