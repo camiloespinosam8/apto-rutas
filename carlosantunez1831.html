@@ -21,7 +21,6 @@
      line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
   .sub{font-size:17px;color:var(--gris);margin:0}
 
-  /* ---- pestañas ---- */
   nav{position:sticky;top:0;z-index:20;background:var(--crema);
       border-bottom:2px solid var(--tinta);padding:10px 0 0;margin-bottom:6px}
   .tabs{display:flex;flex-wrap:wrap;gap:2px;max-width:860px;margin:0 auto;padding:0 22px}
@@ -51,6 +50,8 @@
      font-variant-numeric:tabular-nums;vertical-align:top}
   td.d{color:var(--vino);font-weight:700}
   tr.hi td{background:rgba(200,87,42,.08);font-weight:600}
+  tr.tot td{border-top:2px solid var(--tinta);border-bottom:0;
+            font-weight:700;font-size:16px;padding-top:13px}
   .destaca{background:var(--papel);border-left:4px solid var(--ladrillo);
            padding:22px 24px;margin:26px 0;border-radius:0 4px 4px 0}
   .destaca p{margin:0}
@@ -71,7 +72,6 @@
         background:var(--vino);color:#fff;padding:3px 9px;border-radius:11px;
         margin-left:8px;vertical-align:middle}
 
-  /* ---- simulación del anuncio ---- */
   .sim{display:flex;flex-wrap:wrap;gap:26px;margin:24px 0 8px;align-items:flex-start}
   .card{flex:0 0 300px;background:#fff;border-radius:12px;overflow:hidden;
         box-shadow:0 2px 14px rgba(29,29,27,.09)}
@@ -79,7 +79,6 @@
               display:flex;align-items:center;justify-content:center;color:#8C8375;
               font-size:13px;letter-spacing:.05em;text-align:center;padding:0 20px}
   .card .cuerpo{padding:12px 14px 15px}
-  .card .fila{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
   .card .tit{font-weight:600;font-size:15px;line-height:1.3}
   .card .gris{color:var(--gris);font-size:14px;margin:3px 0}
   .card .precio{margin-top:9px;font-size:15px}
@@ -119,16 +118,15 @@
 <nav>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" aria-selected="true"  data-p="p0"><span class="num">0</span>Simulación del anuncio</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>Estrategia de subida</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Insumos</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Precio y mercado</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p4"><span class="num">4</span>Lanzamiento</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>Mercado, precio e ingresos</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Subida e insumos</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Lanzamiento</button>
   </div>
 </nav>
 
 <div class="wrap">
 
-<!-- ============ 0 · SIMULACIÓN ============ -->
+<!-- ============ 0 · SIMULACIÓN DEL ANUNCIO ============ -->
 <section class="panel on" id="p0">
 <h2>Así se va a ver el anuncio</h2>
 <p class="lead">Una simulación de cómo aparecerá el departamento cuando alguien lo busque y cuando
@@ -137,12 +135,12 @@ entre a mirarlo.</p>
 <h3>En la lista de resultados</h3>
 <div class="sim">
   <div class="card">
-    <div class="foto">FOTO DE PORTADA<br><span style="font-size:11px">pendiente · ver punto 1.7</span></div>
+    <div class="foto">FOTO DE PORTADA<br><span style="font-size:11px">pendiente · ver punto 2.7</span></div>
     <div class="cuerpo">
-      <div class="fila"><div class="tit">Dúplex nuevo 6p · 2 baños · Pedro de Valdivia</div></div>
+      <div class="tit">Dúplex nuevo 6p · 2 baños · Pedro de Valdivia</div>
       <p class="gris">Departamento entero en Providencia</p>
       <p class="gris">6 huéspedes · 2 dormitorios · 2 baños</p>
-      <p class="precio"><b>$99.000</b> por noche &nbsp;<span class="nuevo">NUEVO</span></p>
+      <p class="precio"><b>$80.000</b> por noche &nbsp;<span class="nuevo">NUEVO</span></p>
     </div>
   </div>
   <div class="simnota">
@@ -194,11 +192,11 @@ entre a mirarlo.</p>
       <span class="chip">Wifi</span><span class="chip">Cocina equipada</span>
       <span class="chip">2 baños completos</span><span class="chip">Zona de trabajo</span>
       <span class="chip">Agua caliente</span><span class="chip">Secador de pelo</span>
-      <span class="chip">Lavadora*</span><span class="chip">Ascensor*</span>
-      <span class="chip">Calefacción*</span>
+      <span class="chip">Ascensor</span><span class="chip">Calefacción*</span>
+      <span class="chip">Segundo piso</span>
     </div>
-    <p class="nota" style="margin-top:4px">* Por confirmar. Cada una es un filtro de búsqueda: si no
-    está declarada, el anuncio no aparece para quien filtra por ella.</p>
+    <p class="nota" style="margin-top:4px">* El tipo de calefacción está por definir. <strong>Sin
+    lavadora</strong> — se declara así, porque prometer lo que no hay es lo que rompe la calificación.</p>
   </div>
 
   <div class="bloque">
@@ -212,19 +210,152 @@ entre a mirarlo.</p>
 <div class="tablabox">
 <table>
   <tr><th>Falta</th><th>Dónde se define</th></tr>
-  <tr class="hi"><td><strong>Las fotografías</strong></td><td>Punto 1.7</td></tr>
-  <tr class="hi"><td><strong>Capacidad: 5 o 6</strong></td><td>Punto 1.6</td></tr>
-  <tr class="hi"><td><strong>Códigos y forma de acceso</strong></td><td>Punto 4.3</td></tr>
-  <tr class="hi"><td><strong>Fecha de apertura del calendario</strong></td><td>Punto 4.1</td></tr>
-  <tr><td>Confirmar comodidades marcadas con *</td><td>Punto 1.4</td></tr>
+  <tr class="hi"><td><strong>Las fotografías</strong></td><td>Punto 2.7</td></tr>
+  <tr class="hi"><td><strong>Capacidad: 5 o 6</strong></td><td>Punto 2.6</td></tr>
+  <tr class="hi"><td><strong>Códigos y forma de acceso</strong></td><td>Punto 3.3</td></tr>
+  <tr class="hi"><td><strong>Fecha de apertura del calendario</strong></td><td>Punto 3.1</td></tr>
+  <tr><td>Tipo de calefacción</td><td>Punto 2.4</td></tr>
 </table>
 </div>
 </section>
 
-<!-- ============ 1 · SUBIDA ============ -->
+<!-- ============ 1 · MERCADO, PRECIO E INGRESOS ============ -->
 <section class="panel" id="p1">
-<h2>1 · Estrategia de subida</h2>
-<p class="lead">Cómo se arma el anuncio: la ficha, el título, la descripción, las comodidades y las reglas.</p>
+<h2>1 · Mercado, precio e ingresos</h2>
+<p class="lead">Barrido propio de alojamientos completos en Providencia, agosto 2026.</p>
+
+<h3>1.1 El mercado, medido</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Tramo</th><th>4 huéspedes</th><th>6 huéspedes</th><th>Dif.</th></tr>
+  <tr><td>25% más económico</td><td>$62.348</td><td>$93.440</td><td>+50%</td></tr>
+  <tr class="hi"><td><strong>Mediana</strong></td><td><strong>$73.084</strong></td><td><strong>$116.400</strong></td><td class="d"><strong>+59%</strong></td></tr>
+  <tr><td>25% más caro</td><td>$86.776</td><td>$139.506</td><td>+61%</td></tr>
+  <tr><td>Techo</td><td>$96.353</td><td>$164.343</td><td>+71%</td></tr>
+  <tr><td>Alojamientos medidos</td><td>64</td><td>65</td><td></td></tr>
+</table>
+</div>
+<p class="nota">Valores extremos removidos por método estadístico (rango intercuartílico).</p>
+
+<h4>CALIDAD DEL MERCADO — 6 huéspedes</h4>
+<div class="cifras">
+  <div class="cifra"><div class="n">4,93</div><div class="l">calificación mediana</div></div>
+  <div class="cifra"><div class="n">54%</div><div class="l">tiene Favorito entre huéspedes</div></div>
+  <div class="cifra"><div class="n">41</div><div class="l">reseñas mediana</div></div>
+</div>
+<p>Es un mercado exigente. No basta con estar bien: hay que estar entre los mejores para sostener
+posición.</p>
+
+<h4>ALGUNOS COMPETIDORES DIRECTOS</h4>
+<div class="tablabox">
+<table>
+  <tr><th>Anuncio</th><th>Precio/noche</th><th>Calificación</th><th>Reseñas</th></tr>
+  <tr><td>Dúplex Premium con Piscina Privada</td><td>$166.000</td><td>4,88</td><td>16</td></tr>
+  <tr><td>AC · 6 Huéspedes · Cerca Costanera Center</td><td>$157.410</td><td>4,90</td><td>80</td></tr>
+  <tr><td>Metro Los Leones · Vista Costanera · 2D 2B</td><td>$153.131</td><td>4,97</td><td>39</td></tr>
+  <tr><td>Metro, Costanera Center y MUT</td><td>$149.156</td><td>4,97</td><td>202</td></tr>
+  <tr><td>Costanera Center, Restaurantes</td><td>$145.771</td><td>4,93</td><td>100</td></tr>
+  <tr><td>Comodidad y Ubicación en Providencia, 3D/2B/AC</td><td>$134.320</td><td>5,00</td><td>6</td></tr>
+  <tr><td>Acogedor depto. céntrico con estacionamiento</td><td>$126.053</td><td>4,92</td><td>51</td></tr>
+</table>
+</div>
+
+<h3>1.2 El precio</h3>
+<div class="destaca">
+  <p class="big">$80.000 por noche de lanzamiento, para cuatro personas.</p>
+  <p>Más <strong>$10.000 por pasajero adicional por día</strong>, hasta seis. Así el precio acompaña
+  al uso real del departamento en vez de castigar a la pareja que viaja sola.</p>
+</div>
+<div class="tablabox">
+<table>
+  <tr><th>Huéspedes</th><th>Precio por noche</th><th>Dónde queda en el mercado</th></tr>
+  <tr class="hi"><td><strong>4 personas</strong></td><td class="d"><strong>$80.000</strong></td><td>Sobre la mediana de 4 huéspedes ($73.084)</td></tr>
+  <tr><td>5 personas</td><td>$90.000</td><td>Bajo la mediana de 6 ($116.400)</td></tr>
+  <tr><td>6 personas</td><td>$100.000</td><td>Bajo la mediana de 6 — margen para subir</td></tr>
+</table>
+</div>
+<p>Es un precio de entrada deliberadamente por debajo de la mediana en la configuración de seis: un
+anuncio sin reseñas necesita convertir antes que facturar. Las primeras reservas valen más por las
+reseñas que dejan que por lo que ingresan.</p>
+
+<h4>LA ESCALERA HACIA ADELANTE</h4>
+<div class="tablabox">
+<table>
+  <tr><th>Momento</th><th>Base 4 personas</th><th>Por qué</th></tr>
+  <tr class="hi"><td><strong>Lanzamiento</strong></td><td class="d"><strong>$80.000</strong></td><td>Convertir y juntar historial</td></tr>
+  <tr><td>Con ~10 reseñas</td><td>$95.000</td><td>Ya hay prueba social</td></tr>
+  <tr><td>Consolidado</td><td>$110.000+</td><td>Con calificación sobre 4,9</td></tr>
+</table>
+</div>
+
+<h3>1.3 Tarifa de limpieza</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Duración de la estadía</th><th>Tarifa de limpieza</th><th>Peso sobre el total</th></tr>
+  <tr class="hi"><td><strong>1 a 2 noches</strong></td><td class="d"><strong>$34.000</strong></td><td>18% en una estadía de 2 noches</td></tr>
+  <tr><td><strong>3 noches o más</strong></td><td class="d"><strong>$40.000</strong></td><td>14% a 3 noches · 9% a 5 noches</td></tr>
+</table>
+</div>
+<p>La tarifa más baja para estadías cortas es deliberada: la limpieza se paga una sola vez, así que
+en un fin de semana pesa mucho más que en una semana. Cobrar lo mismo en ambos casos hace que el
+huésped de dos noches vea un total desproporcionado y no reserve.</p>
+<p class="nota">La referencia de la industria es que sobre el 15-17% del total empieza el abandono en
+el momento de pagar. Con esta estructura quedamos en el borde a dos noches y cómodos de tres en
+adelante.</p>
+
+<h3>1.4 Descuentos por duración</h3>
+<p>Se configuran desde el primer día. La mayoría de los anfitriones no los usa y no cuestan nada.</p>
+<div class="tablabox">
+<table>
+  <tr><th>Estadía</th><th>Descuento</th><th>Estadía</th><th>Descuento</th></tr>
+  <tr><td>3 noches</td><td>5%</td><td>6 noches</td><td>12%</td></tr>
+  <tr><td>4 noches</td><td>8%</td><td><strong>7 noches o más</strong></td><td class="d"><strong>15%</strong></td></tr>
+  <tr><td>5 noches</td><td>10%</td><td><strong>28 noches o más</strong></td><td class="d"><strong>25%</strong></td></tr>
+</table>
+</div>
+<p>Más un <strong>20% de descuento de estreno</strong> durante las primeras semanas.</p>
+
+<h3>1.5 Simulación de ingresos</h3>
+<p class="lead">Tres escenarios de ocupación, sobre el precio base de $80.000 la noche.</p>
+
+<div class="tablabox">
+<table>
+  <tr><th>&nbsp;</th><th>70% ocupación</th><th>80% ocupación</th><th>90% ocupación</th></tr>
+  <tr><td>Noches ocupadas en el mes</td><td>21</td><td>24</td><td>27</td></tr>
+  <tr><td>Ingreso por alojamiento</td><td>$1.680.000</td><td>$1.920.000</td><td>$2.160.000</td></tr>
+  <tr><td>Menos comisión Airbnb (15,5%)</td><td>−$260.400</td><td>−$297.600</td><td>−$334.800</td></tr>
+  <tr><td>Estadías estimadas (4 noches promedio)</td><td>6</td><td>6</td><td>7</td></tr>
+  <tr><td>Menos limpieza ($37.000 promedio)</td><td>−$222.000</td><td>−$222.000</td><td>−$259.000</td></tr>
+  <tr><td>Subtotal</td><td>$1.197.600</td><td>$1.400.400</td><td>$1.566.200</td></tr>
+  <tr><td>Menos comisión APTO (18%)</td><td>−$215.568</td><td>−$252.072</td><td>−$281.916</td></tr>
+  <tr class="tot"><td><strong>Neto para el propietario</strong></td><td class="d"><strong>$982.032</strong></td><td class="d"><strong>$1.148.328</strong></td><td class="d"><strong>$1.284.284</strong></td></tr>
+  <tr><td>Menos insumos de reposición</td><td>−$59.000</td><td>−$59.000</td><td>−$59.000</td></tr>
+  <tr class="tot"><td><strong>Neto final</strong></td><td class="d"><strong>$923.032</strong></td><td class="d"><strong>$1.089.328</strong></td><td class="d"><strong>$1.225.284</strong></td></tr>
+</table>
+</div>
+
+<p class="nota"><strong>Supuestos:</strong> mes de 30 días · precio base de $80.000 la noche, sin
+contar los $10.000 por pasajero adicional · estadía promedio de 4 noches · limpieza promedio de
+$37.000 por estadía · comisión Airbnb 15,5% · comisión APTO 18% · insumos $59.000 mensuales.
+No incluye gastos comunes ni servicios básicos, que siguen siendo del propietario.</p>
+
+<div class="destaca">
+  <p class="big">Los grupos de cinco y seis mejoran estos números.</p>
+  <p>La simulación usa el precio base de cuatro personas. Cada pasajero adicional suma $10.000 por
+  noche: un mes con grupos de seis puede estar entre un 15% y un 25% por encima de lo proyectado.
+  Se dejó fuera a propósito para que la estimación sea conservadora.</p>
+</div>
+
+<p class="nota">Estas proyecciones son estimaciones basadas en el mercado medido en agosto de 2026 y
+no constituyen garantía de rentabilidad. La ocupación real depende de la temporada, de la calidad de
+las fotografías y del historial de reseñas que el anuncio construya. Los primeros meses estarán por
+debajo de estos escenarios mientras se junta ese historial.</p>
+</section>
+
+<!-- ============ 2 · SUBIDA E INSUMOS ============ -->
+<section class="panel" id="p2">
+<h2>2 · Estrategia de subida e insumos</h2>
+<p class="lead">Cómo se arma el anuncio, y qué se acuerda por contrato para mantenerlo operando.</p>
 
 <div class="cifras">
   <div class="cifra"><div class="n">2</div><div class="l">dormitorios</div></div>
@@ -233,11 +364,12 @@ entre a mirarlo.</p>
   <div class="cifra"><div class="n">6</div><div class="l">huéspedes (propuesto)</div></div>
 </div>
 
-<h3>1.1 La ficha</h3>
+<h3>2.1 La ficha</h3>
 <div class="tablabox">
 <table>
   <tr><td>Tipo</td><td>Departamento · alojamiento entero</td></tr>
   <tr><td>Formato</td><td>Dúplex en dos pisos, recién remodelado</td></tr>
+  <tr><td>Piso</td><td><strong>Segundo</strong>, con ascensor</td></tr>
   <tr><td>Camas</td><td>Cama king · 2 camas de plaza y media · sofá cama</td></tr>
   <tr><td>Distribución</td><td>Dormitorio 1: king · Dormitorio 2: dos camas de plaza y media · Living: sofá cama</td></tr>
   <tr><td>Estacionamiento</td><td>No tiene</td></tr>
@@ -246,7 +378,7 @@ entre a mirarlo.</p>
 <p><strong>Los dos baños completos son el diferenciador real.</strong> En el segmento de seis
 personas la mayoría de los departamentos tiene uno solo, y es lo primero que un grupo compara.</p>
 
-<h3>1.2 Título</h3>
+<h3>2.2 Título</h3>
 <p style="font-family:'Playfair Display',serif;font-size:22px;margin:14px 0">
 "Dúplex nuevo 6p · 2 baños · Pedro de Valdivia"</p>
 <p class="nota">45 caracteres. El máximo son 50.</p>
@@ -256,7 +388,7 @@ Este título usa sus caracteres en lo que de verdad decide: que está nuevo, que
 <p>Deliberadamente <strong>no</strong> lleva "wifi": en 2026 se da por hecho y sólo ocupa espacio.
 Tampoco estacionamiento, porque no hay.</p>
 
-<h3>1.3 Descripción</h3>
+<h3>2.3 Descripción</h3>
 <div class="copy">
   <p><strong>Resumen</strong></p>
   <p>Dúplex de dos pisos recién remodelado en el corazón de Providencia, a pasos del Metro Pedro de
@@ -274,26 +406,36 @@ Tampoco estacionamiento, porque no hay.</p>
   <p><strong>Otras cosas</strong></p>
   <p>CÓMO LLEGAR: Metro Pedro de Valdivia (Línea 1) a pocos minutos caminando.<br>
   BUENO SABER ANTES DE RESERVAR: el departamento no cuenta con estacionamiento. Si viajas en auto,
-  hay estacionamientos por hora en el sector.<br>
-  Es un dúplex: para llegar al segundo piso hay una escalera interior.</p>
+  hay estacionamientos por hora en el sector. Tampoco hay lavadora.<br>
+  Es un dúplex en el segundo piso: el edificio tiene ascensor, y para llegar al segundo nivel del
+  departamento hay una escalera interior.</p>
 </div>
 <p class="nota">El bloque <em>Acceso de huéspedes</em> queda pendiente: depende de la definición del
-punto 4.3. Declarar la escalera y la falta de estacionamiento no resta — filtra al huésped equivocado
-antes de que reserve.</p>
+punto 3.3. Declarar la escalera, la falta de estacionamiento y la falta de lavadora no resta — filtra
+al huésped equivocado antes de que reserve.</p>
 
-<h3>1.4 Comodidades</h3>
+<h3>2.4 Comodidades</h3>
 <p>Cada comodidad marcada es un filtro de búsqueda: si no está declarada, el anuncio <strong>no
 aparece</strong> para quien filtra por ella. Se declaran todas las que existen de verdad, nunca una
 de más.</p>
+<div class="tablabox">
+<table>
+  <tr><th>Comodidad</th><th>Estado</th></tr>
+  <tr class="hi"><td><strong>Ascensor</strong></td><td class="d">SÍ — se declara</td></tr>
+  <tr class="hi"><td><strong>Calefacción</strong></td><td class="d">SÍ — falta definir el tipo</td></tr>
+  <tr><td><strong>Lavadora</strong></td><td>NO — se declara que no hay</td></tr>
+</table>
+</div>
 <p><strong>Se marcan de entrada:</strong> wifi · cocina equipada · refrigerador · microondas · horno ·
 hervidor · cafetera · utensilios · platos y cubiertos · copas de vino · mesa de comedor · agua
 caliente · champú · acondicionador · jabón corporal · servicios básicos · sábanas · almohadas y
 mantas adicionales · secador de pelo · plancha · perchas · espacio para guardar ropa · cortinas
-opacas · productos de limpieza · zona de trabajo.</p>
-<p><strong>Por confirmar:</strong> ascensor · calefacción · aire acondicionado · lavadora · secadora ·
-televisión · detector de humo · detector de monóxido · extintor · botiquín · amenidades del edificio.</p>
+opacas · productos de limpieza · zona de trabajo · <strong>ascensor</strong> ·
+<strong>calefacción</strong>.</p>
+<p><strong>Por confirmar:</strong> aire acondicionado · televisión · detector de humo · detector de
+monóxido · extintor · botiquín · amenidades del edificio.</p>
 
-<h3>1.5 Reglas y horarios</h3>
+<h3>2.5 Reglas y horarios</h3>
 <div class="tablabox">
 <table>
   <tr class="hi"><td>Llegada</td><td class="d"><strong>Desde las 15:00</strong></td></tr>
@@ -306,19 +448,12 @@ televisión · detector de humo · detector de monóxido · extintor · botiquí
 <p>Muchos anuncios ponen la llegada a las 17:00 por costumbre. Si el acceso es autónomo no hay
 ninguna razón para hacerlo, y esas dos horas son tarde de más para el huésped.</p>
 
-<h3>1.6 ¿Cinco o seis huéspedes? <span class="pill">DEFINIR</span></h3>
-<div class="destaca">
-  <p class="big">Declarar seis en vez de cuatro cambia el precio de referencia en +59%.</p>
-  <p>La mediana pasa de $73.084 a $116.400 la noche: son $43.316 de diferencia por noche. A quince
-  noches ocupadas al mes, cerca de $650.000 mensuales de distinta tarifa.</p>
-</div>
-<p>El salto no es sólo de precio: con seis, el departamento entra en las búsquedas de <strong>grupos
-y familias</strong>, que reservan con más anticipación, se quedan más noches y comparan menos por
-precio.</p>
-<p><strong>La condición:</strong> las camas reales alcanzan para cuatro. Los huéspedes cinco y seis
-duermen en el sofá cama del living, y de ahí viene el único riesgo. En otro departamento del
-portafolio, la peor reseña en cinco años vino exactamente de eso: un huésped adicional que durmió en
-un sofá cama incómodo y lo escribió.</p>
+<h3>2.6 ¿Cinco o seis huéspedes? <span class="pill">DEFINIR</span></h3>
+<p>Con el esquema de precio por pasajero, el sexto huésped ya no es una apuesta: sólo paga quien lo
+usa. Aun así hay una condición.</p>
+<p><strong>Las camas reales alcanzan para cuatro.</strong> Los huéspedes cinco y seis duermen en el
+sofá cama del living. En otro departamento del portafolio, la peor reseña en cinco años vino
+exactamente de eso: un huésped adicional que durmió en un sofá cama incómodo y lo escribió.</p>
 <div class="tablabox">
 <table>
   <tr class="hi"><td>Si el sofá cama es de buena calidad</td><td class="d">Declarar 6</td></tr>
@@ -328,7 +463,7 @@ un sofá cama incómodo y lo escribió.</p>
 <p><strong>Recomendamos seis</strong>, con dos condiciones: que el sofá cama sea de verdad cómodo, y
 que la descripción diga con todas sus letras que el quinto y sexto huésped duermen ahí.</p>
 
-<h3>1.7 Fotografías <span class="pill">BLOQUEA</span></h3>
+<h3>2.7 Fotografías <span class="pill">BLOQUEA</span></h3>
 <p>Airbnb exige un mínimo de cinco fotos para publicar, pero ese mínimo no compite. Los anuncios que
 sostienen buena posición publican <strong>entre 25 y 30</strong>.</p>
 <p><strong>Qué necesitamos:</strong> los dos dormitorios (cada uno desde dos ángulos), los dos baños,
@@ -337,13 +472,8 @@ conecta los pisos</strong> —que es lo que hace único al dúplex—, la vista 
 fachada y el acceso al edificio. Si el edificio tiene amenidades, también.</p>
 <p class="nota">Luz natural, de día, sin flash y con los espacios ordenados. La foto de portada es un
 tercio de la decisión de entrar al anuncio.</p>
-</section>
 
-<!-- ============ 2 · INSUMOS ============ -->
-<section class="panel" id="p2">
-<h2>2 · Insumos de reposición</h2>
-<p class="lead">Qué recomendamos dejar establecido en el contrato.</p>
-
+<h3>2.8 Insumos de reposición</h3>
 <p>Todo departamento en operación consume insumos que se reponen entre huésped y huésped. No es un
 costo eventual: es un costo mensual, proporcional a cuánto se ocupa el departamento.</p>
 
@@ -387,87 +517,12 @@ esquema que tienen los demás departamentos del portafolio con cláusula de insu
 </div>
 </section>
 
-<!-- ============ 3 · PRECIO Y MERCADO ============ -->
+<!-- ============ 3 · LANZAMIENTO ============ -->
 <section class="panel" id="p3">
-<h2>3 · Estrategia comercial de precio</h2>
-<p class="lead">Barrido propio de alojamientos completos en Providencia, agosto 2026.</p>
-
-<h3>3.1 El mercado, medido</h3>
-<div class="tablabox">
-<table>
-  <tr><th>Tramo</th><th>4 huéspedes</th><th>6 huéspedes</th><th>Dif.</th></tr>
-  <tr><td>25% más económico</td><td>$62.348</td><td>$93.440</td><td>+50%</td></tr>
-  <tr class="hi"><td><strong>Mediana</strong></td><td><strong>$73.084</strong></td><td><strong>$116.400</strong></td><td class="d"><strong>+59%</strong></td></tr>
-  <tr><td>25% más caro</td><td>$86.776</td><td>$139.506</td><td>+61%</td></tr>
-  <tr><td>Techo</td><td>$96.353</td><td>$164.343</td><td>+71%</td></tr>
-  <tr><td>Alojamientos medidos</td><td>64</td><td>65</td><td></td></tr>
-</table>
-</div>
-<p class="nota">Valores extremos removidos por método estadístico (rango intercuartílico).</p>
-
-<h4>CALIDAD DEL MERCADO — 6 huéspedes</h4>
-<div class="cifras">
-  <div class="cifra"><div class="n">4,93</div><div class="l">calificación mediana</div></div>
-  <div class="cifra"><div class="n">54%</div><div class="l">tiene Favorito entre huéspedes</div></div>
-  <div class="cifra"><div class="n">41</div><div class="l">reseñas mediana</div></div>
-</div>
-<p>Es un mercado exigente. No basta con estar bien: hay que estar entre los mejores para sostener
-posición.</p>
-
-<h4>ALGUNOS COMPETIDORES DIRECTOS</h4>
-<div class="tablabox">
-<table>
-  <tr><th>Anuncio</th><th>Precio/noche</th><th>Calificación</th><th>Reseñas</th></tr>
-  <tr><td>Dúplex Premium con Piscina Privada</td><td>$166.000</td><td>4,88</td><td>16</td></tr>
-  <tr><td>AC · 6 Huéspedes · Cerca Costanera Center</td><td>$157.410</td><td>4,90</td><td>80</td></tr>
-  <tr><td>Metro Los Leones · Vista Costanera · 2D 2B</td><td>$153.131</td><td>4,97</td><td>39</td></tr>
-  <tr><td>Metro, Costanera Center y MUT</td><td>$149.156</td><td>4,97</td><td>202</td></tr>
-  <tr><td>Costanera Center, Restaurantes</td><td>$145.771</td><td>4,93</td><td>100</td></tr>
-  <tr><td>Comodidad y Ubicación en Providencia, 3D/2B/AC</td><td>$134.320</td><td>5,00</td><td>6</td></tr>
-  <tr><td>Acogedor depto. céntrico con estacionamiento</td><td>$126.053</td><td>4,92</td><td>51</td></tr>
-</table>
-</div>
-
-<h3>3.2 Precio de lanzamiento y escalera</h3>
-<div class="tablabox">
-<table>
-  <tr><th>Momento</th><th>Precio</th><th>Por qué</th></tr>
-  <tr class="hi"><td><strong>Lanzamiento</strong></td><td class="d"><strong>$99.000</strong></td><td>Entre el p25 y la mediana. Un anuncio sin reseñas necesita entrar por debajo para convertir</td></tr>
-  <tr><td>Con ~10 reseñas</td><td>$116.400</td><td>Mediana del mercado</td></tr>
-  <tr><td>Consolidado</td><td>$130.000+</td><td>Con historial y calificación sobre 4,9</td></tr>
-</table>
-</div>
-<p>La lógica: las primeras reservas valen más por las reseñas que dejan que por lo que facturan.
-Entrar caro sin historial es la forma más común de que un anuncio nuevo no despegue.</p>
-
-<h3>3.3 Descuentos por duración</h3>
-<p>Se configuran desde el primer día. La mayoría de los anfitriones no los usa y no cuestan nada.</p>
-<div class="tablabox">
-<table>
-  <tr><th>Estadía</th><th>Descuento</th><th>Estadía</th><th>Descuento</th></tr>
-  <tr><td>3 noches</td><td>5%</td><td>6 noches</td><td>12%</td></tr>
-  <tr><td>4 noches</td><td>8%</td><td><strong>7 noches o más</strong></td><td class="d"><strong>15%</strong></td></tr>
-  <tr><td>5 noches</td><td>10%</td><td><strong>28 noches o más</strong></td><td class="d"><strong>25%</strong></td></tr>
-</table>
-</div>
-<p>Más un <strong>20% de descuento de estreno</strong> durante las primeras semanas: es la palanca más
-eficaz para conseguir las primeras reseñas rápido.</p>
-
-<h3>3.4 Tarifa de limpieza</h3>
-<p>Es la variable que más se subestima. El huésped compara <strong>el total</strong>, no el precio por
-noche, y la limpieza se paga una sola vez: en una estadía corta puede pesar tanto como el alojamiento.</p>
-<p>La referencia: la tarifa de limpieza <strong>no debería superar una noche</strong> de tarifa, y
-sobre el 15-17% del total empieza el abandono en el momento de pagar. Sobre $99.000 la noche, una
-limpieza de $40.000 significa el 29% del total en una estadía de dos noches.</p>
-<p class="nota">Necesitamos el costo real de la limpieza del departamento para calibrarla.</p>
-</section>
-
-<!-- ============ 4 · LANZAMIENTO ============ -->
-<section class="panel" id="p4">
-<h2>4 · Estrategia de lanzamiento</h2>
+<h2>3 · Estrategia de lanzamiento</h2>
 <p class="lead">Cuándo se publica, cómo se abre el calendario y qué pasa las primeras semanas.</p>
 
-<h3>4.1 Fecha de apertura del calendario <span class="pill">DEFINIR</span></h3>
+<h3>3.1 Fecha de apertura del calendario <span class="pill">DEFINIR</span></h3>
 <p>Desde qué día se puede recibir huéspedes. Es lo que define cuándo publicamos.</p>
 <p><strong>Nuestra recomendación:</strong> publicar apenas el departamento esté listo y fotografiado,
 aunque la primera fecha disponible sea algunas semanas después. Un anuncio nuevo recibe un empuje de
@@ -475,7 +530,7 @@ visibilidad al publicarse que <strong>dura poco y no se repite</strong>, así qu
 empuje encuentre el calendario abierto y el anuncio completo, no a medio armar.</p>
 <p>Publicar con el calendario cerrado desperdicia ese impulso; publicar antes de tener fotos, también.</p>
 
-<h3>4.2 Cómo es el día de la publicación</h3>
+<h3>3.2 Cómo es el día de la publicación</h3>
 <p>Airbnb no permite publicar un anuncio "cerrado": apenas se publica queda visible y reservable. Por
 eso la secuencia es siempre la misma.</p>
 <div class="tablabox">
@@ -489,7 +544,7 @@ eso la secuencia es siempre la misma.</p>
 </div>
 <p>Todo esto ocurre <strong>el mismo día</strong>. El impulso inicial corre desde el momento de publicar.</p>
 
-<h3>4.3 Códigos y forma de acceso <span class="pill">BLOQUEA</span></h3>
+<h3>3.3 Códigos y forma de acceso <span class="pill">BLOQUEA</span></h3>
 <p>¿Cómo entra un huésped que llega a las once de la noche? Cerradura con código, caja de llaves,
 conserjería, entrega en persona.</p>
 <p><strong>Por qué importa tanto:</strong> la llegada autónoma es el patrón número uno entre los
@@ -498,12 +553,12 @@ buscan. Si no está declarada, el anuncio no aparece para quien filtra por ella.
 <p><strong>Necesitamos:</strong> el método de acceso, el código o su procedimiento, si hay conserjería
 y en qué horario, y el nombre de la red wifi con su clave.</p>
 
-<h3>4.4 Las primeras semanas</h3>
+<h3>3.4 Las primeras semanas</h3>
 <div class="tablabox">
 <table>
   <tr><td><strong>Semanas 1 a 3</strong></td><td>Precio de estreno con 20% de descuento. El objetivo no es facturar, es conseguir las primeras reseñas</td></tr>
   <tr><td><strong>Con 5 reseñas</strong></td><td>Se retira el descuento de estreno y el precio sube al rango normal</td></tr>
-  <tr><td><strong>Con ~10 reseñas</strong></td><td>Precio a la mediana del mercado</td></tr>
+  <tr><td><strong>Con ~10 reseñas</strong></td><td>Base de $95.000 para cuatro personas</td></tr>
   <tr><td><strong>Mes 2 en adelante</strong></td><td>Ajuste por temporada y revisión de la posición en búsqueda</td></tr>
 </table>
 </div>
@@ -515,11 +570,11 @@ de conseguir: sin historial, el huésped desconfía. Por eso se entra barato y s
 <table>
   <tr><th>#</th><th>Qué</th><th>Quién</th></tr>
   <tr><td>1</td><td>Confirmar la dirección exacta y el número de departamento</td><td>Diana</td></tr>
-  <tr><td>2</td><td>Definir capacidad: cinco o seis (1.6)</td><td>Diana</td></tr>
-  <tr><td>3</td><td>Fotografías del departamento (1.7)</td><td>Diana / APTO</td></tr>
-  <tr><td>4</td><td>Códigos de acceso, wifi y forma de entrada (4.3)</td><td>Diana</td></tr>
-  <tr><td>5</td><td>Fecha de apertura del calendario (4.1)</td><td>Diana</td></tr>
-  <tr><td>6</td><td>Confirmar comodidades (1.4)</td><td>Diana</td></tr>
+  <tr><td>2</td><td>Definir capacidad: cinco o seis (2.6)</td><td>Diana</td></tr>
+  <tr><td>3</td><td>Fotografías del departamento (2.7)</td><td>Diana / APTO</td></tr>
+  <tr><td>4</td><td>Códigos de acceso, wifi y forma de entrada (3.3)</td><td>Diana</td></tr>
+  <tr><td>5</td><td>Fecha de apertura del calendario (3.1)</td><td>Diana</td></tr>
+  <tr><td>6</td><td>Tipo de calefacción y comodidades por confirmar (2.4)</td><td>Diana</td></tr>
   <tr><td>7</td><td>Creación y publicación del anuncio</td><td>APTO</td></tr>
   <tr><td>8</td><td>Configuración completa el mismo día de publicar</td><td>APTO</td></tr>
 </table>
@@ -545,7 +600,6 @@ de conseguir: sin historial, el huésped desconfía. Por eso se entra barato y s
     window.scrollTo({top: 0, behavior: 'smooth'});
     history.replaceState(null, '', '#' + t.dataset.p);
   }));
-  // permitir entrar directo a una pestaña por la URL (#p3)
   const inicial = document.querySelector('.tab[data-p="' + location.hash.slice(1) + '"]');
   if (inicial) inicial.click();
 </script>
