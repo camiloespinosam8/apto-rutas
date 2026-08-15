@@ -9,25 +9,38 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  @page { size: A4; margin: 15mm 13mm; }
   :root{ --crema:#F4EFE6; --papel:#FBF9F4; --ladrillo:#C8572A; --vino:#9B3A2E;
          --tinta:#1D1D1B; --linea:#E2D9CB; --gris:#6E6A63; }
   *{box-sizing:border-box}
   body{margin:0;background:var(--crema);color:var(--tinta);
        font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
-  .wrap{max-width:840px;margin:0 auto;padding:0 22px 80px}
-  header{padding:58px 0 30px;border-bottom:2px solid var(--tinta)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px 80px}
+  header{padding:52px 0 24px}
   .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:0 0 11px}
-  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,50px);
-     line-height:1.06;margin:0 0 13px;letter-spacing:-.01em}
+  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(31px,4.8vw,48px);
+     line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
   .sub{font-size:17px;color:var(--gris);margin:0}
-  .seccion{font-family:'Playfair Display',Georgia,serif;font-weight:600;
-           font-size:clamp(26px,3.6vw,36px);margin:62px 0 4px;line-height:1.15;
-           padding-top:22px;border-top:2px solid var(--tinta);page-break-before:always}
-  .seccion:first-of-type{page-break-before:auto}
+
+  /* ---- pestañas ---- */
+  nav{position:sticky;top:0;z-index:20;background:var(--crema);
+      border-bottom:2px solid var(--tinta);padding:10px 0 0;margin-bottom:6px}
+  .tabs{display:flex;flex-wrap:wrap;gap:2px;max-width:860px;margin:0 auto;padding:0 22px}
+  .tab{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;
+       font-size:14px;font-weight:600;color:var(--gris);padding:11px 15px 12px;
+       border-bottom:3px solid transparent;border-radius:4px 4px 0 0;white-space:nowrap;
+       transition:color .15s,border-color .15s}
+  .tab:hover{color:var(--tinta);background:rgba(200,87,42,.06)}
+  .tab[aria-selected="true"]{color:var(--vino);border-bottom-color:var(--ladrillo)}
+  .tab .num{font-family:'Playfair Display',Georgia,serif;font-size:16px;margin-right:6px;opacity:.75}
+  .panel{display:none;animation:aparece .22s ease}
+  .panel.on{display:block}
+  @keyframes aparece{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(25px,3.4vw,34px);margin:34px 0 4px;line-height:1.15}
   h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;
-     font-size:clamp(19px,2.5vw,24px);margin:36px 0 6px;line-height:1.2}
-  h4{font-size:13px;letter-spacing:.07em;font-weight:700;margin:26px 0 9px;color:var(--vino)}
+     font-size:clamp(18px,2.4vw,23px);margin:32px 0 6px;line-height:1.2}
+  h4{font-size:13px;letter-spacing:.07em;font-weight:700;margin:24px 0 8px;color:var(--vino)}
   .lead{color:var(--gris);margin:0 0 18px;max-width:64ch}
   p{max-width:66ch;margin:11px 0}
   .tablabox{overflow-x:auto;margin:20px 0}
@@ -47,7 +60,7 @@
           border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
   .cifra{flex:1 1 130px;padding:18px 18px 18px 0;border-right:1px solid var(--linea)}
   .cifra:last-child{border-right:0}
-  .cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:34px;line-height:1;
+  .cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:32px;line-height:1;
             font-variant-numeric:tabular-nums}
   .cifra .l{font-size:13px;color:var(--gris);margin-top:6px}
   .copy{background:var(--papel);border:1px solid var(--linea);border-radius:4px;
@@ -57,35 +70,160 @@
   .pill{display:inline-block;font-size:11px;letter-spacing:.07em;font-weight:700;
         background:var(--vino);color:#fff;padding:3px 9px;border-radius:11px;
         margin-left:8px;vertical-align:middle}
-  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--linea);
+
+  /* ---- simulación del anuncio ---- */
+  .sim{display:flex;flex-wrap:wrap;gap:26px;margin:24px 0 8px;align-items:flex-start}
+  .card{flex:0 0 300px;background:#fff;border-radius:12px;overflow:hidden;
+        box-shadow:0 2px 14px rgba(29,29,27,.09)}
+  .card .foto{height:200px;background:linear-gradient(135deg,#DCD3C4,#C9BFAE);
+              display:flex;align-items:center;justify-content:center;color:#8C8375;
+              font-size:13px;letter-spacing:.05em;text-align:center;padding:0 20px}
+  .card .cuerpo{padding:12px 14px 15px}
+  .card .fila{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .card .tit{font-weight:600;font-size:15px;line-height:1.3}
+  .card .gris{color:var(--gris);font-size:14px;margin:3px 0}
+  .card .precio{margin-top:9px;font-size:15px}
+  .card .precio b{font-size:17px}
+  .card .nuevo{background:var(--tinta);color:#fff;font-size:11px;font-weight:700;
+               padding:3px 8px;border-radius:10px;letter-spacing:.04em}
+  .simnota{flex:1 1 260px;min-width:240px}
+  .ficha{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:20px 22px;margin:22px 0}
+  .ficha h5{margin:0 0 3px;font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:20px}
+  .ficha .meta{color:var(--gris);font-size:15px;margin:0 0 14px}
+  .ficha .bloque{border-top:1px solid var(--linea);padding-top:13px;margin-top:13px}
+  .ficha .bloque b{display:block;font-size:13px;letter-spacing:.05em;color:var(--vino);margin-bottom:5px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}
+  .chip{background:var(--crema);border:1px solid var(--linea);border-radius:14px;
+        padding:4px 11px;font-size:13px}
+
+  footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--linea);
          font-size:13px;color:var(--gris)}
   .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
-  @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0} }
+  @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0}
+                            .tab{font-size:13px;padding:9px 10px 10px} .card{flex:1 1 100%} }
+  @media print{ nav{display:none} .panel{display:block!important;page-break-before:always}
+                .panel:first-of-type{page-break-before:auto} }
 </style>
 </head>
 <body>
-<div class="wrap">
 
+<div class="wrap">
 <header>
   <p class="eyebrow">PLAN DE TRABAJO</p>
   <h1>Carlos Antúnez 1831 · Depto 209</h1>
   <p class="sub">Dúplex recién remodelado · 2 dormitorios · 2 baños · Providencia<br>
   Diana · documento vivo · 15 de agosto de 2026</p>
 </header>
+</div>
 
+<nav>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-p="p0"><span class="num">0</span>Simulación del anuncio</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>Estrategia de subida</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Insumos</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Precio y mercado</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p4"><span class="num">4</span>Lanzamiento</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 0 · SIMULACIÓN ============ -->
+<section class="panel on" id="p0">
+<h2>Así se va a ver el anuncio</h2>
+<p class="lead">Una simulación de cómo aparecerá el departamento cuando alguien lo busque y cuando
+entre a mirarlo.</p>
+
+<h3>En la lista de resultados</h3>
+<div class="sim">
+  <div class="card">
+    <div class="foto">FOTO DE PORTADA<br><span style="font-size:11px">pendiente · ver punto 1.7</span></div>
+    <div class="cuerpo">
+      <div class="fila"><div class="tit">Dúplex nuevo 6p · 2 baños · Pedro de Valdivia</div></div>
+      <p class="gris">Departamento entero en Providencia</p>
+      <p class="gris">6 huéspedes · 2 dormitorios · 2 baños</p>
+      <p class="precio"><b>$99.000</b> por noche &nbsp;<span class="nuevo">NUEVO</span></p>
+    </div>
+  </div>
+  <div class="simnota">
+    <p><strong>Esto es literalmente todo lo que el huésped ve antes de decidir si entra:</strong> la
+    foto de portada, el título y el precio.</p>
+    <p>Por eso el título no gasta caracteres en wifi, y por eso la foto de portada es la decisión más
+    importante de toda la sesión de fotos.</p>
+    <p class="nota">La etiqueta "Nuevo" aparece las primeras semanas. Es una ventaja —Airbnb da más
+    visibilidad a los anuncios recién publicados— y también una desventaja: sin reseñas, el huésped
+    duda. De ahí el precio de estreno.</p>
+  </div>
+</div>
+
+<h3>Cuando entra al anuncio</h3>
+<div class="ficha">
+  <h5>Dúplex nuevo 6p · 2 baños · Pedro de Valdivia</h5>
+  <p class="meta">Departamento entero en Providencia, Chile<br>
+  6 huéspedes · 2 dormitorios · 4 camas · 2 baños</p>
+
+  <div class="bloque">
+    <b>LO QUE AIRBNB VA A DESTACAR</b>
+    <div class="chips">
+      <span class="chip">Llegada autónoma</span>
+      <span class="chip">Recién remodelado</span>
+      <span class="chip">Cancelación flexible</span>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <b>DESCRIPCIÓN</b>
+    <p style="margin:6px 0">Dúplex de dos pisos recién remodelado en el corazón de Providencia, a
+    pasos del Metro Pedro de Valdivia. Dos dormitorios, dos baños completos y capacidad para seis
+    personas: cama king, dos camas de plaza y media, y un sofá cama en el living. Todo nuevo, listo
+    para llegar e instalarse.</p>
+  </div>
+
+  <div class="bloque">
+    <b>DÓNDE VAS A DORMIR</b>
+    <div class="chips">
+      <span class="chip">Dormitorio 1 · 1 cama king</span>
+      <span class="chip">Dormitorio 2 · 2 camas de plaza y media</span>
+      <span class="chip">Living · 1 sofá cama</span>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <b>LO QUE OFRECE</b>
+    <div class="chips">
+      <span class="chip">Wifi</span><span class="chip">Cocina equipada</span>
+      <span class="chip">2 baños completos</span><span class="chip">Zona de trabajo</span>
+      <span class="chip">Agua caliente</span><span class="chip">Secador de pelo</span>
+      <span class="chip">Lavadora*</span><span class="chip">Ascensor*</span>
+      <span class="chip">Calefacción*</span>
+    </div>
+    <p class="nota" style="margin-top:4px">* Por confirmar. Cada una es un filtro de búsqueda: si no
+    está declarada, el anuncio no aparece para quien filtra por ella.</p>
+  </div>
+
+  <div class="bloque">
+    <b>REGLAS</b>
+    <p style="margin:6px 0">Llegada desde las 15:00 · Salida hasta las 11:00 · Mínimo 2 noches ·
+    Sin fiestas · Sin fumar</p>
+  </div>
+</div>
+
+<h3>Lo que falta para que esto exista</h3>
 <div class="tablabox">
 <table>
-  <tr><th>Sección</th><th>Estado</th></tr>
-  <tr><td><strong>1 · Estrategia de subida</strong></td><td>Preparada — faltan definiciones</td></tr>
-  <tr><td><strong>2 · Insumos</strong></td><td>Propuesta lista para contrato</td></tr>
-  <tr><td><strong>3 · Estrategia comercial de precio</strong></td><td>Mercado medido</td></tr>
-  <tr><td><strong>4 · Estrategia de lanzamiento</strong></td><td>Pendiente la fecha de calendario</td></tr>
+  <tr><th>Falta</th><th>Dónde se define</th></tr>
+  <tr class="hi"><td><strong>Las fotografías</strong></td><td>Punto 1.7</td></tr>
+  <tr class="hi"><td><strong>Capacidad: 5 o 6</strong></td><td>Punto 1.6</td></tr>
+  <tr class="hi"><td><strong>Códigos y forma de acceso</strong></td><td>Punto 4.3</td></tr>
+  <tr class="hi"><td><strong>Fecha de apertura del calendario</strong></td><td>Punto 4.1</td></tr>
+  <tr><td>Confirmar comodidades marcadas con *</td><td>Punto 1.4</td></tr>
 </table>
 </div>
-<p><strong>Las tres definiciones que necesitamos:</strong> capacidad (5 o 6) · códigos y forma de
-acceso · fecha desde la que se puede recibir huéspedes. Más las fotografías.</p>
+</section>
 
-<h2 class="seccion">1 · Estrategia de subida</h2>
+<!-- ============ 1 · SUBIDA ============ -->
+<section class="panel" id="p1">
+<h2>1 · Estrategia de subida</h2>
 <p class="lead">Cómo se arma el anuncio: la ficha, el título, la descripción, las comodidades y las reglas.</p>
 
 <div class="cifras">
@@ -113,8 +251,8 @@ personas la mayoría de los departamentos tiene uno solo, y es lo primero que un
 "Dúplex nuevo 6p · 2 baños · Pedro de Valdivia"</p>
 <p class="nota">45 caracteres. El máximo son 50.</p>
 <p>En la lista de resultados el huésped ve sólo tres cosas: la foto de portada, el título y el precio.
-Nada más. Este título usa sus caracteres en lo que de verdad decide: que está nuevo, que tiene dos
-baños —escaso para seis personas— y el metro como referencia.</p>
+Este título usa sus caracteres en lo que de verdad decide: que está nuevo, que tiene dos baños
+—escaso para seis personas— y el metro como referencia.</p>
 <p>Deliberadamente <strong>no</strong> lleva "wifi": en 2026 se da por hecho y sólo ocupa espacio.
 Tampoco estacionamiento, porque no hay.</p>
 
@@ -141,7 +279,7 @@ Tampoco estacionamiento, porque no hay.</p>
 </div>
 <p class="nota">El bloque <em>Acceso de huéspedes</em> queda pendiente: depende de la definición del
 punto 4.3. Declarar la escalera y la falta de estacionamiento no resta — filtra al huésped equivocado
-antes de que reserve, y es lo que sostiene la calificación cuando el anuncio toma volumen.</p>
+antes de que reserve.</p>
 
 <h3>1.4 Comodidades</h3>
 <p>Cada comodidad marcada es un filtro de búsqueda: si no está declarada, el anuncio <strong>no
@@ -168,7 +306,7 @@ televisión · detector de humo · detector de monóxido · extintor · botiquí
 <p>Muchos anuncios ponen la llegada a las 17:00 por costumbre. Si el acceso es autónomo no hay
 ninguna razón para hacerlo, y esas dos horas son tarde de más para el huésped.</p>
 
-<h3>1.6 Definición pendiente: ¿cinco o seis huéspedes? <span class="pill">DEFINIR</span></h3>
+<h3>1.6 ¿Cinco o seis huéspedes? <span class="pill">DEFINIR</span></h3>
 <div class="destaca">
   <p class="big">Declarar seis en vez de cuatro cambia el precio de referencia en +59%.</p>
   <p>La mediana pasa de $73.084 a $116.400 la noche: son $43.316 de diferencia por noche. A quince
@@ -188,8 +326,7 @@ un sofá cama incómodo y lo escribió.</p>
 </table>
 </div>
 <p><strong>Recomendamos seis</strong>, con dos condiciones: que el sofá cama sea de verdad cómodo, y
-que la descripción diga con todas sus letras que el quinto y sexto huésped duermen ahí. Ser explícito
-filtra al huésped equivocado antes de que reserve.</p>
+que la descripción diga con todas sus letras que el quinto y sexto huésped duermen ahí.</p>
 
 <h3>1.7 Fotografías <span class="pill">BLOQUEA</span></h3>
 <p>Airbnb exige un mínimo de cinco fotos para publicar, pero ese mínimo no compite. Los anuncios que
@@ -200,8 +337,11 @@ conecta los pisos</strong> —que es lo que hace único al dúplex—, la vista 
 fachada y el acceso al edificio. Si el edificio tiene amenidades, también.</p>
 <p class="nota">Luz natural, de día, sin flash y con los espacios ordenados. La foto de portada es un
 tercio de la decisión de entrar al anuncio.</p>
+</section>
 
-<h2 class="seccion">2 · Insumos de reposición</h2>
+<!-- ============ 2 · INSUMOS ============ -->
+<section class="panel" id="p2">
+<h2>2 · Insumos de reposición</h2>
 <p class="lead">Qué recomendamos dejar establecido en el contrato.</p>
 
 <p>Todo departamento en operación consume insumos que se reponen entre huésped y huésped. No es un
@@ -245,13 +385,14 @@ esquema que tienen los demás departamentos del portafolio con cláusula de insu
   reseña cuesta muchísimo más que un año de insumos. Tenerlo resuelto por contrato evita esa
   conversación cada vez.</p>
 </div>
+</section>
 
-<h2 class="seccion">3 · Estrategia comercial de precio</h2>
-<p class="lead">El detalle completo está en la planilla de análisis de mercado.</p>
+<!-- ============ 3 · PRECIO Y MERCADO ============ -->
+<section class="panel" id="p3">
+<h2>3 · Estrategia comercial de precio</h2>
+<p class="lead">Barrido propio de alojamientos completos en Providencia, agosto 2026.</p>
 
 <h3>3.1 El mercado, medido</h3>
-<p>Barrido propio de alojamientos completos en Providencia, agosto 2026. 64 y 65 alojamientos
-respectivamente, tras remover valores extremos por método estadístico.</p>
 <div class="tablabox">
 <table>
   <tr><th>Tramo</th><th>4 huéspedes</th><th>6 huéspedes</th><th>Dif.</th></tr>
@@ -259,10 +400,33 @@ respectivamente, tras remover valores extremos por método estadístico.</p>
   <tr class="hi"><td><strong>Mediana</strong></td><td><strong>$73.084</strong></td><td><strong>$116.400</strong></td><td class="d"><strong>+59%</strong></td></tr>
   <tr><td>25% más caro</td><td>$86.776</td><td>$139.506</td><td>+61%</td></tr>
   <tr><td>Techo</td><td>$96.353</td><td>$164.343</td><td>+71%</td></tr>
+  <tr><td>Alojamientos medidos</td><td>64</td><td>65</td><td></td></tr>
 </table>
 </div>
-<p>Es un mercado exigente: la calificación mediana de los alojamientos de seis huéspedes en
-Providencia es <strong>4,93</strong> y más de la mitad tiene el distintivo Favorito entre huéspedes.</p>
+<p class="nota">Valores extremos removidos por método estadístico (rango intercuartílico).</p>
+
+<h4>CALIDAD DEL MERCADO — 6 huéspedes</h4>
+<div class="cifras">
+  <div class="cifra"><div class="n">4,93</div><div class="l">calificación mediana</div></div>
+  <div class="cifra"><div class="n">54%</div><div class="l">tiene Favorito entre huéspedes</div></div>
+  <div class="cifra"><div class="n">41</div><div class="l">reseñas mediana</div></div>
+</div>
+<p>Es un mercado exigente. No basta con estar bien: hay que estar entre los mejores para sostener
+posición.</p>
+
+<h4>ALGUNOS COMPETIDORES DIRECTOS</h4>
+<div class="tablabox">
+<table>
+  <tr><th>Anuncio</th><th>Precio/noche</th><th>Calificación</th><th>Reseñas</th></tr>
+  <tr><td>Dúplex Premium con Piscina Privada</td><td>$166.000</td><td>4,88</td><td>16</td></tr>
+  <tr><td>AC · 6 Huéspedes · Cerca Costanera Center</td><td>$157.410</td><td>4,90</td><td>80</td></tr>
+  <tr><td>Metro Los Leones · Vista Costanera · 2D 2B</td><td>$153.131</td><td>4,97</td><td>39</td></tr>
+  <tr><td>Metro, Costanera Center y MUT</td><td>$149.156</td><td>4,97</td><td>202</td></tr>
+  <tr><td>Costanera Center, Restaurantes</td><td>$145.771</td><td>4,93</td><td>100</td></tr>
+  <tr><td>Comodidad y Ubicación en Providencia, 3D/2B/AC</td><td>$134.320</td><td>5,00</td><td>6</td></tr>
+  <tr><td>Acogedor depto. céntrico con estacionamiento</td><td>$126.053</td><td>4,92</td><td>51</td></tr>
+</table>
+</div>
 
 <h3>3.2 Precio de lanzamiento y escalera</h3>
 <div class="tablabox">
@@ -296,8 +460,11 @@ noche, y la limpieza se paga una sola vez: en una estadía corta puede pesar tan
 sobre el 15-17% del total empieza el abandono en el momento de pagar. Sobre $99.000 la noche, una
 limpieza de $40.000 significa el 29% del total en una estadía de dos noches.</p>
 <p class="nota">Necesitamos el costo real de la limpieza del departamento para calibrarla.</p>
+</section>
 
-<h2 class="seccion">4 · Estrategia de lanzamiento</h2>
+<!-- ============ 4 · LANZAMIENTO ============ -->
+<section class="panel" id="p4">
+<h2>4 · Estrategia de lanzamiento</h2>
 <p class="lead">Cuándo se publica, cómo se abre el calendario y qué pasa las primeras semanas.</p>
 
 <h3>4.1 Fecha de apertura del calendario <span class="pill">DEFINIR</span></h3>
@@ -357,6 +524,7 @@ de conseguir: sin historial, el huésped desconfía. Por eso se entra barato y s
   <tr><td>8</td><td>Configuración completa el mismo día de publicar</td><td>APTO</td></tr>
 </table>
 </div>
+</section>
 
 <footer>
   <p class="marca">APTO</p>
@@ -367,5 +535,20 @@ de conseguir: sin historial, el huésped desconfía. Por eso se entra barato y s
 </footer>
 
 </div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const paneles = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', String(x === t)));
+    paneles.forEach(p => p.classList.toggle('on', p.id === t.dataset.p));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    history.replaceState(null, '', '#' + t.dataset.p);
+  }));
+  // permitir entrar directo a una pestaña por la URL (#p3)
+  const inicial = document.querySelector('.tab[data-p="' + location.hash.slice(1) + '"]');
+  if (inicial) inicial.click();
+</script>
+
 </body>
 </html>
