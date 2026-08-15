@@ -27,3 +27,29 @@ Regiones in: {'Quinta Región', 'Santiago'} | out: {'Quinta Región', 'Santiago'
 To https://github.com/camiloespinosam8/apto-rutas.git
    c85c287..149194e  main -> main
 PUBLICADO 
+---- 14-08-2026 20:30:28,54 ---- 
+  nombres a abreviar: 337
+Fuentes:
+  jul-11 (200 hilos): 39
+  ago-12 (plata):     2
+  lectura reciente : 10
+  barridos previos : 77
+  136 conversaciones: 43
+
+TOTAL: 167
+  por categoría: {'higiene': 16, 'tecnico': 60, 'otros': 25, 'insumos': 37, 'acceso': 29}
+  por estado:    {'abierto': 119, 'sin seguimiento': 14, 'resuelto': 34}
+  NO SOLUCIONADAS: 133 (80%)
+  registro: 33 unidades fisicas / 37 anuncios
+  solapes REALES (misma unidad fisica, ambas activas): 4
+  anuncios SIN fila en el registro: 28 (131 reservas)
+  accesos SIN enviar (hoy→+3d): 15 | conserjería responde sin contestar: 2
+  estadías en curso: 29 | teléfonos conocidos: 23
+props 66 | reservas 384 | agenda(7d) 74 | incid 167
+ventana 2026-08-14 -> 2026-12-11 | datos.json 503 KB
+reservas sin match a propiedad: 0
+panel.html 542 KB -> C:\Users\Cami\Desktop\CLAUDE\APTO\Operacional\Cerebro_Turismo\panel_rutas\panel.html
+Fecha: viernes 14 de agosto de 2026
+check-ins: 13 | check-outs: 7
+Regiones in: {'Santiago', 'Quinta Región'} | out: {'Santiago', 'Quinta Región'}
+sin cambios 

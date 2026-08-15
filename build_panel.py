@@ -429,6 +429,19 @@ function pintarHome(){
         ${r.cod?`<div class="ctc"><a class="lk" href="${resLink(r.cod)}" target="_blank" rel="noopener">Reserva ${esc(r.cod)} ↗</a></div>`:''}</div>
       <div class="tags"><span class="sev ${r.urgencia}">${esc(r.urgencia)}</span></div></div>`).join('')+'</div>':'';
 
+  // ---- 0b. confirmada que se esfumó de Airbnb ----
+  // El índice guarda el último avistamiento y nunca lo borra: una cancelada queda
+  // congelada en "Confirmada". No bloquea el calendario, pero si el check-in está
+  // encima hay que confirmarla a mano antes de dar el depto por libre (o por ocupado).
+  const fan=(D.fantasmas||[]).filter(f=>f.dias<=14);
+  $('#fan').innerHTML=fan.length?`<div class="gsec">Confirmada que ya no aparece en Airbnb <span class="cnt">${fan.length}</span></div>
+    <div class="rows">`+fan.map(f=>`<div class="r">
+      <div class="t out etq">${f.dias<=0?'hoy':f.dias===1?'mañana':'en '+f.dias+' d'}</div>
+      <div class="m"><div class="n">${esc(f.anuncio)}</div>
+        <div class="d">${esc(f.huesped)} · ${dmy(f.entrada)} → ${dmy(f.salida)} · sin verse desde ${dmy(f.visto)}</div>
+        <div class="ctc"><a class="lk" href="${resLink(f.cod)}" target="_blank" rel="noopener">Verificar ${esc(f.cod)} ↗</a></div></div>
+      <div class="tags"><span class="sev alta">verificar</span></div></div>`).join('')+'</div>':'';
+
   // ---- 1. reserva confirmada SIN el correo de acceso enviado ----
   const ac=(D.accesos_pend||[]);
   const acHoy=ac.filter(a=>a.hoy);
@@ -690,6 +703,7 @@ html = f"""<!doctype html><html lang="es"><head>
   <div id="home-def">
     <div class="pulse" id="pulse"></div>
     <div id="resp"></div>
+    <div id="fan"></div>
     <div id="acc"></div>
     <div id="urg"></div>
     <div style="margin-top:18px"><button class="jump" onclick="irA(5)">ver las 167 incidencias →</button></div>

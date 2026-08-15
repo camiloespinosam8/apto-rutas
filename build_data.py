@@ -186,6 +186,24 @@ def match_prop(anuncio):
 # ---------- reservas normalizadas ----------
 def cancelada(r): return "cancel" in (r.get("estado") or "").lower()
 
+# ---- reservas FANTASMA -------------------------------------------------------
+# reservas_index es append-only: guarda el estado del ÚLTIMO avistamiento y nunca lo
+# borra. Cuando una reserva se cancela desaparece del panel de Airbnb, pero su registro
+# queda congelado en "Confirmada" para siempre. Sin este filtro esas canceladas siguen
+# bloqueando el calendario y chocan con la reserva que tomó su lugar: eso producía
+# "sobreventas" que no existen (Antúnez 402, Carol Urzúa 806, Seminario 1001).
+# Una reserva YA TERMINADA deja de aparecer por su cuenta: a esas no se les aplica.
+_H = HOY.isoformat()
+_v = [str(r.get("visto") or "")[:10] for r in recs if r.get("visto")]
+ULTIMO_BARRIDO = max([x for x in _v if x <= _H] or [_H])
+
+def fantasma(r):
+    sal = str(r.get("salida") or "")[:10]
+    if sal and sal < _H: return False          # ya se fue: normal que no la muestre
+    v = str(r.get("visto") or "")[:10]
+    return bool(v) and v < ULTIMO_BARRIDO
+
+
 # Una SOLICITUD todavía no ocupa nada: si la cuento como ocupada, el panel muestra
 # menos disponibilidad de la real. Solo bloquean las confirmadas / en curso / pasadas.
 NO_BLOQUEA = ("viaje solicitado", "cambio de viaje solicitado", "solicitud")
@@ -193,8 +211,14 @@ def bloquea(r):
     e = norm(r.get("estado"))
     return not any(k in e for k in NO_BLOQUEA)
 res = []
+_fant = []
 for r in recs:
     if cancelada(r): continue
+    if fantasma(r):
+        _fant.append({"cod": r.get("codigo"), "huesped": abrev(r.get("huesped")), "visto": str(r.get("visto"))[:10],
+                      "entrada": str(r.get("entrada"))[:10], "salida": str(r.get("salida"))[:10],
+                      "estado": r.get("estado"), "anuncio": r.get("anuncio")})
+        continue
     ent, sal = str(r.get("entrada", ""))[:10], str(r.get("salida", ""))[:10]
     if not ent: continue
     p = match_prop(r.get("anuncio"))
@@ -216,6 +240,21 @@ for r in recs:
 ventana = [(HOY + timedelta(days=i)).isoformat() for i in range(DIAS_VENTANA)]
 vset = set(ventana)
 props.sort(key=lambda p: (p.get("externa", False), p["nombre"]))
+
+_fant.sort(key=lambda x: x["visto"])
+print(f"  ultimo barrido: {ULTIMO_BARRIDO} | reservas FANTASMA (vigentes pero ya no estan en Airbnb): {len(_fant)}")
+json.dump(_fant, open(os.path.join(HERE, "reservas_fantasma.json"), "w", encoding="utf-8"),
+          ensure_ascii=False, indent=1)
+
+# Las solicitudes que vencen desaparecen solas y nunca bloquearon: no son noticia.
+# Una CONFIRMADA que desaparece sí lo es — o se canceló, o cambió de fechas. No se
+# entierra en silencio: si el check-in está cerca, hay que confirmarla a mano.
+fantasmas = [f for f in _fant if "onfirmada" in str(f["estado"])]
+for f in fantasmas:
+    try: f["dias"] = (date.fromisoformat(f["entrada"]) - HOY).days
+    except Exception: f["dias"] = 999
+fantasmas.sort(key=lambda x: x["dias"])
+print(f"  confirmadas desaparecidas: {len(fantasmas)} | con check-in en <=7 dias: {sum(1 for f in fantasmas if f['dias'] <= 7)}")
 
 # ---------- ocupación por UNIDAD FÍSICA ----------
 # Un depto puede tener 2 anuncios (el original y su ESPEJO) y un anuncio puede cubrir 2
@@ -427,7 +466,7 @@ data = {
     "solapes": sol_u, "accesos_pend": accesos_pend, "acc_resp": acc_resp, "acc_auditado": acc_auditado,
     "generado": HOY.isoformat(),
     "ventana": {"desde": ventana[0], "hasta": ventana[-1], "dias": DIAS_VENTANA},
-    "props": props, "reservas": res, "ocup": ocup, "agenda": agenda,
+    "props": props, "reservas": res, "ocup": ocup, "agenda": agenda, "fantasmas": fantasmas,
     "insights": insights, "incidencias": incidencias, "semana": sem,
 }
 out = os.path.join(HERE, "datos.json")

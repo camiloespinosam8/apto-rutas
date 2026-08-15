@@ -5,29 +5,24 @@
   "uid": "s/reg|habitacion doble bano compartido. plaza vina"
  },
  {
-  "anuncio": "Casa para grupos | Cerro Concepcion | 1 auto",
-  "reservas": 9,
-  "uid": "s/reg|casa para grupos | cerro concepcion | 1 auto"
- },
- {
   "anuncio": "Nuevo 2 Dor para 5 · Estacionamiento · Pasos Metro",
   "reservas": 9,
   "uid": "s/reg|nuevo 2 dor para 5 estacionamiento pasos metro"
  },
  {
+  "anuncio": "Casa para grupos | Cerro Concepcion | 1 auto",
+  "reservas": 7,
+  "uid": "s/reg|casa para grupos | cerro concepcion | 1 auto"
+ },
+ {
   "anuncio": "LaPuertaRoja | Casa para grupos | Cerro Concepción",
-  "reservas": 8,
+  "reservas": 7,
   "uid": "s/reg|lapuertaroja | casa para grupos | cerro concepci"
  },
  {
   "anuncio": "Habitación privada en Cerro Concepción con Parking",
   "reservas": 7,
   "uid": "s/reg|habitacion privada en cerro concepcion con parki"
- },
- {
-  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda",
-  "reservas": 7,
-  "uid": "s/reg|nuevo 1d metro los heroes (l1-l2) la moneda"
  },
  {
   "anuncio": "NUEVO Moderno Studio | Terraza | Metro Ñuñoa",
@@ -43,11 +38,6 @@
   "anuncio": "Cama en habitación compartida mixta",
   "reservas": 6,
   "uid": "s/reg|cama en habitacion compartida mixta"
- },
- {
-  "anuncio": "La Puerta Roja | Casa para grupos | 2 autos",
-  "reservas": 6,
-  "uid": "s/reg|la puerta roja | casa para grupos | 2 autos"
  },
  {
   "anuncio": "Habitación en gran casa Valparaiso/Estacionamiento",
@@ -80,9 +70,9 @@
   "uid": "s/reg|habitacion doble en cerro concepcion"
  },
  {
-  "anuncio": "Nuevo 1D · Plaza de Armas · Metro L2-L5 · Gym",
+  "anuncio": "La Puerta Roja | Casa para grupos | 2 autos",
   "reservas": 3,
-  "uid": "s/reg|nuevo 1d plaza de armas metro l2-l5 gym"
+  "uid": "s/reg|la puerta roja | casa para grupos | 2 autos"
  },
  {
   "anuncio": "The Red Door: Large Room in Spacious House",
@@ -105,6 +95,11 @@
   "uid": "s/reg|habitacion doble - bano compartido. plaza sucre"
  },
  {
+  "anuncio": "Nuevo 1D · Plaza de Armas · Metro L2-L5 · Gym",
+  "reservas": 2,
+  "uid": "s/reg|nuevo 1d plaza de armas metro l2-l5 gym"
+ },
+ {
   "anuncio": "Casa tradicional en Cerro Concepcion para grupos",
   "reservas": 2,
   "uid": "s/reg|casa tradicional en cerro concepcion para grupos"
@@ -115,16 +110,6 @@
   "uid": "s/reg|habitacion privada cama doble con estacionamient"
  },
  {
-  "anuncio": "Amplia habitación en hermosa casona en Valparaiso",
-  "reservas": 1,
-  "uid": "s/reg|amplia habitacion en hermosa casona en valparais"
- },
- {
-  "anuncio": "Amplia habitación en hermosa casa en Valparaiso",
-  "reservas": 1,
-  "uid": "s/reg|amplia habitacion en hermosa casa en valparaiso"
- },
- {
   "anuncio": "Habitación privada cama king con estacionamiento",
   "reservas": 1,
   "uid": "s/reg|habitacion privada cama king con estacionamiento"
@@ -133,6 +118,11 @@
   "anuncio": "Habitación privada c/ baño y Parking Barrio Italia",
   "reservas": 1,
   "uid": "s/reg|habitacion privada c/ bano y parking barrio ital"
+ },
+ {
+  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda",
+  "reservas": 1,
+  "uid": "s/reg|nuevo 1d metro los heroes (l1-l2) la moneda"
  },
  {
   "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa",
