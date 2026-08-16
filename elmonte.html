@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Casa El Monte · Plan de trabajo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --crema:#F4EFE6; --papel:#FBF9F4; --ladrillo:#C8572A; --vino:#9B3A2E;
+         --tinta:#1D1D1B; --linea:#E2D9CB; --gris:#6E6A63; --verde:#3E6B4F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--crema);color:var(--tinta);
+       font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px 80px}
+  header{padding:52px 0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:0 0 11px}
+  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(31px,4.8vw,48px);
+     line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
+  .sub{font-size:17px;color:var(--gris);margin:0}
+
+  nav{position:sticky;top:0;z-index:20;background:var(--crema);
+      border-bottom:2px solid var(--tinta);padding:10px 0 0;margin-bottom:6px}
+  .tabs{display:flex;flex-wrap:wrap;gap:2px;max-width:860px;margin:0 auto;padding:0 22px}
+  .tab{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;
+       font-size:14px;font-weight:600;color:var(--gris);padding:11px 15px 12px;
+       border-bottom:3px solid transparent;border-radius:4px 4px 0 0;white-space:nowrap;
+       transition:color .15s,border-color .15s}
+  .tab:hover{color:var(--tinta);background:rgba(200,87,42,.06)}
+  .tab[aria-selected="true"]{color:var(--vino);border-bottom-color:var(--ladrillo)}
+  .tab .num{font-family:'Playfair Display',Georgia,serif;font-size:16px;margin-right:6px;opacity:.75}
+  .panel{display:none;animation:aparece .22s ease}
+  .panel.on{display:block}
+  @keyframes aparece{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(25px,3.4vw,34px);margin:34px 0 4px;line-height:1.15}
+  h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(18px,2.4vw,23px);margin:32px 0 6px;line-height:1.2}
+  h4{font-size:13px;letter-spacing:.07em;font-weight:700;margin:24px 0 8px;color:var(--vino)}
+  .lead{color:var(--gris);margin:0 0 18px;max-width:64ch}
+  p{max-width:66ch;margin:11px 0}
+  .tablabox{overflow-x:auto;margin:20px 0}
+  table{width:100%;border-collapse:collapse;font-size:15px;min-width:400px}
+  th{text-align:left;font-size:12px;letter-spacing:.08em;color:var(--gris);font-weight:600;
+     padding:0 13px 8px 0;border-bottom:1px solid var(--tinta)}
+  td{padding:11px 13px 11px 0;border-bottom:1px solid var(--linea);
+     font-variant-numeric:tabular-nums;vertical-align:top}
+  td.d{color:var(--vino);font-weight:700}
+  tr.hi td{background:rgba(200,87,42,.08);font-weight:600}
+  tr.tot td{border-top:2px solid var(--tinta);border-bottom:0;
+            font-weight:700;font-size:16px;padding-top:13px}
+  .destaca{background:var(--papel);border-left:4px solid var(--ladrillo);
+           padding:22px 24px;margin:26px 0;border-radius:0 4px 4px 0}
+  .destaca p{margin:0}
+  .destaca .big{font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.8vw,26px);
+                line-height:1.3;margin:0 0 8px}
+  .cifras{display:flex;flex-wrap:wrap;margin:22px 0 4px;
+          border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cifra{flex:1 1 130px;padding:18px 18px 18px 0;border-right:1px solid var(--linea)}
+  .cifra:last-child{border-right:0}
+  .cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:32px;line-height:1;
+            font-variant-numeric:tabular-nums}
+  .cifra .l{font-size:13px;color:var(--gris);margin-top:6px}
+  .copy{background:var(--papel);border:1px solid var(--linea);border-radius:4px;
+        padding:16px 19px;margin:14px 0;font-size:15px}
+  .copy p{margin:7px 0}
+  .nota{font-size:14px;color:var(--gris);max-width:66ch}
+  .pill{display:inline-block;font-size:11px;letter-spacing:.07em;font-weight:700;
+        background:var(--vino);color:#fff;padding:3px 9px;border-radius:11px;
+        margin-left:8px;vertical-align:middle}
+  .pill.ok{background:var(--verde)}
+
+  .sim{display:flex;flex-wrap:wrap;gap:26px;margin:24px 0 8px;align-items:flex-start}
+  .card{flex:0 0 300px;background:#fff;border-radius:12px;overflow:hidden;
+        box-shadow:0 2px 14px rgba(29,29,27,.09)}
+  .card .foto{height:200px;overflow:hidden}
+  .card .foto img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .cuerpo{padding:12px 14px 15px}
+  .card .tit{font-weight:600;font-size:15px;line-height:1.3}
+  .card .gris{color:var(--gris);font-size:14px;margin:3px 0}
+  .card .precio{margin-top:9px;font-size:15px}
+  .card .precio b{font-size:17px}
+  .card .nuevo{background:var(--tinta);color:#fff;font-size:11px;font-weight:700;
+               padding:3px 8px;border-radius:10px;letter-spacing:.04em}
+  .simnota{flex:1 1 260px;min-width:240px}
+  .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+  .galeria figure{margin:0;background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--linea)}
+  .galeria img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+  .galeria figcaption{font-size:13px;color:var(--gris);padding:8px 11px}
+
+  .boton{display:inline-block;background:var(--tinta);color:#fff;text-decoration:none;
+         font-weight:600;font-size:15px;padding:13px 24px;border-radius:8px;margin:8px 0}
+  .boton:hover{background:var(--vino)}
+  .falta{list-style:none;padding:0;margin:18px 0}
+  .falta li{border-bottom:1px solid var(--linea);padding:13px 0 13px 34px;position:relative;max-width:66ch}
+  .falta li::before{content:"○";position:absolute;left:6px;top:12px;color:var(--ladrillo);font-size:15px}
+  .falta li.urg::before{content:"●";color:var(--vino)}
+  .falta b{display:block}
+  .falta span{font-size:14px;color:var(--gris)}
+
+  footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--linea);
+         font-size:13px;color:var(--gris)}
+  .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
+  @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0}
+                            .tab{font-size:13px;padding:9px 10px 10px} .card{flex:1 1 100%} }
+  @media print{ nav{display:none} .panel{display:block!important;page-break-before:always}
+                .panel:first-of-type{page-break-before:auto} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">PLAN DE TRABAJO</p>
+  <h1>Casa de campo · El Monte</h1>
+  <p class="sub">Callejón Los Olmos · 4 dormitorios · 3 baños · hasta 14 personas<br>
+  Cathy · documento vivo · 16 de agosto de 2026</p>
+</header>
+</div>
+
+<nav>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-p="p0"><span class="num">0</span>El anuncio</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>Mercado, precio e ingresos</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Lo que falta</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Lanzamiento</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 0 · EL ANUNCIO ============ -->
+<section class="panel on" id="p0">
+<h2>El anuncio ya está publicado</h2>
+<p class="lead">Se creó el 15 de agosto y está en línea. Desde acá se puede ver tal como lo ve
+cualquier persona que lo encuentre buscando.</p>
+
+<p><a class="boton" href="https://www.airbnb.cl/rooms/1753317487636457713" target="_blank"
+rel="noopener">Ver el anuncio en Airbnb →</a></p>
+
+<h3>Así se ve en los resultados de búsqueda</h3>
+<div class="sim">
+  <div class="card">
+    <div class="foto"><img src="img/elmonte-casa.jpg" alt="Casa principal con jardín"></div>
+    <div class="cuerpo">
+      <div class="tit">Casa de campo para grupos · Piscina y quincho</div>
+      <p class="gris">Casa entera en El Monte</p>
+      <p class="gris">14 huéspedes · 4 dormitorios · 3 baños</p>
+      <p class="precio"><s style="color:#9a938c;font-weight:400">$240.000</s>
+      <b>$192.000</b> por noche &nbsp;<span class="nuevo">NUEVO</span></p>
+    </div>
+  </div>
+  <div class="simnota">
+    <p><strong>Esto es todo lo que ve el huésped antes de decidir si entra:</strong> la foto de
+    portada, el título y el precio.</p>
+    <p>Por eso el título no gasta caracteres en wifi ni en nombres de fantasía, y por eso la foto
+    de portada es la decisión más importante de todo el anuncio.</p>
+    <p class="nota">El precio tachado es el precio normal; el destacado es con el descuento de
+    estreno del 20%, que corre las primeras semanas.</p>
+  </div>
+</div>
+
+<h3>Qué quedó configurado</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Campo</th><th>Cómo quedó</th></tr>
+  <tr><td>Título</td><td class="d">Casa de campo para grupos · Piscina y quincho</td></tr>
+  <tr><td>Ubicación</td><td>Los Olmos, El Monte, Región Metropolitana</td></tr>
+  <tr><td>Capacidad</td><td>14 huéspedes · 4 dormitorios · 3 baños</td></tr>
+  <tr class="hi"><td><strong>Precio de lanzamiento</strong></td><td class="d"><strong>$240.000 por noche</strong></td></tr>
+  <tr><td>Descuento de estreno</td><td>20% las primeras reservas</td></tr>
+  <tr><td>Mínimo de noches</td><td>1 — para que un evento pueda cerrarse en un solo día</td></tr>
+  <tr><td>Reserva inmediata</td><td><strong>Desactivada</strong> — cada solicitud se revisa y se acepta a mano</td></tr>
+  <tr><td>Fotos publicadas</td><td>11</td></tr>
+</table>
+</div>
+
+<div class="destaca">
+  <p class="big">Nadie puede reservar sin que nosotros lo aprobemos.</p>
+  <p>Airbnb activa por defecto la reserva automática en los anuncios nuevos. La dejamos apagada a
+  propósito: en una casa para grupos, saber quién llega y para qué importa más que ganar una reserva
+  rápida. Cada solicitud pasa por revisión antes de confirmarse.</p>
+</div>
+
+<h3>Las fotos que están publicadas</h3>
+<div class="galeria">
+  <figure><img src="img/elmonte-casa.jpg" alt="Casa principal"><figcaption>Casa principal y jardín — portada</figcaption></figure>
+  <figure><img src="img/elmonte-terraza.jpg" alt="Terraza con parrón"><figcaption>Terraza con parrón, al atardecer</figcaption></figure>
+  <figure><img src="img/elmonte-living-ext.jpg" alt="Living exterior"><figcaption>Living exterior y túnel de hiedra</figcaption></figure>
+</div>
+<p class="nota">Más el quincho, el comedor exterior, el living interior, la cabaña y el hall. Son
+once fotos en total.</p>
+
+<h3>El texto del anuncio</h3>
+<div class="copy">
+  <p>Una casa de campo para juntarse: piscina con deck, parrón cubierto de hiedra con luces cálidas,
+  quincho con parrilla y horno a leña, y un jardín donde caben todos.</p>
+  <p>Cuatro dormitorios, tres baños y capacidad para catorce personas, a poco más de una hora de
+  Santiago. Pensada para grupos y celebraciones.</p>
+  <p>Adentro: living con techo de madera a dos aguas, aire acondicionado y ventanales al jardín.
+  Afuera: comedor bajo el parrón, living exterior, túnel de hiedra y una cabaña independiente.</p>
+</div>
+</section>
+
+<!-- ============ 1 · MERCADO, PRECIO E INGRESOS ============ -->
+<section class="panel" id="p1">
+<h2>Qué dice el mercado de El Monte</h2>
+<p class="lead">Se barrieron las casas completas para grupos en El Monte y alrededores. Del total se
+sacaron los anuncios urbanos que el buscador arrastra de Santiago y los precios extremos, para que
+la comparación sea contra propiedades realmente parecidas.</p>
+
+<div class="cifras">
+  <div class="cifra"><div class="n">92</div><div class="l">casas comparables</div></div>
+  <div class="cifra"><div class="n">4,85</div><div class="l">calificación mediana</div></div>
+  <div class="cifra"><div class="n">32%</div><div class="l">son Favorito de huéspedes</div></div>
+</div>
+
+<h3>1.1 La banda de precios</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Tramo del mercado</th><th>Precio por noche</th><th>Qué significa</th></tr>
+  <tr><td>Cuarto más barato</td><td>$224.814</td><td>Piso de la zona</td></tr>
+  <tr class="hi"><td><strong>Mediana</strong></td><td class="d"><strong>$331.358</strong></td><td>El precio del medio</td></tr>
+  <tr><td>Cuarto más caro</td><td>$439.752</td><td>Casas consolidadas, con historial</td></tr>
+  <tr><td>Techo</td><td>$580.262</td><td>Lo máximo que se cobra en la zona</td></tr>
+</table>
+</div>
+
+<h3>1.2 El competidor directo</h3>
+<div class="destaca">
+  <p class="big">Casa de 5 dormitorios · 12 camas · 14 personas — $280.562</p>
+  <p>Calificación 4,92 · <strong>223 reseñas</strong> · Favorito de huéspedes. Es prácticamente el
+  mismo producto y la misma capacidad. Ese es el nivel al que se puede llegar una vez que la casa
+  tenga historial propio.</p>
+</div>
+<p>La diferencia hoy no es el producto: es que ellos tienen 223 reseñas y nosotros ninguna. Por eso
+el precio de entrada es más bajo — las primeras reservas valen más por la reseña que dejan que por
+lo que ingresan.</p>
+
+<h3>1.3 Un dato que conviene saber sobre la piscina</h3>
+<div class="tablabox">
+<table>
+  <tr><th>&nbsp;</th><th>Precio mediano</th></tr>
+  <tr><td>Casas que mencionan piscina en el título</td><td>$300.998</td></tr>
+  <tr><td>Casas que no la mencionan</td><td>$348.648</td></tr>
+</table>
+</div>
+<p>Contra la intuición, <strong>la piscina no permite cobrar más en esta zona</strong>. Aparece en
+uno de cada cuatro títulos porque acá es requisito de entrada, no un lujo: sin piscina te quedan
+fuera del filtro, pero tenerla no te sube la tarifa. Lo que sí diferencia es la <strong>capacidad,
+el quincho equipado y el terreno</strong> — y en eso la casa está bien parada.</p>
+
+<h3>1.4 La escalera de precios</h3>
+<div class="tablabox">
+<table>
+  <tr><th>Momento</th><th>Precio por noche</th><th>Por qué</th></tr>
+  <tr class="hi"><td><strong>Lanzamiento</strong></td><td class="d"><strong>$240.000</strong></td><td>Entre el piso y la mediana. Sin reseñas hay que convertir</td></tr>
+  <tr><td>Con unas 10 reseñas</td><td>$280.000</td><td>El nivel del competidor directo</td></tr>
+  <tr><td>Consolidado</td><td>$330.000</td><td>La mediana de la zona, con calificación sobre 4,9</td></tr>
+</table>
+</div>
+<p class="nota">⚠️ Esta banda se midió en agosto, en pleno invierno, en una zona de piscinas. El
+verano en El Monte es otro mercado y hay que volver a medir antes de diciembre.</p>
+
+<h3>1.5 Simulación de ingresos</h3>
+<p class="lead">Tres escenarios de ocupación sobre el precio de lanzamiento de $240.000 la noche.
+Se usan porcentajes conservadores porque una casa de campo es estacional: no se llena parejo todo
+el año, se concentra en fines de semana, festivos y verano.</p>
+
+<div class="tablabox">
+<table>
+  <tr><th>&nbsp;</th><th>40% ocupación</th><th>55% ocupación</th><th>70% ocupación</th></tr>
+  <tr><td>Noches ocupadas en el mes</td><td>12</td><td>17</td><td>21</td></tr>
+  <tr><td>Ingreso por alojamiento</td><td>$2.880.000</td><td>$4.080.000</td><td>$5.040.000</td></tr>
+  <tr><td>Menos comisión de Airbnb (15,5%)</td><td>−$446.400</td><td>−$632.400</td><td>−$781.200</td></tr>
+  <tr><td>Subtotal</td><td>$2.433.600</td><td>$3.447.600</td><td>$4.258.800</td></tr>
+  <tr><td>Menos administración APTO (15%)</td><td>−$365.040</td><td>−$517.140</td><td>−$638.820</td></tr>
+  <tr class="tot"><td><strong>Neto para la propietaria</strong></td><td class="d"><strong>$2.068.560</strong></td><td class="d"><strong>$2.930.460</strong></td><td class="d"><strong>$3.619.980</strong></td></tr>
+</table>
+</div>
+<p class="nota">La tarifa de limpieza no aparece porque no entra ni sale: la paga el huésped aparte
+y se destina íntegra al servicio de limpieza. Tampoco están descontados los insumos de reposición,
+que se definen aparte.</p>
+<p class="nota">Estos números son a precio de lanzamiento. A $280.000 —el nivel del competidor
+directo— el mismo 55% de ocupación deja cerca de <strong>$3.418.000</strong> netos.</p>
+</section>
+
+<!-- ============ 2 · LO QUE FALTA ============ -->
+<section class="panel" id="p2">
+<h2>Lo que falta para que el anuncio esté completo</h2>
+<p class="lead">El anuncio ya está publicado y funcionando, pero hay datos que todavía no tenemos y
+que Airbnb premia. Están ordenados por lo que más pesa.</p>
+
+<h3>2.1 Lo que más urge</h3>
+<ul class="falta">
+  <li class="urg"><b>Fotos de los dormitorios</b>
+  <span>Es el hueco más caro. La casa se ofrece para catorce personas y hoy no hay ni una foto de
+  dónde duermen. Es lo primero que mira alguien que viene con un grupo grande, y Airbnb marca el
+  anuncio como incompleto sin ellas.</span></li>
+
+  <li class="urg"><b>Foto de la piscina</b>
+  <span>La piscina aparece en el video pero no en ninguna foto. El video está en una resolución que
+  Airbnb no acepta, así que hoy el anuncio habla de una piscina que no se puede ver. Siendo el
+  requisito de entrada de la zona, es una pérdida directa.</span></li>
+
+  <li class="urg"><b>Cómo se reparten las camas</b>
+  <span>Cuántas camas hay en cada dormitorio y de qué tipo. Está puesto un número provisorio y
+  conservador para no prometer de más, pero hay que corregirlo con el real.</span></li>
+
+  <li><b>Fotos de los baños y de la cocina interior</b>
+  <span>Completan el recorrido. Airbnb arma un "recorrido fotográfico" por ambiente y hoy está a
+  medias.</span></li>
+</ul>
+
+<h3>2.2 Datos del alojamiento</h3>
+<ul class="falta">
+  <li><b>¿Hay wifi?</b> <span>Es de los primeros filtros que aplica la gente. Si hay, lo agregamos
+  al toque; si no hay, conviene decirlo en el anuncio para que nadie llegue esperándolo.</span></li>
+  <li><b>¿Hay detector de humo y extintor?</b> <span>Airbnb hoy muestra "no consta que tenga
+  detector de humo". Es una alerta visible para el huésped y se soluciona confirmando que están —
+  o instalándolos.</span></li>
+  <li><b>¿Hay lavadora? ¿Televisión? ¿Calefacción?</b> <span>No los marcamos porque no aparecen en
+  las fotos y no inventamos amenities.</span></li>
+  <li><b>¿Cuántos autos caben?</b> <span>En una casa para grupos que llega en varios autos, es
+  determinante.</span></li>
+  <li><b>¿Cómo se entra?</b> <span>Llave, código, o alguien recibe. Define toda la coordinación de
+  llegada.</span></li>
+</ul>
+
+<h3>2.3 Decisiones que tomar</h3>
+<ul class="falta">
+  <li class="urg"><b>Política de eventos</b>
+  <span>Es la decisión más importante de todas. Si se permiten celebraciones: con qué tope de
+  personas y hasta qué hora. En una casa de campo con quincho, esto <em>es</em> el producto o
+  <em>es</em> el problema — no hay punto medio. De la respuesta dependen el precio, las reglas de la
+  casa y qué tipo de huésped aceptamos.</span></li>
+  <li><b>Quién mantiene la piscina y el jardín</b>
+  <span>Con qué frecuencia y a cargo de quién. Una piscina en mal estado durante una estadía genera
+  reclamo y reseña negativa el mismo día.</span></li>
+  <li><b>Desde cuándo se puede recibir</b>
+  <span>Para abrir el calendario. Hoy está publicado pero sin fechas liberadas.</span></li>
+  <li><b>Insumos de reposición</b>
+  <span>Champú, jabón, papel, productos de limpieza, café. El monto hay que calcularlo para catorce
+  personas con quincho — no se puede aplicar el de un departamento.</span></li>
+</ul>
+
+<h3>2.4 Para el contrato</h3>
+<ul class="falta">
+  <li><b>Apellidos, RUT y domicilio</b> <span>El contrato está redactado y esperando esos datos.</span></li>
+  <li><b>Fecha de inicio</b></li>
+  <li><b>Inventario de la casa</b> <span>Muebles y equipamiento, para el anexo. Sirve de respaldo si
+  un huésped daña algo.</span></li>
+  <li><b>Confirmar que la parcelación permite arriendo turístico</b> <span>Vale la pena revisarlo
+  antes de recibir la primera reserva.</span></li>
+</ul>
+</section>
+
+<!-- ============ 3 · LANZAMIENTO ============ -->
+<section class="panel" id="p3">
+<h2>Cómo se lanza</h2>
+<p class="lead">El anuncio ya está arriba. Lo que viene es el orden en que conviene hacer el resto.</p>
+
+<h3>Paso 1 · Completar la ficha</h3>
+<p>Con las respuestas del capítulo anterior se cierran los amenities, la distribución de camas y las
+reglas de la casa. Es trabajo de una tarde y sube la posición del anuncio en las búsquedas, porque
+Airbnb premia la completitud.</p>
+
+<h3>Paso 2 · La sesión de fotos</h3>
+<p>Es la inversión de mayor retorno. Faltan dormitorios, baños, cocina interior y sobre todo la
+piscina. Las fotos que hay son buenas —están bien tomadas y con buena luz— así que el nuevo material
+tiene que estar a la misma altura.</p>
+<p class="nota">La única floja del set actual es la de la cocina de apoyo, que está tomada con
+celular sin editar y desentona. Quedó última en el orden.</p>
+
+<h3>Paso 3 · Abrir el calendario</h3>
+<p>Se liberan las fechas desde el día en que la casa puede recibir. Airbnb da más visibilidad a los
+anuncios nuevos durante las primeras semanas, así que conviene que el calendario esté abierto
+mientras dura ese empuje.</p>
+
+<h3>Paso 4 · Las primeras reservas</h3>
+<p>Con el descuento de estreno del 20%, las primeras entran más rápido. El objetivo de esas
+reservas no es facturar: es <strong>conseguir reseñas</strong>. Cada reseña de cinco estrellas al
+principio vale más que la diferencia de precio que se resignó.</p>
+<p>Cuando haya unas diez reseñas con buena calificación, se sube a $280.000 y después a la mediana
+de la zona.</p>
+
+<h3>Paso 5 · Ajustar por temporada</h3>
+<p>El precio de hoy se midió en invierno. Antes de diciembre volvemos a medir el mercado y se ajusta
+la tarifa de verano, que en una zona de piscinas es un mercado completamente distinto.</p>
+
+<div class="destaca">
+  <p class="big">Mientras tanto, la casa ya está en Airbnb.</p>
+  <p>Cualquier persona que busque una casa para grupos en El Monte la puede encontrar desde hoy. Lo
+  que falta la hace competir mejor, pero el anuncio ya está trabajando.</p>
+</div>
+
+<p><a class="boton" href="https://www.airbnb.cl/rooms/1753317487636457713" target="_blank"
+rel="noopener">Ver el anuncio en Airbnb →</a></p>
+</section>
+
+<footer>
+  <p class="marca">APTO</p>
+  <p>Documento vivo — se actualiza a medida que avanzamos. Última actualización: 16 de agosto de 2026.<br>
+  Administración de arriendo turístico · comisión 15% sobre ingresos netos, impuestos incluidos.</p>
+</footer>
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const paneles = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+    paneles.forEach(p => p.classList.toggle('on', p.id === t.dataset.p));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }));
+</script>
+</body>
+</html>
