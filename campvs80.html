@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Campvs 80 · Plan de trabajo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --crema:#F4EFE6; --papel:#FBF9F4; --ladrillo:#C8572A; --vino:#9B3A2E;
+         --tinta:#1D1D1B; --linea:#E2D9CB; --gris:#6E6A63; --verde:#3E6B4F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--crema);color:var(--tinta);
+       font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px 80px}
+  header{padding:52px 0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:0 0 11px}
+  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(31px,4.8vw,48px);
+     line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
+  .sub{font-size:17px;color:var(--gris);margin:0}
+
+  nav{position:sticky;top:0;z-index:20;background:var(--crema);
+      border-bottom:2px solid var(--tinta);padding:10px 0 0;margin-bottom:6px}
+  .tabs{display:flex;flex-wrap:wrap;gap:2px;max-width:860px;margin:0 auto;padding:0 22px}
+  .tab{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;
+       font-size:14px;font-weight:600;color:var(--gris);padding:11px 15px 12px;
+       border-bottom:3px solid transparent;border-radius:4px 4px 0 0;white-space:nowrap;
+       transition:color .15s,border-color .15s}
+  .tab:hover{color:var(--tinta);background:rgba(200,87,42,.06)}
+  .tab[aria-selected="true"]{color:var(--vino);border-bottom-color:var(--ladrillo)}
+  .tab .num{font-family:'Playfair Display',Georgia,serif;font-size:16px;margin-right:6px;opacity:.75}
+  .panel{display:none;animation:aparece .22s ease}
+  .panel.on{display:block}
+  @keyframes aparece{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(25px,3.4vw,34px);margin:34px 0 4px;line-height:1.15}
+  h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(18px,2.4vw,23px);margin:32px 0 6px;line-height:1.2}
+  h4{font-size:13px;letter-spacing:.07em;font-weight:700;margin:24px 0 8px;color:var(--vino)}
+  .lead{color:var(--gris);margin:0 0 18px;max-width:64ch}
+  p{max-width:66ch;margin:11px 0}
+  .tablabox{overflow-x:auto;margin:20px 0}
+  table{width:100%;border-collapse:collapse;font-size:15px;min-width:400px}
+  th{text-align:left;font-size:12px;letter-spacing:.08em;color:var(--gris);font-weight:600;
+     padding:0 13px 8px 0;border-bottom:1px solid var(--tinta)}
+  td{padding:11px 13px 11px 0;border-bottom:1px solid var(--linea);
+     font-variant-numeric:tabular-nums;vertical-align:top}
+  td.d{color:var(--vino);font-weight:700}
+  tr.hi td{background:rgba(200,87,42,.08);font-weight:600}
+  tr.tot td{border-top:2px solid var(--tinta);border-bottom:0;
+            font-weight:700;font-size:16px;padding-top:13px}
+  .destaca{background:var(--papel);border-left:4px solid var(--ladrillo);
+           padding:22px 24px;margin:26px 0;border-radius:0 4px 4px 0}
+  .destaca p{margin:0}
+  .destaca p + p{margin-top:10px}
+  .destaca .big{font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.8vw,26px);
+                line-height:1.3;margin:0 0 8px}
+  .cifras{display:flex;flex-wrap:wrap;margin:22px 0 4px;
+          border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cifra{flex:1 1 130px;padding:18px 18px 18px 0;border-right:1px solid var(--linea)}
+  .cifra:last-child{border-right:0}
+  .cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:32px;line-height:1;
+            font-variant-numeric:tabular-nums}
+  .cifra .l{font-size:13px;color:var(--gris);margin-top:6px}
+  .copy{background:var(--papel);border:1px solid var(--linea);border-radius:4px;
+        padding:16px 19px;margin:14px 0;font-size:15px}
+  .copy p{margin:7px 0}
+  .nota{font-size:14px;color:var(--gris);max-width:66ch}
+  .pill{display:inline-block;font-size:11px;letter-spacing:.07em;font-weight:700;
+        background:var(--vino);color:#fff;padding:3px 9px;border-radius:11px;
+        margin-left:8px;vertical-align:middle}
+  .pill.ok{background:var(--verde)}
+
+  .anuncios{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:24px 0}
+  .an{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 14px rgba(29,29,27,.09);
+      display:flex;flex-direction:column}
+  .an .foto{height:170px;overflow:hidden;background:var(--linea)}
+  .an .foto img{width:100%;height:100%;object-fit:cover;display:block}
+  .an .cuerpo{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+  .an .tag{font-size:11px;letter-spacing:.08em;font-weight:700;color:var(--vino);margin-bottom:5px}
+  .an .tit{font-weight:600;font-size:15px;line-height:1.32;margin-bottom:4px}
+  .an .gris{color:var(--gris);font-size:14px;margin:0 0 10px}
+  .an .precio{margin-top:auto;font-size:15px;padding-top:8px;border-top:1px solid var(--linea)}
+  .an .precio b{font-size:19px;font-family:'Playfair Display',Georgia,serif}
+  .an .precio span{color:var(--gris);font-size:13px;display:block;margin-top:2px}
+  .an a{display:block;text-align:center;background:var(--tinta);color:#fff;text-decoration:none;
+        font-size:14px;font-weight:600;padding:11px;margin-top:12px;border-radius:6px}
+  .an a:hover{background:var(--vino)}
+
+  .banda{margin:24px 0 10px}
+  .barra{position:relative;height:44px;background:var(--papel);border:1px solid var(--linea);
+         border-radius:6px;margin:34px 0 42px}
+  .rango{position:absolute;top:0;bottom:0;background:rgba(62,107,79,.16);
+         border-left:1px solid var(--verde);border-right:1px solid var(--verde)}
+  .marca-p{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--tinta)}
+  .marca-p i{position:absolute;top:-25px;left:50%;transform:translateX(-50%);font-style:normal;
+             font-size:11px;color:var(--gris);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .nuestro{position:absolute;top:-9px;bottom:-9px;width:3px;background:var(--ladrillo);border-radius:2px}
+  .nuestro i{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);font-style:normal;
+             font-size:12px;font-weight:700;color:var(--vino);white-space:nowrap}
+
+  .boton{display:inline-block;background:var(--tinta);color:#fff;text-decoration:none;
+         font-weight:600;font-size:15px;padding:13px 24px;border-radius:8px;margin:8px 0}
+  .boton:hover{background:var(--vino)}
+  .falta{list-style:none;padding:0;margin:18px 0}
+  .falta li{border-bottom:1px solid var(--linea);padding:13px 0 13px 34px;position:relative;max-width:66ch}
+  .falta li::before{content:"○";position:absolute;left:6px;top:12px;color:var(--ladrillo);font-size:15px}
+  .falta li.urg::before{content:"●";color:var(--vino)}
+  .falta li.ok::before{content:"✓";color:var(--verde);font-weight:700}
+  .falta b{display:block}
+  .falta span{font-size:14px;color:var(--gris)}
+
+  footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--linea);
+         font-size:13px;color:var(--gris)}
+  .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
+  @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0}
+                            .tab{font-size:13px;padding:9px 10px 10px} }
+  @media print{ nav{display:none} .panel{display:block!important;page-break-before:always}
+                .panel:first-of-type{page-break-before:auto} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">PLAN DE TRABAJO</p>
+  <h1>Campvs 80 · Ñuñoa</h1>
+  <p class="sub">Av. Campo de Deportes 80 · departamentos 707 y 713<br>
+  Diego · documento vivo · 17 de agosto de 2026</p>
+</header>
+</div>
+
+<nav>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-p="p0"><span class="num">0</span>Los anuncios</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>La estrategia</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Precio e ingresos</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Cómo queda operando</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 0 · LOS ANUNCIOS ============ -->
+<section class="panel on" id="p0">
+
+<h2>Tus dos departamentos, tres anuncios</h2>
+<p class="lead">Los 707 y 713 están publicados en Airbnb desde hoy. No como dos anuncios, sino como
+tres: cada uno por separado, y los dos juntos para grupos.</p>
+
+<div class="anuncios">
+
+  <div class="an">
+    <div class="foto"><img src="img/campvs-707.jpg" alt="Studio 707"></div>
+    <div class="cuerpo">
+      <p class="tag">DEPTO 707</p>
+      <p class="tit">Studio Metro Ñuñoa · Balcón, piscina y gym</p>
+      <p class="gris">4 huéspedes · 1 dormitorio · 1 baño<br>Tonos cálidos, madera y beige</p>
+      <p class="precio"><b>$50.000</b> por noche
+        <span>$55.000 viernes y sábado · limpieza $25.000</span></p>
+      <a href="https://www.airbnb.cl/rooms/1754376066687521090" target="_blank" rel="noopener">Ver en Airbnb →</a>
+    </div>
+  </div>
+
+  <div class="an">
+    <div class="foto"><img src="img/campvs-713.jpg" alt="Studio 713"></div>
+    <div class="cuerpo">
+      <p class="tag">DEPTO 713</p>
+      <p class="tit">Studio nuevo Ñuñoa · Metro a 1 cuadra, piscina</p>
+      <p class="gris">4 huéspedes · 1 dormitorio · 1 baño<br>Tonos azules y blancos</p>
+      <p class="precio"><b>$50.000</b> por noche
+        <span>$55.000 viernes y sábado · limpieza $25.000</span></p>
+      <a href="https://www.airbnb.cl/rooms/1754428268483707248" target="_blank" rel="noopener">Ver en Airbnb →</a>
+    </div>
+  </div>
+
+  <div class="an">
+    <div class="foto"><img src="img/campvs-edificio.jpg" alt="Piscina del edificio"></div>
+    <div class="cuerpo">
+      <p class="tag">LOS DOS JUNTOS</p>
+      <p class="tit">2 Studios · Metro Ñuñoa · Grupos, piscina y gym</p>
+      <p class="gris">6 huéspedes · 2 dormitorios · 2 baños<br>Para grupos que quieren estar juntos</p>
+      <p class="precio"><b>$100.000</b> por noche
+        <span>$110.000 viernes y sábado · limpieza $50.000</span></p>
+      <a href="https://www.airbnb.cl/rooms/1753983008645850380" target="_blank" rel="noopener">Ver en Airbnb →</a>
+    </div>
+  </div>
+
+</div>
+
+<h3>Qué tiene cada uno</h3>
+
+<p>Los dos departamentos son equivalentes: cama doble más sofá cama, baño completo, cocina equipada,
+balcón propio, aire acondicionado y zona de trabajo. Lo único que cambia es la decoración — el 707
+en tonos cálidos, el 713 en azules — y eso es a propósito: <strong>así los dos anuncios no compiten
+con textos y fotos idénticos.</strong></p>
+
+<p>El edificio entra en los tres anuncios como argumento principal: piscina en altura, gimnasio,
+cowork, salón gourmet, quinchos, lavandería y pet spa. En un studio de Ñuñoa, el edificio es la
+mitad de lo que se está vendiendo.</p>
+
+<div class="copy">
+  <p><b>Ubicación:</b> Metro Ñuñoa (L3 y L6) a una cuadra, Estadio Nacional a pasos, Barrio Italia y
+  Plaza Ñuñoa cerca, cinco minutos en metro al centro.</p>
+</div>
+
+<h3>El estado de cada anuncio</h3>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>&nbsp;</th><th>707</th><th>713</th><th>Combo</th></tr></thead>
+<tbody>
+  <tr><td>Publicado</td><td class="d">sí</td><td class="d">sí</td><td class="d">sí</td></tr>
+  <tr><td>Fotos cargadas</td><td>15</td><td>15</td><td>20 de 40</td></tr>
+  <tr><td>Descripción y título</td><td>listo</td><td>listo</td><td>listo</td></tr>
+  <tr><td>Precios y descuentos</td><td>listo</td><td>listo</td><td>listo</td></tr>
+  <tr><td>Reglas de la casa</td><td>listo</td><td>listo</td><td>listo</td></tr>
+  <tr class="hi"><td>Reserva sin aprobación</td><td>desactivada</td><td>desactivada</td><td>desactivada</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="nota">Los tres quedaron con <strong>aprobación manual</strong>: nadie reserva sin que
+nosotros revisemos quién es. En la pestaña 3 está el porqué.</p>
+
+<div class="destaca">
+  <p class="big">Los anuncios ya están trabajando.</p>
+  <p>Desde hoy, cualquier persona que busque en Ñuñoa los puede encontrar. Lo que queda por hacer
+  —terminar las fotos del combo— los hace competir mejor, pero no los frena.</p>
+</div>
+
+</section>
+
+<!-- ============ 1 · LA ESTRATEGIA ============ -->
+<section class="panel" id="p1">
+
+<h2>Por qué tres anuncios y no uno</h2>
+<p class="lead">Hasta ahora los dos departamentos existían en Airbnb solo como un combo para grupos.
+Eso deja fuera a la mayor parte de la demanda.</p>
+
+<h3>El problema del combo solo</h3>
+
+<p>Un anuncio de dos studios para 6 personas aparece únicamente cuando alguien busca alojamiento
+para 5 o 6. Es una búsqueda real, pero es <strong>la minoría del mercado en Ñuñoa</strong>. La
+mayoría de quien busca acá viaja solo, en pareja o de a dos por trabajo — y para esa persona el
+combo ni siquiera aparece en los resultados.</p>
+
+<p>El resultado es un activo caro y bien ubicado compitiendo en el segmento más chico y más
+estacional.</p>
+
+<h3>Lo que hacen los tres anuncios</h3>
+
+<p>Los mismos dos departamentos, publicados por separado y también juntos, entran en
+<strong>tres búsquedas distintas</strong>:</p>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>Anuncio</th><th>A quién captura</th><th>Frecuencia de esa búsqueda</th></tr></thead>
+<tbody>
+  <tr><td><b>707 solo</b></td><td>1 a 4 personas</td><td>alta, todo el año</td></tr>
+  <tr><td><b>713 solo</b></td><td>1 a 4 personas</td><td>alta, todo el año</td></tr>
+  <tr><td><b>Combo</b></td><td>grupos de 5 y 6</td><td>baja, pero ticket doble</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Cuando entra un grupo, el combo se lleva la reserva completa. Cuando no, los studios se llenan
+por su cuenta. <strong>La base la ponen los individuales; el combo es el upside.</strong></p>
+
+<h3>Cuánto cambia esto</h3>
+
+<p>Comparando el mismo activo bajo las dos formas de operarlo, a precios de régimen y ya descontada
+la comisión de Airbnb y la nuestra:</p>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>Forma de operar</th><th>Ocupación</th><th>A ti, al mes</th><th>Al año</th></tr></thead>
+<tbody>
+  <tr><td>Solo como combo</td><td>40%</td><td>$829.817</td><td>$9.957.799</td></tr>
+  <tr class="hi"><td>Individuales + combo</td><td>65%</td><td>$1.348.452</td><td>$16.181.423</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="destaca">
+  <p class="big">La diferencia es del orden de $6 millones al año.</p>
+  <p>No por subir el precio ni por gastar más: por dejar de depender de un solo tipo de huésped. Es
+  el mismo departamento, la misma limpieza y la misma operación.</p>
+</div>
+
+<h3>La contrapartida, dicha derecho</h3>
+
+<p>Los tres anuncios comparten los mismos dos departamentos. Eso significa que
+<strong>los calendarios tienen que estar sincronizados</strong>: si alguien reserva el 707 solo, el
+combo deja de estar disponible esas noches, porque ya no quedan dos unidades libres.</p>
+
+<p>Esa sincronización la hacemos nosotros y es la razón principal por la que los tres anuncios
+quedaron <strong>sin reserva automática</strong>. Con aprobación manual, ninguna reserva entra sin
+que revisemos antes que el calendario cuadre. Es el seguro contra el único riesgo real de esta
+estrategia: vender dos veces la misma noche.</p>
+
+<p class="nota">Es un costo de operación nuestro, no tuyo. Pero es honesto que sepas que existe y
+que es la razón de esa configuración.</p>
+
+<h3>Anti-canibalización</h3>
+
+<p>Dos anuncios del mismo edificio, con las mismas fotos y el mismo texto, compiten entre ellos y
+Airbnb los muestra peor. Por eso el 707 y el 713 tienen <strong>fotos distintas, títulos distintos y
+descripciones distintas</strong>, apoyadas en lo único que de verdad los diferencia: la decoración.
+No es cosmético — es lo que evita que se hagan sombra en los resultados de búsqueda.</p>
+
+</section>
+
+<!-- ============ 2 · PRECIO E INGRESOS ============ -->
+<section class="panel" id="p2">
+
+<h2>Dónde quedó el precio</h2>
+<p class="lead">El precio no salió de una corazonada: se puso contra la banda real de lo que cobran
+los departamentos comparables de Ñuñoa.</p>
+
+<h3>Un studio individual contra el mercado</h3>
+
+<div class="banda">
+<div class="barra">
+  <div class="rango" style="left:0%;right:32.3%"></div>
+  <div class="marca-p" style="left:0%"><i>$39.964<br>p25</i></div>
+  <div class="marca-p" style="left:38.5%"><i>$47.187<br>mediana</i></div>
+  <div class="marca-p" style="left:67.8%"><i>$52.677<br>p75</i></div>
+  <div class="marca-p" style="left:100%"><i>$58.737<br>techo</i></div>
+  <div class="nuestro" style="left:53.5%"><i>tú: $50.000</i></div>
+</div>
+</div>
+
+<p>$50.000 cae <strong>entre la mediana y el percentil 75</strong>: por sobre el promedio del
+barrio, pero lejos del techo. Es el lugar correcto para un departamento nuevo, bien equipado y con
+un edificio que la mayoría de la competencia no tiene.</p>
+
+<h3>El combo contra el mercado de grupos</h3>
+
+<div class="banda">
+<div class="barra">
+  <div class="rango" style="left:0%;right:34.7%"></div>
+  <div class="marca-p" style="left:0%"><i>$71.009<br>p25</i></div>
+  <div class="marca-p" style="left:27.5%"><i>$87.754<br>mediana</i></div>
+  <div class="marca-p" style="left:65.3%"><i>$110.726<br>p75</i></div>
+  <div class="marca-p" style="left:100%"><i>$131.867<br>techo</i></div>
+  <div class="nuestro" style="left:47.6%"><i>tú: $100.000</i></div>
+</div>
+</div>
+
+<p>$100.000 queda también entre mediana y p75. Coherente con los individuales: el combo cuesta
+exactamente lo que cuestan los dos por separado, sin castigo ni premio. Quien busca para 6 personas
+compara contra otros departamentos grandes, no contra dos studios.</p>
+
+<h3>Lo que ganas por noche</h3>
+
+<p>De lo que paga el huésped, Airbnb descuenta su comisión de anfitrión (15,5%). La tarifa de
+limpieza se destina íntegra al aseo. Sobre lo que queda va nuestra comisión del 18%, con impuestos
+incluidos.</p>
+
+<div class="cifras">
+  <div class="cifra"><div class="n">$51.429</div><div class="l">precio promedio por noche
+    (mezclando semana y fin de semana)</div></div>
+  <div class="cifra"><div class="n">15,5%</div><div class="l">comisión de Airbnb al anfitrión</div></div>
+  <div class="cifra"><div class="n">18%</div><div class="l">nuestra comisión, impuestos incluidos</div></div>
+</div>
+
+<h3>Simulación de ingresos</h3>
+
+<p>Escenarios a precio de régimen, con los <strong>dos departamentos</strong> operando como
+individuales más el combo cuando aparece un grupo. Las cifras son <strong>lo que te queda a ti</strong>,
+ya descontado todo:</p>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>Escenario</th><th>Ocupación real</th><th>Al mes</th><th>Al año</th></tr></thead>
+<tbody>
+  <tr><td>Conservador</td><td>55%</td><td>$1.140.998</td><td>$13.691.973</td></tr>
+  <tr class="hi"><td>Esperable en régimen</td><td>65%</td><td>$1.348.452</td><td>$16.181.423</td></tr>
+  <tr><td>Buen año</td><td>72%</td><td>$1.493.670</td><td>$17.924.038</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="nota">Ocupación "real" = noches efectivamente vendidas sobre el total, contando las dos
+unidades. Un departamento urbano bien gestionado en Ñuñoa se mueve en ese rango una vez que tiene
+reseñas; los primeros meses siempre son más bajos.</p>
+
+<h4>SI SE VENDIERAN SOLO COMO STUDIOS INDIVIDUALES</h4>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>Ocupación</th><th>Por unidad, al mes</th><th>Las dos, al mes</th><th>Las dos, al año</th></tr></thead>
+<tbody>
+  <tr><td>45%</td><td>$466.772</td><td>$933.544</td><td>$11.202.524</td></tr>
+  <tr><td>60%</td><td>$622.362</td><td>$1.244.725</td><td>$14.936.698</td></tr>
+  <tr><td>70%</td><td>$726.090</td><td>$1.452.179</td><td>$17.426.148</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>El descuento de estreno y por qué hay que estar encima</h3>
+
+<p>Los tres anuncios salieron con el <strong>20% de descuento de anuncio nuevo</strong>, que Airbnb
+aplica a las tres primeras reservas. Sirve para lo único que importa al principio:
+<strong>conseguir las primeras reseñas</strong>. Sin reseñas, un anuncio nuevo casi no aparece.</p>
+
+<div class="destaca">
+  <p class="big">Ojo con lo que pasa después.</p>
+  <p>Con el 20%, el studio queda en $40.000 — apenas sobre el percentil 25 del barrio, que es
+  precio de conversión. Cuando la promo se acaba, vuelve a $50.000 y sube al tramo alto de la banda
+  <em>todavía con pocas reseñas</em>. Ese es exactamente el momento en que un anuncio se estanca.</p>
+  <p>Lo tenemos agendado para revisar precio cuando venza, no para dejarlo correr solo.</p>
+</div>
+
+<h3>Descuentos por estadías largas</h3>
+
+<p>Están cargados en los tres anuncios, en escala creciente:</p>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>Duración</th><th>Descuento</th><th>&nbsp;</th></tr></thead>
+<tbody>
+  <tr><td>2 noches</td><td class="d">5%</td><td class="nota">saca la reserva de fin de semana</td></tr>
+  <tr><td>3 noches</td><td class="d">7%</td><td></td></tr>
+  <tr><td>4 noches</td><td class="d">8%</td><td></td></tr>
+  <tr><td>5 noches</td><td class="d">9%</td><td></td></tr>
+  <tr><td>6 noches</td><td class="d">10%</td><td></td></tr>
+  <tr class="hi"><td>7 noches o más</td><td class="d">12%</td><td class="nota">una semana completa, una sola limpieza</td></tr>
+  <tr><td>28 noches o más</td><td class="d">20%</td><td class="nota">el huésped corporativo</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>La escala sube siempre, nunca baja. Suena obvio, pero Airbnb aplica <em>el descuento del período
+más largo que califique</em>, no el que más le conviene al huésped: si el tramo de 6 noches diera
+más que el semanal, quien reservara una semana entera pagaría más que quien reserva seis días. Por
+eso el semanal quedó en 12% y no en el 10% que traía por defecto.</p>
+
+<p>El objetivo de fondo es <strong>estirar la estadía</strong>. Cada reserva tiene un costo fijo de
+limpieza y de coordinación; cinco noches de un huésped rinden bastante más que cinco noches
+repartidas en tres huéspedes distintos.</p>
+
+</section>
+
+<!-- ============ 3 · CÓMO QUEDA OPERANDO ============ -->
+<section class="panel" id="p3">
+
+<h2>Cómo queda operando</h2>
+<p class="lead">Las decisiones que quedaron tomadas en los tres anuncios, y por qué.</p>
+
+<h3>Sin reserva automática</h3>
+
+<p>Airbnb ofrece que cualquiera reserve al instante, sin que el anfitrión apruebe. Es cómodo y
+Airbnb lo premia con mejor posición en las búsquedas. <strong>Lo dejamos apagado en los tres.</strong></p>
+
+<p>Dos razones, y las dos pesan más que la posición en el buscador:</p>
+
+<ul class="falta">
+  <li><b>El calendario compartido</b>
+    <span>Con tres anuncios sobre dos departamentos, una reserva automática puede comprometer una
+    noche que otro anuncio ya vendió. La aprobación manual es lo que impide que eso pase.</span></li>
+  <li><b>Quién entra al edificio</b>
+    <span>Es un edificio con vecinos, conserjería y reglamento. Poder mirar el perfil, las reseñas y
+    el motivo del viaje antes de aceptar filtra el problema antes de que ocurra, no después.</span></li>
+</ul>
+
+<h3>Las reglas de la casa</h3>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>Regla</th><th>Cómo quedó</th><th>Por qué</th></tr></thead>
+<tbody>
+  <tr><td>Eventos y fiestas</td><td class="d">No</td>
+      <td class="nota">En un edificio no es una decisión del anfitrión: es un problema con la administración</td></tr>
+  <tr><td>Fumar</td><td class="d">No</td>
+      <td class="nota">El olor en un studio no se va con una limpieza normal</td></tr>
+  <tr><td>Horas de silencio</td><td class="d">23:00 a 08:00</td>
+      <td class="nota">Alineado con el reglamento de copropiedad</td></tr>
+  <tr><td>Fotografía comercial</td><td class="d">No</td>
+      <td class="nota">Producciones en espacios comunes traen reclamos</td></tr>
+  <tr class="hi"><td>Mascotas</td><td class="d">Sí, hasta 2</td>
+      <td class="nota">Con tarifa de $20.000 por estadía. El edificio tiene pet spa: es un
+      diferenciador real y hay poca oferta que las acepte</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="nota">Airbnb obliga a aceptar animales de servicio aunque no se permitan mascotas; eso es
+ley, no configuración.</p>
+
+<h3>La limpieza</h3>
+
+<p>Quedó escalonada, que es una función que casi nadie usa:</p>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>&nbsp;</th><th>Studio individual</th><th>Combo</th></tr></thead>
+<tbody>
+  <tr><td>Estadía de 3 noches o más</td><td>$25.000</td><td>$50.000</td></tr>
+  <tr><td>Estadía de 1 o 2 noches</td><td>$24.000</td><td>$49.000</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>La limpieza se cobra una sola vez por estadía, así que en una reserva de dos noches pesa el doble
+que en una de cuatro. Cobrar lo mismo hace que el huésped de fin de semana vea un total
+desproporcionado y no reserve. La tarifa se destina íntegra al servicio de aseo.</p>
+
+<h3>Lo que queda por hacer</h3>
+
+<ul class="falta">
+  <li class="urg"><b>Terminar las fotos del combo</b>
+    <span>Entraron 20 de las 40 disponibles. Las que faltan son de espacios comunes y del segundo
+    studio — están seleccionadas y ordenadas, es solo cargarlas.</span></li>
+  <li><b>Dar de baja el combo anterior</b>
+    <span>El combo viejo sigue publicado. Conviene pausarlo, no eliminarlo, hasta confirmar que el
+    nuevo está recibiendo visitas. Eliminado no vuelve.</span></li>
+  <li><b>Revisar el precio cuando venza el 20% de estreno</b>
+    <span>Es el momento crítico: el anuncio sube de tramo con pocas reseñas todavía.</span></li>
+  <li class="ok"><b>Configuración completa de los tres anuncios</b>
+    <span>Precios, descuentos, tarifas, reglas y reserva manual: listo y verificado.</span></li>
+</ul>
+
+<h3>Los primeros meses</h3>
+
+<p>Un anuncio nuevo no rinde lo mismo que uno con historial, por más bien armado que esté. Airbnb
+posiciona por reseñas y por tasa de respuesta, y ninguna de las dos existe todavía. Los primeros
+dos o tres meses son <strong>para conseguir reseñas</strong>, no para maximizar el precio — de ahí
+el 20% de estreno.</p>
+
+<p>La referencia de la pestaña 2 es lo que este activo debiera rendir <em>en régimen</em>, con
+reseñas y posicionado. Llegar ahí toma unos meses.</p>
+
+<div class="destaca">
+  <p class="big">Los tres anuncios están arriba y configurados.</p>
+  <p>De acá en adelante el trabajo es de gestión: responder rápido, sincronizar calendarios, cuidar
+  las primeras reseñas y ajustar precio cuando venza la promo de estreno.</p>
+</div>
+
+<p>
+<a class="boton" href="https://www.airbnb.cl/rooms/1754376066687521090" target="_blank" rel="noopener">Ver el 707 →</a>
+<a class="boton" href="https://www.airbnb.cl/rooms/1754428268483707248" target="_blank" rel="noopener">Ver el 713 →</a>
+<a class="boton" href="https://www.airbnb.cl/rooms/1753983008645850380" target="_blank" rel="noopener">Ver el combo →</a>
+</p>
+
+</section>
+
+<footer>
+  <p class="marca">APTO</p>
+  <p>Documento vivo — se actualiza a medida que avanzamos. Última actualización: 17 de agosto de 2026.<br>
+  Administración de arriendo turístico · comisión 18% sobre ingresos netos, impuestos incluidos.<br>
+  Las simulaciones son estimaciones basadas en precios de mercado de Ñuñoa y supuestos de ocupación;
+  no constituyen una garantía de resultado.</p>
+</footer>
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const paneles = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+    paneles.forEach(p => p.classList.toggle('on', p.id === t.dataset.p));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }));
+</script>
+</body>
+</html>
