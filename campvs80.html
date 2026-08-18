@@ -135,7 +135,8 @@
 
 <nav>
   <div class="tabs" role="tablist">
-    <button class="tab" role="tab" aria-selected="true"  data-p="p0"><span class="num">0</span>Los anuncios</button>
+    <button class="tab" role="tab" aria-selected="true"  data-p="home"><span class="num">★</span>Tu información</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p0"><span class="num">0</span>Los anuncios</button>
     <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>La estrategia</button>
     <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Precio e ingresos</button>
     <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Cómo queda operando</button>
@@ -145,7 +146,95 @@
 <div class="wrap">
 
 <!-- ============ 0 · LOS ANUNCIOS ============ -->
-<section class="panel on" id="p0">
+<!-- ============ HOME · TU INFORMACIÓN ============ -->
+<section class="panel on" id="home">
+
+<h2>Tu información</h2>
+<p class="lead">Todo lo tuyo en un solo lugar. Esta página se mantiene actualizada: si algo cambia
+en los anuncios o entran reservas nuevas, lo vas a ver acá.</p>
+
+<h3>Tus anuncios publicados</h3>
+
+<div class="anuncios">
+
+  <div class="an">
+    <div class="foto"><img src="img/campvs-707.jpg" alt="Studio 707"></div>
+    <div class="cuerpo">
+      <p class="tag">DEPTO 707</p>
+      <p class="tit">Studio cálido · Balcón · Metro Ñuñoa a 1 cuadra</p>
+      <p class="gris">4 huéspedes · 32 fotos</p>
+      <p class="precio"><b>$50.000</b> por noche
+        <span>$55.000 viernes y sábado</span></p>
+      <a href="https://airbnb.cl/h/studio-calido-nunoa" target="_blank" rel="noopener">Ver el anuncio →</a>
+    </div>
+  </div>
+
+  <div class="an">
+    <div class="foto"><img src="img/campvs-713.jpg" alt="Studio 713"></div>
+    <div class="cuerpo">
+      <p class="tag">DEPTO 713</p>
+      <p class="tit">Studio luminoso · Balcón · Metro Ñuñoa a 1 cuadra</p>
+      <p class="gris">4 huéspedes · 32 fotos</p>
+      <p class="precio"><b>$50.000</b> por noche
+        <span>$55.000 viernes y sábado</span></p>
+      <a href="https://airbnb.cl/h/studio-luminoso-nunoa" target="_blank" rel="noopener">Ver el anuncio →</a>
+    </div>
+  </div>
+
+  <div class="an">
+    <div class="foto"><img src="img/campvs-edificio.jpg" alt="Los dos juntos"></div>
+    <div class="cuerpo">
+      <p class="tag">LOS DOS JUNTOS</p>
+      <p class="tit">2 Studios · Metro Ñuñoa · Grupos · Piscina y gym</p>
+      <p class="gris">6 huéspedes · 39 fotos</p>
+      <p class="precio"><b>$114.000</b> por noche
+        <span>$125.400 viernes y sábado</span></p>
+      <a href="https://airbnb.cl/h/2-studios-nunoa-grupos" target="_blank" rel="noopener">Ver el anuncio →</a>
+    </div>
+  </div>
+
+</div>
+
+<h3>Tu planilla de reservas</h3>
+
+<p>Cada reserva queda registrada acá con sus fechas, noches, montos y la liquidación que te
+corresponde. Se actualiza a medida que entran.</p>
+
+<p><a class="boton" href="https://docs.google.com/spreadsheets/d/1HwkNiTsBYFHvLA9i-IjKWu5WkokJ0k_0yBRpAt-Aetk/edit"
+target="_blank" rel="noopener">Abrir la planilla →</a></p>
+
+<p class="nota">Tres hojas: <b>Reservas</b> (el detalle una por una), <b>Liquidaciones</b> (el
+resumen por mes) y <b>Datos del contrato</b> (comisión, tarifas y enlaces).</p>
+
+<h3>La guía que reciben tus huéspedes</h3>
+
+<p>Cada persona que reserva recibe esta guía: cómo llegar, cómo entrar, cómo funciona el edificio,
+qué hay en el barrio y a quién escribir si pasa algo. Es lo que evita que te llamen a ti.</p>
+
+<p><a class="boton" href="campvs80-guia.html" target="_blank" rel="noopener">Ver la guía del huésped →</a></p>
+
+<p class="nota">Por seguridad, el código de acceso y las claves de wifi <b>no aparecen en esta
+versión</b>: se le envían a cada huésped por el chat de Airbnb una vez que su reserva está
+confirmada.</p>
+
+<h3>Cómo está todo hoy</h3>
+
+<div class="cifras">
+  <div class="cifra"><div class="n">3</div><div class="l">anuncios publicados</div></div>
+  <div class="cifra"><div class="n">103</div><div class="l">fotos entre los tres</div></div>
+  <div class="cifra"><div class="n">30</div><div class="l">comodidades declaradas en cada uno</div></div>
+  <div class="cifra"><div class="n">18%</div><div class="l">comisión, impuestos incluidos</div></div>
+</div>
+
+<div class="destaca">
+  <p class="big">¿Alguna duda con algo de acá?</p>
+  <p>Escríbeme directamente. Esta página está para que no tengas que preguntar por cosas que
+  deberías poder mirar cuando quieras.</p>
+</div>
+
+</section>
+
+<section class="panel" id="p0">
 
 <h2>Tus dos departamentos, tres anuncios</h2>
 <p class="lead">Los 707 y 713 están publicados en Airbnb desde hoy. No como dos anuncios, sino como
@@ -214,8 +303,11 @@ mitad de lo que se está vendiendo.</p>
 <thead><tr><th>&nbsp;</th><th>707</th><th>713</th><th>Combo</th></tr></thead>
 <tbody>
   <tr><td>Publicado</td><td class="d">sí</td><td class="d">sí</td><td class="d">sí</td></tr>
-  <tr><td>Fotos cargadas</td><td>15</td><td>15</td><td>22</td></tr>
+  <tr><td>Fotos cargadas</td><td>32</td><td>32</td><td>39</td></tr>
   <tr><td>Comodidades declaradas</td><td>30</td><td>30</td><td>30</td></tr>
+  <tr><td>Fotos ordenadas por espacio</td><td class="d">sí</td><td class="d">sí</td><td class="d">sí</td></tr>
+  <tr><td>Guía de llegada completa</td><td class="d">sí</td><td class="d">sí</td><td class="d">sí</td></tr>
+  <tr><td>Descripción en inglés</td><td class="d">sí</td><td class="d">sí</td><td class="d">sí</td></tr>
   <tr><td>Estacionamiento del edificio</td><td colspan="3">declarado en los tres, como servicio adicional sujeto a disponibilidad</td></tr>
   <tr><td>Descripción y título</td><td>listo</td><td>listo</td><td>listo</td></tr>
   <tr><td>Precios y descuentos</td><td>listo</td><td>listo</td><td>listo</td></tr>
@@ -227,6 +319,28 @@ mitad de lo que se está vendiendo.</p>
 
 <p class="nota">Los tres quedaron con <strong>aprobación manual</strong>: nadie reserva sin que
 nosotros revisemos quién es. En la pestaña 3 está el porqué.</p>
+
+<h3>Lo que se dejó configurado</h3>
+
+<p>Un anuncio recién publicado parece completo y está a medias: Airbnb pide lo mínimo para que
+exista y deja en blanco casi todo lo que después decide si alguien reserva. Esto es lo que quedó
+cargado en los tres:</p>
+
+<div class="tablabox">
+<table>
+<thead><tr><th>Qué</th><th>Cómo quedó</th></tr></thead>
+<tbody>
+  <tr><td><b>Comodidades</b></td><td>30 en cada anuncio. Se corrigieron las que figuraban como <b>no disponibles</b> sin serlo — agua caliente, calefacción, servicios básicos y detector de humo. Un anuncio que dice "sin agua caliente" no se salva con ningún precio</td></tr>
+  <tr><td><b>Seguridad</b></td><td>Detector de humo y de monóxido declarados. Sin eso la ficha muestra "no consta que tenga", y el huésped lo lee</td></tr>
+  <tr><td><b>Fotos por espacio</b></td><td>Agrupadas y rotuladas: salón, cocina, dormitorio, baño, balcón. En el combo van duplicadas —<i>Studio 1</i> y <i>Studio 2</i>— para que se entienda que son dos departamentos completos</td></tr>
+  <tr><td><b>Distribución de camas</b></td><td>Cama doble más sofá cama en cada studio. Es lo primero que mira un grupo: quieren saber <i>cómo</i> duermen, no solo que caben</td></tr>
+  <tr><td><b>Guía de llegada</b></td><td>Cómo llegar, código de la puerta, wifi y manual de la casa. Se envía sola al confirmar la reserva</td></tr>
+  <tr><td><b>Inglés</b></td><td>Cada anuncio lleva su versión en inglés. Airbnb traduce automático, pero mal: escrito por nosotros dice lo que queremos decir</td></tr>
+  <tr><td><b>Descuentos por estadía</b></td><td>De 2 a 6 noches, más semanal y mensual, en escala creciente</td></tr>
+  <tr><td><b>Calendarios</b></td><td>Los cinco anuncios sobre tus dos departamentos, sincronizados entre sí</td></tr>
+</tbody>
+</table>
+</div>
 
 <div class="destaca">
   <p class="big">Los anuncios ya están trabajando.</p>
