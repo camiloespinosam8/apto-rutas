@@ -447,6 +447,10 @@ function buscar(P, consulta){
     soltadas.push({regla: fuera, cuantos: P.filter(p => activas.every(r => r.test(p))).length});
   }
 
+  // Si hubo que soltar TODAS las condiciones, devolver el catálogo completo no es
+  // una respuesta: es ruido. Mejor decir que no hay nada y por qué.
+  if (soltadas.length === R.length) return {filtros:f, reglas:R, resultados:[], soltadas, imposible:true};
+
   // ranking: primero los que cumplen más reglas, luego por delta, luego por capital
   res.forEach(p => {
     p._cumple = R.filter(r => r.test(p));
@@ -522,9 +526,17 @@ function pintarEntendido(r){
           : "");
   } else if(r.resultados.length){
     av.innerHTML = "";
+  } else if (r.imposible) {
+    const dura = r.reglas.slice().sort((a,b)=>b.peso-a.peso)[0];
+    const solaN = P.filter(x => dura.test(x)).length;
+    av.innerHTML = '<b>Nada del stock cumple lo que pediste</b>, ni siquiera soltando condiciones. '
+      + 'La que más aprieta es <b>' + dura.etiqueta + '</b>: por sí sola deja '
+      + solaN + ' proyecto' + (solaN===1?"":"s") + '. '
+      + (solaN === 0
+          ? 'Ese solo criterio ya no lo cumple ninguno — hay que bajarlo.'
+          : 'Combinada con el resto, no queda ninguno.');
   } else {
-    av.innerHTML = '<b>No encontré nada</b> ni soltando condiciones. '
-      + 'Puede que el criterio de ingreso sea muy alto para el stock que tenemos cargado.';
+    av.innerHTML = '<b>No encontré nada.</b>';
   }
 }
 
