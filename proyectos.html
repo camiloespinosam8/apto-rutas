@@ -575,12 +575,16 @@ function buscar(P, consulta, previo){
   const f = interpretar(consulta, previo);
   const R = reglas(f, P);
 
-  if (!R.length && !f.orden) {
+  // Hay intenciones que no generan ninguna regla dura pero sí son una petición
+  // válida: diversificar, pedir un tope, o pedir un orden. No son "sin filtros".
+  const hayIntencion = R.length || f.orden || f.limite || f.diversificar || f.perfil;
+  if (!hayIntencion) {
     return {filtros:f, reglas:R, resultados:[], soltadas:[], vacioSinFiltros:true};
   }
 
-  let activas = [...R], soltadas = [], res = [];
+  let activas = [...R], soltadas = [], res = [...P];
   for (let i = 0; i <= R.length; i++) {
+    if (!activas.length) break;
     res = P.filter(p => activas.every(r => r.test(p)));
     if (res.length >= 3 || !activas.length) break;
     activas.sort((a,b) => b.peso - a.peso);
