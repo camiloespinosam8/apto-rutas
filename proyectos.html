@@ -258,7 +258,12 @@ function montos(q){
     if (v) out.push({tipo:"clp", valor:v*1000, txt:m[0]});
   }
   // número plano con separador de miles: 100.000 / 100000
+  // OJO: se saltan los que ya fueron consumidos por "UF x" / "x millones" / "x mil",
+  // si no "UF 4.000" se leia ademas como 4.000 pesos mensuales.
+  const usados = out.map(o => t.indexOf(o.txt)).filter(i => i >= 0);
   for (const m of t.matchAll(/(?<![\w.,])(\d{1,3}(?:\.\d{3})+|\d{4,})(?![\w.,])/g)) {
+    const dentro = usados.some((i, k) => m.index >= i && m.index < i + out[k].txt.length);
+    if (dentro) continue;
     const v = parseFloat(m[1].replace(/\./g,""));
     if (v >= 1000) out.push({tipo:"clp", valor:v, txt:m[0]});
   }
@@ -311,17 +316,24 @@ function interpretar(consulta){
   /* --- presupuesto de compra --- */
   const uf = ms.filter(m => m.tipo === "uf");
   if (uf.length) f.ufMax = Math.max(...uf.map(m => m.valor));
+  const hablaDePie = /(pie|ahorro|tengo|dispongo|capital|cuento con|junte|junt[eé])/.test(q);
   const clpGrande = ms.filter(m => m.tipo === "clp" && m.valor > 2e7);
-  if (clpGrande.length && !f.ufMax) f.ufMax = Math.max(...clpGrande.map(m => m.valor)) / 40854;
+  if (clpGrande.length && !f.ufMax && !hablaDePie) {
+    f.ufMax = Math.max(...clpGrande.map(m => m.valor)) / 40854;
+  }
   if (/(hasta|maximo|no mas de|menos de|tope|presupuesto|invertir)/.test(q) && !f.ufMax) {
     const c = ms.filter(m => m.tipo === "clp" && m.valor > 5e6);
     if (c.length) f.ufMax = Math.max(...c.map(m => m.valor)) / 40854;
   }
 
   /* --- capital disponible (pie) --- */
-  if (/(pie|ahorro|tengo|dispongo|capital|cuento con)/.test(q)) {
+  if (hablaDePie) {
     const c = ms.filter(m => m.tipo === "clp" && m.valor >= 5e6 && m.valor <= 3e8);
-    if (c.length) f.capitalMax = Math.max(...c.map(m => m.valor));
+    if (c.length) {
+      f.capitalMax = Math.max(...c.map(m => m.valor));
+      f.notas.push("Con ese capital como pie de 25% más gastos, el tope de compra ronda UF "
+        + Math.round(f.capitalMax / 0.2675 / 40854).toLocaleString("es-CL") + ".");
+    }
   }
 
   /* --- amenities --- */
@@ -502,7 +514,12 @@ function pintarEntendido(r){
       + 'Solté <b>' + r.soltadas.map(x=>x.regla.etiqueta).join("</b>, <b>") + '</b> '
       + 'y quedaron ' + r.resultados.length + '. '
       + 'Si esa condición no es negociable, dímelo y buscamos por otro lado — '
-      + 'o conviene revisar si el mercado tiene lo que buscas a ese precio.';
+      + 'o conviene revisar si el mercado tiene lo que buscas a ese precio.'
+      + (r.soltadas.some(x => x.regla.id.startsWith("amen:"))
+          ? '<div style="margin-top:7px;font-size:12.5px">De los amenities solo tenemos dato '
+            + 'para los proyectos de Portal Inmobiliario. Los de Santolaya, Fundamenta y '
+            + 'JetBrokers no publican esa lista, así que quedan fuera al filtrar por amenity.</div>'
+          : "");
   } else if(r.resultados.length){
     av.innerHTML = "";
   } else {
