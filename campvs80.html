@@ -118,6 +118,21 @@
   .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
   @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0}
                             .tab{font-size:13px;padding:9px 10px 10px} }
+
+  /* ---- Protección de contenido ---- */
+  html,body,*{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;
+               -webkit-touch-callout:none; }
+  img{ -webkit-user-drag:none; user-drag:none; pointer-events:none; }
+  .an .foto{ position:relative; }
+  .an .foto::after{ content:""; position:absolute; inset:0; z-index:2; background:transparent; }
+  /* al imprimir o guardar como PDF no sale nada */
+  @media print{ html{ display:none !important; } }
+  /* se difumina si la ventana pierde el foco */
+  body.oculto{ filter:blur(18px); transition:filter .12s; }
+  #aviso-prot{ position:fixed; inset:0; z-index:9999; display:none; place-items:center;
+               background:rgba(244,239,230,.97); text-align:center; padding:30px; }
+  #aviso-prot.on{ display:grid; }
+  #aviso-prot p{ font-family:'Playfair Display',Georgia,serif; font-size:22px; max-width:26ch; margin:0; }
   @media print{ nav{display:none} .panel{display:block!important;page-break-before:always}
                 .panel:first-of-type{page-break-before:auto} }
 </style>
@@ -762,6 +777,41 @@ anuncios). Se actualiza a medida que entran reservas.</p>
     paneles.forEach(p => p.classList.toggle('on', p.id === t.dataset.p));
     window.scrollTo({top: 0, behavior: 'smooth'});
   }));
+</script>
+
+<div id="aviso-prot"><p>Documento privado de APTO.<br>Vuelve a la ventana para seguir viéndolo.</p></div>
+<script>
+(function(){
+  var d = document, b = d.body;
+  var stop = function(e){ e.preventDefault(); e.stopPropagation(); return false; };
+
+  // clic derecho, arrastrar, seleccionar y copiar
+  ['contextmenu','dragstart','selectstart','copy','cut'].forEach(function(ev){
+    d.addEventListener(ev, stop, {capture:true});
+  });
+
+  // atajos: guardar, copiar, imprimir, ver fuente, devtools
+  d.addEventListener('keydown', function(e){
+    var k = (e.key || '').toLowerCase();
+    if (e.key === 'F12') return stop(e);
+    if ((e.ctrlKey || e.metaKey) && ['s','p','u','c','x','a'].indexOf(k) > -1) return stop(e);
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i','j','c'].indexOf(k) > -1) return stop(e);
+  }, {capture:true});
+
+  // deja el portapapeles vacío si algo se escapa
+  d.addEventListener('copy', function(e){
+    if (e.clipboardData) e.clipboardData.setData('text/plain','');
+    e.preventDefault();
+  }, {capture:true});
+
+  // al salir de la ventana se difumina: una captura tomada desde otra app no sirve
+  var aviso = d.getElementById('aviso-prot');
+  var esconder = function(){ b.classList.add('oculto'); aviso.classList.add('on'); };
+  var mostrar  = function(){ b.classList.remove('oculto'); aviso.classList.remove('on'); };
+  window.addEventListener('blur', esconder);
+  window.addEventListener('focus', mostrar);
+  d.addEventListener('visibilitychange', function(){ d.hidden ? esconder() : mostrar(); });
+})();
 </script>
 </body>
 </html>
