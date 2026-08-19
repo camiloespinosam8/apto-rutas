@@ -8,340 +8,587 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{ --crema:#F4EFE6; --papel:#FBF9F4; --ladrillo:#C8572A; --vino:#9B3A2E;
-         --tinta:#1D1D1B; --linea:#E2D9CB; --gris:#6E6A63; --verde:#3E6B4F; }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--crema);color:var(--tinta);
-       font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
-  .wrap{max-width:880px;margin:0 auto;padding:0 22px 80px}
-  header{padding:52px 0 24px}
-  .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:0 0 11px}
-  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(31px,4.8vw,46px);
-     line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
-  .sub{font-size:17px;color:var(--gris);margin:0}
-  nav{position:sticky;top:0;z-index:20;background:var(--crema);
-      border-bottom:2px solid var(--tinta);padding:10px 0 0;margin-bottom:6px}
-  .tabs{display:flex;flex-wrap:wrap;gap:2px;max-width:880px;margin:0 auto;padding:0 22px}
-  .tab{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;
-       font-size:14px;font-weight:600;color:var(--gris);padding:11px 15px 12px;
-       border-bottom:3px solid transparent;border-radius:4px 4px 0 0;white-space:nowrap}
-  .tab:hover{color:var(--tinta);background:rgba(200,87,42,.06)}
-  .tab[aria-selected="true"]{color:var(--vino);border-bottom-color:var(--ladrillo)}
-  .tab .num{font-family:'Playfair Display',Georgia,serif;font-size:16px;margin-right:6px;opacity:.75}
-  .panel{display:none;animation:ap .22s ease}
-  .panel.on{display:block}
-  @keyframes ap{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-  h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
-     font-size:clamp(25px,3.4vw,33px);margin:34px 0 4px;line-height:1.15}
-  h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;
-     font-size:clamp(18px,2.4vw,23px);margin:32px 0 6px;line-height:1.2}
-  .lead{color:var(--gris);margin:0 0 18px;max-width:64ch}
-  p{max-width:66ch;margin:11px 0}
-  .tablabox{overflow-x:auto;margin:20px 0}
-  table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
-  th{text-align:left;font-size:12px;letter-spacing:.08em;color:var(--gris);font-weight:600;
-     padding:0 13px 8px 0;border-bottom:1px solid var(--tinta)}
-  td{padding:11px 13px 11px 0;border-bottom:1px solid var(--linea);
-     font-variant-numeric:tabular-nums;vertical-align:top}
-  td.d{color:var(--vino);font-weight:700}
-  tr.hi td{background:rgba(200,87,42,.08);font-weight:600}
-  tr.tot td{border-top:2px solid var(--tinta);border-bottom:0;font-weight:700;font-size:16px;padding-top:13px}
-  .destaca{background:var(--papel);border-left:4px solid var(--ladrillo);
-           padding:22px 24px;margin:26px 0;border-radius:0 4px 4px 0}
-  .destaca p{margin:0} .destaca p + p{margin-top:10px}
-  .destaca .big{font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.8vw,25px);
-                line-height:1.3;margin:0 0 8px}
-  .cifras{display:flex;flex-wrap:wrap;margin:22px 0 4px;
-          border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
-  .cifra{flex:1 1 140px;padding:18px 18px 18px 0;border-right:1px solid var(--linea)}
-  .cifra:last-child{border-right:0}
-  .cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:30px;line-height:1;
-            font-variant-numeric:tabular-nums}
-  .cifra .l{font-size:13px;color:var(--gris);margin-top:6px}
-  .nota{font-size:14px;color:var(--gris);max-width:66ch}
-  .falta{list-style:none;padding:0;margin:18px 0}
-  .falta li{border-bottom:1px solid var(--linea);padding:13px 0 13px 34px;position:relative;max-width:66ch}
-  .falta li::before{content:"○";position:absolute;left:6px;top:12px;color:var(--ladrillo);font-size:15px}
-  .falta li.urg::before{content:"●";color:var(--vino)}
-  .falta li.ok::before{content:"✓";color:var(--verde);font-weight:700}
-  .falta b{display:block}
-  .falta span{font-size:14px;color:var(--gris)}
-  .dos{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--linea);border-radius:6px;overflow:hidden}
-  .dos > div{padding:20px 22px;background:var(--papel)}
-  .dos > div:first-child{border-right:1px solid var(--linea)}
-  .dos h4{margin:0 0 10px;font-size:13px;letter-spacing:.07em;color:var(--vino);font-weight:700}
-  .dos p{font-size:14.5px;margin:7px 0}
-  .rut{font-variant-numeric:tabular-nums;font-weight:600}
-  footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--linea);font-size:13px;color:var(--gris)}
-  .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
-  @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0}
-                            .tab{font-size:13px;padding:9px 10px 10px}
-                            .dos{grid-template-columns:1fr} .dos > div:first-child{border-right:0;border-bottom:1px solid var(--linea)} }
+<style>:root{--crema:#F4EFE6;--papel:#FBF9F4;--ladrillo:#C8572A;--vino:#9B3A2E;--tinta:#1D1D1B;
+--linea:#E2D9CB;--gris:#6E6A63;--verde:#3E6B4F;--oro:#B08A3E;--agua:#4A6E7E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--crema);color:var(--tinta);font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px 80px}
+header{padding:52px 0 24px}
+.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:0 0 11px}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(31px,4.8vw,46px);line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
+.sub{font-size:17px;color:var(--gris);margin:0}
+nav{position:sticky;top:0;z-index:20;background:var(--crema);border-bottom:2px solid var(--tinta);padding:10px 0 0;margin-bottom:6px}
+.tabs{display:flex;flex-wrap:wrap;gap:2px;max-width:980px;margin:0 auto;padding:0 22px}
+.tab{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--gris);padding:11px 13px 12px;border-bottom:3px solid transparent;border-radius:4px 4px 0 0;white-space:nowrap}
+.tab:hover{color:var(--tinta);background:rgba(200,87,42,.06)}
+.tab[aria-selected=true]{color:var(--vino);border-bottom-color:var(--ladrillo)}
+.tab .num{font-family:'Playfair Display',Georgia,serif;font-size:16px;margin-right:6px;opacity:.75}
+.panel{display:none;animation:ap .22s ease}.panel.on{display:block}
+@keyframes ap{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(25px,3.4vw,33px);margin:34px 0 4px;line-height:1.15}
+h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(18px,2.4vw,23px);margin:32px 0 6px;line-height:1.2}
+.lead{color:var(--gris);margin:0 0 18px;max-width:66ch}
+p{max-width:68ch;margin:11px 0}
+.tablabox{overflow-x:auto;margin:20px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:440px}
+th{text-align:left;font-size:11.5px;letter-spacing:.07em;color:var(--gris);font-weight:600;padding:0 11px 8px 0;border-bottom:1px solid var(--tinta);vertical-align:bottom}
+td{padding:10px 11px 10px 0;border-bottom:1px solid var(--linea);font-variant-numeric:tabular-nums;vertical-align:middle}
+td.d{color:var(--vino);font-weight:700}td.v{color:var(--verde);font-weight:700}
+tr.hi td{background:rgba(200,87,42,.08)}
+tr.tot td{border-top:2px solid var(--tinta);border-bottom:0;font-weight:700;font-size:15.5px;padding-top:13px}
+.destaca{background:var(--papel);border-left:4px solid var(--ladrillo);padding:22px 24px;margin:26px 0;border-radius:0 4px 4px 0}
+.destaca p{margin:0}.destaca p+p{margin-top:10px}
+.destaca .big{font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.8vw,25px);line-height:1.3;margin:0 0 8px}
+.destaca.ok{border-left-color:var(--verde)}
+.destaca.alerta{border-left-color:var(--vino);background:#FCF4F1}
+.cifras{display:flex;flex-wrap:wrap;margin:22px 0 4px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.cifra{flex:1 1 130px;padding:18px 18px 18px 0;border-right:1px solid var(--linea)}
+.cifra:last-child{border-right:0}
+.cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:29px;line-height:1;font-variant-numeric:tabular-nums}
+.cifra .l{font-size:12.5px;color:var(--gris);margin-top:6px;line-height:1.35}
+.nota{font-size:13.5px;color:var(--gris);max-width:68ch}
+.cols{display:flex;align-items:flex-end;gap:9px;height:200px;margin:26px 0 0;border-bottom:2px solid var(--tinta)}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.col .bar{width:100%;background:linear-gradient(180deg,var(--ladrillo),var(--vino));border-radius:3px 3px 0 0;min-height:3px}
+.col .bar.f{background:repeating-linear-gradient(135deg,#C9BCA6,#C9BCA6 5px,#D8CDBA 5px,#D8CDBA 10px)}
+.col .val{font-size:11.5px;font-weight:700;margin-bottom:5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.colsx{display:flex;gap:9px;margin:8px 0 0}
+.colsx div{flex:1;text-align:center;font-size:12px;color:var(--gris)}
+.colsx b{display:block;color:var(--tinta);font-size:11.5px;font-weight:600}
+.banda{position:relative;height:32px;min-width:180px}
+.banda .riel{position:absolute;top:13px;left:0;right:0;height:6px;background:var(--linea);border-radius:3px}
+.banda .iqr{position:absolute;top:13px;height:6px;background:#CFC3AE;border-radius:3px}
+.banda .med{position:absolute;top:7px;width:2px;height:18px;background:var(--tinta)}
+.banda .yo{position:absolute;top:4px;width:12px;height:24px;border-radius:3px;background:var(--ladrillo);border:2px solid var(--crema);box-shadow:0 0 0 1px var(--vino)}
+.banda .yo.bajo{background:var(--agua);box-shadow:0 0 0 1px #2E4A56}
+.leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--gris);margin:6px 0 18px}
+.leyenda i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.ocu{position:relative;height:17px;background:var(--linea);border-radius:3px;min-width:80px;overflow:hidden}
+.ocu i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--verde)}
+.ocu i.med{background:var(--oro)}.ocu i.bajo{background:var(--vino)}
+.embudo{display:flex;gap:2px;margin:14px 0 6px;flex-wrap:wrap}
+.embudo div{padding:11px 12px;background:var(--papel);border:1px solid var(--linea);flex:1 1 90px;text-align:center}
+.embudo .n{font-family:'Playfair Display',Georgia,serif;font-size:21px;line-height:1.1}
+.embudo .l{font-size:10.5px;color:var(--gris);margin-top:4px;letter-spacing:.03em;line-height:1.3}
+.ficha{border:1px solid var(--linea);border-radius:7px;margin:22px 0;overflow:hidden;background:var(--papel)}
+.ficha>.cab{padding:16px 20px;border-bottom:1px solid var(--linea);display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.ficha .cab h4{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:600}
+.ficha .cab .meta{font-size:12.5px;color:var(--gris);margin-top:3px}
+.ficha .cab a{color:var(--vino);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
+.ficha .cab a:hover{text-decoration:underline}
+.ficha .cuerpo{padding:4px 20px 18px}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(62,107,79,.13);color:var(--verde);white-space:nowrap}
+.pill.med{background:rgba(176,138,62,.16);color:#8A6A28}
+.pill.bajo{background:rgba(155,58,46,.13);color:var(--vino)}
+.kv{display:flex;flex-wrap:wrap;margin:12px 0 4px;border-top:1px solid var(--linea)}
+.kv>div{flex:1 1 100px;padding:11px 12px 11px 0;border-right:1px solid var(--linea)}
+.kv>div:last-child{border-right:0}
+.kv .n{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.2}
+.kv .l{font-size:11.5px;color:var(--gris);margin-top:2px;line-height:1.3}
+.inc{background:#FCF4F1;border-left:3px solid var(--vino);padding:12px 15px;margin:14px 0 4px;font-size:14px;border-radius:0 3px 3px 0}
+.inc b{color:var(--vino)}
+.opo{background:rgba(62,107,79,.07);border-left:3px solid var(--verde);padding:12px 15px;margin:12px 0 4px;font-size:14.5px;border-radius:0 3px 3px 0}
+.opo b{display:block;margin-bottom:3px}
+.op{border:1px solid var(--linea);border-radius:7px;padding:20px 22px;margin:18px 0;background:var(--papel)}
+.op h4{margin:0 0 4px;font-family:'Playfair Display',Georgia,serif;font-size:21px;font-weight:600}
+.op .quien{font-size:12.5px;color:var(--gris);margin:0 0 10px}
+.op p{font-size:15px;margin:9px 0}
+.op .plata{display:inline-block;margin-top:10px;font-size:13.5px;font-weight:700;color:var(--verde);background:rgba(62,107,79,.1);padding:5px 11px;border-radius:4px}
+.prio{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:3px;margin-right:8px;vertical-align:3px}
+.prio.a{background:var(--vino);color:#fff}.prio.b{background:var(--oro);color:#fff}.prio.c{background:var(--linea);color:var(--gris)}
+footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--linea);font-size:13px;color:var(--gris)}
+.marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
+@media(max-width:640px){.cifra{flex:1 1 50%;border-right:0;padding:14px 0}.tab{font-size:12px;padding:9px 8px 10px}.cols{height:150px}.kv>div{flex:1 1 50%;border-right:0}}
 </style>
 </head>
 <body>
-
 <div class="wrap">
 <header>
   <p class="eyebrow">PORTAFOLIO EN ADMINISTRACIÓN</p>
-  <h1>Felipe Finaldi · 10 anuncios</h1>
-  <p class="sub">Documento de la reunión · 19 de agosto de 2026</p>
+  <h1>Felipe Finaldi · 8 departamentos</h1>
+  <p class="sub">Estado de la operación y plan de trabajo · 19 de agosto de 2026</p>
 </header>
 </div>
-
-<nav>
-  <div class="tabs" role="tablist">
-    <button class="tab" role="tab" aria-selected="true"  data-p="p0"><span class="num">★</span>Las facturas</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>La plata</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Tus 10 anuncios</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Qué sigue</button>
-  </div>
-</nav>
-
+<nav><div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true" data-p="p0"><span class="num">1</span>La operación</button><button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">2</span>Cartera vs mercado</button><button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">3</span>Anuncio por anuncio</button><button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">4</span>Cada uno vs su zona</button><button class="tab" role="tab" aria-selected="false" data-p="p4"><span class="num">5</span>Oportunidades</button><button class="tab" role="tab" aria-selected="false" data-p="p5"><span class="num">6</span>Por departamento</button></div></nav>
 <div class="wrap">
-
-<!-- ============ 0 · LAS FACTURAS ============ -->
 <section class="panel on" id="p0">
-
-<h2>Cómo se cruzan las facturas</h2>
-<p class="lead">Esta es la pregunta que llevas al contador. La respuesta corta: <b>son dos flujos
-distintos, con dos RUT distintos, y no se mezclan nunca.</b></p>
-
-<div class="dos">
-  <div>
-    <h4>PAR DE COSAS SpA</h4>
-    <p class="rut">77.215.553-0</p>
-    <p><b>Qué factura:</b> el equipamiento del departamento y el servicio de ejecución —diseño,
-    compras y montaje.</p>
-    <p><b>Cuándo:</b> una sola vez por unidad, cuadrado al monto de inversión.</p>
-    <p><b>Dónde lo ves:</b> en los PDF de facturas por depto.</p>
-  </div>
-  <div>
-    <h4>SOC. TURISMO MARITANO LTDA</h4>
-    <p class="rut">76.691.973-1</p>
-    <p><b>Qué hace:</b> administra. Recauda de Airbnb, descuenta la limpieza, cobra la comisión y
-    te transfiere el neto.</p>
-    <p><b>Cuánto:</b> 15% IVA incluido, todos los meses.</p>
-    <p><b>Dónde lo ves:</b> en el reporte de cierre mensual.</p>
-  </div>
-</div>
-
-<div class="destaca">
-  <p class="big">El 15% nunca aparece en una factura de Par de Cosas</p>
-  <p>La comisión es solo de administración y vive en el cierre mensual de Turismo Maritano. Si tu
-  contador busca el 15% dentro de las facturas de equipamiento, no lo va a encontrar — y está bien
-  que no esté ahí.</p>
-</div>
-
-<h3>El circuito del dinero, mes a mes</h3>
-
-<p>Airbnb paga a Turismo Maritano → se descuenta la limpieza → se cobra el <b>15% de comisión, IVA incluido</b> →
-se te transfiere el neto. El reporte de cierre muestra esas cuatro líneas por departamento, así que
-tu contador puede reconstruir cada peso.</p>
-
-<p class="nota">Tu 15% es preferente y con <b>IVA incluido</b>: la comisión estándar de mercado es 20% más IVA,
-y quedó en 15% IVA incluido por administrar el portafolio completo.</p>
-
-<h3>Lo que hay que resolver en la reunión</h3>
-
-<ul class="falta">
-  <li class="urg"><b>El nivel de detalle de las facturas de equipamiento</b>
-    <span>Hoy las facturas agrupan en 9 líneas por sección: Cocina, Dormitorios, Living, Comedor,
-    Baño, Iluminación, Textiles, Equipamiento y Pack decoración. Cuadran exacto al monto, pero
-    detrás hay un itemizado real de unos 75 productos por departamento. Si tu contador —o tú—
-    quieren auditar producto por producto, conviene emitirlas con el desglose completo en vez de
-    las líneas agrupadas. Es la misma factura, con más detalle.</span></li>
-  <li><b>Definir el corte mensual</b>
-    <span>Hoy el cierre se arma cuando termina el mes y se paga en los primeros días del siguiente.
-    Julio se transfirió el 10 de agosto en dos operaciones. Si al contador le sirve otra fecha de
-    corte, se ajusta.</span></li>
-  <li><b>Si quieres factura por departamento o consolidada</b>
-    <span>Hoy el cierre ya viene desglosado por unidad. La facturación puede seguir el mismo corte
-    o consolidarse en una sola.</span></li>
-</ul>
-
-</section>
-
-<!-- ============ 1 · LA PLATA ============ -->
-<section class="panel" id="p1">
-
-<h2>Lo que ha entrado</h2>
-<p class="lead">Estos son los montos que te fueron transferidos, después de descontar limpieza y
-comisión. No es facturación bruta: es lo que llegó a tu cuenta.</p>
+<h2>La operación hasta hoy</h2>
+<p class="lead">Cinco meses de historia, de la primera reserva del 1204 en marzo a la cartera
+completa de ocho departamentos.</p>
 
 <div class="cifras">
-  <div class="cifra"><div class="n">$11.005.347</div><div class="l">transferido en total</div></div>
-  <div class="cifra"><div class="n">85</div><div class="l">reservas</div></div>
-  <div class="cifra"><div class="n">236</div><div class="l">noches vendidas</div></div>
+  <div class="cifra"><div class="n">8</div><div class="l">departamentos<br>en 10 anuncios</div></div>
+  <div class="cifra"><div class="n">137</div><div class="l">reservas<br>tomadas</div></div>
+  <div class="cifra"><div class="n">576</div><div class="l">noches vendidas<br>por unidad</div></div>
+  <div class="cifra"><div class="n">$11,2M</div><div class="l">liquidados<br>de marzo a julio</div></div>
+  <div class="cifra"><div class="n">$10,8M</div><div class="l">por liquidar<br>de agosto en adelante</div></div>
 </div>
 
-<div class="tablabox">
-<table>
-<tr><th>Mes</th><th>Transferido</th><th>Reservas</th><th>Noches</th><th></th></tr>
-<tr><td>Marzo 2026</td><td>$147.282</td><td>3</td><td>6</td><td class="nota">arranque de Vicuña Mackenna 920</td></tr>
-<tr><td>Abril</td><td>$208.205</td><td>5</td><td>6</td><td></td></tr>
-<tr><td>Mayo</td><td>$1.256.152</td><td>14</td><td>30</td><td></td></tr>
-<tr><td>Junio</td><td>$2.188.931</td><td>20</td><td>51</td><td class="nota">el combo 713+1204 aportó $1.192.761</td></tr>
-<tr class="hi"><td><b>Julio</b></td><td><b>$7.204.777</b></td><td><b>41</b></td><td><b>143</b></td><td class="nota">pagado el 10-ago en dos transferencias</td></tr>
-<tr class="tot"><td>Total</td><td>$11.005.347</td><td>83</td><td>236</td><td></td></tr>
-</table>
-</div>
+<h3>Lo que se generó mes a mes</h3>
+<p class="nota">Monto a transferir al propietario, ya descontada la comisión de Airbnb, el aseo y la comisión APTO.</p>
+<div class="cols"><div class="col"><span class="val">231.080</span><span class="bar" style="height:2.1%"></span></div><div class="col"><span class="val">437.770</span><span class="bar" style="height:4.0%"></span></div><div class="col"><span class="val">2.176.824</span><span class="bar" style="height:20.0%"></span></div><div class="col"><span class="val">4.575.494</span><span class="bar" style="height:42.0%"></span></div><div class="col"><span class="val">10.893.502</span><span class="bar" style="height:100.0%"></span></div></div>
+<div class="colsx"><div><b>marzo</b>3 res · 6 n</div><div><b>abril</b>5 res · 6 n</div><div><b>mayo</b>14 res · 30 n</div><div><b>junio</b>24 res · 56 n</div><div><b>julio</b>39 res · 138 n</div></div>
 
 <div class="destaca">
-  <p class="big">Julio fue 3,3 veces junio</p>
-  <p>Y no es solo temporada: en marzo operaban 3 departamentos y en julio ya eran 10. La curva de
-  los próximos meses depende de cuánto rinda cada unidad nueva, no de sumar más.</p>
+  <p class="big">Julio fue el primer mes con la cartera completa</p>
+  <p>43 reservas, 189 noches vendidas y <b>76% de ocupación</b>: la más alta de la historia de la
+  cartera. Los meses anteriores no son comparables, porque los departamentos se fueron sumando de a
+  uno — en marzo operaba solo el 1204.</p>
 </div>
 
-<p class="nota">El cierre de julio cuadra exacto con el detalle por departamento y está pagado:
-$5.000.000 más $2.204.777, ambas operaciones identificadas. Ese es el documento que va al contador.</p>
+<h3>Los pagos</h3>
+<div class="tablabox"><table>
+<tr><th>Fecha</th><th>Monto</th><th>Corresponde a</th><th>Estado</th></tr>
+<tr class="hi"><td>12-06-2026</td><td>$350.000</td><td>sin liquidación cargada</td><td>Por documentar</td></tr><tr class="hi"><td>25-06-2026</td><td>$1.261.639</td><td>sin liquidación cargada</td><td>Por documentar</td></tr><tr><td>11-07-2026</td><td>$2.188.931</td><td>Liquidación 1 · junio</td><td>Conciliada</td></tr><tr><td>07-08-2026</td><td>$5.000.000</td><td>Liquidación 2 · julio</td><td>Conciliada</td></tr><tr><td>09-08-2026</td><td>$2.204.777</td><td>Liquidación 2 · julio</td><td>Conciliada</td></tr>
+<tr class="tot"><td>Total</td><td>$11.005.347</td><td>marzo a julio</td><td></td></tr>
+</table></div>
+<p class="nota">Las dos transferencias de junio cubren el período de marzo a mayo, que todavía no
+tiene liquidación formal cargada. Es lo primero que hay que cerrar.</p>
 
-<h3>Tu planilla quedó completa</h3>
+<h3>Lo que viene</h3>
+<div class="tablabox"><table>
+<tr><th>Mes</th><th>Reservas</th><th>Noches</th><th>A transferir</th><th>Estado</th></tr>
+<tr class="hi"><td>agosto 2026</td><td>32</td><td>157</td><td>$6.287.501</td><td>en curso, cierra el 31</td></tr>
+<tr><td>septiembre</td><td>6</td><td>50</td><td>$1.972.875</td><td>reservas ya tomadas</td></tr>
+<tr><td>octubre</td><td>7</td><td>26</td><td>$1.202.325</td><td>reservas ya tomadas</td></tr>
+<tr><td>noviembre</td><td>1</td><td>4</td><td>$157.760</td><td>reservas ya tomadas</td></tr>
+<tr><td>diciembre</td><td>2</td><td>12</td><td>$469.272</td><td>reservas ya tomadas</td></tr>
+<tr><td>enero y febrero 2027</td><td>2</td><td>18</td><td>$752.070</td><td>reservas ya tomadas</td></tr>
+<tr class="tot"><td>Total comprometido</td><td>50</td><td>267</td><td>$10.841.803</td><td></td></tr>
+</table></div>
+<p class="nota">Son reservas <b>ya confirmadas</b>, no proyección. Los meses de septiembre en adelante
+siguen abiertos y van a seguir llenándose.</p>
+</section><section class="panel" id="p1">
+<h2>La cartera contra el mercado</h2>
+<p class="lead">Cada grupo de departamentos comparado con sus comparables reales del barrio, agrupados
+por tipología. El precio es el que efectivamente se cobró, no el de lista.</p>
+<div class="leyenda"><span><i style="background:#CFC3AE"></i>mitad central del barrio (p25 a p75)</span><span><i style="background:#1D1D1B;width:3px"></i>mediana del barrio</span><span><i style="background:#C8572A"></i>tu precio, sobre la mediana</span><span><i style="background:#4A6E7E"></i>tu precio, bajo la mediana</span></div>
+<div class="tablabox"><table>
+<tr><th>Tipología</th><th>Tu precio<br>por noche</th><th>Se compara contra</th><th>Mediana<br>del barrio</th><th>Dónde estás</th><th>Diferencia</th></tr>
+<tr><td><b>2D en Ñuñoa</b><div class="nota" style="font-size:12px">4 anuncio(s) · 51 noches</div></td><td class="v">$71.025</td><td>2D en Ñuñoa</td><td>$58.108</td><td style="width:38%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:30.0%;width:27.5%"></span><span class="med" style="left:40.9%"></span><span class="yo" style="left:calc(58.1% - 6px)" title="$71.025"></span></div></td><td class="v">+22%</td></tr><tr><td><b>2D en Santiago</b><div class="nota" style="font-size:12px">1 anuncio(s) · 28 noches</div></td><td class="v">$52.800</td><td>San Diego · Santiago</td><td>$48.306</td><td style="width:38%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:26.3%;width:32.8%"></span><span class="med" style="left:38.2%"></span><span class="yo" style="left:calc(44.7% - 6px)" title="$52.800"></span></div></td><td class="v">+9%</td></tr><tr><td><b>Studio en Santiago</b><div class="nota" style="font-size:12px">1 anuncio(s) · 11 noches</div></td><td class="v">$44.393</td><td>San Isidro 513 · Santiago</td><td>$37.502</td><td style="width:38%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:37.4%;width:17.4%"></span><span class="med" style="left:44.0%"></span><span class="yo" style="left:calc(60.4% - 6px)" title="$44.393"></span></div></td><td class="v">+18%</td></tr><tr><td><b>Combos para grupos</b><div class="nota" style="font-size:12px">2 anuncio(s) · 43 noches</div></td><td class="d">$146.653</td><td>Ñuñoa, búsqueda para 8</td><td>$184.405</td><td style="width:38%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:19.5%;width:42.1%"></span><span class="med" style="left:39.4%"></span><span class="yo bajo" style="left:calc(26.5% - 6px)" title="$146.653"></span></div></td><td class="d">-20%</td></tr>
+</table></div>
 
-<p>Hasta hoy tu planilla de reservas tenía solo julio. Le cargamos <b>las 44 reservas de marzo,
-abril, mayo y junio</b> que faltaban, con el mismo detalle: bruto, cargo de Airbnb, limpieza,
-comisión y lo que te quedó a ti, reserva por reserva.</p>
-
-<p>Ahora tiene las <b>85 reservas</b> completas y la suma cuadra exacto con los $11.005.347
-transferidos. Tu contador puede reconstruir cualquier mes desde ahí.</p>
-
-</section>
-
-<!-- ============ 2 · LOS ANUNCIOS ============ -->
-<section class="panel" id="p2">
-
-<h2>Estado de tus 10 anuncios</h2>
-<p class="lead">Nosotros equipamos, diseñamos y publicamos cada uno de estos anuncios. Ahora los
-auditamos contra los 82 campos que Airbnb permite llenar, para saber exactamente dónde podemos
-sacarles más. La nota no mide la calidad del departamento: mide cuánta munición tiene el anuncio
-para competir en el buscador, y es nuestra tarea subirla.</p>
-
-<div class="tablabox">
-<table>
-<tr><th>Departamento</th><th>Anuncio</th><th>Nota</th><th>Fotos</th><th>Precio</th></tr>
-<tr><td>VM920 · 1204</td><td>Moderno apartamento boutique con estacionamiento</td><td class="d">83</td><td>34</td><td>$50.928</td></tr>
-<tr><td>Combo 713+1204</td><td>Apartamentos para grupos · parking gratis</td><td class="d">79</td><td>21</td><td>$110.000</td></tr>
-<tr><td>VM920 · 713</td><td>Gran apartamento nuevo · Estacionamiento</td><td class="d">75</td><td>17</td><td>$70.000</td></tr>
-<tr><td>VM920 · 1615</td><td>Nuevo Premium en Ñuñoa · 2D 2B + Vista Cordillera</td><td class="d">75</td><td>13</td><td>$68.000</td></tr>
-<tr><td>VM920 · 401</td><td>Nuevo departamento · Balcón y vista a la ciudad</td><td class="d">71</td><td>9</td><td>$49.000</td></tr>
-<tr><td>Combo 1615+401</td><td>Ñuñoa · 2 deptos para grupos · Vista Cordillera</td><td class="d">71</td><td>19</td><td>$168.633</td></tr>
-<tr><td>Seminario 850 · A2011</td><td>Nuevo 2 Dor para 5 · Estacionamiento</td><td class="d">71</td><td>8</td><td>$56.000</td></tr>
-<tr><td>San Isidro 513 · D1103</td><td>Studio Piso 11 · Rooftop con vistas</td><td class="d">70</td><td>10</td><td>$103.790</td></tr>
-<tr class="hi"><td>Seminario 1499 · 1001</td><td>Nuevo 2D Ñuñoa · Gym &amp; Cowork</td><td class="d">67</td><td>5</td><td>$72.000</td></tr>
-<tr class="hi"><td>San Diego 376 · 614</td><td>2D Boutique · Metro Parque Almagro</td><td class="d">64</td><td>11</td><td>$105.042</td></tr>
-</table>
+<div class="destaca ok">
+  <p class="big">Los departamentos individuales cobran más que su barrio</p>
+  <p>Los 2D de Ñuñoa van 22% sobre la mediana de su tipología, el studio de San Isidro 18% y el 2D de
+  San Diego 9%. Eso es lo que paga el equipamiento y la ficha: el mismo metro cuadrado, mejor puesto.</p>
 </div>
+
+<div class="destaca alerta">
+  <p class="big">Los combos son la excepción, y es donde está la plata</p>
+  <p>Los dos combos rinden <b>$146.653 la noche</b> cuando la mediana de un alojamiento para ocho
+  personas en Ñuñoa es <b>$184.405</b>, medida sobre 137 anuncios. Están <b>20% abajo</b>.</p>
+  <p>Y son los que más venden: 43 noches el último mes entre los dos.</p>
+</div>
+
+<h3>Por qué la comparación se hace así</h3>
+<p>Los comparables son anuncios de casa completa activos hoy en cada micro-zona, con el precio que ve
+el huésped para una estadía de cinco noches — o sea ya con el descuento semanal y el aseo prorrateado.
+Antes de calcular la banda se sacan los valores extremos, porque en una zona chica un departamento de
+lujo o uno rematado deforman la mediana.</p>
+<p>Los combos no se comparan contra la suma de dos departamentos sueltos, sino contra las búsquedas
+filtradas para ocho personas. El buscador de Airbnb filtra por capacidad: un grupo de ocho nunca ve un
+studio, así que esa es la lista donde el combo compite de verdad.</p>
+</section><section class="panel" id="p2">
+<h2>Anuncio por anuncio</h2>
+<p class="lead">Todo lo que Airbnb mide de cada uno: cuántas veces apareció, cuántos entraron, cuántos
+reservaron, cuánto se guardó en favoritos, cómo quedó el calendario y qué dicen las reseñas.</p>
 
 <div class="destaca">
-  <p class="big">La oportunidad más grande y más rápida: sumar fotos</p>
-  <p>Seis de los diez anuncios están hoy con menos de 20 fotos. Airbnb premia los recorridos
-  completos por espacio, y la evidencia está en tu propio portafolio: el 1204, que tiene 34 fotos,
-  es el mejor puntuado de los diez. Ese es el estándar al que llevamos los otros nueve.</p>
-  <p>Las unidades más nuevas —Seminario 1499, Seminario 850, VM920 401— son las que tienen menos,
-  simplemente porque se publicaron después. Es lo primero que estamos cerrando.</p>
+  <p class="big">Cómo leer el embudo</p>
+  <p><b>Apariciones</b> es el techo: nadie reserva lo que no ve. <b>Visitas</b> es quién abrió la
+  ficha — la diferencia con lo anterior la explican la portada, el título y el precio. <b>De los que
+  entran, reservan</b> es lo que pasa adentro: fotos, texto, comodidades declaradas y reseñas.</p>
+  <p>Sirve para distinguir dos problemas que se arreglan al revés: un anuncio que no aparece es
+  precio y posición; uno que aparece pero no convence es ficha.</p>
 </div>
 
-<h3>Lo que estamos cerrando en los diez</h3>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Vicuña Mackenna 920 · 1204</h4>
+      <div class="meta">1D · hasta 2 huéspedes · 34 fotos · 5.0 ★ · 4 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill">ficha 83/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1645779873438478383" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">390</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">37</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">10%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">—</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">5</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">73%</div><div class="l">ocupación real<br>(incluye combo)</div><div class="ocu"><i class="med" style="width:73%"></i></div></div><div><div class="n">—</div><div class="l">se vende<br>dentro del combo</div></div>
+      <div><div class="n">22</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">8</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">—</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">—</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    <p class="nota">Cuando se vende el Combo 713+1204, Airbnb bloquea el calendario de este anuncio y deja de aparecer en las búsquedas. Por eso registra pocas apariciones: no es que no guste, es que estuvo vendido.</p>
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Combo 713 + 1204</h4>
+      <div class="meta">Combo · hasta 8 huéspedes · 21 fotos · 5.0 ★ · 12 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill">ficha 79/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1667180597706666431" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">28.433</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">1.370</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">5%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">1.9%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">57</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">$154.364</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">22</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">9</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">44.3</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">3.1</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Vicuña Mackenna 920 · 713</h4>
+      <div class="meta">2D · hasta 5 huéspedes · 17 fotos · 4.5 ★ · 2 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill med">ficha 75/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1667133355090388166" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">52</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">11</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">21%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">—</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">5</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">73%</div><div class="l">ocupación real<br>(incluye combo)</div><div class="ocu"><i class="med" style="width:73%"></i></div></div><div><div class="n">—</div><div class="l">se vende<br>dentro del combo</div></div>
+      <div><div class="n">22</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">9</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">—</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">—</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    <p class="nota">Cuando se vende el Combo 713+1204, Airbnb bloquea el calendario de este anuncio y deja de aparecer en las búsquedas. Por eso registra pocas apariciones: no es que no guste, es que estuvo vendido.</p>
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Vicuña Mackenna 920 · 1615</h4>
+      <div class="meta">2D · hasta 4 huéspedes · 13 fotos · 4.6 ★ · 5 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill med">ficha 75/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1688864894569650530" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">105</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">61</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">58%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">14.8%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">1</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">100%</div><div class="l">ocupación real<br>(incluye combo)</div><div class="ocu"><i class="" style="width:100%"></i></div></div><div><div class="n">$69.610</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">30</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">1</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">62.0</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">9.0</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    <p class="nota">Cuando se vende el Combo 1615+401, Airbnb bloquea el calendario de este anuncio y deja de aparecer en las búsquedas. Por eso registra pocas apariciones: no es que no guste, es que estuvo vendido.</p>
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Combo 1615 + 401</h4>
+      <div class="meta">Combo · hasta 8 huéspedes · 19 fotos · 5.0 ★ · 1 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill med">ficha 71/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1710639200903699706" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">640</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">758</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">100%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">4.0%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">51</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">$138.575</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">21</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">0</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">21.4</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">4.2</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Vicuña Mackenna 920 · 401</h4>
+      <div class="meta">2D · hasta 5 huéspedes · 9 fotos · 4.2 ★ · 5 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill med">ficha 71/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1678608895117625146" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">96</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">211</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">100%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">3.3%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">4</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">93%</div><div class="l">ocupación real<br>(incluye combo)</div><div class="ocu"><i class="" style="width:93%"></i></div></div><div><div class="n">$82.240</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">28</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">0</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">8.3</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">2.3</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    <p class="nota">Cuando se vende el Combo 1615+401, Airbnb bloquea el calendario de este anuncio y deja de aparecer en las búsquedas. Por eso registra pocas apariciones: no es que no guste, es que estuvo vendido.</p><div class="inc"><b>Airbnb marcó este anuncio.</b> Reseña de 1 estrella (8-9 may): «mucho desorden, cocina desordenada, baño sucio». Baja la nota de 5,0 a 4,2.</div>
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Seminario 850 · A2011</h4>
+      <div class="meta">2D · hasta 5 huéspedes · 8 fotos · 5.0 ★ · 2 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill med">ficha 71/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1727265012610926396" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">208</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">298</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">100%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">9.1%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">29</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">81%</div><div class="l">ocupación real</div><div class="ocu"><i class="" style="width:81%"></i></div></div><div><div class="n">$80.224</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">22</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">5</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">9.4</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">2.8</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>San Isidro 513 · D1103</h4>
+      <div class="meta">Studio · hasta 2 huéspedes · 10 fotos · 5.0 ★ · 2 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill med">ficha 70/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1698877897826247706" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">151</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">185</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">100%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">5.9%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">21</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">41%</div><div class="l">ocupación real</div><div class="ocu"><i class="bajo" style="width:41%"></i></div></div><div><div class="n">$44.393</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">11</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">16</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">0.4</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">1.8</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>Seminario 1499 · 1001</h4>
+      <div class="meta">2D · hasta 4 huéspedes · 5 fotos · sin reseñas todavía</div></div>
+    <div style="text-align:right">
+      <span class="pill bajo">ficha 67/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1730738163434588491" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">287</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">225</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">78%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">5.8%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">27</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">81%</div><div class="l">ocupación real</div><div class="ocu"><i class="" style="width:81%"></i></div></div><div><div class="n">$50.397</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">13</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">3</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">22.5</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">8.0</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    
+  </div>
+</div>
+<div class="ficha">
+  <div class="cab">
+    <div><h4>San Diego 376 · 614</h4>
+      <div class="meta">2D · hasta 5 huéspedes · 11 fotos · 5.0 ★ · 3 reseñas</div></div>
+    <div style="text-align:right">
+      <span class="pill bajo">ficha 64/100</span><br>
+      <a href="https://www.airbnb.cl/rooms/1714987317059613430" target="_blank" rel="noopener">ver el anuncio →</a></div>
+  </div>
+  <div class="cuerpo">
+    <div class="embudo">
+      <div><div class="n">690</div><div class="l">apariciones<br>en búsqueda</div></div>
+      <div><div class="n">568</div><div class="l">visitas<br>a la ficha</div></div>
+      <div><div class="n">82%</div><div class="l">de los que lo ven,<br>lo abren</div></div>
+      <div><div class="n">5.3%</div><div class="l">de los que entran,<br>reservan</div></div>
+      <div><div class="n">5</div><div class="l">guardados en<br>favoritos</div></div>
+    </div>
+    <div class="kv">
+      <div><div class="n">97%</div><div class="l">ocupación real</div><div class="ocu"><i class="" style="width:97%"></i></div></div><div><div class="n">$52.800</div><div class="l">precio real<br>por noche</div></div>
+      <div><div class="n">28</div><div class="l">noches vendidas<br>en el mes</div></div>
+      <div><div class="n">1</div><div class="l">noches que<br>quedaron libres</div></div>
+      <div><div class="n">5.7</div><div class="l">días de<br>anticipación</div></div>
+      <div><div class="n">9.3</div><div class="l">noches por<br>estadía</div></div>
+    </div>
+    <div class="inc"><b>Airbnb marcó este anuncio.</b> Julio: Airbnb registró «el anfitrión no responde a la hora del check-in» y una cancelación nuestra dentro de las 48 horas previas. De ahí sale la penalización de $115.275, hoy en apelación.</div>
+  </div>
+</div>
+<p class="nota">Panel de Desempeño de Airbnb, últimos 30 días al 18 de agosto de 2026. Airbnb entrega
+este reporte por mes; no existe corte diario ni anual.</p>
+</section><section class="panel" id="p3">
+<h2>Cada anuncio contra su zona</h2>
+<p class="lead">Vicuña Mackenna, Seminario, San Isidro y San Diego son cuatro micro-mercados
+distintos. Comparar contra un promedio de Santiago no sirve para decidir un precio.</p>
+<div class="leyenda"><span><i style="background:#CFC3AE"></i>mitad central del barrio (p25 a p75)</span><span><i style="background:#1D1D1B;width:3px"></i>mediana del barrio</span><span><i style="background:#C8572A"></i>tu precio, sobre la mediana</span><span><i style="background:#4A6E7E"></i>tu precio, bajo la mediana</span></div>
+<div class="tablabox"><table>
+<tr><th>Departamento</th><th>Micro-zona</th><th>Tu precio</th><th>Mediana<br>del barrio</th><th>Dónde estás</th><th>Diferencia</th></tr>
+<tr><td><b>Vicuña Mackenna 920 · 1204</b></td><td>Vicuña Mackenna · Ñuñoa</td><td class="">vía combo</td><td>$47.496</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:32.7%;width:23.9%"></span><span class="med" style="left:42.8%"></span></div></td><td class="">—</td></tr><tr><td><b>Combo 713 + 1204</b></td><td>Ñuñoa, búsqueda para 8</td><td class="d">$154.364</td><td>$184.405</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:19.5%;width:42.1%"></span><span class="med" style="left:39.4%"></span><span class="yo bajo" style="left:calc(29.1% - 6px)" title="$154.364"></span></div></td><td class="d">-16%</td></tr><tr><td><b>Vicuña Mackenna 920 · 713</b></td><td>2D en Ñuñoa</td><td class="">vía combo</td><td>$58.108</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:30.0%;width:27.5%"></span><span class="med" style="left:40.9%"></span></div></td><td class="">—</td></tr><tr><td><b>Vicuña Mackenna 920 · 1615</b></td><td>2D en Ñuñoa</td><td class="v">$69.610</td><td>$58.108</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:30.0%;width:27.5%"></span><span class="med" style="left:40.9%"></span><span class="yo" style="left:calc(56.2% - 6px)" title="$69.610"></span></div></td><td class="v">+20%</td></tr><tr><td><b>Combo 1615 + 401</b></td><td>Ñuñoa, búsqueda para 8</td><td class="d">$138.575</td><td>$184.405</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:19.5%;width:42.1%"></span><span class="med" style="left:39.4%"></span><span class="yo bajo" style="left:calc(23.7% - 6px)" title="$138.575"></span></div></td><td class="d">-25%</td></tr><tr><td><b>Vicuña Mackenna 920 · 401</b></td><td>2D en Ñuñoa</td><td class="v">$82.240</td><td>$58.108</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:30.0%;width:27.5%"></span><span class="med" style="left:40.9%"></span><span class="yo" style="left:calc(73.1% - 6px)" title="$82.240"></span></div></td><td class="v">+42%</td></tr><tr><td><b>Seminario 850 · A2011</b></td><td>2D en Ñuñoa</td><td class="v">$80.224</td><td>$58.108</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:30.0%;width:27.5%"></span><span class="med" style="left:40.9%"></span><span class="yo" style="left:calc(70.4% - 6px)" title="$80.224"></span></div></td><td class="v">+38%</td></tr><tr><td><b>San Isidro 513 · D1103</b></td><td>San Isidro 513 · Santiago</td><td class="v">$44.393</td><td>$37.502</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:37.4%;width:17.4%"></span><span class="med" style="left:44.0%"></span><span class="yo" style="left:calc(60.4% - 6px)" title="$44.393"></span></div></td><td class="v">+18%</td></tr><tr><td><b>Seminario 1499 · 1001</b></td><td>2D en Ñuñoa</td><td class="d">$50.397</td><td>$58.108</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:30.0%;width:27.5%"></span><span class="med" style="left:40.9%"></span><span class="yo bajo" style="left:calc(30.6% - 6px)" title="$50.397"></span></div></td><td class="d">-13%</td></tr><tr><td><b>San Diego 376 · 614</b></td><td>San Diego · Santiago</td><td class="v">$52.800</td><td>$48.306</td><td style="width:34%"><div class="banda"><span class="riel"></span><span class="iqr" style="left:26.3%;width:32.8%"></span><span class="med" style="left:38.2%"></span><span class="yo" style="left:calc(44.7% - 6px)" title="$52.800"></span></div></td><td class="v">+9%</td></tr>
+</table></div>
 
-<ul class="falta">
-  <li class="urg"><b>Prestaciones de accesibilidad</b>
-    <span>Es un filtro de búsqueda que hoy no estamos usando en ningún anuncio del portafolio. Se
-    completa una vez por unidad y suma visibilidad. Lo estamos cerrando esta semana.</span></li>
-  <li class="urg"><b>Preaviso y mínimo de noches</b>
-    <span>Están en el valor que Airbnb trae por defecto. Con preaviso del mismo día puede entrar una
-    reserva a las 22:00 para esa noche, sin margen para limpiar. Lo definimos contigo y lo dejamos
-    parejo en las diez unidades.</span></li>
-  <li><b>Reserva inmediata: activa en 4, pendiente en 6</b>
-    <span>La apagamos a propósito mientras se configura cada anuncio nuevo, para que nada se venda
-    a medio terminar. En seis quedó pendiente volver a encenderla. Con la reserva inmediata activa
-    el anuncio aparece antes en el buscador y no se pierden huéspedes que no quieren esperar.</span></li>
-  <li><b>Guía de llegada</b>
-    <span>Instrucciones de salida, manual de la casa e indicaciones para llegar. Es lo que el huésped
-    recibe automáticamente antes del check-in y lo que descarga la mensajería. La estamos escribiendo
-    para las diez unidades.</span></li>
-  <li class="ok"><b>Ya cerrado: los textos y el inglés</b>
-    <span>Los diez anuncios tienen descripción, "tu propiedad" y acceso de los huéspedes escritos, y
-    el portafolio está entre los pocos de la cartera con versión en inglés.</span></li>
-</ul>
-
-</section>
-
-<!-- ============ 3 · QUÉ SIGUE ============ -->
-<section class="panel" id="p3">
-
-<h2>Qué sigue</h2>
-
-<h3>Lo que hacemos nosotros esta semana</h3>
-
-<ul class="falta">
-  <li class="urg"><b>Subir las fotos que faltan en los 6 anuncios cortos</b>
-    <span>Prioridad: Seminario 1499 (5 fotos), Seminario 850 (8) y VM920 401 (9). Meta: 25 fotos
-    mínimo por anuncio, organizadas por espacio.</span></li>
-  <li class="urg"><b>Cerrar accesibilidad, preaviso y mínimo de noches en los 10</b>
-    <span>Es configuración, no contenido. Sale en una pasada.</span></li>
-  <li><b>Encender la reserva inmediata donde está apagada</b>
-    <span>Con la conversación previa de qué reglas de la casa quedan firmes.</span></li>
-  <li><b>Completar la guía de llegada de las 10 unidades</b>
-    <span>Indicaciones, manual, wifi e instrucciones de salida.</span></li>
-</ul>
-
-<h3>Lo que necesitamos de ti</h3>
-
-<ul class="falta">
-  <li><b>Decidir el nivel de detalle de las facturas de equipamiento</b>
-    <span>Línea agrupada por sección, como hoy, o el desglose completo producto por producto.
-    Lo que le sirva a tu contador.</span></li>
-  <li><b>Confirmar la fecha de corte mensual</b>
-    <span>Hoy: cierre al terminar el mes, pago en los primeros días del siguiente.</span></li>
-  <li><b>Fotos profesionales donde falten</b>
-    <span>En los departamentos con menos de 10 fotos no hay material suficiente. Podemos coordinar
-    sesión o trabajar con lo que exista.</span></li>
-</ul>
-
-<h3>Lo que traemos para la próxima</h3>
-
-<p>Con más tiempo que el de hoy, tres cosas que no alcanzamos a cerrar para esta reunión:</p>
-
-<ul class="falta">
-  <li><b>Estadísticas de Airbnb por anuncio</b>
-    <span>Visitas, impresiones en búsqueda y conversión, unidad por unidad. Airbnb entrega estos
-    datos en cortes mensuales de 30 días móviles, así que sirve para comparar entre tus deptos y ver
-    cuál no lo están viendo y cuál lo ven y no reservan.</span></li>
-  <li><b>Radar de mercado por zona</b>
-    <span>Cada departamento contra sus comparables reales del barrio: banda de precios, ocupación y
-    dónde estás parado en cada micro-mercado. Vicuña Mackenna, Seminario, San Isidro y San Diego son
-    cuatro mercados distintos y hoy los estamos tratando parejo.</span></li>
-  <li><b>Lectura de reseñas y conversaciones</b>
-    <span>Qué dicen los huéspedes de cada unidad y qué preguntan antes de reservar. De ahí salen las
-    mejoras concretas de anuncio y de operación.</span></li>
-</ul>
+<h3>Las bandas medidas</h3>
+<div class="tablabox"><table>
+<tr><th>Micro-zona</th><th>Comparables</th><th>Barato (p25)</th><th>Mediana</th><th>Caro (p75)</th></tr>
+<tr><td>2D en Ñuñoa</td><td>175</td><td>$50.000</td><td><b>$58.108</b></td><td>$70.614</td></tr><tr><td>Vicuña Mackenna · Ñuñoa</td><td>177</td><td>$41.688</td><td><b>$47.496</b></td><td>$55.416</td></tr><tr><td>Seminario · Ñuñoa</td><td>97</td><td>$39.764</td><td><b>$45.800</b></td><td>$50.562</td></tr><tr><td>San Isidro 513 · Santiago</td><td>100</td><td>$34.751</td><td><b>$37.502</b></td><td>$42.030</td></tr><tr><td>San Diego · Santiago</td><td>36</td><td>$40.102</td><td><b>$48.306</b></td><td>$62.618</td></tr><tr><td>Ñuñoa, búsqueda para 8</td><td>137</td><td>$126.130</td><td><b>$184.405</b></td><td>$248.994</td></tr>
+</table></div>
 
 <div class="destaca">
-  <p class="big">Tu portafolio es el más grande que administramos</p>
-  <p>Diez unidades es donde el estándar deja de ser cosmético: lo que se hace bien en uno se
-  multiplica por diez, y lo que se deja pendiente también. Por eso el foco de esta semana es cerrar
-  lo que está a medias en todos por igual, antes de optimizar unidad por unidad.</p>
+  <p class="big">Lo que salta a la vista</p>
+  <p><b>Vicuña Mackenna 401 y Seminario A2011</b> cobran bastante más que el barrio y aun así van a
+  93% y 81% de ocupación. Cuando un departamento va lleno y caro, la señal es que todavía hay techo.</p>
+  <p><b>Seminario 1499 · 1001</b> es el único individual que está bajo su tipología: cobra
+  $50.397 cuando la mediana de un 2D en Ñuñoa es $58.108. Es el más nuevo y todavía no tiene
+  reseñas, así que arrancó con precio de entrada.</p>
+  <p><b>San Isidro D1103</b> cobra sobre su barrio pero va a 41% de ocupación. Es el único donde el
+  precio merece una revisión seria — y aun así, primero la ficha.</p>
 </div>
 
-</section>
+<h3>Los límites de esta medición</h3>
+<p>Airbnb no entrega la dirección exacta de los comparables: la zona se acota por búsqueda, no por
+radio en metros, así que hay ruido de cuadras vecinas. Y es el precio publicado hoy para una fecha, no
+el promedio del mes de cada competidor. Sirve para ubicarse, no para cerrar una tarifa al peso.</p>
+</section><section class="panel" id="p4">
+<h2>Oportunidades de toda la cartera</h2>
+<p class="lead">Ordenadas por lo que mueven, no por lo fácil que son.</p>
 
+<div class="op"><h4><span class="prio a">AHORA</span>Subir el combo 1615+401</h4><p class="quien">Precio · lo más rápido de todo</p><p>Va al <b>100% de ocupación</b> cobrando $138.575. Esos mismos dos departamentos, vendidos
+ sueltos el mismo mes, salieron a $82.240 y $69.610: <b>$151.850 sumados</b>. El combo cobra
+ 9% menos que sus propias partes, y 25% menos que la mediana del segmento de grupos.</p>
+ <p>Propuesta: subir a $155.000 y medir tres semanas. Si aguanta, seguir a $165.000.</p><span class="plata">Con 21 noches al mes: unos +$345.000 mensuales</span></div>
+
+<div class="op"><h4><span class="prio a">AHORA</span>Subir precio a los que van bien, para consolidarlos</h4><p class="quien">Precio · la estrategia de fondo</p><p>El 401, el A2011, el 1615 y el 614 corren entre 81% y 100% de ocupación cobrando por encima de
+ su barrio. Un departamento que va lleno está diciendo que el precio quedó corto: la manera de
+ consolidar un anuncio no es llenarlo más, es subir la tarifa hasta encontrar el techo.</p>
+ <p>La forma de hacerlo sin arriesgar el calendario es <b>subir la base y dejar los descuentos para
+ el final</b>: se publica más caro con anticipación y, a medida que la fecha se acerca sin venderse,
+ se prueban descuentos de último minuto. Se captura al que reserva temprano y no se pierde al que
+ reserva tarde.</p>
+ <p>Es lo contrario de lo que hace la mayoría, que publica barato y después no puede subir.</p></div>
+
+<div class="op"><h4><span class="prio a">AHORA</span>Abrir Booking en los de bajo desempeño</h4><p class="quien">Canal · para San Isidro 1103 y Seminario 1001</p><p>Los dos dependen hoy de un solo canal. Booking trae demanda distinta —más corporativa, más de
+ última hora— y, sobre todo, <b>no depende del ranking de Airbnb</b>: un anuncio nuevo o con pocas
+ reseñas parte de cero en Airbnb, pero en Booking compite de entrada.</p>
+ <p>El 1103 vende con 0,4 días de anticipación, o sea puro último minuto. Ese es exactamente el
+ perfil de Booking.</p>
+ <p>El 1001 tiene cero reseñas: en Airbnb eso lo condena a la última página por un buen rato.</p><span class="plata">16 noches libres al mes en el 1103: llenar la mitad son unos +$355.000</span></div>
+
+<div class="op"><h4><span class="prio a">AHORA</span>Relanzar San Isidro 1103</h4><p class="quien">Ficha · el de peor desempeño de los diez</p><p>41% de ocupación, 16 noches libres y ventas de último minuto. La ficha explica buena parte:
+ 10 fotos, la guía de llegada entera vacía y seis comodidades importantes sin declarar —aire
+ acondicionado, calefacción, lavadora, estacionamiento, piscina y gimnasio—. Cada una de esas es un
+ filtro de búsqueda en el que hoy el anuncio simplemente no aparece.</p>
+ <p>Relanzar significa las cuatro cosas juntas: sesión de fotos nueva, ficha completa, título nuevo y
+ volver a publicar. Airbnb le da un empujón de visibilidad a los anuncios nuevos, y esa ventana solo
+ se aprovecha si la ficha está al 100% el día que se abre.</p></div>
+
+<div class="op"><h4><span class="prio a">AHORA</span>Descuentos más agresivos para septiembre</h4><p class="quien">Precio · quedan dos semanas</p><p>En la serie propia de APTO, <b>septiembre es el mes más flojo del año</b>. Y hoy septiembre
+ tiene solo seis reservas tomadas contra las 32 de agosto.</p>
+ <p>Dos cosas distintas y las dos urgentes: el <b>18 de septiembre se vende temprano</b>, así que esa
+ semana hay que tenerla arriba ya; y el resto del mes pide descuentos de estadía larga y de último
+ minuto más profundos que los de hoy, que están en 12-15% semanal y 18-22% mensual.</p>
+ <p>Conviene decidirlo esta semana: en dos semanas el margen de maniobra ya no existe.</p></div>
+
+<div class="op"><h4><span class="prio b">ESTE MES</span>Completar las diez fichas</h4><p class="quien">Ficha · hoy promedian 71 sobre 100</p><p>Tres cosas aplican a los diez por igual:</p>
+ <p><b>Prestaciones de accesibilidad:</b> es un filtro de búsqueda que hoy no usa ningún anuncio de la
+ cartera. Suma visibilidad sin costo.</p>
+ <p><b>La guía de llegada:</b> indicaciones, manual de la casa, datos de wifi e instrucciones de
+ salida están vacías en los diez. Es lo que el huésped recibe automáticamente, y lo que hoy termina
+ preguntando por mensaje.</p>
+ <p><b>La guía del barrio:</b> los diez tienen enganchada una guía de recomendaciones que no
+ corresponde a sus comunas. Hay que armar una por sector: Ñuñoa, Providencia y Santiago Centro.</p></div>
+
+<div class="op"><h4><span class="prio b">ESTE MES</span>Encender la reserva inmediata donde falta</h4><p class="quien">Configuración · en 6 de los 10</p><p>Se apaga a propósito mientras se configura un anuncio nuevo, para revisar cada solicitud a
+ mano. En seis quedó pendiente volver a encenderla. Con reserva inmediata activa el anuncio sube en
+ el buscador, porque Airbnb prioriza lo que se puede reservar sin esperar respuesta.</p></div>
+
+<div class="op"><h4><span class="prio b">ESTE MES</span>Fotos nuevas en cuatro departamentos</h4><p class="quien">Ficha · 1001, A2011, 401 y D1103</p><p>Tienen 5, 8, 9 y 10 fotos. Los que mejor funcionan de la cartera andan sobre 20. El 1204, con
+ 34 fotos, es el que mejor ficha tiene de los diez.</p></div>
+
+<div class="op"><h4><span class="prio b">ESTE MES</span>Pedir reseñas de manera sistemática</h4><p class="quien">Reputación · hoy hay 36 en diez anuncios</p><p>Con pocas reseñas cada una pesa demasiado: al 401 una sola mala le costó 0,8 puntos de nota.
+ Sumar reseñas diluye las malas, sube el anuncio en el buscador y habilita Superanfitrión.</p>
+ <p>Pedirla en el mensaje de salida es la palanca más barata que existe. Seminario 1499 todavía no
+ tiene ninguna.</p></div>
+
+<div class="op"><h4><span class="prio b">ESTE MES</span>Cerrar las dos liquidaciones de marzo a mayo</h4><p class="quien">Administración</p><p>Las transferencias del 12 y el 25 de junio —$350.000 y $1.261.639— están hechas y en la
+ cartola, pero no tienen liquidación formal con el detalle por reserva. Hay que armarlo igual que las
+ de junio y julio.</p>
+ <p>Es lo que le da tranquilidad al contador, y lo que hace que el cruce de facturas cierre sin
+ preguntas.</p></div>
+</section><section class="panel" id="p5">
+<h2>Oportunidades departamento por departamento</h2>
+<p class="lead">Lo mismo, pero aterrizado a cada unidad. Las marcadas <b>AHORA</b> son las que mueven
+la aguja este mes.</p>
+<div class="op"><h4><span class="prio a">AHORA</span>VM920 · 1204</h4><p class="quien">83/100 · la mejor ficha de los diez</p><p>Es el referente del resto: 34 fotos y la ficha más completa. Lo que falta es menor.</p><p>Completar la guía de llegada y declarar secador de pelo y política de mascotas.</p></div><div class="op"><h4><span class="prio a">AHORA</span>VM920 · Combo 713+1204</h4><p class="quien">79/100 · el que más vende</p><p>Cobra $154.364 la noche contra una mediana de $184.405 para ocho personas en Ñuñoa: hay tarifa por tomar.</p><p>Subir de 21 a 30 fotos: es un producto de dos departamentos y hoy se muestra con las fotos de uno.</p><p>Un huésped pidió mejores camas y otro reportó calor de tarde en el dormitorio con sol poniente. Revisar colchones y sumar black-out.</p></div><div class="op"><h4><span class="prio b">ESTE MES</span>VM920 · 713</h4><p class="quien">75/100</p><p>Se vende dentro del combo, así que su ficha propia importa menos, pero igual conviene cerrarla por si el combo se pausa.</p><p>Guía de llegada vacía y 17 fotos.</p></div><div class="op"><h4><span class="prio b">ESTE MES</span>VM920 · 1615</h4><p class="quien">75/100 · la mejor conversión de la cartera</p><p>De los que abren la ficha, reserva el 14,8%: lo más alto de los diez. Cuando lo ven, funciona.</p><p>Solo 13 fotos. Es el que más gana con una sesión nueva.</p><p>Declarar aire acondicionado y secador de pelo.</p></div><div class="op"><h4><span class="prio a">AHORA</span>VM920 · Combo 1615+401</h4><p class="quien">71/100 · la corrección de precio más clara</p><p>Al 100% de ocupación cobrando $138.575, cuando sus dos departamentos sueltos suman $151.850. Subir a $155.000.</p><p>Declarar lavadora, estacionamiento, piscina y parrilla: cuatro filtros de búsqueda que el edificio tiene y el anuncio no dice.</p></div><div class="op"><h4><span class="prio a">AHORA</span>VM920 · 401</h4><p class="quien">71/100 · nota 4,2 por una sola reseña</p><p>Tiene una reseña de 1 estrella de mayo por limpieza que le bajó la nota de 5,0 a 4,2. Bajo 4,8 el anuncio pierde posiciones en el buscador. Es falla nuestra: protocolo de aseo con control fotográfico antes de cada check-in.</p><p>Con 93% de ocupación y el precio más alto del barrio, todavía tiene techo de tarifa.</p><p>Solo 9 fotos.</p></div><div class="op"><h4><span class="prio b">ESTE MES</span>Seminario 850 · A2011</h4><p class="quien">71/100 · va bien y caro</p><p>81% de ocupación cobrando $80.224, muy por encima del barrio. Funciona.</p><p>Solo 8 fotos y el texto de 'tu propiedad' vacío.</p><p>Declarar aire acondicionado, lavadora, gimnasio, balcón y parrilla.</p><p>El método de check-in está sin escribir: es lo primero que pregunta el huésped.</p></div><div class="op"><h4><span class="prio a">AHORA</span>San Isidro 513 · D1103</h4><p class="quien">70/100 · el de peor desempeño</p><p>41% de ocupación y 16 noches libres. Es la prioridad de la cartera.</p><p>Relanzar completo: fotos nuevas, ficha al 100%, título nuevo.</p><p>Abrir Booking: su patrón de venta de último minuto es exactamente el perfil de ese canal.</p><p>Faltan seis comodidades clave por declarar: aire, calefacción, lavadora, estacionamiento, piscina y gimnasio.</p></div><div class="op"><h4><span class="prio a">AHORA</span>Seminario 1499 · 1001</h4><p class="quien">67/100 · el más nuevo, sin reseñas</p><p>Cero reseñas. En Airbnb eso lo deja atrás en el ranking hasta que sume las primeras.</p><p>Solo 5 fotos: la ficha más pobre de los diez.</p><p>Cobra $50.397 contra una mediana de $58.108 para su tipología: cuando tenga reseñas y fotos, hay espacio de precio.</p><p>Abrir Booking para acelerar las primeras reseñas.</p></div><div class="op"><h4><span class="prio a">AHORA</span>San Diego 376 · 614</h4><p class="quien">64/100 · lleno con la ficha a medio llenar</p><p>28 de 29 noches vendidas y estadías de 9 noches promedio. Completar la ficha acá sirve para subir tarifa, no ocupación.</p><p>En julio Airbnb registró que no se respondió a la hora del check-in y una cancelación nuestra dentro de las 48 horas. De ahí sale la penalización de $115.275, hoy en apelación. Falla nuestra: alerta automática para check-ins del día sin respuesta.</p><p>Los textos de 'tu propiedad', 'acceso de los huéspedes' e 'interacción' están vacíos.</p><p>11 fotos.</p></div></section>
 <footer>
   <p class="marca">APTO</p>
-  <p>Documento preparado para la reunión del 19 de agosto de 2026.<br>
-  Los montos son los efectivamente transferidos, después de limpieza y comisión.</p>
+  <p>Fuentes: export de Ingresos de Airbnb al 18-ago-2026 · panel de Desempeño de Airbnb, últimos 30
+  días · barrido RADAR de mercado del 18 y 19 de agosto · reseñas públicas y panel de Problemas con
+  el alojamiento, leídos el 19 de agosto.</p>
+  <p>Documento privado. Nosotros equipamos, diseñamos y publicamos cada uno de estos anuncios: las
+  oportunidades que aparecen acá son nuestra tarea, no una lista de reproches.</p>
 </footer>
-
 </div>
-
 <script>
-  const tabs = document.querySelectorAll('.tab');
-  const paneles = document.querySelectorAll('.panel');
-  tabs.forEach(t => t.addEventListener('click', () => {
-    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
-    paneles.forEach(p => p.classList.toggle('on', p.id === t.dataset.p));
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }));
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.setAttribute('aria-selected','false')});
+      t.setAttribute('aria-selected','true');
+      [].forEach.call(document.querySelectorAll('.panel'),function(p){p.classList.remove('on')});
+      document.getElementById(t.dataset.p).classList.add('on');
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+})();
 </script>
 </body>
 </html>
