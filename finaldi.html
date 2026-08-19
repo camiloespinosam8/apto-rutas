@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Felipe Finaldi · Portafolio APTO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --crema:#F4EFE6; --papel:#FBF9F4; --ladrillo:#C8572A; --vino:#9B3A2E;
+         --tinta:#1D1D1B; --linea:#E2D9CB; --gris:#6E6A63; --verde:#3E6B4F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--crema);color:var(--tinta);
+       font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px 80px}
+  header{padding:52px 0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:0 0 11px}
+  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:clamp(31px,4.8vw,46px);
+     line-height:1.06;margin:0 0 12px;letter-spacing:-.01em}
+  .sub{font-size:17px;color:var(--gris);margin:0}
+  nav{position:sticky;top:0;z-index:20;background:var(--crema);
+      border-bottom:2px solid var(--tinta);padding:10px 0 0;margin-bottom:6px}
+  .tabs{display:flex;flex-wrap:wrap;gap:2px;max-width:880px;margin:0 auto;padding:0 22px}
+  .tab{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;
+       font-size:14px;font-weight:600;color:var(--gris);padding:11px 15px 12px;
+       border-bottom:3px solid transparent;border-radius:4px 4px 0 0;white-space:nowrap}
+  .tab:hover{color:var(--tinta);background:rgba(200,87,42,.06)}
+  .tab[aria-selected="true"]{color:var(--vino);border-bottom-color:var(--ladrillo)}
+  .tab .num{font-family:'Playfair Display',Georgia,serif;font-size:16px;margin-right:6px;opacity:.75}
+  .panel{display:none;animation:ap .22s ease}
+  .panel.on{display:block}
+  @keyframes ap{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(25px,3.4vw,33px);margin:34px 0 4px;line-height:1.15}
+  h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+     font-size:clamp(18px,2.4vw,23px);margin:32px 0 6px;line-height:1.2}
+  .lead{color:var(--gris);margin:0 0 18px;max-width:64ch}
+  p{max-width:66ch;margin:11px 0}
+  .tablabox{overflow-x:auto;margin:20px 0}
+  table{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
+  th{text-align:left;font-size:12px;letter-spacing:.08em;color:var(--gris);font-weight:600;
+     padding:0 13px 8px 0;border-bottom:1px solid var(--tinta)}
+  td{padding:11px 13px 11px 0;border-bottom:1px solid var(--linea);
+     font-variant-numeric:tabular-nums;vertical-align:top}
+  td.d{color:var(--vino);font-weight:700}
+  tr.hi td{background:rgba(200,87,42,.08);font-weight:600}
+  tr.tot td{border-top:2px solid var(--tinta);border-bottom:0;font-weight:700;font-size:16px;padding-top:13px}
+  .destaca{background:var(--papel);border-left:4px solid var(--ladrillo);
+           padding:22px 24px;margin:26px 0;border-radius:0 4px 4px 0}
+  .destaca p{margin:0} .destaca p + p{margin-top:10px}
+  .destaca .big{font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.8vw,25px);
+                line-height:1.3;margin:0 0 8px}
+  .cifras{display:flex;flex-wrap:wrap;margin:22px 0 4px;
+          border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cifra{flex:1 1 140px;padding:18px 18px 18px 0;border-right:1px solid var(--linea)}
+  .cifra:last-child{border-right:0}
+  .cifra .n{font-family:'Playfair Display',Georgia,serif;font-size:30px;line-height:1;
+            font-variant-numeric:tabular-nums}
+  .cifra .l{font-size:13px;color:var(--gris);margin-top:6px}
+  .nota{font-size:14px;color:var(--gris);max-width:66ch}
+  .falta{list-style:none;padding:0;margin:18px 0}
+  .falta li{border-bottom:1px solid var(--linea);padding:13px 0 13px 34px;position:relative;max-width:66ch}
+  .falta li::before{content:"○";position:absolute;left:6px;top:12px;color:var(--ladrillo);font-size:15px}
+  .falta li.urg::before{content:"●";color:var(--vino)}
+  .falta li.ok::before{content:"✓";color:var(--verde);font-weight:700}
+  .falta b{display:block}
+  .falta span{font-size:14px;color:var(--gris)}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--linea);border-radius:6px;overflow:hidden}
+  .dos > div{padding:20px 22px;background:var(--papel)}
+  .dos > div:first-child{border-right:1px solid var(--linea)}
+  .dos h4{margin:0 0 10px;font-size:13px;letter-spacing:.07em;color:var(--vino);font-weight:700}
+  .dos p{font-size:14.5px;margin:7px 0}
+  .rut{font-variant-numeric:tabular-nums;font-weight:600}
+  footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--linea);font-size:13px;color:var(--gris)}
+  .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
+  @media (max-width:600px){ .cifra{flex:1 1 50%;border-right:0;padding:14px 0}
+                            .tab{font-size:13px;padding:9px 10px 10px}
+                            .dos{grid-template-columns:1fr} .dos > div:first-child{border-right:0;border-bottom:1px solid var(--linea)} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">PORTAFOLIO EN ADMINISTRACIÓN</p>
+  <h1>Felipe Finaldi · 10 anuncios</h1>
+  <p class="sub">Documento de la reunión · 19 de agosto de 2026</p>
+</header>
+</div>
+
+<nav>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-p="p0"><span class="num">★</span>Las facturas</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p1"><span class="num">1</span>La plata</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p2"><span class="num">2</span>Tus 10 anuncios</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p3"><span class="num">3</span>Qué sigue</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ 0 · LAS FACTURAS ============ -->
+<section class="panel on" id="p0">
+
+<h2>Cómo se cruzan las facturas</h2>
+<p class="lead">Esta es la pregunta que llevas al contador. La respuesta corta: <b>son dos flujos
+distintos, con dos RUT distintos, y no se mezclan nunca.</b></p>
+
+<div class="dos">
+  <div>
+    <h4>PAR DE COSAS SpA</h4>
+    <p class="rut">77.215.553-0</p>
+    <p><b>Qué factura:</b> el equipamiento del departamento y el servicio de ejecución —diseño,
+    compras y montaje.</p>
+    <p><b>Cuándo:</b> una sola vez por unidad, cuadrado al monto de inversión.</p>
+    <p><b>Dónde lo ves:</b> en los PDF de facturas por depto.</p>
+  </div>
+  <div>
+    <h4>SOC. TURISMO MARITANO LTDA</h4>
+    <p class="rut">76.691.973-1</p>
+    <p><b>Qué hace:</b> administra. Recauda de Airbnb, descuenta la limpieza, cobra la comisión y
+    te transfiere el neto.</p>
+    <p><b>Cuánto:</b> 15% IVA incluido, todos los meses.</p>
+    <p><b>Dónde lo ves:</b> en el reporte de cierre mensual.</p>
+  </div>
+</div>
+
+<div class="destaca">
+  <p class="big">El 15% nunca aparece en una factura de Par de Cosas</p>
+  <p>La comisión es solo de administración y vive en el cierre mensual de Turismo Maritano. Si tu
+  contador busca el 15% dentro de las facturas de equipamiento, no lo va a encontrar — y está bien
+  que no esté ahí.</p>
+</div>
+
+<h3>El circuito del dinero, mes a mes</h3>
+
+<p>Airbnb paga a Turismo Maritano → se descuenta la limpieza → se cobra el <b>15% de comisión, IVA incluido</b> →
+se te transfiere el neto. El reporte de cierre muestra esas cuatro líneas por departamento, así que
+tu contador puede reconstruir cada peso.</p>
+
+<p class="nota">Tu 15% es preferente y con <b>IVA incluido</b>: la comisión estándar de mercado es 20% más IVA,
+y quedó en 15% IVA incluido por administrar el portafolio completo.</p>
+
+<h3>Lo que hay que resolver en la reunión</h3>
+
+<ul class="falta">
+  <li class="urg"><b>El nivel de detalle de las facturas de equipamiento</b>
+    <span>Hoy las facturas agrupan en 9 líneas por sección: Cocina, Dormitorios, Living, Comedor,
+    Baño, Iluminación, Textiles, Equipamiento y Pack decoración. Cuadran exacto al monto, pero
+    detrás hay un itemizado real de unos 75 productos por departamento. Si tu contador —o tú—
+    quieren auditar producto por producto, conviene emitirlas con el desglose completo en vez de
+    las líneas agrupadas. Es la misma factura, con más detalle.</span></li>
+  <li><b>Definir el corte mensual</b>
+    <span>Hoy el cierre se arma cuando termina el mes y se paga en los primeros días del siguiente.
+    Julio se transfirió el 10 de agosto en dos operaciones. Si al contador le sirve otra fecha de
+    corte, se ajusta.</span></li>
+  <li><b>Si quieres factura por departamento o consolidada</b>
+    <span>Hoy el cierre ya viene desglosado por unidad. La facturación puede seguir el mismo corte
+    o consolidarse en una sola.</span></li>
+</ul>
+
+</section>
+
+<!-- ============ 1 · LA PLATA ============ -->
+<section class="panel" id="p1">
+
+<h2>Lo que ha entrado</h2>
+<p class="lead">Estos son los montos que te fueron transferidos, después de descontar limpieza y
+comisión. No es facturación bruta: es lo que llegó a tu cuenta.</p>
+
+<div class="cifras">
+  <div class="cifra"><div class="n">$11.005.347</div><div class="l">transferido en total</div></div>
+  <div class="cifra"><div class="n">83</div><div class="l">reservas</div></div>
+  <div class="cifra"><div class="n">236</div><div class="l">noches vendidas</div></div>
+</div>
+
+<div class="tablabox">
+<table>
+<tr><th>Mes</th><th>Transferido</th><th>Reservas</th><th>Noches</th><th></th></tr>
+<tr><td>Marzo 2026</td><td>$147.282</td><td>3</td><td>6</td><td class="nota">arranque de Vicuña Mackenna 920</td></tr>
+<tr><td>Abril</td><td>$208.205</td><td>5</td><td>6</td><td></td></tr>
+<tr><td>Mayo</td><td>$1.256.152</td><td>14</td><td>30</td><td></td></tr>
+<tr><td>Junio</td><td>$2.188.931</td><td>20</td><td>51</td><td class="nota">el combo 713+1204 aportó $1.192.761</td></tr>
+<tr class="hi"><td><b>Julio</b></td><td><b>$7.204.777</b></td><td><b>41</b></td><td><b>143</b></td><td class="nota">pagado el 10-ago en dos transferencias</td></tr>
+<tr class="tot"><td>Total</td><td>$11.005.347</td><td>83</td><td>236</td><td></td></tr>
+</table>
+</div>
+
+<div class="destaca">
+  <p class="big">Julio fue 3,3 veces junio</p>
+  <p>Y no es solo temporada: en marzo operaban 3 departamentos y en julio ya eran 10. La curva de
+  los próximos meses depende de cuánto rinda cada unidad nueva, no de sumar más.</p>
+</div>
+
+<p class="nota">El cierre de julio cuadra exacto con el detalle por departamento y está pagado:
+$5.000.000 más $2.204.777, ambas operaciones identificadas. Ese es el documento que va al contador.</p>
+
+</section>
+
+<!-- ============ 2 · LOS ANUNCIOS ============ -->
+<section class="panel" id="p2">
+
+<h2>Estado de tus 10 anuncios</h2>
+<p class="lead">Revisamos anuncio por anuncio contra los 82 campos que Airbnb permite llenar. La nota
+mide qué tan completo está cada uno: no es calidad del departamento, es cuánta munición tiene el
+anuncio para competir en el buscador.</p>
+
+<div class="tablabox">
+<table>
+<tr><th>Departamento</th><th>Anuncio</th><th>Nota</th><th>Fotos</th><th>Precio</th></tr>
+<tr><td>VM920 · 1204</td><td>Moderno apartamento boutique con estacionamiento</td><td class="d">83</td><td>34</td><td>$50.928</td></tr>
+<tr><td>Combo 713+1204</td><td>Apartamentos para grupos · parking gratis</td><td class="d">79</td><td>21</td><td>$110.000</td></tr>
+<tr><td>VM920 · 713</td><td>Gran apartamento nuevo · Estacionamiento</td><td class="d">75</td><td>17</td><td>$70.000</td></tr>
+<tr><td>VM920 · 1615</td><td>Nuevo Premium en Ñuñoa · 2D 2B + Vista Cordillera</td><td class="d">75</td><td>13</td><td>$68.000</td></tr>
+<tr><td>VM920 · 401</td><td>Nuevo departamento · Balcón y vista a la ciudad</td><td class="d">71</td><td>9</td><td>$49.000</td></tr>
+<tr><td>Combo 1615+401</td><td>Ñuñoa · 2 deptos para grupos · Vista Cordillera</td><td class="d">71</td><td>19</td><td>$168.633</td></tr>
+<tr><td>Seminario 850 · A2011</td><td>Nuevo 2 Dor para 5 · Estacionamiento</td><td class="d">71</td><td>8</td><td>$56.000</td></tr>
+<tr><td>San Isidro 513 · D1103</td><td>Studio Piso 11 · Rooftop con vistas</td><td class="d">70</td><td>10</td><td>$103.790</td></tr>
+<tr class="hi"><td>Seminario 1499 · 1001</td><td>Nuevo 2D Ñuñoa · Gym &amp; Cowork</td><td class="d">67</td><td>5</td><td>$72.000</td></tr>
+<tr class="hi"><td>San Diego 376 · 614</td><td>2D Boutique · Metro Parque Almagro</td><td class="d">64</td><td>11</td><td>$105.042</td></tr>
+</table>
+</div>
+
+<div class="destaca">
+  <p class="big">El hueco más grande y más barato de cerrar son las fotos</p>
+  <p>Seis de tus diez anuncios tienen menos de 20 fotos, y tres tienen menos de 10. El de Seminario
+  1499 tiene <b>cinco</b>. Airbnb muestra hasta 5 fotos en la tarjeta del buscador y premia los
+  recorridos completos por espacio: con 5 fotos el anuncio compite con una mano atrás.</p>
+  <p>El de Vicuña Mackenna 1204, que tiene 34 fotos, es el mejor puntuado de los diez. No es
+  casualidad.</p>
+</div>
+
+<h3>Lo que le falta a todos por igual</h3>
+
+<ul class="falta">
+  <li class="urg"><b>Prestaciones de accesibilidad: vacías en los 10</b>
+    <span>Es un filtro de búsqueda de Airbnb. Ninguno de tus anuncios aparece cuando alguien filtra
+    por accesibilidad. Se llena una vez y queda.</span></li>
+  <li class="urg"><b>Preaviso en "el mismo día" y mínimo de 1 noche</b>
+    <span>Son los valores que Airbnb trae por defecto y que nadie decidió. Con preaviso del mismo
+    día puede entrar una reserva a las 22:00 para esa noche, sin margen para limpiar.</span></li>
+  <li><b>Reserva inmediata apagada en 6 de los 10</b>
+    <span>Con la reserva inmediata activa el anuncio aparece antes en el buscador y no se pierden
+    huéspedes que no quieren esperar respuesta. Se apaga solo mientras se configura un anuncio nuevo;
+    en varios quedó apagada después.</span></li>
+  <li><b>La guía de llegada casi vacía</b>
+    <span>Instrucciones de salida, manual de la casa e indicaciones para llegar están sin llenar en
+    la mayoría. Es lo que el huésped recibe antes del check-in, y lo que evita que te escriban.</span></li>
+</ul>
+
+</section>
+
+<!-- ============ 3 · QUÉ SIGUE ============ -->
+<section class="panel" id="p3">
+
+<h2>Qué sigue</h2>
+
+<h3>Lo que hacemos nosotros esta semana</h3>
+
+<ul class="falta">
+  <li class="urg"><b>Subir las fotos que faltan en los 6 anuncios cortos</b>
+    <span>Prioridad: Seminario 1499 (5 fotos), Seminario 850 (8) y VM920 401 (9). Meta: 25 fotos
+    mínimo por anuncio, organizadas por espacio.</span></li>
+  <li class="urg"><b>Cerrar accesibilidad, preaviso y mínimo de noches en los 10</b>
+    <span>Es configuración, no contenido. Sale en una pasada.</span></li>
+  <li><b>Encender la reserva inmediata donde está apagada</b>
+    <span>Con la conversación previa de qué reglas de la casa quedan firmes.</span></li>
+  <li><b>Completar la guía de llegada de las 10 unidades</b>
+    <span>Indicaciones, manual, wifi e instrucciones de salida.</span></li>
+</ul>
+
+<h3>Lo que necesitamos de ti</h3>
+
+<ul class="falta">
+  <li><b>Decidir el nivel de detalle de las facturas de equipamiento</b>
+    <span>Línea agrupada por sección, como hoy, o el desglose completo producto por producto.
+    Lo que le sirva a tu contador.</span></li>
+  <li><b>Confirmar la fecha de corte mensual</b>
+    <span>Hoy: cierre al terminar el mes, pago en los primeros días del siguiente.</span></li>
+  <li><b>Fotos profesionales donde falten</b>
+    <span>En los departamentos con menos de 10 fotos no hay material suficiente. Podemos coordinar
+    sesión o trabajar con lo que exista.</span></li>
+</ul>
+
+<h3>Lo que traemos para la próxima</h3>
+
+<p>Con más tiempo que el de hoy, tres cosas que no alcanzamos a cerrar para esta reunión:</p>
+
+<ul class="falta">
+  <li><b>Estadísticas de Airbnb por anuncio</b>
+    <span>Visitas, impresiones en búsqueda y conversión, unidad por unidad. Airbnb entrega estos
+    datos en cortes mensuales de 30 días móviles, así que sirve para comparar entre tus deptos y ver
+    cuál no lo están viendo y cuál lo ven y no reservan.</span></li>
+  <li><b>Radar de mercado por zona</b>
+    <span>Cada departamento contra sus comparables reales del barrio: banda de precios, ocupación y
+    dónde estás parado en cada micro-mercado. Vicuña Mackenna, Seminario, San Isidro y San Diego son
+    cuatro mercados distintos y hoy los estamos tratando parejo.</span></li>
+  <li><b>Lectura de reseñas y conversaciones</b>
+    <span>Qué dicen los huéspedes de cada unidad y qué preguntan antes de reservar. De ahí salen las
+    mejoras concretas de anuncio y de operación.</span></li>
+</ul>
+
+<div class="destaca">
+  <p class="big">Tu portafolio es el más grande que administramos</p>
+  <p>Diez unidades es donde el estándar deja de ser cosmético: lo que se hace bien en uno se
+  multiplica por diez, y lo que se deja pendiente también. Por eso el foco de esta semana es cerrar
+  lo que está a medias en todos por igual, antes de optimizar unidad por unidad.</p>
+</div>
+
+</section>
+
+<footer>
+  <p class="marca">APTO</p>
+  <p>Documento preparado para la reunión del 19 de agosto de 2026.<br>
+  Los montos son los efectivamente transferidos, después de limpieza y comisión.</p>
+</footer>
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const paneles = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+    paneles.forEach(p => p.classList.toggle('on', p.id === t.dataset.p));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }));
+</script>
+</body>
+</html>
