@@ -99,6 +99,14 @@ tr.tot td{border-top:2px solid var(--tinta);border-bottom:0;font-weight:700;font
 footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--linea);font-size:13px;color:var(--gris)}
 .marca{font-family:'Playfair Display',Georgia,serif;font-size:19px;color:var(--tinta)}
 @media(max-width:640px){.cifra{flex:1 1 50%;border-right:0;padding:14px 0}.tab{font-size:12px;padding:9px 8px 10px}.cols{height:150px}.kv>div{flex:1 1 50%;border-right:0}}
+
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:26px 0 8px}
+.docs a{display:block;padding:16px 18px;background:var(--papel);border:1px solid var(--linea);
+        border-radius:7px;text-decoration:none;color:var(--tinta);transition:border-color .15s}
+.docs a:hover{border-color:var(--ladrillo)}
+.docs .t{font-weight:700;font-size:14.5px;color:var(--vino);margin-bottom:4px}
+.docs .d{font-size:13px;color:var(--gris);line-height:1.4}
+.docs .f{font-size:11px;color:var(--gris);margin-top:8px;letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -124,6 +132,22 @@ completa de ocho departamentos.</p>
   <div class="cifra"><div class="n">$10,8M</div><div class="l">por liquidar<br>de agosto en adelante</div></div>
 </div>
 
+
+<h3>Tus documentos</h3>
+<div class="docs">
+  <a href="https://drive.google.com/drive/folders/1eFMDXFJnnAoBQzR5gzDaxYF9ro1vFyhN" target="_blank" rel="noopener">
+    <div class="t">Tu carpeta en Drive &rarr;</div>
+    <div class="d">Contrato, liquidaciones en PDF y las fichas de equipamiento de cada departamento.</div>
+    <div class="f">GOOGLE DRIVE</div></a>
+  <a href="https://docs.google.com/spreadsheets/d/1lydQSPN8Pcb-NKuxzi9-gPMH3sjt4hiM2COAbS37aPA" target="_blank" rel="noopener">
+    <div class="t">Reservas y liquidaciones &rarr;</div>
+    <div class="d">Cada reserva con su detalle, el resumen mes a mes y las transferencias hechas.</div>
+    <div class="f">PLANILLA</div></a>
+  <a href="https://docs.google.com/spreadsheets/d/1C7gAgNk2BDVeLC7u9kweW3yrQJAg2HLJ2mv7kz5_4A0" target="_blank" rel="noopener">
+    <div class="t">Anuncios y oportunidades &rarr;</div>
+    <div class="d">El estado de cada anuncio, las estadísticas de Airbnb, el radar de mercado y las reseñas.</div>
+    <div class="f">PLANILLA</div></a>
+</div>
 <h3>Lo que se te transfiere mes a mes</h3>
 <p class="nota">No es lo que paga el huésped: es lo que queda para ti, ya descontada la comisión de
 Airbnb, el aseo y la comisión APTO. Es el número que cuadra contra tu cartola. Agosto va rayado
