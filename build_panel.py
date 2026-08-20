@@ -637,7 +637,7 @@ document.querySelectorAll('th[data-k]').forEach(t=>t.onclick=()=>{
   const k=t.dataset.k;sd=(sk===k)?-sd:-1;sk=k;renderIns()});
 /* ============ 5 INCIDENCIAS ============ */
 const CN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso',otros:'Otros'};
-let cat='all', soloAbiertas=true;
+let cat='all', soloAbiertas=true, agrupado=false;
 function renderInc(){
   const q=nrm($('#qinc').value);
   const coincide=i=>!q||nrm(txtInc(i)).includes(q);
@@ -654,10 +654,49 @@ function renderInc(){
   $('#ic').innerHTML=ampliado
     ? `<b>${ampliado}</b> fuera del filtro activo · se muestran igual`
     : `<b>${rows.length}</b> de ${D.incidencias.length} · ${nAb} sin resolver`;
-  $('#li').innerHTML=rows.length?'<div class="rows">'+rows.map(i=>{
+  $('#li').innerHTML = agrupado ? porPropiedad(rows)
+    : (rows.length?'<div class="rows">'+rows.map(i=>{
       const c=carencia(i);return filaInc({...i,_c:c?c.txt:null,_hoy:conHuespedHoy(i)},false)}).join('')+'</div>'
-    :'<div class="none">Sin incidencias</div>';
+    :'<div class="none">Sin incidencias</div>');
 }
+
+/* Vista de MANTENIMIENTO: agrupa por propiedad y marca lo que se repite.
+   Una falla reportada 3 veces por 3 huéspedes distintos no son 3 incidencias:
+   es una sola falla que nadie cerró, y eso solo se ve agrupando. */
+const TEMAS=[['griferia','grifería'],['agua caliente','agua caliente'],['calefacc','calefacción'],
+  ['wifi','wifi'],['internet','wifi'],['toalla','toallas'],['llave','llaves'],['acceso','acceso'],
+  ['clave','acceso'],['limpieza','limpieza'],['gas','gas'],['estufa','calefacción'],
+  ['cerradura','llaves'],['chapa','llaves'],['ruido','ruido'],['tv','televisión']];
+function temaDe(i){
+  const t=nrm((i.titulo||'')+' '+(i.detalle||''));
+  for(const [k,v] of TEMAS) if(t.includes(k)) return v;
+  return null;
+}
+function porPropiedad(rows){
+  const g={};
+  rows.forEach(i=>{
+    const k=(i.dir||'').split(',')[0]||'— sin ubicar —';
+    (g[k]=g[k]||[]).push(i);
+  });
+  const orden=Object.entries(g).sort((a,b)=>
+    b[1].filter(x=>x.estado!=='resuelto').length - a[1].filter(x=>x.estado!=='resuelto').length);
+  if(!orden.length) return '<div class="none">Sin incidencias</div>';
+  return orden.map(([prop,items])=>{
+    const ab=items.filter(x=>x.estado!=='resuelto');
+    // temas que se repiten ≥2 veces entre las ABIERTAS = falla recurrente
+    const t={}; ab.forEach(i=>{const x=temaDe(i); if(x) t[x]=(t[x]||0)+1});
+    const rep=Object.entries(t).filter(([,n])=>n>=2).sort((a,b)=>b[1]-a[1]);
+    const chips=rep.map(([k,n])=>`<span class="alerta">🔁 ${esc(k)} ×${n}</span>`).join(' ');
+    return `<div class="gsec">${esc(prop)} <span class="cnt">${ab.length}</span>`
+      + (items.length>ab.length?` <span class="tg">· ${items.length-ab.length} resueltas</span>`:'')
+      + (chips?' '+chips:'') + `</div><div class="rows">`
+      + items.map(i=>{const c=carencia(i);
+          return filaInc({...i,_c:c?c.txt:null,_hoy:conHuespedHoy(i)},true)}).join('')
+      + '</div>';
+  }).join('');
+}
+$('#igr').onclick=e=>{agrupado=!agrupado;
+  e.target.setAttribute('aria-pressed',agrupado?'true':'false');renderInc()};
 $('#iab').onclick=e=>{soloAbiertas=!soloAbiertas;
   e.target.setAttribute('aria-pressed',soloAbiertas?'true':'false');
   e.target.textContent=soloAbiertas?'Solo sin resolver':'Todas';renderInc()};
@@ -777,6 +816,7 @@ html = f"""<!doctype html><html lang="es"><head>
 <section class="pane" id="p5">
   <div class="bar"><input id="qinc" class="grow" placeholder="Buscar problema, propiedad, huésped…" autocomplete="off"></div>
   <div class="cats"><button data-c="all" aria-pressed="true">Todas <span style="opacity:.6">{len(D['incidencias'])}</span></button>{catbtn}
+    <button id="igr" aria-pressed="false">Por propiedad</button>
     <button id="iab" aria-pressed="true" style="margin-left:auto">Solo sin resolver</button></div>
   <div class="count" id="ic"></div>
   <div id="li"></div>
