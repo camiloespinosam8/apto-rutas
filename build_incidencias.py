@@ -184,6 +184,48 @@ leer_json("incidencias_manual.json", "lectura reciente ")
 leer_json("incidencias_extra.json", "barridos previos ")
 leer_json("incidencias_nuevas.json", "136 conversaciones")
 
+# ---- dirección canónica por incidencia -------------------------------------
+# El campo `prop` es texto libre y escrito a mano, así que el mismo depto aparece como
+# "Pedro García 806 (Carol Urzúa 7030)", "Pedro Garcia 806 (Carol Urzua 7030 depto 806B)"
+# y "Pedro García 806 (Carol Urzúa 7030, depto 806B) — Va...". Buscar "Carol Urzúa" fallaba
+# según cómo estuviera escrito. Acá se le pega la dirección REAL bajada de Airbnb, para que
+# el panel encuentre por calle, número, comuna o nombre interno.
+# Se usa CONTENCIÓN de texto (¿aparece el nombre de la calle en el prop?), NO match difuso:
+# un falso positivo en un buscador solo muestra una fila de más; fusionar propiedades por
+# parecido es el error que ya costó 84 solapes falsos.
+_GO = os.path.join(GO, "scripts")
+_dirs, _vivos = {}, {}
+try: _dirs = json.load(open(os.path.join(_GO, "direcciones_limpias.json"), encoding="utf-8"))
+except Exception: pass
+try: _vivos = json.load(open(os.path.join(_GO, "anuncios_airbnb_vivos.json"), encoding="utf-8"))
+except Exception: pass
+
+_CAT = []   # (clave_a_buscar, direccion_canonica, comuna)
+for _lid, _v in _dirs.items():
+    _d = str(_v.get("dir") or "")
+    if not _d: continue
+    _com = str(_vivos.get(_lid, {}).get("comuna", "")).replace(", Chile", "")
+    _calle = re.split(r'\s*,', _d)[0]                       # "Gral. Carol Urzúa 7030"
+    _sinnum = re.sub(r'\s*\d[\d.]*\s*$', '', _calle)        # "Gral. Carol Urzúa"
+    _sinpref = re.sub(r'^(av\.?|avenida|gral\.?|general|calle)\s+', '', _sinnum, flags=re.I)
+    for _k in {_calle, _sinnum, _sinpref}:
+        if len(norm(_k)) >= 6: _CAT.append((norm(_k), _d, _com))
+    _int = str(_vivos.get(_lid, {}).get("interno") or "")
+    if len(norm(_int)) >= 6: _CAT.append((norm(_int), _d, _com))
+_CAT = sorted(set(_CAT), key=lambda x: -len(x[0]))          # el match más largo manda
+
+def _ubicar(prop):
+    p = norm(prop)
+    for k, d, c in _CAT:
+        if k and k in p: return d, c
+    return "", ""
+
+_con = 0
+for r in out:
+    r["dir"], r["comuna"] = _ubicar(r.get("prop"))
+    if r["dir"]: _con += 1
+print(f"  incidencias con dirección canónica: {_con} de {len(out)}")
+
 ORD_S = {"alta": 0, "media": 1, "baja": 2}
 ORD_E = {"abierto": 0, "sin seguimiento": 1, "resuelto": 2}
 out.sort(key=lambda r: (ORD_E.get(r["estado"], 1), ORD_S.get(r["sev"], 1), r["prop"]))

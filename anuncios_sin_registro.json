@@ -6,8 +6,18 @@
  },
  {
   "anuncio": "Nuevo 2 Dor para 5 · Estacionamiento · Pasos Metro",
-  "reservas": 9,
+  "reservas": 10,
   "uid": "s/reg|nuevo 2 dor para 5 estacionamiento pasos metro"
+ },
+ {
+  "anuncio": "LaPuertaRoja | Casa para grupos | Cerro Concepción",
+  "reservas": 8,
+  "uid": "s/reg|lapuertaroja | casa para grupos | cerro concepci"
+ },
+ {
+  "anuncio": "Nuevo Studio | Metro Ñuñoa | Terraza",
+  "reservas": 8,
+  "uid": "s/reg|nuevo studio | metro nunoa | terraza"
  },
  {
   "anuncio": "Casa para grupos | Cerro Concepcion | 1 auto",
@@ -15,14 +25,14 @@
   "uid": "s/reg|casa para grupos | cerro concepcion | 1 auto"
  },
  {
-  "anuncio": "LaPuertaRoja | Casa para grupos | Cerro Concepción",
-  "reservas": 7,
-  "uid": "s/reg|lapuertaroja | casa para grupos | cerro concepci"
- },
- {
   "anuncio": "Habitación privada en Cerro Concepción con Parking",
   "reservas": 7,
   "uid": "s/reg|habitacion privada en cerro concepcion con parki"
+ },
+ {
+  "anuncio": "Habitación privada con parking en Barrio Italia",
+  "reservas": 7,
+  "uid": "s/reg|habitacion privada con parking en barrio italia"
  },
  {
   "anuncio": "NUEVO Moderno Studio | Terraza | Metro Ñuñoa",
@@ -45,44 +55,34 @@
   "uid": "s/reg|habitacion en gran casa valparaiso/estacionamien"
  },
  {
-  "anuncio": "Habitación privada con parking en Barrio Italia",
-  "reservas": 6,
-  "uid": "s/reg|habitacion privada con parking en barrio italia"
- },
- {
-  "anuncio": "Nuevo Studio | Metro Ñuñoa | Terraza",
-  "reservas": 6,
-  "uid": "s/reg|nuevo studio | metro nunoa | terraza"
- },
- {
-  "anuncio": "Gran apartamento para grupos | Central | 2 autos",
-  "reservas": 5,
-  "uid": "s/reg|gran apartamento para grupos | central | 2 autos"
- },
- {
   "anuncio": "Casa para grupos | Cerro Concepción ",
   "reservas": 5,
   "uid": "s/reg|casa para grupos | cerro concepcion"
  },
  {
   "anuncio": "Habitación Doble en Cerro Concepción ",
-  "reservas": 4,
+  "reservas": 5,
   "uid": "s/reg|habitacion doble en cerro concepcion"
  },
  {
   "anuncio": "La Puerta Roja | Casa para grupos | 2 autos",
-  "reservas": 3,
+  "reservas": 4,
   "uid": "s/reg|la puerta roja | casa para grupos | 2 autos"
+ },
+ {
+  "anuncio": "Gran apartamento para grupos | Central | 2 autos",
+  "reservas": 4,
+  "uid": "s/reg|gran apartamento para grupos | central | 2 autos"
+ },
+ {
+  "anuncio": "Departamento Vista al mar, estacionamiento y wifi",
+  "reservas": 4,
+  "uid": "s/reg|departamento vista al mar, estacionamiento y wif"
  },
  {
   "anuncio": "The Red Door: Large Room in Spacious House",
   "reservas": 3,
   "uid": "s/reg|the red door: large room in spacious house"
- },
- {
-  "anuncio": "Departamento Vista al mar, estacionamiento y wifi",
-  "reservas": 3,
-  "uid": "s/reg|departamento vista al mar, estacionamiento y wif"
  },
  {
   "anuncio": "Habitacion para 4 -Baño Compartido.",
@@ -120,13 +120,13 @@
   "uid": "s/reg|habitacion privada c/ bano y parking barrio ital"
  },
  {
-  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda",
-  "reservas": 1,
-  "uid": "s/reg|nuevo 1d metro los heroes (l1-l2) la moneda"
- },
- {
   "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa",
   "reservas": 1,
   "uid": "s/reg|nuevo 1d metro irarrazaval (l3-l5) nunoa"
+ },
+ {
+  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda",
+  "reservas": 1,
+  "uid": "s/reg|nuevo 1d metro los heroes (l1-l2) la moneda"
  }
 ]

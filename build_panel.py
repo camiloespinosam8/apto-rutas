@@ -344,7 +344,7 @@ function contactoHTML(i,sinContacto){
 }
 const txtProp=p=>[p.nombre,p.calle,p.numero,p.depto,p.comuna,p.interno,p.dueno,p.responsable,p.tipo].join(' ');
 const txtMov =a=>[a.dir,a.pnombre,a.huesped,a.comuna,a.cod].join(' ');
-const txtInc =i=>[i.titulo,i.prop,i.detalle,i.cat,i.cita,i.huesped,i.cod].join(' ');
+const txtInc =i=>[i.titulo,i.prop,i.detalle,i.cat,i.cita,i.huesped,i.cod,i.dir,i.comuna].join(' ');
 
 /* ---- carencias: qué le FALTA al huésped (lo que hay que resolver hoy) ---- */
 // \b en ambos extremos: "gas" NO debe matchear "descargas". Orden = prioridad operativa.
@@ -640,10 +640,20 @@ const CN={insumos:'Insumos',higiene:'Higiene',tecnico:'Técnico',acceso:'Acceso'
 let cat='all', soloAbiertas=true;
 function renderInc(){
   const q=nrm($('#qinc').value);
-  const rows=D.incidencias.filter(i=>(cat==='all'||i.cat===cat)&&(!soloAbiertas||i.estado!=='resuelto')
-    &&(!q||nrm(txtInc(i)).includes(q)));
+  const coincide=i=>!q||nrm(txtInc(i)).includes(q);
+  let rows=D.incidencias.filter(i=>(cat==='all'||i.cat===cat)&&(!soloAbiertas||i.estado!=='resuelto')&&coincide(i));
+  // Si buscás algo y el filtro activo lo esconde, gana la búsqueda: se ignoran categoría y
+  // estado y se avisa. Antes "Carol Urzúa" no aparecía por tener puesto el filtro Insumos,
+  // y no había forma de darse cuenta de que el dato SÍ estaba.
+  let ampliado=0;
+  if(q&&!rows.length){
+    const todas=D.incidencias.filter(coincide);
+    if(todas.length){rows=todas;ampliado=todas.length}
+  }
   const nAb=D.incidencias.filter(i=>i.estado!=='resuelto').length;
-  $('#ic').innerHTML=`<b>${rows.length}</b> de ${D.incidencias.length} · ${nAb} sin resolver`;
+  $('#ic').innerHTML=ampliado
+    ? `<b>${ampliado}</b> fuera del filtro activo · se muestran igual`
+    : `<b>${rows.length}</b> de ${D.incidencias.length} · ${nAb} sin resolver`;
   $('#li').innerHTML=rows.length?'<div class="rows">'+rows.map(i=>{
       const c=carencia(i);return filaInc({...i,_c:c?c.txt:null,_hoy:conHuespedHoy(i)},false)}).join('')+'</div>'
     :'<div class="none">Sin incidencias</div>';

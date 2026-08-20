@@ -11,7 +11,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md, 'Dato de higiene'"
+  "fuente": "Incidencias_APTO_2026-07-11.md, 'Dato de higiene'",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -25,7 +27,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "otros",
@@ -39,7 +43,9 @@
   "detalle": "Durante la estadía en curso el huésped pregunta cómo se procesará un reembolso ya acordado. La respuesta del anfitrión es que está conversando con Airbnb porque la comisión se cobra sobre el precio total y está viendo la mejor manera de hacerlo. Queda pendiente de ejecución al cierre del hilo. La conversación no explicita el motivo del reembolso.",
   "cita": "¿Cómo procesaréis nuestro reembolso según lo acordado?",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -53,7 +59,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -67,7 +75,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md (workflow casas-stgo-oportunidades, 10-ago)"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md (workflow casas-stgo-oportunidades, 10-ago)",
+  "dir": "Luis Montaner 545, Providencia, Región Metropolitana, Chile",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -81,7 +91,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
+  "dir": "Luis Montaner 545, Providencia, Región Metropolitana, Chile",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -95,7 +107,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "acceso",
@@ -109,7 +123,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md + Casas_Stgo_Insights_Clientes_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md + Casas_Stgo_Insights_Clientes_2026-07-22.md",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -123,7 +139,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_apto_felipe_c"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_apto_felipe_c",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -137,7 +155,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -151,7 +171,9 @@
   "accion": "Revisar por qué no salió el mensaje automático de accesos en esa casa.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "acceso"
+  "tipo": "acceso",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "insumos",
@@ -165,7 +187,9 @@
   "accion": "Cerrar convenio estable de estacionamiento en Valpo — hoy es un problema recurrente y una fuga de venta.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "insumos"
+  "tipo": "insumos",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -179,7 +203,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección ",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -193,7 +219,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -207,7 +235,9 @@
   "detalle": "Camila llega al departamento y no logra ingresar: nadie le abre, la puerta está cerrada con llave y al intentar el código 715715# la clave no funciona y la chapa queda bloqueada. La respuesta del canal fue reenviar dos veces el mismo mensaje automático con el mismo código, sin solución concreta visible en el hilo.",
   "cita": "La contraseña no funcionaba",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Carlos Antúnez 1867, 8170007 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -221,7 +251,9 @@
   "detalle": "Grupo de 12 huéspedes brasileños. Lucas avisa que desde que llegaron no han podido usar el agua caliente. Felipe (coanfitrión) responde que el calentador tuvo mantención reciente y pregunta si es en todos los baños. Lucas confirma: es en todos los baños y la llama del calentador no es estable ni con una sola ducha abierta. Al día siguiente Welida vuelve a insistir pidiendo ayuda urgente. El hilo termina sin respuesta del equipo.",
   "cita": "Todavía no podemos usar el agua caliente y no podemos usar la ducha. Por favor, realmente necesitamos tu ayuda",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "higiene",
@@ -234,7 +266,9 @@
   "detalle": "La huésped reportó falta de limpieza a Airbnb y pidió check-out anticipado con reembolso por noches no disfrutadas; el anfitrión disputa el problema (ya habia enviado toallas y cafetera).",
   "cita": "se puso en contacto con nosotros para informarnos de una falta de limpieza ... tu huésped quiere abandonar el alojamiento",
   "accion": "QA de limpieza con checklist + foto antes de cada check-in (camas, alfombras, baño).",
-  "tipo": "limpieza"
+  "tipo": "limpieza",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -248,7 +282,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking ",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -262,7 +298,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "otros",
@@ -275,7 +313,9 @@
   "detalle": "El huésped pagó y llegó a la dirección pero no había disponibilidad ni respuesta; no pudo ingresar y pidió reembolso.",
   "cita": "Que ya pagamos... Lo puede rechazar Para que me hagan el Rembolso",
   "accion": "Resolver caso a caso y dejar la política escrita para que no dependa del criterio del turno.",
-  "tipo": "otro"
+  "tipo": "otro",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -289,7 +329,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección ",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -302,7 +344,9 @@
   "detalle": "Sin agua caliente para ducharse durante varios dias; el 2do y 3er piso seguian con agua helada pese a multiples visitas de gasfiter; la huesped amenazo con irse y escalo el caso a Airbnb.",
   "cita": "todos tentando tomar banho e perdendo nossa experiencia [todos intentando ducharse y perdiendo nuestra experiencia]",
   "accion": "Evaluar upgrade de calefón/termo o limitar capacidad máxima; declarar la limitación en el anuncio.",
-  "tipo": "agua_caliente"
+  "tipo": "agua_caliente",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -316,7 +360,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón c"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón c",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -330,7 +376,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección ",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -343,7 +391,9 @@
   "detalle": "Internet nunca fue instalado; toda la familia quedó sin wifi durante la estadia y los hijos lo necesitaban; el router llegó tarde y al cierre seguia sin instalarse.",
   "cita": "Todos nós estamos sem internet ... E não instalaram a internet",
   "accion": "Confirmar internet activo antes del check-in; dejar router y clave documentados en la ficha.",
-  "tipo": "wifi_internet"
+  "tipo": "wifi_internet",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -356,7 +406,9 @@
   "detalle": "Catalina D. (01-03 jul, 2 noches, [monto reservado]). NO se alojo: aviso por chat que por un problema familiar de ultima hora no pudo viajar ni hacer el ingreso. NO levanto solicitud de devolucion por Airbnb, asi que la reserva se pago completa y esta liquidada en el cierre de julio ([monto reservado] a los duenos). Queda en STAND BY: si mas adelante ella abre la solicitud, el reembolso caeria sobre un mes ya cerrado. Ademas nunca llego, asi que la limpieza de[monto reservado] que se le descuenta al dueno corresponde a un aseo que no ocurrio.",
   "cita": "Tuvimos problemas familiares en ultimo minuto y no podremos viajar / no pudimos viajar ni realizar el ingreso al alojamiento",
   "accion": "Resolver caso a caso y dejar la política escrita para que no dependa del criterio del turno.",
-  "tipo": "no_show_reembolso"
+  "tipo": "no_show_reembolso",
+  "dir": "Arturo Prat 125, Viña del Mar, Valparaíso, Chile",
+  "comuna": "Viña del Mar"
  },
  {
   "cat": "tecnico",
@@ -370,7 +422,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-08-12.csv (cod HMJ"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-08-12.csv (cod HMJ",
+  "dir": "Arturo Prat 125, Viña del Mar, Valparaíso, Chile",
+  "comuna": "Viña del Mar"
  },
  {
   "cat": "tecnico",
@@ -384,7 +438,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-08-12.csv (cod HMC"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-08-12.csv (cod HMC",
+  "dir": "Arturo Prat 125, Viña del Mar, Valparaíso, Chile",
+  "comuna": "Viña del Mar"
  },
  {
   "cat": "otros",
@@ -398,7 +454,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\pendientes_48h_2026-05-"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\pendientes_48h_2026-05-",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -412,7 +470,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_barridos_tare"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_barridos_tare",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -426,7 +486,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitr"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitr",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -440,7 +502,9 @@
   "detalle": "El huésped usó el calefactor grande porque el chico no funcionaba. Luis responde que ese calefactor estaba dañado porque hacía mucho humo y 'puede ser tóxico', es decir se dejó en la casa un equipo con riesgo conocido. Karl confirma que efectivamente humeaba en el ajuste más alto. Además avisa que probablemente quedó sin queroseno y hay que rellenarlo. No se ve retiro ni reparación del equipo.",
   "cita": "El grande funcionó bien. Hacía algo de humo en el ajuste más alto, pero si lo bajabas, no había ningún problema",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 25, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "acceso",
@@ -454,7 +518,9 @@
   "accion": "Verificar SIEMPRE el edificio destino al enviar la autorización + inscribir a visitas, no solo a huéspedes.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "acceso"
+  "tipo": "acceso",
+  "dir": "Seminario 850, 7750005 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "tecnico",
@@ -468,7 +534,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_apto_conserje"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_apto_conserje",
+  "dir": "Seminario 850, 7750005 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "tecnico",
@@ -482,7 +550,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Repositorio_Casos_APTO.md (sección 3 + g"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Repositorio_Casos_APTO.md (sección 3 + g",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -495,7 +565,9 @@
   "detalle": "El calienta agua de la ducha no dura ni dos minutos caliente, imposible ducharse; 5 adultos no pudieron bañarse y amenaza con contactar a Airbnb.",
   "cita": "não esta funcionando o aquecimento do chuveiro, não dura nem dois minutos aquecido e impossível tomar banho",
   "accion": "Evaluar upgrade de calefón/termo o limitar capacidad máxima; declarar la limitación en el anuncio.",
-  "tipo": "agua_caliente"
+  "tipo": "agua_caliente",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -509,7 +581,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Repositorio_Casos_APTO.md (sección 5 'Ga"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Repositorio_Casos_APTO.md (sección 5 'Ga",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -523,7 +597,9 @@
   "detalle": "Se había acordado salida a las 13:30. A las 12:30 una persona del equipo (Owen) entró al departamento con el huésped y sus pertenencias dentro, se quedó hablando por teléfono en el living y golpeó la puerta de la habitación. Maximiliano lo califica de gravísimo, dice que le arruinó la estadía y anuncia que dejará un reclamo. El equipo pidió disculpas, reordenó a Owen para volver a las 13:40 y ofreció una compensación, pero no hay confirmación de cierre ni del reclamo.",
   "cita": "Este chico entró al departamento donde yo tengo todas mis pertenencias de valor y llega a la pieza donde yo estoy a golpearme la puerta.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Américo Vespucio Nte. 22, 7550689 Las Condes, Región Metropolitana, Chile",
+  "comuna": "Las Condes"
  },
  {
   "cat": "insumos",
@@ -537,7 +613,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\project_centro_intelige"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\project_centro_intelige",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "tecnico",
@@ -551,7 +629,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -565,7 +645,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md + journal wf_7f8cd214-d9f"
+  "fuente": "Incidencias_APTO_2026-07-11.md + journal wf_7f8cd214-d9f",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -579,7 +661,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -593,7 +677,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_canal_apto_se"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_canal_apto_se",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -607,7 +693,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\project_apto_deuda_comp"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\project_apto_deuda_comp",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -621,7 +709,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección ",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -635,7 +725,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitr"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitr",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -648,7 +740,9 @@
   "detalle": "Una puerta/mueble ya estaba danada y se cayo al abrirla para ver los articulos de aseo; el anfitrion ofrecio mantencion y quedo de repararla en el check-out.",
   "cita": "esta puerta estaba ya danada. Abrimos para mirar lo que habia de aseo y se cayo esa puerta",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "electrodomestico"
+  "tipo": "electrodomestico",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -662,7 +756,9 @@
   "accion": "Confirmar que el colchón + ropa de cama estén disponibles antes del check-in.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "insumos"
+  "tipo": "insumos",
+  "dir": "Carlos Antúnez 1867, 8170007 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "insumos",
@@ -676,7 +772,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 09-ago, cod HM"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 09-ago, cod HM",
+  "dir": "Carlos Antúnez 1867, 8170007 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -690,7 +788,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -704,7 +804,9 @@
   "accion": "Corregir descripción del anuncio para que calce con las fotos.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "acceso"
+  "tipo": "acceso",
+  "dir": "Arturo Prat 324, 8330409 Santiago, Región Metropolitana, Chile",
+  "comuna": "Santiago"
  },
  {
   "cat": "otros",
@@ -718,7 +820,9 @@
   "detalle": "El huésped consultó si el estacionamiento era techado y su altura porque viajaba en una van de 2,8 m de alto. La respuesta llegó al día siguiente y sin el dato ('El estacionamiento es en el subterráneo, desconozco la altura la verdad'). El huésped insistió varias veces para que le confirmaran la reserva y finalmente la solicitud quedó cancelada. Reserva perdida: $[monto reservado] por 1 noche.",
   "cita": "y lo otro confirmen pronto la reserva sino para buscar otra opcion por favor",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Arturo Prat 324, 8330409 Santiago, Región Metropolitana, Chile",
+  "comuna": "Santiago"
  },
  {
   "cat": "tecnico",
@@ -731,7 +835,9 @@
   "detalle": "Problema electrico al conectar muchas estufas en la propiedad (ademas de la ducha sin agua caliente); Airbnb intervino y el anfitrion ofrecio estufas no electricas para evitar el corte.",
   "cita": "quiere saber si pueden solucionar los problemas que menciono con la ducha y la electricidad en la propiedad",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "electricidad"
+  "tipo": "electricidad",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -745,7 +851,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md, resumen + kit base por casa"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md, resumen + kit base por casa",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "insumos",
@@ -759,7 +867,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
+  "dir": "Luis Montaner 545, Providencia, Región Metropolitana, Chile",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -773,7 +883,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "insumos",
@@ -787,7 +899,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "acceso",
@@ -801,7 +915,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md"
+  "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "acceso",
@@ -815,7 +931,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, huéspe"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, huéspe",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -829,7 +947,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, fecha del even"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, fecha del even",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -843,7 +963,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -856,7 +978,9 @@
   "detalle": "La alfombra y el cubrecama tenían manchas que daban sensación de suciedad.",
   "cita": "la alfombra y el cubrecama tenían manchas... me dieron la sensación de suciedad",
   "accion": "QA de limpieza con checklist + foto antes de cada check-in (camas, alfombras, baño).",
-  "tipo": "limpieza"
+  "tipo": "limpieza",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "insumos",
@@ -869,7 +993,9 @@
   "detalle": "No dejaron toalla de manos y la huésped tuvo que comprarla.",
   "cita": "No dejaron toalla de manos, por lo que tuve que co[mprar]",
   "accion": "Checklist de reposición con foto al check-in, cruzado contra lo que promete el anuncio.",
-  "tipo": "falta_amenity"
+  "tipo": "falta_amenity",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "insumos",
@@ -883,7 +1009,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking ",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "insumos",
@@ -897,7 +1025,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "higiene",
@@ -911,7 +1041,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "tecnico",
@@ -925,7 +1057,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "otros",
@@ -939,7 +1073,9 @@
   "detalle": "El huésped envió la solicitud el día anterior y al día siguiente tuvo que insistir para saber si se confirmaba. Cuando se le respondió se le ofreció la casa de Barrio Italia, que no le servía porque necesitaba estar cerca de la embajada de EEUU. Terminó cancelando la solicitud. Reserva perdida: $[monto reservado] por 1 noche, huésped con 5.0 y reseñas excelentes.",
   "cita": "Quiero saber si confirmas la reserva porfa",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -953,7 +1089,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -967,7 +1105,9 @@
   "accion": "Definir política y tarifario único; es plata que hoy se deja de cobrar.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "tecnico"
+  "tipo": "tecnico",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -981,7 +1121,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, aplica"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, aplica",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -995,7 +1137,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking ",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1008,7 +1152,9 @@
   "detalle": "Faltó ropa de cama y toallas suficientes; los huéspedes tuvieron que compartir toallas y la entrega de sábanas se canceló por falta de stock, quedando para el dia siguiente.",
   "cita": "Estamos tendo de dividir toalhas tbm",
   "accion": "Checklist de reposición con foto al check-in, cruzado contra lo que promete el anuncio.",
-  "tipo": "falta_amenity"
+  "tipo": "falta_amenity",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1022,7 +1168,9 @@
   "detalle": "El grupo solicitó agregar 4 huéspedes apoyándose en que el anuncio indicaba capacidad para 16 personas. El coanfitrión respondió que solo hay lugar para 13 y que únicamente podía aceptar 1 persona más. La huésped retiró la solicitud de 4 y se aceptó solo 1 huésped adicional; la diferencia entre la capacidad publicada y la real quedó sin corregir.",
   "cita": "En la web ponía que la casa está pensada para 16 personas.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Yerbas Buenas 731, 2381637 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "insumos",
@@ -1036,7 +1184,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "Arturo Prat 125, Viña del Mar, Valparaíso, Chile",
+  "comuna": "Viña del Mar"
  },
  {
   "cat": "otros",
@@ -1050,7 +1200,9 @@
   "detalle": "Abihail envió una solicitud para 13-16 nov (2 huéspedes, $[monto reservado]) el 8 de agosto y la solicitud venció el domingo siguiente. La conversación figura como 'No leído' / 'Sin leer': el huésped nunca recibió respuesta del equipo.",
   "cita": "Airbnb: la solicitud de reservación venció",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1064,7 +1216,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking ",
+  "dir": "Gral. Carol Urzúa 7030, 7560765 Las Condes, Región Metropolitana, Chile",
+  "comuna": "Las Condes"
  },
  {
   "cat": "tecnico",
@@ -1078,7 +1232,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "Gral. Carol Urzúa 7030, 7560765 Las Condes, Región Metropolitana, Chile",
+  "comuna": "Las Condes"
  },
  {
   "cat": "insumos",
@@ -1092,7 +1248,9 @@
   "detalle": "Días antes del check-in (28–30 ago, Valparaíso), Luis avisó a la huésped que el convenio con el estacionamiento se terminó y que ya no cuentan con el servicio. El grupo son 6 bomberos que van a la corrida cerro arriba y viajan en dos camionetas. Las alternativas ofrecidas fueron pagar a Pilar[monto reservado] por auto por noche, o un subterráneo en Plaza Sotomayor que el propio equipo describe como complicado porque queda en el plano. La huésped pidió otra opción cercana y el hilo queda sin solución concreta; el último mensaje figura sin leer.",
   "cita": "Y sabe de algún otro estacionamiento cercano?",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 35, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "tecnico",
@@ -1106,7 +1264,9 @@
   "detalle": "Al hacer check-out, Karl reporta que el calefactor pequeño de queroseno no funcionaba durante toda la estadía (familia de 5, agosto en Valparaíso), por lo que tuvieron que usar el grande. El equipo no confirma reparación ni reemplazo en el hilo.",
   "cita": "El calentador pequeño de queroseno no funcionaba. Usamos el grande y no creo que quede más queroseno en él, así que quizá quieras rellenarlo.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 25, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "insumos",
@@ -1120,7 +1280,9 @@
   "detalle": "A pocos días del check-in el equipo avisa a Abisag que se terminó el convenio con el estacionamiento y que ya no cuentan con el servicio, ofreciendo costear un cupo diario o incluso que busquen otro alojamiento. El grupo (8 huéspedes) sí necesita 1 estacionamiento porque viaja en furgón. El hilo queda abierto: el equipo pide el modelo del vehículo porque hay algunos que no caben.",
   "cita": "el convenio que teníamos con el estacionamiento se finalizó por lo que no contamos con el servicio de momento",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 25, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "otros",
@@ -1134,7 +1296,9 @@
   "detalle": "Paula solicitó la casa para 7 huéspedes ($[monto reservado]). El equipo demoró en responder y luego rechazó por falta de disponibilidad, explicando que otro huésped había pedido cambio de fechas que incluía el sábado. Paula reclama que por la demora perdió otra casa y cuestiona que el calendario mostrara disponibilidad. No hay oferta alternativa ni compensación en el hilo.",
   "cita": "Pucha, me hicieron perder otra casa con la demora. Por que aparece disponible antes entonces?",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 25, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "insumos",
@@ -1148,7 +1312,9 @@
   "detalle": "El anuncio ofrece espacio para 2 autos, pero al mover la reserva al 14-16 de agosto el coanfitrión avisó que no quedaban cupos del convenio de estacionamiento. Se ofreció gestionar cupos extra pagados por el huésped ($[monto reservado] por las dos noches, $[monto reservado] por noche adicional). Al cierre del hilo aún estaba pendiente que el grupo confirmara si tomaba el cupo extra del sábado.",
   "cita": "el único inconveniente es que no tenemos cupo para estacionamiento ya que es un convenio que tenemos y se ocuparon",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 25, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "tecnico",
@@ -1162,7 +1328,9 @@
   "detalle": "El día del check-in el coanfitrión avisa a la huésped que la propiedad está con problema de electricidad, ya reportado a la compañía. Se le ofrece moverse o cambiarse a Viña del Mar. La huésped acepta quedarse igual. A la mañana siguiente el coanfitrión informa que recién van a revisar los de Chilquinta, o sea la luz seguía sin reponerse al momento del check-out.",
   "cita": "Te comento que estamos presentando problema con la electricidad y ya reportamos con la compañía y estamos esperando que vengan a solucionar, fueron lugares aleatorios porq en algun",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 25, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "otros",
@@ -1176,7 +1344,9 @@
   "detalle": "El huésped (cadete naval) canceló el mismo día de llegada por una emergencia que le impidió viajar, avisando que ya no alcanzaba a pedir reembolso. El mensaje quedó marcado como leído por Luis pero el hilo figura como no leído y no hay respuesta del equipo ni gestión registrada.",
   "cita": "tube un inconveniente y de emergencia no logre viajar y no pude cancelar el hospedaje antes",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gálvez 35, 2340000 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "tecnico",
@@ -1190,7 +1360,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (ranking ",
+  "dir": "Arturo Prat 324, 8330409 Santiago, Región Metropolitana, Chile",
+  "comuna": "Santiago"
  },
  {
   "cat": "tecnico",
@@ -1203,7 +1375,9 @@
   "detalle": "Sin internet en el departamento 409; APTO no pudo contactar a la compañía por la hora y ofreció usar el wifi del 309 como solución temporal.",
   "cita": "infelizmente estamos sem internet no quarto 409, poderia nos ajudar?",
   "accion": "Confirmar internet activo antes del check-in; dejar router y clave documentados en la ficha.",
-  "tipo": "wifi_internet"
+  "tipo": "wifi_internet",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1217,7 +1391,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1231,7 +1407,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 31-jul, cod HM"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 31-jul, cod HM",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1245,7 +1423,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón a"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón a",
+  "dir": "Carlos Antúnez 1867, 8170007 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1259,7 +1439,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "Carlos Antúnez 1867, 8170007 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "insumos",
@@ -1273,7 +1455,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1287,7 +1471,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1301,7 +1487,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón d"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón d",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -1315,7 +1503,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md, sección Patrones + Acciones de raíz"
+  "fuente": "Incidencias_APTO_2026-07-11.md, sección Patrones + Acciones de raíz",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -1329,7 +1519,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón b"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón b",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1343,7 +1535,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón e"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (patrón e",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -1357,7 +1551,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Experiencia_Huesped\\Sintesis_FAQs_GAPS_2026-06-12.md (GAP #7) y barrido_h"
+  "fuente": "APTO\\Operacional\\Experiencia_Huesped\\Sintesis_FAQs_GAPS_2026-06-12.md (GAP #7) y barrido_h",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "tecnico",
@@ -1371,7 +1567,9 @@
   "accion": "Reforzar equipo de limpieza ese día o ajustar una de las dos horas.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "tecnico"
+  "tipo": "tecnico",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1385,7 +1583,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Transcript f76b9393-47dd-4a56-a51b-b3be2f33b746.jsonl, línea 10199 (13-jul-2026)"
+  "fuente": "Transcript f76b9393-47dd-4a56-a51b-b3be2f33b746.jsonl, línea 10199 (13-jul-2026)",
+  "dir": "Av. Rodrigo de Araya 1410, Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "higiene",
@@ -1399,7 +1599,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección "
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\Agente_Guest_Ops\\Incidencias_APTO_2026-07-11.md (sección ",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -1413,7 +1615,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1427,7 +1631,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Experiencia_Huesped\\Sintesis_FAQs_GAPS_2026-06-12.md (GAP #2 y #10, P0 #1"
+  "fuente": "APTO\\Operacional\\Experiencia_Huesped\\Sintesis_FAQs_GAPS_2026-06-12.md (GAP #2 y #10, P0 #1",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "insumos",
@@ -1441,7 +1647,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitr"
+  "fuente": "C:\\Users\\Cami\\.claude\\projects\\C--Users-Cami-Desktop-CLAUDE\\memory\\reference_agente_anfitr",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "acceso",
@@ -1455,7 +1663,9 @@
   "accion": "Estandarizar el mensaje de bienvenida de anuncios combinados: un edificio, N° de deptos y pisos explícitos.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "acceso"
+  "tipo": "acceso",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "acceso",
@@ -1469,7 +1679,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, cod HM"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 14-ago, cod HM",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "otros",
@@ -1483,7 +1695,9 @@
   "detalle": "Un grupo de 5 estudiantes de la Universidad ESAN solicitó reservar del 18 al 23 de abril de 2027 por[monto reservado]. El mensaje figura leído por Sebastián, pero nadie respondió y Airbnb dejó vencer la solicitud al día siguiente. Ingreso potencial perdido por falta de respuesta.",
   "cita": "Somos un grupo de chicas de la Universidad ESAN, tenemos un viaje de estudios y nos gustaría reservar del 18 al 23 de abril por favor.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "San Isidro 513, 8330493 Santiago, Región Metropolitana, Chile",
+  "comuna": "Santiago"
  },
  {
   "cat": "higiene",
@@ -1497,7 +1711,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1511,7 +1727,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1525,7 +1743,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "Incidencias_APTO_2026-07-11.md"
+  "fuente": "Incidencias_APTO_2026-07-11.md",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1539,7 +1759,9 @@
   "cita": "",
   "accion": "Levantado del barrido de conversaciones — asignar responsable y cerrar.",
   "tipo": "insight",
-  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 31-jul, cod HM"
+  "fuente": "APTO\\Operacional\\Cerebro_Turismo\\panel_rutas\\incidencias.json (15-ago-2026, 31-jul, cod HM",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1553,7 +1775,9 @@
   "detalle": "Al hacer check-out el huésped avisa que dejó la loza lavada pero no pudo secarla porque no había paños de cocina en la casa. El equipo no respondió a este punto: el siguiente mensaje del anfitrión pregunta por la llave del estacionamiento y luego se despide.",
   "cita": "En cuanto a la loza, la dejamos lavada pero no había trapitos para poder secarla.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1566,7 +1790,9 @@
   "detalle": "El tirador de la puerta estaba suelto (daño preexistente reportado por la huésped).",
   "cita": "el tirador de la puerta está suelto, para que no piensen que hemos sido nosotros",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "otro"
+  "tipo": "otro",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "insumos",
@@ -1579,7 +1805,9 @@
   "detalle": "El departamento no cuenta con plancha; la huésped la buscó y no habia disponible (depto aún incompleto en amenities).",
   "cita": "Quería saber dónde se encuentra la plancha en el departamento",
   "accion": "Checklist de reposición con foto al check-in, cruzado contra lo que promete el anuncio.",
-  "tipo": "falta_amenity"
+  "tipo": "falta_amenity",
+  "dir": "Arturo Prat 125, Viña del Mar, Valparaíso, Chile",
+  "comuna": "Viña del Mar"
  },
  {
   "cat": "otros",
@@ -1593,7 +1821,9 @@
   "detalle": "Sobre una reserva ya confirmada para 3 huéspedes, el anfitrión Diego envió una solicitud de cambio por aumento de precio. El hilo queda en estado Solicitud de cambio enviada, sin respuesta de la huésped Karen registrada.",
   "cita": "Diego: Cambio solicitado: Aumento de precio",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1606,7 +1836,9 @@
   "detalle": "Se mojo casi todo el pasillo del bano en la manana; los huespedes secaron pero el anfitrion reconocio el problema y quedo de corregirlo.",
   "cita": "Se mojo casi todo el pasillo del bano en la manana, Pero secamos y todo ok",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "griferia_agua"
+  "tipo": "griferia_agua",
+  "dir": "Gral. Carol Urzúa 7030, 7560765 Las Condes, Región Metropolitana, Chile",
+  "comuna": "Las Condes"
  },
  {
   "cat": "tecnico",
@@ -1620,7 +1852,9 @@
   "detalle": "En el mismo mensaje donde reporta el wifi, la huésped avisa que el televisor tampoco tiene señal. En la conversación solo se responde por el wifi; el tema del televisor nunca fue contestado ni se registra solución.",
   "cita": "El televisor tampoco tiene señal.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. Pedro de Valdivia 150, 7500000 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "higiene",
@@ -1634,7 +1868,9 @@
   "accion": "Listar amenities de baño en el anuncio para evitar la consulta.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "higiene"
+  "tipo": "higiene",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1648,7 +1884,9 @@
   "accion": "Tener colchón extra asignado a ese depto.",
   "estado": "abierto",
   "cita": "",
-  "tipo": "insumos"
+  "tipo": "insumos",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1662,7 +1900,9 @@
   "detalle": "El huésped reporta la primera noche que no hay agua caliente. Se envió a Manuel del equipo, que verificó que el termo estaba prendido al máximo; se concluyó que requería revisión de un especialista. Se ofreció reubicación en otro departamento (deptovespucio22) con Uber pagado, o no cobrar la noche. El huésped prefirió quedarse porque ya era muy tarde y aceptó que se resolviera al día siguiente. En la conversación no queda registro de que el especialista haya ido ni de que el problema se solucionara.",
   "cita": "No hay agua caliente para ducharse",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Carlos Antúnez 1867, 8170007 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1675,7 +1915,9 @@
   "detalle": "El huésped reportó una fuga de gas en la cocina y pidió solución urgente; el anfitrión solo preguntó dónde estaba, sin confirmación de arreglo.",
   "cita": "hay una fuga de gas en la cocina. Es importante que solucionen estos problemas lo antes posible",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "otro"
+  "tipo": "otro",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -1688,7 +1930,9 @@
   "detalle": "La huésped reportó a Airbnb problemas de limpieza y comodidades faltantes en el alojamiento; el anfitrión dijo no haber sido informado de la limpieza.",
   "cita": "teve um problema na acomodação, com limpeza e algumas comodidades que estariam faltando",
   "accion": "QA de limpieza con checklist + foto antes de cada check-in (camas, alfombras, baño).",
-  "tipo": "limpieza"
+  "tipo": "limpieza",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -1702,7 +1946,9 @@
   "detalle": "Al llegar, el grupo abre la caja con el código 7013 pero solo encuentra la llave del portón y la de la casa; falta la llave pequeña del candado del portón grande, necesaria para ingresar los vehículos. El anfitrión pide foto y ofrece llamar por WhatsApp al +56974788301 para ayudar. En el hilo no queda registro de cómo terminó.",
   "cita": "Camilo, no encontramos la llave de la cerradura del portón",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "otros",
@@ -1716,7 +1962,9 @@
   "detalle": "Reserva de 7 noches (22–29 ago, 5 huéspedes) confirmada desde el 26 de marzo. El 2 de agosto el huésped canceló la solicitud y la reserva quedó cancelada por el huésped. En el hilo no aparece motivo declarado ni ningún mensaje del equipo después de la cancelación. Lo único previo fue un cambio de vuelo con llegada al alojamiento cerca de las 2:00 a.m., que Sebastián respondió confirmando conserje 24/7.",
   "cita": "Solicitud de reservación cancelada. El estado de la reservación es Cancelada por el huésped.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Carlos Antúnez 1867, 8170007 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1729,7 +1977,9 @@
   "detalle": "El asiento/tapa del inodoro de la suite estaba suelto y la hija de 5 años casi se cae al usarlo; el anfitrión lo atribuyó a daño de una reserva anterior no detectado.",
   "cita": "O assento do vaso da suíte, está solto! Minha filha de 5 anos usou e ao sair quase caiu!",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "otro"
+  "tipo": "otro",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1742,7 +1992,9 @@
   "detalle": "La estufa de parafina botaba humo y tuvieron que apagarla apenas encenderla; el anfitrión lo atribuyó a comportamiento normal del equipo.",
   "cita": "la estufa que nos dejaron no funciona bien y emite humo. La tuvimos que apagar tan pronto la prendimos",
   "accion": "Kit de invierno: 1 calefactor por dormitorio + edredón grueso y frazada por cama.",
-  "tipo": "calefaccion_frio"
+  "tipo": "calefaccion_frio",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "higiene",
@@ -1755,7 +2007,9 @@
   "detalle": "A la llegada la cama de 2 plazas tenía manchas cafés; el anfitrión no respondió al reporte.",
   "cita": "En la cama de 2 plazas hay unas manchas cafés cuando llegamos",
   "accion": "QA de limpieza con checklist + foto antes de cada check-in (camas, alfombras, baño).",
-  "tipo": "limpieza"
+  "tipo": "limpieza",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -1769,7 +2023,9 @@
   "detalle": "El grupo llegó en dos vehículos. Se les asignó el estacionamiento 241 y luego el 512 para el segundo auto, pero al llegar de noche el 512 estaba ocupado. El anfitrión pidió disculpas, indicó que ese estacionamiento ya estaba asignado a otro departamento y dijo haber hablado con el conserje para asignar uno adicional. No hay confirmación en el hilo de dónde quedó finalmente estacionado el segundo auto; a la mañana siguiente el anfitrión recomienda moverlo al de visita si quedó en otro número.",
   "cita": "Buenas noches, disculpe la hora, el 512 estaba ocupado",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "tecnico",
@@ -1783,7 +2039,9 @@
   "detalle": "La huésped avisa desde la propiedad que Chilquinta va a la casa por un corte de luz y entrega el número de cliente. La coanfitriona responde que los recibe, pero en la conversación no consta que el suministro se haya repuesto.",
   "cita": "Buen dia, chilquinta viene por un corte de luz, yerbas buenas 731",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Yerbas Buenas 731, 2381637 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "acceso",
@@ -1797,7 +2055,9 @@
   "detalle": "Consultado por el anfitrión, el huésped confirma que en la caja solo había dos llaves (portón de entrada y puerta de la casa), sin la del estacionamiento. Mismo patrón que se repite en la reserva HM9R5ESBQT de la misma casa, donde el grupo siguiente sí quedó sin poder abrir el portón para los autos.",
   "cita": "Solo encontré dos llaves, la del portón de entrada y la puerta de la casa",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Francisco Bilbao 2714, 7510745 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1810,7 +2070,9 @@
   "detalle": "Consulto a mitad de estadia si las llaves de cocina y bano y el agua calientan; posible falla de agua caliente sin confirmar ni resolver en el hilo.",
   "cita": "as torneiras de pia de cozinha e banheiro ficam quente? A agua?? [las llaves de la cocina y el bano calientan? El agua??]",
   "accion": "Evaluar upgrade de calefón/termo o limitar capacidad máxima; declarar la limitación en el anuncio.",
-  "tipo": "agua_caliente"
+  "tipo": "agua_caliente",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "higiene",
@@ -1823,7 +2085,9 @@
   "detalle": "La huésped observó que la limpieza fue lo único deficiente de la estadía.",
   "cita": "Muy linda la casa. Lo único más o menos fue la limpieza",
   "accion": "QA de limpieza con checklist + foto antes de cada check-in (camas, alfombras, baño).",
-  "tipo": "limpieza"
+  "tipo": "limpieza",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -1837,7 +2101,9 @@
   "detalle": "Damian canceló la reserva de 1 noche ($[monto reservado]) la noche anterior al check-in por motivos personales (su pareja ya no quería viajar). El equipo solo reaccionó con un emoji; no hay gestión de recuperación de la noche ni oferta alternativa en el hilo.",
   "cita": "Perdón por cancelar no me gusta hacerlo tan de repente pero no poder ir ya que mi pareja ya no quiere y yo soy De Santiago y no are solo ya que no tiene mucho sentido muchas gracia",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Paseo Cousiño, Viña del Mar, Región de Valparaíso, Chile",
+  "comuna": "Viña del Mar"
  },
  {
   "cat": "tecnico",
@@ -1850,7 +2116,9 @@
   "detalle": "Uno de los baños no calentaba agua por falla repentina del calefón; se envió gasfiter certificado y quedó resuelto, con reembolso del 30% de la noche afectada.",
   "cita": "uno de los baños no prende el agua caliente",
   "accion": "Evaluar upgrade de calefón/termo o limitar capacidad máxima; declarar la limitación en el anuncio.",
-  "tipo": "agua_caliente"
+  "tipo": "agua_caliente",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -1864,7 +2132,9 @@
   "detalle": "Leonardo (hermano del titular Marcelo) llegó al edificio a dejar alimentos y la recepción no lo dejó entrar ni recibir la comida porque no tenía el correo de autorización, ni para él como visita ni para los huéspedes de la reserva. Avisó a las 14:53 que no tenía clave ni instrucciones y no obtuvo respuesta hasta las 18:21, ya estando en el lugar. Al inscribirlo, el equipo envió la autorización a otro edificio equivocado y recién a las 18:36 quedó resuelto ('Ahi si amigo, se habia enviado a otro edificio / Ya quedó'). Causa declarada por el equipo: no sabían la hora de llegada y el equipo pensó que era más tarde.",
   "cita": "Llegué al apartmanento y me dicen que no tienen el correo",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Seminario 850, 7750005 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "tecnico",
@@ -1877,7 +2147,9 @@
   "detalle": "El WiFi no funcionaba pese a reiniciar el router; el anfitrión iba a llamar a la compañía y el servicio se restableció solo al rato.",
   "cita": "O WIFI não está funcionando. Já tentamos desligar da tomada e reconectar, mas segue sem funcionar",
   "accion": "Confirmar internet activo antes del check-in; dejar router y clave documentados en la ficha.",
-  "tipo": "wifi_internet"
+  "tipo": "wifi_internet",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -1891,7 +2163,9 @@
   "detalle": "Se le indicó al huésped que tocara el timbre negro y que Joaquín lo recibiría. Al llegar tocó y no salió nadie, quedó esperando en la calle. Unos 20-35 minutos después el coanfitrión le dio la clave del candado de la entrada (5902) y el número de Joaquín para que pudiera entrar por su cuenta. Contexto sensible: el huésped viajaba por la hospitalización de su padre.",
   "cita": "Tienes algún número, porque he tocado y nadie sale",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Luis Montaner 545, Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1904,7 +2178,9 @@
   "detalle": "Esperaba aire acondicionado/calefaccion segun el anuncio; el depto no tenia calefactor (el anfitrion se lo habia dado a otro pasajero) y el equipo gris solo enfriaba; finalmente hallo un calefactor en porteria.",
   "cita": "pense que habia aire acondicionado. Segun decia en la descripcion de Aibnb. No hay un caloventilador o alguna forma de calefaccionar el apto?",
   "accion": "Kit de invierno: 1 calefactor por dormitorio + edredón grueso y frazada por cama.",
-  "tipo": "calefaccion_frio"
+  "tipo": "calefaccion_frio",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "acceso",
@@ -1917,7 +2193,9 @@
   "detalle": "Conserjería no dejó entrar al grupo hasta re-registrar al acompañante; esperaron en la puerta.",
   "cita": "No nos dejam entrar sin ello... Porfaaa que estamos aquí",
   "accion": "Enviar nombres a conserjería 24 h antes; crear los accesos que siguen PENDIENTES.",
-  "tipo": "acceso_chapa"
+  "tipo": "acceso_chapa",
+  "dir": "Lincoyán 1001, 7770533 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "acceso",
@@ -1931,7 +2209,9 @@
   "detalle": "Gustavo tuvo que pedir el código de acceso a la habitación ya estando en la casa. El equipo entregó las tres claves (cama king, literas y pieza doble) y reconoció que debió enviarse antes un mensaje automático con esa información y no se envió.",
   "cita": "Buenas noches, ¿cuál es el código de acceso a la habitación?",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1944,7 +2224,9 @@
   "detalle": "Solo había un calefactor (esperaban uno por dormitorio) y no encontraron cobertores en ninguna habitación, pasando mucho frío; el equipo llevó calefactor y frazadas.",
   "cita": "E não encontramos coberta em nenhum dos quartos ... Está muito frio",
   "accion": "Kit de invierno: 1 calefactor por dormitorio + edredón grueso y frazada por cama.",
-  "tipo": "calefaccion_frio"
+  "tipo": "calefaccion_frio",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "insumos",
@@ -1957,7 +2239,9 @@
   "detalle": "Faltaba edredón/ropa de cama gruesa para el frío; con 3 niños tuvieron que sacar mantas de otro depto (1615) y esperar entrega adicional al día siguiente.",
   "cita": "Camilo, não tem edredom? Roupa de cama mais grossa?",
   "accion": "Checklist de reposición con foto al check-in, cruzado contra lo que promete el anuncio.",
-  "tipo": "falta_amenity"
+  "tipo": "falta_amenity",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -1970,7 +2254,9 @@
   "detalle": "El enchufe/circuito de la lavadora y termo no tenía energía; había que encender el breaker/circuito remotamente cada vez para poder lavar.",
   "cita": "la lavadora no funciona pero no es un problema de la lavadora es el enchufe el que no funciona",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "electricidad"
+  "tipo": "electricidad",
+  "dir": "San Isidro 513, 8330493 Santiago, Región Metropolitana, Chile",
+  "comuna": "Santiago"
  },
  {
   "cat": "otros",
@@ -1984,7 +2270,9 @@
   "detalle": "La huésped Magda Catalina reporta que una solicitud de reserva previa quedó sin respuesta del equipo y tuvo que volver a solicitar. El propio equipo lo reconoce en el hilo: se les pasó aprobar a tiempo. La nueva solicitud sí se confirmó en minutos.",
   "cita": "No recibimos respuesta de la reserva anterior, pero seguimos muy interesados en quedarnos en su residencia.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Luis Montaner 545, Providencia, Santiago, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -1997,7 +2285,9 @@
   "detalle": "El calefactor de la sala estaba sin gas y el control del aire (modo calor) no tenía pilas; se les entregó una estufa a parafina como reemplazo.",
   "cita": "esse aquecedor que está na sala... está sem gás… ou o ar condicionado funciona no quente? ...um controle preto que está sem pilhas",
   "accion": "Kit de invierno: 1 calefactor por dormitorio + edredón grueso y frazada por cama.",
-  "tipo": "calefaccion_frio"
+  "tipo": "calefaccion_frio",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -2010,7 +2300,9 @@
   "detalle": "Se corto el internet durante la estadia; el anfitrion indico reiniciar el router principal ubicado subiendo las escalas.",
   "cita": "Se corto el internet, hay alguna solucion?",
   "accion": "Confirmar internet activo antes del check-in; dejar router y clave documentados en la ficha.",
-  "tipo": "wifi_internet"
+  "tipo": "wifi_internet",
+  "dir": "Yerbas Buenas 731, 2381637 Valparaíso, Chile",
+  "comuna": "Valparaíso"
  },
  {
   "cat": "otros",
@@ -2023,7 +2315,9 @@
   "detalle": "La habitación quedó reservada dos veces por no estar ingresada en calendario; se reubicó al huésped a una de baño compartido.",
   "cita": "por error, al no estar ingresada en calendario tu reserva, la habitación quedó reservada dos veces",
   "accion": "Resolver caso a caso y dejar la política escrita para que no dependa del criterio del turno.",
-  "tipo": "otro"
+  "tipo": "otro",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -2036,7 +2330,9 @@
   "detalle": "El unico calefactor del depto es imposible de usar por lo ruidoso; se coordinaron calefactores adicionales para reemplazarlo.",
   "cita": "só tem um aquecedor e é impossível ligar ele de tão barulhento",
   "accion": "Kit de invierno: 1 calefactor por dormitorio + edredón grueso y frazada por cama.",
-  "tipo": "calefaccion_frio"
+  "tipo": "calefaccion_frio",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -2050,7 +2346,9 @@
   "detalle": "Al ingresar, la huésped pide una toalla adicional y papel higiénico porque no había en el departamento. El equipo reconoce que se traspapeló (pensaron que llegaban más tarde) y envía a Jonatan con lo faltante; como la huésped tuvo que salir, se lo dejan en recepción y se confirma la entrega.",
   "cita": "¿Podría proporcionar una toalla más y papel higiénico, por favor? Aquí no tenemos.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. Pedro de Valdivia 150, 7500000 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "tecnico",
@@ -2064,7 +2362,9 @@
   "detalle": "La huésped reporta que el wifi no conecta. El instructivo remitía a una clave escrita en la pared del living; se le sugiere probar sin el punto final y reiniciar el router, sin éxito. Finalmente se le envía la contraseña correcta por mensaje (KJ8bhxgvphdv) y la huésped confirma que funcionó.",
   "cita": "No pude conectarme al wifi, ni siquiera después de introducir el código al final.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. Pedro de Valdivia 150, 7500000 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "insumos",
@@ -2077,7 +2377,9 @@
   "detalle": "Faltaba la cafetera descrita en el anuncio y solo había una toalla de baño por persona; el equipo llevó cafetera y toallas adicionales a recepción.",
   "cita": "Por favor onde estão os utensílios descritos no anúncio? Não encontramos a cafeteira",
   "accion": "Checklist de reposición con foto al check-in, cruzado contra lo que promete el anuncio.",
-  "tipo": "falta_amenity"
+  "tipo": "falta_amenity",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -2090,7 +2392,9 @@
   "detalle": "Solo había 2 calefactores para 3 dormitorios ocupados; APTO compró y entregó uno adicional en recepción.",
   "cita": "teria como ver pra nós se teria um terceiro aquecedor? Pois estamos em três quartos diferentes",
   "accion": "Checklist de reposición con foto al check-in, cruzado contra lo que promete el anuncio.",
-  "tipo": "falta_amenity"
+  "tipo": "falta_amenity",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -2103,7 +2407,9 @@
   "detalle": "A la llegada, conserjería no tenía registrados los datos y pidieron reenviar el correo; finalmente lograron entrar al depto.",
   "cita": "Me dicen que no estan los datos En conserjeria",
   "accion": "Enviar nombres a conserjería 24 h antes; crear los accesos que siguen PENDIENTES.",
-  "tipo": "acceso_chapa"
+  "tipo": "acceso_chapa",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -2117,7 +2423,9 @@
   "detalle": "La solicitud de Fabrizio (5 huéspedes, 14-16 nov, $[monto reservado]) expiró sin aprobación. El anfitrión reconoce la falta y le pide reenviar la solicitud. Posteriormente aparece la reserva HMATE8DRTX del mismo huésped, mismas fechas y mismo monto, confirmada el 9 de agosto.",
   "cita": "Hola Fabrizio!! Disculpas no aprobé a tiempo! Si aun necesitas, reenvía la solicitud y la apruebo.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "acceso",
@@ -2130,7 +2438,9 @@
   "detalle": "El anfitrion entrego mal la informacion del estacionamiento/edificio (numero y nivel equivocados); los huespedes no encontraron el estacionamiento y debieron subir a recepcion para poder ingresar.",
   "cita": "Pero no encontramos el estacionamiento del apartamento",
   "accion": "Enviar nombres a conserjería 24 h antes; crear los accesos que siguen PENDIENTES.",
-  "tipo": "acceso_chapa"
+  "tipo": "acceso_chapa",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "otros",
@@ -2144,7 +2454,9 @@
   "detalle": "La huésped detectó una inconsistencia en el anuncio: en las fotos cuenta tres habitaciones y en la descripción dice dos. Preguntó el 29 de mayo y quedó sin respuesta hasta el día siguiente, cuando se le aclaró que son 2 departamentos con 2 cuartos cada uno, en piso 3 y piso 4 (309 y 409, uno arriba del otro). La huésped quedó conforme y reservó, pero el anuncio sigue con la información contradictoria que la confundió.",
   "cita": "¿Son dos habitaciones o tres? En las fotos vi tres y en la descripción son dos.",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Arturo Prat 324, 8330409 Santiago, Región Metropolitana, Chile",
+  "comuna": "Santiago"
  },
  {
   "cat": "otros",
@@ -2158,7 +2470,9 @@
   "detalle": "Lucas llegaba a Santiago a las 10:00 y pidió ingresar a esa hora; el coanfitrión Sebastián le explicó que no se podía por una salida a las 12:00 más limpieza, ofreciendo dejar equipaje a las 12:15 e ingreso probable a las 14:00. El huésped respondió que así no le servía y horas después pidió cambiar la fecha de la reserva para no perder el dinero, ya que no era reembolsable. Se gestionó el cambio y la reserva quedó confirmada para el 20-21 de agosto.",
   "cita": "Queria saber si podriamos cambiar la fecha de la reserva por favor que al final no llegare mañana para no perder el dinero por favor ya que no se puede rembolsar",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Gral. Carol Urzúa 7030, 7560765 Las Condes, Región Metropolitana, Chile",
+  "comuna": "Las Condes"
  },
  {
   "cat": "acceso",
@@ -2172,7 +2486,9 @@
   "detalle": "El mensaje de confirmación prometía que el anfitrión lo contactaría antes de la llegada. El día del check-in el huésped tuvo que reclamar que nadie lo había contactado. El coanfitrión respondió de inmediato, coordinó hora, estacionamiento, clave de la habitación y wifi.",
   "cita": "No me ha contactado el anfitrión",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. El Cerro 0348, 7520193 Providencia, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "acceso",
@@ -2185,7 +2501,9 @@
   "detalle": "Al llegar a portería, conserjería no la podía registrar porque APTO aún no había enviado los nombres de los huéspedes; se enviaron enseguida.",
   "cita": "Disse que não enviou ainda nossos nomes",
   "accion": "Enviar nombres a conserjería 24 h antes; crear los accesos que siguen PENDIENTES.",
-  "tipo": "acceso_chapa"
+  "tipo": "acceso_chapa",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "insumos",
@@ -2198,7 +2516,9 @@
   "detalle": "Faltaba secador de pelo en el depto 1204 (solo había uno en el 713); el equipo coordinó entregar otro.",
   "cita": "teria outro secador de cabelo pro alto 1204? Só tinha um aqui no 713",
   "accion": "Checklist de reposición con foto al check-in, cruzado contra lo que promete el anuncio.",
-  "tipo": "falta_amenity"
+  "tipo": "falta_amenity",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -2212,7 +2532,9 @@
   "detalle": "El mensaje previo al check-in prometía que el anfitrión se pondría en contacto durante el día para coordinar la llegada. Fabio (grupo de 14, llegada 21:00) reclama que nadie lo contactó y que no sabe cómo hacer el check-in. Recién ahí aparece Felipe (coanfitrión), le da su WhatsApp y le indica la caja candado con clave 5902. Nota: días antes se le había entregado la clave 6902 para esa misma caja, dato que no coincide con el enviado el día del check-in.",
   "cita": "¿Cuándo se pondrá en contacto conmigo el anfitrión? Porque hasta ahora nadie se ha puesto en contacto conmigo",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Luis Montaner 545, Providencia, Santiago, Región Metropolitana, Chile",
+  "comuna": "Providencia"
  },
  {
   "cat": "otros",
@@ -2226,7 +2548,9 @@
   "detalle": "Con la reserva ya confirmada, el anfitrión Diego envió una solicitud de cambio por aumento de precio. La huésped Denisse Belen la rechazó 4 minutos después. La reserva quedó confirmada en las condiciones originales.",
   "cita": "Denisse Belen: Solicitud rechazada",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "",
+  "comuna": ""
  },
  {
   "cat": "acceso",
@@ -2240,7 +2564,9 @@
   "detalle": "La huésped llegó de noche desde Santiago y no logró ubicar el acceso, preguntando por qué calle se entra. Luis respondió en 2 minutos con la dirección exacta y referencias (por calle Valparaíso donde está Under Pizza, o por calle Sucre donde están Falabella y Ripley, entrando al pasaje del Pronto Express). Quedó resuelto.",
   "cita": "no puedo encontrar el lugar",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Paseo Cousiño, Viña del Mar, Región de Valparaíso, Chile",
+  "comuna": "Viña del Mar"
  },
  {
   "cat": "tecnico",
@@ -2253,7 +2579,9 @@
   "detalle": "No podía ver los canales nacionales en la TV; se resolvió indicándole usar la aplicación IPTV del televisor.",
   "cita": "No podemos ver tv. Con los canales nacionales. Sabes como podría verlos??",
   "accion": "Orden de trabajo a mantención; si se repite en el mismo edificio, tratar como falla de sistema, no de artefacto.",
-  "tipo": "electrodomestico"
+  "tipo": "electrodomestico",
+  "dir": "Gral. Carol Urzúa 7030, 7560765 Las Condes, Región Metropolitana, Chile",
+  "comuna": "Las Condes"
  },
  {
   "cat": "otros",
@@ -2267,7 +2595,9 @@
   "detalle": "Gaby escribió a las 11:18 consultando por aire acondicionado y no obtuvo respuesta; a las 21:21 reclamó que seguía esperando. Recién a las 22:39 se le respondió. Tras la respuesta solicitó y confirmó la reserva.",
   "cita": "Hola? Estoy esperando su respuesta para reservar",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "otros",
@@ -2281,7 +2611,9 @@
   "detalle": "Miguel preguntó dos veces por el estacionamiento y solo recibió el mensaje automático genérico. Insistió con '????' y explicó que necesitaba respuesta porque estaba en el aeropuerto esperando para arrendar un auto. Recién ~1,5 horas después el equipo verificó y le asignó el estacionamiento 241.",
   "cita": "Necesito una respuesta ya que quiero arrendar un auto",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "Av. Vicuña Mackenna 920, 8330670 Ñuñoa, Región Metropolitana, Chile",
+  "comuna": "Ñuñoa"
  },
  {
   "cat": "acceso",
@@ -2295,6 +2627,8 @@
   "detalle": "La huésped preguntó si los dos departamentos estaban en el mismo edificio y el coanfitrión respondió que mismo edificio y mismo piso. Ella hizo notar que figuraban 2 direcciones, y el coanfitrión corrigió: es el mismo edificio pero pisos distintos (16 y 4). La confusión se aclaró en el mismo intercambio.",
   "cita": "Hay 2 direcciones allí",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
-  "tipo": "conversacion"
+  "tipo": "conversacion",
+  "dir": "San Isidro 513, 8330493 Santiago, Región Metropolitana, Chile",
+  "comuna": "Santiago"
  }
 ]

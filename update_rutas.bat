@@ -11,7 +11,7 @@ echo ---- %date% %time% ---- >> update_rutas.log
 %PY% build_panel.py >> update_rutas.log 2>&1
 %PY% build_rutas.py >> update_rutas.log 2>&1
 
-git add index.html panel.html datos.json
+git add index.html panel.html datos.json accesos_enviados.json anuncios_sin_registro.json reservas_fantasma.json incidencias.json
 git diff --cached --quiet
 if %errorlevel%==0 (
   echo sin cambios >> update_rutas.log

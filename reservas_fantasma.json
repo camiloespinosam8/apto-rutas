@@ -1,14 +1,5 @@
 [
  {
-  "cod": "HME5TJTY9M",
-  "huesped": "Say V.",
-  "visto": "2026-07-21",
-  "entrada": "2026-08-13",
-  "salida": "2026-08-17",
-  "estado": "Confirmada",
-  "anuncio": "Ñuñoa · 2 deptos para grupos · Vista Cordillera"
- },
- {
   "cod": "HMX22RK5YA",
   "huesped": "Gabriela",
   "visto": "2026-07-21",
@@ -207,15 +198,6 @@
   "anuncio": "Casa para grupos | Cerro Concepcion | 1 auto"
  },
  {
-  "cod": "HMZ2BWMK9Q",
-  "huesped": "Javiera M.",
-  "visto": "2026-07-31",
-  "entrada": "2026-08-15",
-  "salida": "2026-08-16",
-  "estado": "Confirmada",
-  "anuncio": "La Puerta Roja | Casa para grupos | 2 autos"
- },
- {
   "cod": "HMNNCR99EN",
   "huesped": "Breno S.",
   "visto": "2026-08-02",
@@ -378,29 +360,83 @@
   "anuncio": "Apartamentos para grupos | parking gratis"
  },
  {
-  "cod": "HMNRRZ3J44",
-  "huesped": "Paula",
-  "visto": "2026-08-12",
-  "entrada": "2026-08-15",
-  "salida": "2026-08-16",
-  "estado": "Viaje solicitado",
-  "anuncio": "LaPuertaRoja | Casa para grupos | Cerro Concepción"
- },
- {
-  "cod": "HMK8BSK2RD",
-  "huesped": "Ariadna C.",
-  "visto": "2026-08-13",
-  "entrada": "2026-08-15",
-  "salida": "2026-08-17",
-  "estado": "Confirmada",
-  "anuncio": "Apartamentos para grupos | parking gratis"
- },
- {
   "cod": "HMEWBQM9Z5",
   "huesped": "Camila",
   "visto": "2026-08-13",
   "entrada": "2026-09-04",
   "salida": "2026-09-05",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda"
+ },
+ {
+  "cod": "HMA2RX4BBN",
+  "huesped": "Claudia",
+  "visto": "2026-08-14",
+  "entrada": "2026-08-22",
+  "salida": "2026-08-23",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda"
+ },
+ {
+  "cod": "HMSC8C9HZQ",
+  "huesped": "Clemente V.",
+  "visto": "2026-08-15",
+  "entrada": "2026-09-17",
+  "salida": "2026-09-20",
+  "estado": "Confirmada",
+  "anuncio": "Gran apartamento para grupos | Central | 2 autos"
+ },
+ {
+  "cod": "HMTS4ZEAYN",
+  "huesped": "Andrea",
+  "visto": "2026-08-15",
+  "entrada": "2027-04-18",
+  "salida": "2027-04-23",
+  "estado": "Viaje solicitado",
+  "anuncio": "Ñuñoa · 2 deptos para grupos · Vista Cordillera"
+ },
+ {
+  "cod": "HMRFWPSQE5",
+  "huesped": "Isidora",
+  "visto": "2026-08-15",
+  "entrada": "2026-10-17",
+  "salida": "2026-10-18",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa"
+ },
+ {
+  "cod": "HM9W5NZRHF",
+  "huesped": "Pamela",
+  "visto": "2026-08-16",
+  "entrada": "2026-10-16",
+  "salida": "2026-10-17",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa"
+ },
+ {
+  "cod": "HMMNQJPW3N",
+  "huesped": "Paula",
+  "visto": "2026-08-17",
+  "entrada": "2026-10-13",
+  "salida": "2026-10-16",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa"
+ },
+ {
+  "cod": "HMMMAEH43R",
+  "huesped": "Carlos Z.",
+  "visto": "2026-08-17",
+  "entrada": "2026-12-12",
+  "salida": "2026-12-18",
+  "estado": "Confirmada",
+  "anuncio": "Apartamentos para grupos | parking gratis"
+ },
+ {
+  "cod": "HMNS4X28WT",
+  "huesped": "Catalina",
+  "visto": "2026-08-17",
+  "entrada": "2026-09-01",
+  "salida": "2026-09-02",
   "estado": "Viaje solicitado",
   "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda"
  }
