@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Guía del Huésped · Seminario 850 · A2011 · APTO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--crema:#F4EFE6;--papel:#FBF9F4;--ladrillo:#C8572A;--vino:#9B3A2E;--tinta:#1D1D1B;
+--linea:#E2D9CB;--gris:#6E6A63;--verde:#3E6B4F;--oro:#B08A3E}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:62px}
+body{margin:0;background:var(--crema);color:var(--tinta);
+     font-family:Manrope,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:30;background:rgba(244,239,230,.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--linea)}
+.nv{max-width:780px;margin:0 auto;padding:0 20px;display:flex;gap:2px;overflow-x:auto;
+    scrollbar-width:none}
+.nv::-webkit-scrollbar{display:none}
+.nv a{flex:0 0 auto;padding:13px 12px;font-size:13.5px;font-weight:600;color:var(--gris);
+      text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent}
+.nv a:hover{color:var(--vino);border-bottom-color:var(--ladrillo)}
+header{padding:34px 0 8px}
+.marca{font-family:'Playfair Display',Georgia,serif;font-size:21px;letter-spacing:.02em}
+.marca span{display:block;font-family:Manrope,sans-serif;font-size:10px;letter-spacing:.18em;
+            color:var(--vino);font-weight:700;margin-top:2px}
+.eyebrow{font-size:11.5px;letter-spacing:.16em;color:var(--vino);font-weight:700;margin:26px 0 10px}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+   font-size:clamp(32px,6.5vw,46px);line-height:1.08;margin:0 0 14px;letter-spacing:-.01em}
+.bajada{font-size:17px;color:var(--gris);margin:0 0 22px;max-width:56ch}
+.anf{display:flex;gap:13px;align-items:flex-start;background:var(--papel);border:1px solid var(--linea);
+     border-radius:9px;padding:15px 17px;margin:0 0 8px}
+.anf .av{flex:0 0 38px;height:38px;border-radius:50%;background:var(--ladrillo);color:#fff;
+         display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.anf p{margin:0;font-size:14.5px}
+h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+   font-size:clamp(25px,4.4vw,32px);margin:6px 0 4px;line-height:1.15}
+.sub2{color:var(--gris);margin:0 0 18px;font-size:15.5px}
+section{padding:34px 0 6px;border-top:1px solid var(--linea);margin-top:34px}
+section:first-of-type{border-top:0;margin-top:0}
+.esencial{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+          background:var(--linea);border:1px solid var(--linea);border-radius:9px;overflow:hidden;margin:18px 0}
+.esencial div{background:var(--papel);padding:15px 16px}
+.esencial .k{font-size:10.5px;letter-spacing:.1em;color:var(--gris);font-weight:700;margin-bottom:5px}
+.esencial .v{font-size:15px;font-weight:600;line-height:1.35}
+.cta{display:inline-block;background:var(--ladrillo);color:#fff;text-decoration:none;font-weight:700;
+     font-size:15px;padding:13px 22px;border-radius:8px;margin:8px 0 4px}
+.cta:hover{background:var(--vino)}
+.pasos{list-style:none;counter-reset:p;padding:0;margin:16px 0}
+.pasos li{counter-increment:p;position:relative;padding:0 0 16px 44px;font-size:15px}
+.pasos li::before{content:counter(p);position:absolute;left:0;top:0;width:28px;height:28px;
+  border-radius:50%;background:var(--tinta);color:var(--crema);display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:700}
+.pasos b{display:block}
+.pasos span{color:var(--gris);font-size:14px}
+.tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:16px 0}
+.tarjetas > div{background:var(--papel);border:1px solid var(--linea);border-radius:9px;padding:16px 18px}
+.tarjetas h3{margin:0 0 6px;font-size:15px;font-weight:700}
+.tarjetas p{margin:0;font-size:14px;color:var(--gris);line-height:1.5}
+.grupo{margin:22px 0 0}
+.grupo .tit{font-size:11px;letter-spacing:.11em;color:var(--vino);font-weight:700;margin-bottom:8px}
+.lugar{display:flex;justify-content:space-between;gap:14px;align-items:baseline;
+       padding:11px 0;border-bottom:1px solid var(--linea)}
+.lugar b{display:block;font-size:15px}
+.lugar span{font-size:13.5px;color:var(--gris)}
+.lugar .dist{flex:0 0 auto;font-size:13px;color:var(--vino);font-weight:600;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chips span{background:var(--papel);border:1px solid var(--linea);border-radius:20px;
+            padding:7px 14px;font-size:13.5px}
+.aviso{background:var(--papel);border-left:4px solid var(--ladrillo);padding:15px 18px;
+       border-radius:0 5px 5px 0;margin:18px 0;font-size:14.5px}
+.aviso b{color:var(--vino)}
+.reglas{list-style:none;padding:0;margin:14px 0}
+.reglas li{padding:11px 0;border-bottom:1px solid var(--linea);font-size:15px}
+.emerg{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:16px 0}
+.emerg div{background:var(--papel);border:1px solid var(--linea);border-radius:9px;
+           padding:13px;text-align:center}
+.emerg .n{font-family:'Playfair Display',Georgia,serif;font-size:24px;line-height:1}
+.emerg .l{font-size:12px;color:var(--gris);margin-top:4px}
+.gracias{background:var(--tinta);color:var(--crema);border-radius:11px;padding:28px 26px;margin:34px 0 0}
+.gracias h2{color:var(--crema);margin:0 0 10px}
+.gracias p{font-size:15px;opacity:.85;margin:0 0 16px}
+.gracias a{background:var(--ladrillo);color:#fff}
+footer{padding:26px 0 60px;font-size:13px;color:var(--gris);text-align:center}
+@media(max-width:560px){.esencial{grid-template-columns:1fr 1fr}.lugar{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+
+<nav><div class="nv"><a href="#entrar">🔑 Entrar</a><a href="#llegar">✈️ Llegar</a><a href="#casa">🏠 La casa</a><a href="#barrio">📍 Tu barrio</a><a href="#servicios">🛎️ Servicios</a><a href="#ayuda">🆘 Ayuda</a></div></nav>
+
+<div class="wrap">
+<header><div class="marca">APTO<span>DE LA BÚSQUEDA A LA RENTA</span></div></header>
+
+<section id="entrar">
+  <p class="eyebrow">SEMINARIO 850, DEPTO A-2011, ÑUÑOA</p>
+  <h1>Bienvenido a tu casa<br>en Barrio Italia 🎨</h1>
+  <p class="bajada">Un 2 dormitorios a una cuadra del Metro Irarrázaval y a pasos de Barrio Italia, en un edificio con piscina, gimnasio y terraza panorámica.</p>
+
+  <div class="anf"><div class="av">A</div>
+    <p>Soy tu anfitrión de APTO. Estoy por WhatsApp para lo que necesites — escríbeme a mí directo,
+    a cualquier hora de tu estadía.</p></div>
+
+  <h2 style="margin-top:30px">⚡ Lo esencial</h2>
+  <p class="sub2">Lo que necesitas apenas llegas</p>
+  <div class="esencial"><div><div class="k">DIRECCIÓN</div><div class="v">Seminario 850, depto A-2011, Ñuñoa</div></div><div><div class="k">CÓMO ENTRAR</div><div class="v">Conserjería + código que te envío</div></div><div><div class="k">WIFI</div><div class="v">Te paso la clave por mensaje 📶</div></div><div><div class="k">ESTACIONAMIENTO</div><div class="v">Sujeto a disponibilidad — confírmalo conmigo 🚗</div></div><div><div class="k">METRO</div><div class="v">Irarrázaval (L3 y L5) · 1 cuadra 🚶</div></div></div>
+  
+  <a class="cta" href="https://wa.me/56974788301" target="_blank" rel="noopener">💬 Escribirme por WhatsApp</a>
+</section>
+
+<section id="llegar">
+  <h2>Cómo llegar</h2>
+  <p class="sub2">Del aeropuerto (SCL) al departamento</p>
+  <ol class="pasos"><li><b>Uber / Cabify / DiDi</b><span>Lo más cómodo con maletas o de noche. Directo a la puerta. · <b style="color:#9B3A2E">~30-45 min</b></span></li><li><b>Transfer privado</b><span>Puerta a puerta, precio fijo. Te lo coordino si prefieres. · <b style="color:#9B3A2E">te lo coordino</b></span></li><li><b>Bus + Metro (lo más barato)</b><span>Bus Centropuerto o Turbus hasta Metro Pajaritos (L1), y de ahí el metro. · <b style="color:#9B3A2E">~60-80 min · ~$2.300</b></span></li></ol>
+  <div class="aviso">💡 Para el metro y las micros necesitas la <b>tarjeta bip!</b> — la compras y
+  cargas en la boletería de cualquier estación o en el súper.</div>
+
+  <h2 style="margin-top:34px">Tu ingreso, paso a paso</h2>
+  <p class="sub2">Check-in desde las 15:00</p>
+  <ol class="pasos"><li><b>Llega al edificio</b><span>Seminario 850, depto A-2011, Ñuñoa. Si quieres, te mando una foto de la fachada por WhatsApp.</span></li><li><b>Conserjería</b><span>Dile tu nombre en recepción — ya te dejamos registrado. La reserva está a nombre de APTO.</span></li><li><b>Sube al departamento</b><span>Es el A-2011.</span></li><li><b>Abre</b><span>Marca el código que te envié por mensaje. ¡Estás en casa! 🏡</span></li></ol>
+  <div class="aviso">🕒 ¿Llegas antes de las 15:00? Escríbeme y coordinamos dónde dejar las maletas.
+  El <b>early check-in</b> está sujeto a disponibilidad.</div>
+</section>
+
+<section id="casa">
+  <h2>Cómo funciona la casa</h2>
+  <p class="sub2">Los detalles para que todo salga redondo</p>
+  <div class="tarjetas"><div><h3>📶 WiFi</h3><p>Buena conexión para trabajar. Si algo falla, escríbeme y lo vemos al tiro.</p></div><div><h3>🔥 Calefacción</h3><p>El depto tiene calefacción. En invierno préndela con anticipación.</p></div><div><h3>☕ Equipamiento</h3><p>Cocina equipada, hervidor, microondas, y toallas y ropa de cama para cada huésped. ¿Falta algo? Escríbeme y lo repongo el mismo día.</p></div><div><h3>🌇 Áreas comunes</h3><p>Tienes acceso a la piscina, el gimnasio, el cowork y la terraza de la azotea. Los horarios los ve conserjería.</p></div></div><div class="grupo"><div class="tit">EN EL EDIFICIO</div><div class="chips"><span>🏊 Piscina</span><span>💪 Gimnasio</span><span>💻 Cowork</span><span>🍸 Restobar y lounge</span><span>🔥 6 zonas de quincho</span><span>🌇 Salón en la azotea con terraza panorámica</span><span>🐾 Pet spa</span><span>🚲 Bicicleteros</span></div></div>
+</section>
+
+<section id="barrio">
+  <h2>Tu barrio</h2>
+  <p class="sub2">Ñuñoa, a minutos caminando</p>
+  <div class="grupo"><div class="tit">🚇 METRO</div><div class="lugar"><div><b>Metro Irarrázaval</b><span>Líneas 3 y 5 — te conecta con todo Santiago</span></div><div class="dist">1 cuadra 🚶</div></div></div><div class="grupo"><div class="tit">🌳 PARQUES</div><div class="lugar"><div><b>Parque Bustamante</b><span>Áreas verdes y paseo largo junto al metro</span></div><div class="dist">cerca 🚶</div></div></div><div class="grupo"><div class="tit">🍽️ SALIR A COMER Y PASEAR</div><div class="lugar"><div><b>Barrio Italia</b><span>Cafés, restoranes, tiendas de diseño y anticuarios. Estás dentro del barrio.</span></div><div class="dist">a pasos 🚶</div></div><div class="lugar"><div><b>Plaza Ñuñoa</b><span>Bares, teatros y terrazas</span></div><div class="dist">L3 · corto</div></div><div class="lugar"><div><b>Lastarria y Bellas Artes</b><span>Barrio cultural, museos y cafés</span></div><div class="dist">L5 · pocas est.</div></div><div class="lugar"><div><b>Cerro San Cristóbal</b><span>Miradores, funicular y el Parque Metropolitano</span></div><div class="dist">L5 · Baquedano</div></div></div>
+  <div class="aviso">🗺️ Estás en uno de los barrios más caminables de Santiago. Pregúntame y te armo el plan según tus fechas.</div>
+</section>
+
+<section id="servicios">
+  <h2>¿Necesitas algo?</h2>
+  <p class="sub2">Estamos para hacerte fácil la estadía</p>
+  <p>Escríbeme y lo resolvemos, sin vueltas:</p>
+  <div class="chips">
+    <span>🕒 Late check-out</span><span>🚐 Traslados</span><span>🧺 Limpieza extra</span>
+    <span>🛒 Despensa lista</span><span>🌙 Noche adicional</span><span>🍽️ Reservas y datos</span>
+  </div>
+  <p class="sub2">Todo con precio claro y solo si lo quieres. Estamos para cuidarte, no para venderte.</p>
+
+  <h2 style="margin-top:34px">Para convivir rico</h2>
+  <ul class="reglas"><li>👥 <b>Capacidad máxima: 5 huéspedes.</b> Si van a ser más, avísame antes — no puedo recibir gente sin registrar en el edificio.</li><li>🐾 <b>Mascotas: bienvenidas</b> — cuidando el depto. Avísame al reservar.</li><li>🚭 No se fuma dentro del departamento.</li><li>🤫 Cuida el descanso de los vecinos: silencio de noche, sin fiestas.</li></ul>
+
+  <h2 style="margin-top:34px">Al despedirte</h2>
+  <p class="sub2">Salida hasta las 12:00</p>
+  <ul class="reglas">
+    <li>🔑 Deja la tarjeta o llave en conserjería.</li>
+    <li>🪟 Cierra ventanas y apaga calefacción y luces.</li>
+    <li>🗑️ Bota la basura y deja la loza en el lavaplatos.</li>
+    <li>💬 Avísame cuando salgas, así el equipo de limpieza puede entrar.</li>
+  </ul>
+  <div class="aviso">🙌 <b>Lo que NO tienes que hacer:</b> no te pedimos lavar sábanas ni toallas.
+  De la limpieza nos encargamos nosotros.</div>
+</section>
+
+<section id="ayuda">
+  <h2>Si algo pasa</h2>
+  <p class="sub2">Estoy disponible toda tu estadía — escríbeme primero</p>
+
+  <div class="tarjetas">
+    <div><h3>💬 Tu anfitrión</h3><p>WhatsApp <b>+56 9 7478 8301</b> — respondo en minutos.
+    Cualquier problema, avísame <b>durante</b> la estadía: si me entero después, ya no lo puedo arreglar.</p></div>
+    <div><h3>🔧 Soluciones rápidas</h3><p>• Se cortó la luz: revisa el tablero y sube el automático.<br>
+    • Sin WiFi: desenchufa el router 10 segundos y vuelve a enchufarlo.<br>
+    • No entra al edificio: llama a conserjería o escríbeme.</p></div>
+  </div>
+
+  <div class="emerg">
+    <div><div class="n">131</div><div class="l">SAMU · ambulancia</div></div>
+    <div><div class="n">132</div><div class="l">Bomberos</div></div>
+    <div><div class="n">133</div><div class="l">Carabineros</div></div>
+  </div>
+</section>
+
+<div class="gracias">
+  <h2>Gracias por elegir tu casa con nosotros 🤍</h2>
+  <p>Si algo no está perfecto, dímelo durante tu estadía y lo resolvemos. Y si la pasaste bien,
+  una reseña nos ayuda un montón.</p>
+  <a class="cta" href="https://wa.me/56974788301" target="_blank" rel="noopener">Escribirme</a>
+</div>
+
+<footer>
+  <b>APTO</b> · Guía del Huésped — Seminario 850, depto A-2011, Ñuñoa<br>
+  Edificio Seminario 850 · Inmobiliaria Paz
+</footer>
+</div>
+</body>
+</html>
