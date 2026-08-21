@@ -1,8 +1,16 @@
 {
- "_auditado": "2026-08-15",
+ "_auditado": "2026-08-21",
  "_fuente": "Gmail de camilo@pardecosas.cl — correos enviados a conserjerías (últimos 20 días)",
  "_nota": "Refrescar con una auditoría de Gmail. Si un check-in en edificio con conserjería no aparece acá, el panel lo marca como ACCESO SIN ENVIAR.",
  "enviados": [
+  {
+   "cod": "HMEXHP9QZZ",
+   "huesped": "Thomas C.",
+   "prop": "Seminario 850 · A2011",
+   "fecha_envio": "2026-08-21",
+   "asunto": "Autorización de acceso HOY: Depto A2011 – Reserva Thomas Carraro (21 al 25 ago)",
+   "nota": "Enviado SIN documentos de los 3 huéspedes: la sesión de Airbnb estaba caída y no se pudo leer el hilo."
+  },
   {
    "cod": "HM5SBTHK5J",
    "huesped": "Antonia R.",

@@ -10,19 +10,34 @@
   "uid": "s/reg|nuevo 2 dor para 5 estacionamiento pasos metro"
  },
  {
+  "anuncio": "Gran habitación en el corazón de Cerro Concepción",
+  "reservas": 9,
+  "uid": "s/reg|gran habitacion en el corazon de cerro concepcio"
+ },
+ {
   "anuncio": "LaPuertaRoja | Casa para grupos | Cerro Concepción",
-  "reservas": 8,
+  "reservas": 9,
   "uid": "s/reg|lapuertaroja | casa para grupos | cerro concepci"
  },
  {
   "anuncio": "Nuevo Studio | Metro Ñuñoa | Terraza",
-  "reservas": 8,
+  "reservas": 9,
   "uid": "s/reg|nuevo studio | metro nunoa | terraza"
  },
  {
   "anuncio": "Casa para grupos | Cerro Concepcion | 1 auto",
   "reservas": 7,
   "uid": "s/reg|casa para grupos | cerro concepcion | 1 auto"
+ },
+ {
+  "anuncio": "Gran apartamento para grupos | Central | 2 autos",
+  "reservas": 7,
+  "uid": "s/reg|gran apartamento para grupos | central | 2 autos"
+ },
+ {
+  "anuncio": "Habitación en gran casa Valparaiso/Estacionamiento",
+  "reservas": 7,
+  "uid": "s/reg|habitacion en gran casa valparaiso/estacionamien"
  },
  {
   "anuncio": "Habitación privada en Cerro Concepción con Parking",
@@ -40,19 +55,19 @@
   "uid": "s/reg|nuevo moderno studio | terraza | metro nunoa"
  },
  {
-  "anuncio": "Gran habitación en el corazón de Cerro Concepción",
-  "reservas": 6,
-  "uid": "s/reg|gran habitacion en el corazon de cerro concepcio"
- },
- {
   "anuncio": "Cama en habitación compartida mixta",
   "reservas": 6,
   "uid": "s/reg|cama en habitacion compartida mixta"
  },
  {
-  "anuncio": "Habitación en gran casa Valparaiso/Estacionamiento",
+  "anuncio": "Habitación Doble en Cerro Concepción ",
   "reservas": 6,
-  "uid": "s/reg|habitacion en gran casa valparaiso/estacionamien"
+  "uid": "s/reg|habitacion doble en cerro concepcion"
+ },
+ {
+  "anuncio": "Departamento Vista al mar, estacionamiento y wifi",
+  "reservas": 6,
+  "uid": "s/reg|departamento vista al mar, estacionamiento y wif"
  },
  {
   "anuncio": "Casa para grupos | Cerro Concepción ",
@@ -60,29 +75,14 @@
   "uid": "s/reg|casa para grupos | cerro concepcion"
  },
  {
-  "anuncio": "Habitación Doble en Cerro Concepción ",
+  "anuncio": "The Red Door: Large Room in Spacious House",
   "reservas": 5,
-  "uid": "s/reg|habitacion doble en cerro concepcion"
+  "uid": "s/reg|the red door: large room in spacious house"
  },
  {
   "anuncio": "La Puerta Roja | Casa para grupos | 2 autos",
   "reservas": 4,
   "uid": "s/reg|la puerta roja | casa para grupos | 2 autos"
- },
- {
-  "anuncio": "Gran apartamento para grupos | Central | 2 autos",
-  "reservas": 4,
-  "uid": "s/reg|gran apartamento para grupos | central | 2 autos"
- },
- {
-  "anuncio": "Departamento Vista al mar, estacionamiento y wifi",
-  "reservas": 4,
-  "uid": "s/reg|departamento vista al mar, estacionamiento y wif"
- },
- {
-  "anuncio": "The Red Door: Large Room in Spacious House",
-  "reservas": 3,
-  "uid": "s/reg|the red door: large room in spacious house"
  },
  {
   "anuncio": "Habitacion para 4 -Baño Compartido.",
@@ -108,6 +108,16 @@
   "anuncio": "Habitación privada cama doble con estacionamiento",
   "reservas": 2,
   "uid": "s/reg|habitacion privada cama doble con estacionamient"
+ },
+ {
+  "anuncio": "Studio · Piscina · Estacionamiento · Metro Ñuñoa",
+  "reservas": 2,
+  "uid": "s/reg|studio piscina estacionamiento metro nunoa"
+ },
+ {
+  "anuncio": "Pet friendly · Estacionamiento · Metro Ñuñoa",
+  "reservas": 2,
+  "uid": "s/reg|pet friendly estacionamiento metro nunoa"
  },
  {
   "anuncio": "Habitación privada cama king con estacionamiento",
