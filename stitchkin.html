@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Stitchkin · Investigación</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F5F1; --panel:#FFFFFF; --ink:#16161A; --ink2:#4A4A55; --ink3:#7C7C88;
+  --line:#E2DED6; --line2:#EFECE6;
+  --accent:#9B3A2E; --accent2:#C8572A; --good:#2F6D4F; --warn:#A9721B; --bad:#A63125;
+  --chipbg:#F0ECE4;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131316; --panel:#1B1B20; --ink:#F2F0EC; --ink2:#B6B4B0; --ink3:#87858A;
+  --line:#2C2C33; --line2:#232329;
+  --accent:#E08A6E; --accent2:#E5A184; --good:#6FBF95; --warn:#DDB05C; --bad:#E28377;
+  --chipbg:#26262D;
+}}
+:root[data-theme="dark"]{
+  --bg:#131316; --panel:#1B1B20; --ink:#F2F0EC; --ink2:#B6B4B0; --ink3:#87858A;
+  --line:#2C2C33; --line2:#232329;
+  --accent:#E08A6E; --accent2:#E5A184; --good:#6FBF95; --warn:#DDB05C; --bad:#E28377;
+  --chipbg:#26262D;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.62 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px 90px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin:0}
+a{color:var(--accent)}
+
+header.top{padding:56px 0 30px;border-bottom:1px solid var(--line)}
+.kicker{font:600 11px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+h1{font-size:clamp(34px,6vw,54px)}
+.sub{color:var(--ink2);font-size:17px;margin-top:14px;max-width:62ch}
+.meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chipbg);border:1px solid var(--line);border-radius:100px;padding:5px 13px;font-size:12.5px;color:var(--ink2);font-weight:500}
+
+.note{margin:26px 0;padding:15px 18px;border-left:3px solid var(--warn);background:var(--panel);border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink2)}
+.note b{color:var(--ink)}
+
+section{padding-top:52px}
+h2{font-size:clamp(23px,3.4vw,31px);margin-bottom:6px}
+.h2num{font:600 12px/1 Inter,sans-serif;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase;margin-bottom:10px}
+.lede{color:var(--ink2);font-size:16.5px;margin:14px 0 0;max-width:66ch}
+p{margin:15px 0;max-width:70ch}
+
+.thesis{counter-reset:t;list-style:none;padding:0;margin:26px 0 0}
+.thesis li{counter-increment:t;position:relative;padding:16px 0 16px 52px;border-top:1px solid var(--line2)}
+.thesis li:last-child{border-bottom:1px solid var(--line2)}
+.thesis li::before{content:counter(t);position:absolute;left:0;top:15px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font:700 13px/30px Inter,sans-serif;text-align:center}
+:root[data-theme="dark"] .thesis li::before,
+:root:not([data-theme="light"]) .thesis li::before{color:#16161A}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .thesis li::before{color:#fff}}
+
+.tw{overflow-x:auto;margin:24px 0;border:1px solid var(--line);border-radius:11px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+th{text-align:left;font:600 11.5px/1.3 Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding:13px 15px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:13px 15px;border-bottom:1px solid var(--line2);vertical-align:top;color:var(--ink2)}
+tr:last-child td{border-bottom:none}
+td strong,td b{color:var(--ink)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:24px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:18px}
+.card .big{font-family:Fraunces,serif;font-size:30px;font-weight:700;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.card .lbl{font-size:13.5px;color:var(--ink2);margin-top:9px}
+
+.pull{margin:30px 0;padding:22px 24px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.pull .t{font-family:Fraunces,serif;font-size:19px;font-weight:700;margin-bottom:9px;color:var(--ink)}
+.pull p{margin:0;font-size:15.5px;color:var(--ink2)}
+.pull.hot{border-color:var(--accent);border-left-width:4px}
+
+ul.plain{padding-left:20px;color:var(--ink2)}
+ul.plain li{margin:9px 0;max-width:68ch}
+ul.plain li strong{color:var(--ink)}
+
+.tag{display:inline-block;font:600 11px/1 Inter,sans-serif;letter-spacing:.05em;padding:4px 9px;border-radius:5px;text-transform:uppercase;white-space:nowrap}
+.t-ok{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.t-no{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+.t-mid{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+
+footer{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);color:var(--ink3);font-size:13.5px}
+footer p{max-width:none}
+.toggle{position:fixed;top:14px;right:14px;background:var(--panel);border:1px solid var(--line);color:var(--ink2);border-radius:8px;padding:7px 11px;font:500 12.5px Inter,sans-serif;cursor:pointer;z-index:10}
+@media(max-width:600px){header.top{padding-top:40px}.thesis li{padding-left:44px}}
+</style>
+</head>
+<body>
+<button class="toggle" onclick="var r=document.documentElement,d=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',d?'light':'dark')">◐ tema</button>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">Investigación de cliente · Estudio de Diseño</div>
+  <h1>Inmobiliaria Stitchkin</h1>
+  <p class="sub">Diez frentes de levantamiento sobre el cliente B2B que pidió una presentación de costos de pilotos por tipología y sector. Qué son, cómo venden, con quién trabajan y por dónde se entra.</p>
+  <div class="meta">
+    <span class="chip">20 de agosto de 2026</span>
+    <span class="chip">10 frentes</span>
+    <span class="chip">Relación: Carolina Ruiz</span>
+    <span class="chip">Uso interno</span>
+  </div>
+</header>
+
+<div class="note">
+  <b>Versión publicada.</b> Quedan fuera de esta página, a propósito: los RUT de personas naturales, la sección de reputación y riesgo, y nuestra estrategia de precio y condiciones de pago. Eso vive solo en los archivos locales, en <code>Estudio_Diseno/Comercial/Stitchkin/</code>.
+</div>
+
+<section>
+  <div class="h2num">La tesis</div>
+  <h2>Cinco líneas</h2>
+  <ol class="thesis">
+    <li><strong>Stitchkin no construye: comercializa el portafolio de Santolaya</strong> — la misma constructora de Lira 157 y Walker 880, que el 29 de julio publicó un reel presentándonos como “el estudio detrás del diseño interior de los pilotos de Lira 157”.</li>
+    <li><strong>No hay agencia a la que desplazar.</strong> El piloto lo hace un diseñador interno que ellos mismos declararon caro. Cero publicaciones de terceros reclamando ese trabajo.</li>
+    <li><strong>Su problema no es demanda ni plata: es producción.</strong> Tienen 13-14 anuncios activos, productora contratada y marketing propio, y nada bueno que mostrar.</li>
+    <li><strong>Cinco de siete proyectos están en entrega inmediata</strong>, con descuentos de hasta 30%. Ese es el “ticket bajo” que no quisieron explicar.</li>
+    <li><strong>El pitch no es “decoramos bonito”. Es “les rotamos el stock y les damos con qué pautear”.</strong></li>
+  </ol>
+</section>
+
+<section>
+  <div class="h2num">01</div>
+  <h2>Quiénes son</h2>
+  <p class="lede">No es una empresa: es un grupo de sociedades, todas en Los Militares 5890 of. 1501, Las Condes. Marca fundada en 1983 — 43 años, más de 30.000 inmuebles y 2.500.000 m² comercializados.</p>
+
+  <div class="cards">
+    <div class="card"><div class="big">1983</div><div class="lbl">Año de fundación de la marca</div></div>
+    <div class="card"><div class="big">+30.000</div><div class="lbl">Inmuebles comercializados</div></div>
+    <div class="card"><div class="big">7</div><div class="lbl">Proyectos vivos hoy</div></div>
+    <div class="card"><div class="big">5 de 7</div><div class="lbl">En entrega inmediata</div></div>
+  </div>
+
+  <h3 style="margin-top:34px;font-size:19px">La cadena de mando — y ya está conectada</h3>
+  <p>Verificado en LinkedIn el 20 de agosto. <strong>Los tres decisores son contactos de primer grado de Camilo.</strong> No hay que pedir presentación: hay que escribir.</p>
+  <div class="tw"><table>
+    <tr><th>Persona</th><th>Cargo</th><th>Grado</th><th>En común</th></tr>
+    <tr><td><strong>Felipe Stitchkin</strong></td><td>Gerente General</td><td><span class="tag t-ok">1er</span></td><td class="num">134</td></tr>
+    <tr><td><strong>Cristián Recabarren Bahamondes</strong></td><td>Gerente Comercial</td><td><span class="tag t-ok">1er</span></td><td class="num">140</td></tr>
+    <tr><td><strong>Tomás Ignacio Fernández Lazo</strong></td><td>Sub Gerente Comercial, desde mar-2026</td><td><span class="tag t-ok">1er</span></td><td class="num">45</td></tr>
+  </table></div>
+
+  <ul class="plain">
+    <li><strong>Empresa familiar en traspaso generacional.</strong> El fundador va saliendo; el hijo ya es gerente general y accionista. Decide rápido, sin comité.</li>
+    <li><strong>El socio al 50% es contador auditor.</strong> De ahí viene la pregunta por la nota de crédito: se responde con estructura de costos, no con confianza.</li>
+    <li><strong>El gerente comercial es ingeniero civil con magíster en gestión de construcción.</strong> Va a leer la presentación como cotización de obra: pesos por metro cuadrado, plazo, alcance.</li>
+    <li><strong>Tomás Fernández tenía su LinkedIn desactualizado</strong> — el titular dice DANACORP, que fue su cargo hasta marzo. Es de Stitchkin, jornada completa. No confundir con Tomás Fernández Donoso, de Ferco, que es otra persona.</li>
+    <li><strong>No hay jefe de marketing.</strong> Lo más probable es que lo lleve el propio Tomás, que venía de un cargo de ventas <em>y marketing</em>.</li>
+    <li><strong>No tienen constructora propia</strong> y <strong>no son socios de ADI.</strong></li>
+  </ul>
+</section>
+
+<section>
+  <div class="h2num">02</div>
+  <h2>El portafolio real</h2>
+  <p class="lede">Son siete proyectos vivos, no “cuatro a cinco” como quedó en el acta de la reunión.</p>
+  <div class="tw"><table>
+    <tr><th>Proyecto</th><th>Comuna</th><th>Desde</th><th>Estado</th><th>Piloto</th></tr>
+    <tr><td><strong>NOVUS G</strong></td><td>Macul</td><td class="num">UF 2.397</td><td>En verde, entrega 2° sem 2027. <strong>170 de ~214 unidades disponibles del portafolio (79%)</strong></td><td><span class="tag t-ok">Hecho</span></td></tr>
+    <tr><td><strong>BEAT</strong></td><td>Macul</td><td class="num">UF 2.590</td><td>Lanzado el 14 de agosto, el día de la reunión. Entrega 2031</td><td><span class="tag t-no">Falta</span></td></tr>
+    <tr><td><strong>Eleuterio Ramírez</strong></td><td>—</td><td class="num">UF 2.716</td><td>Entrega inmediata, 11 unidades, sala montada</td><td><span class="tag t-mid">Recargado</span></td></tr>
+    <tr><td><strong>NOVUS</strong></td><td>Macul</td><td class="num">UF 3.373</td><td>Últimas 10 unidades</td><td><span class="tag t-ok">Hecho</span></td></tr>
+    <tr><td><strong>Vicuña Mackenna 1194</strong></td><td>Ñuñoa</td><td class="num">UF 3.605</td><td>Vigente, con la pauta apagada en el portal</td><td><span class="tag t-ok">Hecho</span></td></tr>
+    <tr><td><strong>HO</strong></td><td>Las Condes</td><td class="num">UF 9.380</td><td><strong>Solo 2 unidades</strong></td><td><span class="tag t-ok">Hecho</span></td></tr>
+    <tr><td><strong>La Espuela</strong></td><td>—</td><td class="num">UF 12.277</td><td>Pauta apagada en el portal</td><td><span class="tag t-ok">Hecho</span></td></tr>
+  </table></div>
+
+  <div class="pull hot">
+    <div class="t">Segmento partido en dos, sin rango medio</div>
+    <p>Masivo entre UF 2.397 y 3.605. Alto patrimonio entre UF 9.380 y 12.277. Un piloto pesa cerca del 10% del departamento masivo y del 2,5% del caro. <strong>Son dos conversaciones de precio distintas y hay que separarlas en la presentación.</strong></p>
+  </div>
+
+  <h3 style="font-size:19px;margin-top:30px">Correcciones a lo que dijeron en la reunión</h3>
+  <ul class="plain">
+    <li><strong>La Florida no tiene proyecto vivo.</strong> Vicuña Mackenna 5862 está cerrado. Lo vigente es Ñuñoa, Vicuña Mackenna 1194 — probable confusión entre dos direcciones homónimas.</li>
+    <li>Pucará 5120 y Pedro de Valdivia 2765 también están cerrados.</li>
+    <li><strong>BEAT no estaba en la lista de proyectos que dieron.</strong> Es el más nuevo, ya lo están pauteando, y es el que necesita piloto.</li>
+    <li><strong>Su propio sitio no sirve para cotizar:</strong> los precios no calzan con Portal Inmobiliario en seis de siete proyectos, con hasta UF 850 de diferencia.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="h2num">03</div>
+  <h2>Con quiénes trabajan</h2>
+  <div class="tw"><table>
+    <tr><th>Eslabón</th><th>Quién</th></tr>
+    <tr><td><strong>Pilotos y home staging</strong></td><td><strong>Nadie externo: diseñador interno.</strong> Cero publicaciones de “piloto para Stitchkin” en buscadores ni redes</td></tr>
+    <tr><td><strong>Constructora</strong></td><td><strong>Santolaya</strong>, y Danacorp en La Marina 1150. Administración: Gaudi</td></tr>
+    <tr><td>Arquitectura</td><td>Lira &amp; Stitchkin Arquitectos — inferencia fuerte, sin confirmar</td></tr>
+    <tr><td>Productora audiovisual</td><td><strong>Baker Lab</strong>, especializada en real estate. Ya filma pilotos para otros</td></tr>
+    <tr><td>Marketing digital</td><td><strong>Loft Digital</strong> (sitio) y <strong>DataHunter</strong> (CRM), detectados en producción</td></tr>
+    <tr><td>Comercialización</td><td>Fuerza propia, más Capitalizarme, Grey Capital y Enlace</td></tr>
+    <tr><td><strong>Áreas comunes</strong></td><td><strong>M4 Fitness</strong> los etiquetó como “nuevo cliente feliz” — <strong>ya compran externo para áreas comunes</strong></td></tr>
+    <tr><td>Banco</td><td>BCI, con simulador embebido en su sitio</td></tr>
+  </table></div>
+
+  <div class="pull hot">
+    <div class="t">El puente que decide</div>
+    <p>El 29 de julio de 2026, Santolaya publicó un reel colaborativo presentando a PardeCosas como <em>“el estudio detrás del diseño interior de los pilotos de Lira 157”</em>. La constructora que levanta los edificios de Stitchkin ya nos presentó públicamente como su estudio de pilotos. <strong>Eso no se argumenta: se muestra.</strong></p>
+  </div>
+
+  <p><strong>El competidor tiene nombre:</strong> Ideato decoró el piloto de NS440, en Providencia, para Santolaya, el 18 de junio de 2026. Santolaya reparte pilotos proyecto por proyecto, sin exclusividad. <strong>Competimos por asignación, no por entrada</strong> — y llevamos el reel de julio de ventaja.</p>
+</section>
+
+<section>
+  <div class="h2num">04</div>
+  <h2>Su sitio: qué dicen de sí mismos</h2>
+
+  <div class="pull">
+    <div class="t">No tienen visión ni valores declarados</div>
+    <p>Todo el relato corporativo son tres párrafos sobre cuántos inmuebles vendieron desde 1983. Hay misión, no hay visión ni valores. <strong>Se presentan por lo que vendieron, no por lo que son.</strong> Cero propósito, cero personas con nombre.</p>
+  </div>
+
+  <p>Su posicionamiento es puramente financiero: entrega inmediata y facilidades de pago. “Te damos 10% de pie”, “rebajamos tu dividendo a la mitad”, garantía de cesantía. <strong>Promesa de plata, no de marca.</strong></p>
+
+  <div class="pull hot">
+    <div class="t">El argumento más fuerte de toda la investigación</div>
+    <p>Dos de sus proyectos <strong>ya entregados se venden con render</strong>. Y los renders de uno de ellos tienen el nombre de otro proyecto en el archivo: reciclaron imágenes. Los proyectos caros tienen fotos reales de piloto; <strong>los baratos, que son los que no rotan, se venden con dibujo prestado.</strong> Ese es el punto que pidieron en el brief —“por qué decorar con PardeCosas”— servido en bandeja.</p>
+  </div>
+
+  <h3 style="font-size:19px;margin-top:30px">Su web pierde leads a propósito</h3>
+  <ul class="plain">
+    <li>La página de inversión <strong>está vacía</strong>: solo dice “contacta a tu asesor inmobiliario”. Venden producto de inversión sin un argumento de rentabilidad.</li>
+    <li>Piden <strong>RUT obligatorio</strong> para una consulta simple, y RUT de terceros en los referidos, sin política de privacidad.</li>
+    <li>El botón <strong>“cotizar” no cotiza</strong>: abre un formulario de contacto.</li>
+    <li><strong>Calendly instalado y apagado.</strong></li>
+    <li>El teléfono del pie de página está mal formado: <strong>el click-to-call falla en todo el sitio.</strong></li>
+    <li>Una ficha de proyecto pesa <strong>10,79 MB</strong> en imágenes, sin carga diferida.</li>
+    <li>Toda su oferta comercial está en SVG: <strong>invisible para los buscadores.</strong></li>
+    <li>No linkea ninguna red social.</li>
+  </ul>
+  <p><strong>Lo que tienen enterrado y no usan:</strong> tours Matterport en tres proyectos, alianza bancaria con simulador, referidos de $500.000 y un proceso de compra en seis pasos muy bien explicado.</p>
+</section>
+
+<section>
+  <div class="h2num">05</div>
+  <h2>Cómo comunican</h2>
+  <p class="lede">Todo es pauta pagada sin activo orgánico detrás. Los millones de vistas de sus videos son alcance comprado, no audiencia.</p>
+
+  <div class="tw"><table>
+    <tr><th>Canal</th><th>Estado</th></tr>
+    <tr><td><strong>Meta Ads</strong></td><td><span class="tag t-ok">Vivo</span> &nbsp;13-14 anuncios activos, con test A/B en todos</td></tr>
+    <tr><td>Instagram</td><td><span class="tag t-no">Muerto</span> &nbsp;1.748 seguidores, <strong>4 publicaciones en total</strong>, última en octubre de 2025, cero reels</td></tr>
+    <tr><td>Facebook</td><td><span class="tag t-no">Muerto</span> &nbsp;3.300 seguidores, sin postear desde octubre de 2025</td></tr>
+    <tr><td>YouTube</td><td><span class="tag t-no">Muerto</span> &nbsp;<strong>8 suscriptores, 11 videos</strong> desde 2019</td></tr>
+    <tr><td>TikTok</td><td><span class="tag t-no">No existe</span></td></tr>
+    <tr><td>LinkedIn de empresa</td><td><span class="tag t-no">No existe</span> &nbsp;La página es autogenerada por LinkedIn, no reclamada</td></tr>
+    <tr><td>Google Business</td><td><span class="tag t-no">Sin reclamar</span></td></tr>
+    <tr><td>WhatsApp o chat</td><td><span class="tag t-no">No tienen</span> &nbsp;Solo teléfono fijo en horario de oficina</td></tr>
+  </table></div>
+
+  <p><strong>El piloto es su gancho número uno.</strong> Cuatro de catorce anuncios giran en torno a visitar el piloto. Y el copy dice que el proyecto “combina <strong>diseño</strong>, calidad y conectividad” — diseño primero. No hay que convencerlos.</p>
+
+  <div class="pull hot">
+    <div class="t">La contradicción central de su operación</div>
+    <p>Pagan pauta para que la gente vaya <strong>físicamente</strong> al piloto — y no existe ni un video de recorrido. El piloto no viaja. Su video más visto es un asado de banco de imágenes con la palabra “quincho” encima: ni un metro cuadrado del edificio. En siete años, una sola pieza muestra un piloto real por dentro, con 323 vistas.</p>
+  </div>
+
+  <h3 style="font-size:19px;margin-top:30px">Señales de que el equipo está flaco</h3>
+  <ul class="plain">
+    <li>Pautan por ráfaga: trece de catorce anuncios se crearon entre el 13 y el 20 de agosto. Antes tenían uno solo, corriendo desde mayo.</li>
+    <li><strong>Errores en vivo en su propia pauta:</strong> una variable de plantilla sin renderizar, una falta de ortografía, un asterisco duplicado.</li>
+    <li><strong>Tres proyectos vigentes sin nada de pauta.</strong></li>
+    <li><strong>No etiquetan a nadie</strong>, en ningún post ni anuncio. El crédito de home staging está libre.</li>
+  </ul>
+
+  <div class="tw"><table>
+    <tr><th>Comparación</th><th>Anuncios activos</th><th>Instagram</th><th>YouTube</th></tr>
+    <tr><td>Fundamenta</td><td class="num"><strong>81</strong>, continuos</td><td class="num">35K · 868 posts</td><td class="num">276 subs</td></tr>
+    <tr><td>Paz</td><td>—</td><td class="num">58K · 1.766 posts</td><td>—</td></tr>
+    <tr><td>Almagro</td><td>—</td><td>—</td><td class="num">1.300 subs</td></tr>
+    <tr><td><em>Santolaya</em> (su constructora)</td><td>—</td><td class="num"><strong>17.000</strong>, reels semanales</td><td>—</td></tr>
+    <tr><td><strong>Stitchkin</strong></td><td class="num">13-14, por ráfaga</td><td class="num"><strong>1.748 · 4 posts</strong></td><td class="num"><strong>8 subs</strong></td></tr>
+  </table></div>
+</section>
+
+<section>
+  <div class="h2num">06</div>
+  <h2>Cómo hay que hablarles</h2>
+
+  <div class="pull hot">
+    <div class="t">Nunca respondieron un solo correo</div>
+    <p>Los seis hilos que existen son todos salientes nuestros. Cero entrantes. Y no es contra nosotros: acumulan veinte años de reclamos públicos sin una sola respuesta. <strong>No usan canales asincrónicos.</strong> Existen en reunión, en sala de ventas y en LinkedIn. Mandar la presentación por correo y quedarse esperando es no entregar.</p>
+  </div>
+
+  <ul class="plain">
+    <li><strong>Nunca prometen sin un número al lado.</strong> Cotizan en formato “desde UF 2.397”. Por eso pidieron literalmente “costos del desde”.</li>
+    <li><strong>Para ellos el diseño es un costo, no un valor.</strong> Cero menciones de estética en toda su comunicación pública. La presentación no se puede vender por bonita.</li>
+    <li><strong>Tutean en todo.</strong> Registro directo, con números.</li>
+    <li><strong>La pregunta por la nota de crédito no es regateo.</strong> Ellos le ofrecen a sus compradores devolución del dinero y arriendo garantizado. Están pidiendo lo mismo que dan. La respuesta no es defenderse: es ofrecer una garantía propia, con estructura, en nuestros términos.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="h2num">07</div>
+  <h2>Dos huecos de mercado que nadie ocupa</h2>
+  <ul class="plain">
+    <li><strong>Espacios comunes: no existe un solo precio público en Chile.</strong> Varias agencias los hacen — hall, gimnasio, quincho, sala multiuso, cowork — pero nadie los tarifa. El precio lo fija quien llegue primero con un desglose ordenado. Y Stitchkin lo pidió explícitamente, además de que ya compran externo para esas áreas.</li>
+    <li><strong>El arriendo de mobiliario para pilotos no lo ofrece nadie.</strong> Existe arriendo de muebles en general, pero ninguno se posiciona en pilotos. El sustituto que usa el mercado es financiamiento en cuotas. <strong>Es la respuesta elegante a la pregunta por la nota de crédito:</strong> si el mobiliario se arrienda, no hay “costo real menor a lo pactado”, hay una cuota mensual.</li>
+  </ul>
+  <p><strong>El plazo, bien enfocado.</strong> El mercado entrega en dos a tres semanas. El argumento no es “tres semanas contra cuatro del rival”, es <strong>tres semanas con nosotros contra dos a cuatro meses armándolo internamente</strong> — y le pega justo al dolor que declararon del diseñador interno.</p>
+  <p><strong>Estructura estándar del mercado:</strong> diseño incluido (cobrarlo aparte saca de mercado), presupuesto cerrado con adicionales listados fuera, y nadie declara fee sobre compras.</p>
+</section>
+
+<section>
+  <div class="h2num">08</div>
+  <h2>La jugada</h2>
+  <div class="pull hot">
+    <div class="t">No les vendemos decoración</div>
+    <p>Les vendemos <strong>rotación de stock y material para pautear</strong>. Tienen presupuesto de pauta, productora contratada y catorce anuncios corriendo. Y nada bueno que mostrar.</p>
+  </div>
+
+  <ol class="thesis">
+    <li><strong>Abrir con Santolaya.</strong> Su propia constructora ya nos presentó como su estudio de pilotos. Adelante, no en anexo.</li>
+    <li><strong>Espejo, sin decir una palabra.</strong> Su piloto bueno al lado del recargado. Y los dos proyectos entregados que se venden con render prestado.</li>
+    <li><strong>Precios “desde”, por tipología y metro cuadrado</strong>, en dos bloques separados: masivo y alto patrimonio.</li>
+    <li><strong>Espacios comunes con desglose ordenado.</strong> Terreno virgen, y ya compran externo.</li>
+    <li><strong>Plazo:</strong> tres semanas contra dos a cuatro meses internamente.</li>
+    <li><strong>Paquete de contenido incluido</strong> — fotos y verticales listos para pautear — con cláusula de derecho a publicar. No le dan crédito a nadie: ese crédito está libre.</li>
+    <li><strong>Garantía propia</strong> en vez de nota de crédito. Opcional: modelo de arriendo de mobiliario, que disuelve la pregunta.</li>
+  </ol>
+
+  <div class="pull">
+    <div class="t">El objetivo del entregable es BEAT</div>
+    <p>Lanzado el 14 de agosto, sin piloto, ya pauteándose, y que ni siquiera estaba en la lista de proyectos que dieron. El piloto de Novus G ya se hizo: ese encargo se fue.</p>
+  </div>
+
+  <p><strong>Cómo se manda:</strong> correo y LinkedIn el mismo día, con escalamiento al gerente general a las 48 horas.</p>
+</section>
+
+<section>
+  <div class="h2num">09</div>
+  <h2>Lo que no se pudo cerrar</h2>
+  <div class="tw"><table>
+    <tr><th>Punto</th><th>Estado</th></tr>
+    <tr><td><strong>El presupuesto de referencia por piloto</strong></td><td><span class="tag t-mid">Sin confirmar</span> El rango aparece en un solo lugar: un campo del brief interno. <strong>No está en el acta de la reunión</strong>, y el acta dice que el cliente no soltó sus números. No se puede afirmar que sea una cifra del cliente. Hay que preguntárselo a Carolina antes de anclar nada ahí</td></tr>
+    <tr><td>Si la Santolaya verificada es la misma de Lira 157 y Walker 880</td><td><span class="tag t-mid">Por confirmar con Carolina</span> Si lo es, va adelante en la presentación, no en anexo</td></tr>
+    <tr><td>La oficina de arquitectura y su relación con el nombre Lira</td><td><span class="tag t-mid">Inferencia</span> Puede ser coincidencia. Si hay relación, el caso de éxito pesa el doble</td></tr>
+    <tr><td>Cuál de sus sociedades factura</td><td><span class="tag t-mid">No deducible</span> Hay que preguntárselo antes de emitir</td></tr>
+    <tr><td>Antecedentes concursales y judiciales</td><td><span class="tag t-mid">Sin operar</span> Los registros piden CAPTCHA. “No encontré evidencia” no es “está limpio”</td></tr>
+  </table></div>
+</section>
+
+<footer>
+  <p>Investigación de diez frentes ejecutada el 20 de agosto de 2026, con fuentes públicas más correo y Slack internos. Todo dato sin fuente está marcado como inferencia o como no encontrado; nada se rellenó a ojo.</p>
+  <p style="margin-top:12px">Los diez informes de detalle y el dossier maestro viven en <code>Estudio_Diseno/Comercial/Stitchkin/</code>. Página sin indexar.</p>
+</footer>
+
+</div>
+</body>
+</html>
