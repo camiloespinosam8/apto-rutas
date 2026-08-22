@@ -25,6 +25,11 @@
   "uid": "s/reg|nuevo studio | metro nunoa | terraza"
  },
  {
+  "anuncio": "Habitación en gran casa Valparaiso/Estacionamiento",
+  "reservas": 8,
+  "uid": "s/reg|habitacion en gran casa valparaiso/estacionamien"
+ },
+ {
   "anuncio": "Casa para grupos | Cerro Concepcion | 1 auto",
   "reservas": 7,
   "uid": "s/reg|casa para grupos | cerro concepcion | 1 auto"
@@ -33,11 +38,6 @@
   "anuncio": "Gran apartamento para grupos | Central | 2 autos",
   "reservas": 7,
   "uid": "s/reg|gran apartamento para grupos | central | 2 autos"
- },
- {
-  "anuncio": "Habitación en gran casa Valparaiso/Estacionamiento",
-  "reservas": 7,
-  "uid": "s/reg|habitacion en gran casa valparaiso/estacionamien"
  },
  {
   "anuncio": "Habitación privada en Cerro Concepción con Parking",

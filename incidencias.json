@@ -77,7 +77,7 @@
   "tipo": "insight",
   "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md (workflow casas-stgo-oportunidades, 10-ago)",
   "dir": "Luis Montaner 545, Providencia, Región Metropolitana, Chile",
-  "comuna": "Providencia"
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -93,7 +93,7 @@
   "tipo": "insight",
   "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
   "dir": "Luis Montaner 545, Providencia, Región Metropolitana, Chile",
-  "comuna": "Providencia"
+  "comuna": ""
  },
  {
   "cat": "insumos",
@@ -869,7 +869,7 @@
   "tipo": "insight",
   "fuente": "Casas_Stgo_Oportunidades_2026-07-22.md",
   "dir": "Luis Montaner 545, Providencia, Región Metropolitana, Chile",
-  "comuna": "Providencia"
+  "comuna": ""
  },
  {
   "cat": "tecnico",
@@ -2102,7 +2102,7 @@
   "cita": "Perdón por cancelar no me gusta hacerlo tan de repente pero no poder ir ya que mi pareja ya no quiere y yo soy De Santiago y no are solo ya que no tiene mucho sentido muchas gracia",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
   "tipo": "conversacion",
-  "dir": "Paseo Cousiño 12, Viña del Mar, Región de Valparaíso, Chile",
+  "dir": "Paseo Cousiño, Viña del Mar, Región de Valparaíso, Chile",
   "comuna": "Viña del Mar"
  },
  {
@@ -2565,7 +2565,7 @@
   "cita": "no puedo encontrar el lugar",
   "accion": "Detectado leyendo la conversación — asignar responsable y cerrar.",
   "tipo": "conversacion",
-  "dir": "Paseo Cousiño 12, Viña del Mar, Región de Valparaíso, Chile",
+  "dir": "Paseo Cousiño, Viña del Mar, Región de Valparaíso, Chile",
   "comuna": "Viña del Mar"
  },
  {
