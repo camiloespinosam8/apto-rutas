@@ -5,14 +5,14 @@
   "uid": "s/reg|habitacion doble bano compartido. plaza vina"
  },
  {
+  "anuncio": "Gran habitación en el corazón de Cerro Concepción",
+  "reservas": 10,
+  "uid": "s/reg|gran habitacion en el corazon de cerro concepcio"
+ },
+ {
   "anuncio": "Nuevo 2 Dor para 5 · Estacionamiento · Pasos Metro",
   "reservas": 10,
   "uid": "s/reg|nuevo 2 dor para 5 estacionamiento pasos metro"
- },
- {
-  "anuncio": "Gran habitación en el corazón de Cerro Concepción",
-  "reservas": 9,
-  "uid": "s/reg|gran habitacion en el corazon de cerro concepcio"
  },
  {
   "anuncio": "LaPuertaRoja | Casa para grupos | Cerro Concepción",
@@ -20,14 +20,14 @@
   "uid": "s/reg|lapuertaroja | casa para grupos | cerro concepci"
  },
  {
-  "anuncio": "Nuevo Studio | Metro Ñuñoa | Terraza",
+  "anuncio": "Habitación en gran casa Valparaiso/Estacionamiento",
   "reservas": 9,
-  "uid": "s/reg|nuevo studio | metro nunoa | terraza"
+  "uid": "s/reg|habitacion en gran casa valparaiso/estacionamien"
  },
  {
-  "anuncio": "Habitación en gran casa Valparaiso/Estacionamiento",
+  "anuncio": "Nuevo Studio | Metro Ñuñoa | Terraza",
   "reservas": 8,
-  "uid": "s/reg|habitacion en gran casa valparaiso/estacionamien"
+  "uid": "s/reg|nuevo studio | metro nunoa | terraza"
  },
  {
   "anuncio": "Casa para grupos | Cerro Concepcion | 1 auto",
@@ -85,11 +85,6 @@
   "uid": "s/reg|la puerta roja | casa para grupos | 2 autos"
  },
  {
-  "anuncio": "Pet friendly · Estacionamiento · Metro Ñuñoa",
-  "reservas": 3,
-  "uid": "s/reg|pet friendly estacionamiento metro nunoa"
- },
- {
   "anuncio": "Habitacion para 4 -Baño Compartido.",
   "reservas": 2,
   "uid": "s/reg|habitacion para 4 -bano compartido."
@@ -115,14 +110,14 @@
   "uid": "s/reg|habitacion privada cama doble con estacionamient"
  },
  {
-  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa",
-  "reservas": 2,
-  "uid": "s/reg|nuevo 1d metro irarrazaval (l3-l5) nunoa"
- },
- {
   "anuncio": "Studio · Piscina · Estacionamiento · Metro Ñuñoa",
   "reservas": 2,
   "uid": "s/reg|studio piscina estacionamiento metro nunoa"
+ },
+ {
+  "anuncio": "Pet friendly · Estacionamiento · Metro Ñuñoa",
+  "reservas": 2,
+  "uid": "s/reg|pet friendly estacionamiento metro nunoa"
  },
  {
   "anuncio": "Habitación privada cama king con estacionamiento",
@@ -135,8 +130,8 @@
   "uid": "s/reg|habitacion privada c/ bano y parking barrio ital"
  },
  {
-  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda",
+  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa",
   "reservas": 1,
-  "uid": "s/reg|nuevo 1d metro los heroes (l1-l2) la moneda"
+  "uid": "s/reg|nuevo 1d metro irarrazaval (l3-l5) nunoa"
  }
 ]

@@ -439,5 +439,41 @@
   "salida": "2026-09-02",
   "estado": "Viaje solicitado",
   "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda"
+ },
+ {
+  "cod": "HMCCJ2A39C",
+  "huesped": "Martina",
+  "visto": "2026-08-21",
+  "entrada": "2026-10-14",
+  "salida": "2026-10-15",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo Studio | Metro Ñuñoa | Terraza"
+ },
+ {
+  "cod": "HMSSF55449",
+  "huesped": "Amaranta",
+  "visto": "2026-08-21",
+  "entrada": "2026-08-20",
+  "salida": "2026-08-22",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda"
+ },
+ {
+  "cod": "HMAR8EZDKA",
+  "huesped": "Evangelina D.",
+  "visto": "2026-08-21",
+  "entrada": "2026-10-14",
+  "salida": "2026-10-15",
+  "estado": "Viaje solicitado",
+  "anuncio": "Pet friendly · Estacionamiento · Metro Ñuñoa"
+ },
+ {
+  "cod": "HMPFCQKC3Z",
+  "huesped": "Camila",
+  "visto": "2026-08-21",
+  "entrada": "2026-08-22",
+  "salida": "2026-08-23",
+  "estado": "Viaje solicitado",
+  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa"
  }
 ]
