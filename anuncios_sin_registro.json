@@ -115,6 +115,11 @@
   "uid": "s/reg|habitacion privada cama doble con estacionamient"
  },
  {
+  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa",
+  "reservas": 2,
+  "uid": "s/reg|nuevo 1d metro irarrazaval (l3-l5) nunoa"
+ },
+ {
   "anuncio": "Studio · Piscina · Estacionamiento · Metro Ñuñoa",
   "reservas": 2,
   "uid": "s/reg|studio piscina estacionamiento metro nunoa"
@@ -128,11 +133,6 @@
   "anuncio": "Habitación privada c/ baño y Parking Barrio Italia",
   "reservas": 1,
   "uid": "s/reg|habitacion privada c/ bano y parking barrio ital"
- },
- {
-  "anuncio": "Nuevo 1D · Metro Irarrázaval (L3-L5) · Ñuñoa",
-  "reservas": 1,
-  "uid": "s/reg|nuevo 1d metro irarrazaval (l3-l5) nunoa"
  },
  {
   "anuncio": "Nuevo 1D · Metro Los Héroes (L1-L2) · La Moneda",
