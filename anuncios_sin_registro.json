@@ -85,6 +85,11 @@
   "uid": "s/reg|la puerta roja | casa para grupos | 2 autos"
  },
  {
+  "anuncio": "Pet friendly · Estacionamiento · Metro Ñuñoa",
+  "reservas": 3,
+  "uid": "s/reg|pet friendly estacionamiento metro nunoa"
+ },
+ {
   "anuncio": "Habitacion para 4 -Baño Compartido.",
   "reservas": 2,
   "uid": "s/reg|habitacion para 4 -bano compartido."
@@ -113,11 +118,6 @@
   "anuncio": "Studio · Piscina · Estacionamiento · Metro Ñuñoa",
   "reservas": 2,
   "uid": "s/reg|studio piscina estacionamiento metro nunoa"
- },
- {
-  "anuncio": "Pet friendly · Estacionamiento · Metro Ñuñoa",
-  "reservas": 2,
-  "uid": "s/reg|pet friendly estacionamiento metro nunoa"
  },
  {
   "anuncio": "Habitación privada cama king con estacionamiento",
